@@ -1,0 +1,6 @@
+comment = 'RAO DB Extension: rdb_catalog'
+default_version = '1.0'
+relocatable = false
+schema = public
+requires = ''
+
