@@ -1,0 +1,12 @@
+# ################################################################################
+# purpose: postgres database
+# status: working
+
+docker stop c-postgres
+docker rm c-postgres
+docker rmi i-postgres
+docker build -t i-postgres .
+docker run -d --name c-postgres -p 8432:5432 i-postgres
+docker stop c-postgres
+docker start c-postgres
+docker exec -it c-postgres /bin/bash
