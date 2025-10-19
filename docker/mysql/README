@@ -1,0 +1,20 @@
+# ################################################################################
+# purpose: mysql database
+# status: testing needed
+
+docker stop c-mysql
+docker rm c-mysql
+docker rmi i-mysql
+docker build -t i-mysql .
+docker run -d --name c-mysql -p 8306:3306 i-mysql
+docker stop c-mysql
+docker start c-mysql
+#docker exec -it c-mysql /bin/bash
+
+#connecting from host
+mysql -h 127.0.0.1 -P 8306 -u mysql -p mysql
+
+# connecting from another container
+mysql -h mysql -u mysql -p mysql
+
+
