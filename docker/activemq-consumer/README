@@ -1,0 +1,25 @@
+# ################################################################################
+# purpose: activemq-consumer - microservice to consume msessages from activemq server - multiple queues - queue1..queue5
+# status: working
+#
+# build java code
+mvn clean install -DskipTests
+#
+#
+docker stop c-activemq-consumer
+docker rm c-activemq-consumer
+docker rmi i-activemq-consumer
+#
+# build
+docker build -t i-activemq-consumer .
+#
+# run
+docker run -d --name c-activemq-consumer --network="host" -e SPRING_ACTIVEMQ_BROKER-URL=tcp://localhost:61616 i-activemq-consumer
+#
+#docker stop c-activemq-consumer
+#docker start c-activemq-consumer
+#
+# connect
+docker exec -it c-activemq-consumer /bin/bash
+#
+# ################################################################################

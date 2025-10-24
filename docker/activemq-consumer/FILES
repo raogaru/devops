@@ -1,0 +1,12 @@
+activemq-consumer/
+├── Dockerfile
+├── pom.xml
+└── src/
+    └── main/
+        ├── java/
+        │   └── com/example/consumer/
+        │       ├── ConsumerApplication.java
+        │       └── MessageConsumerService.java
+        └── resources/
+            └── application.yml
+
