@@ -1,0 +1,47 @@
+# ################################################################################
+# purpose: jenkins server
+# status: working
+#
+# volume
+docker volume rm v-jenkins
+docker volume create v-jenkins
+docker volume list
+docker volume inspect v-jenkins
+#
+docker stop c-jenkins
+docker rm c-jenkins
+docker rmi i-jenkins
+#
+# build
+docker build -t i-jenkins .
+#
+# run
+docker run -d --name c-jenkins -v v-jenkins:/var/jenkins_home -p 8080:8080 -p 50000:50000 i-jenkins
+#
+docker stop c-jenkins
+docker start c-jenkins
+#
+# connect
+docker exec -it c-jenkins /bin/bash
+#
+# get admin token and start browser app
+docker logs c-jenkins
+#
+# access via web console
+http://localhost:8080
+user: admin 
+#
+# persistent volume
+#| Path                                | Purpose                                  |
+#| ----------------------------------- | ---------------------------------------- |
+#| `/var/jenkins_home/config.xml`      | Jenkins master configuration             |
+#| `/var/jenkins_home/jobs/`           | All job definitions and build histories  |
+#| `/var/jenkins_home/plugins/`        | Installed plugins (as `.jpi` files)      |
+#| `/var/jenkins_home/users/`          | User accounts and permissions            |
+#| `/var/jenkins_home/credentials.xml` | Encrypted credentials                    |
+#| `/var/jenkins_home/secrets/`        | Encryption keys and API tokens           |
+#| `/var/jenkins_home/workspace/`      | Workspace directories for running builds |
+#| `/var/jenkins_home/init.groovy.d/`  | Groovy init scripts (if provided)        |
+#| `/var/jenkins_home/updates/`        | Cached plugin update center data         |
+#| `/var/jenkins_home/logs/`           | Jenkins logs (controller-side)           |
+# ################################################################################
