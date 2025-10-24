@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ActiveMQ Queue Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>ActiveMQ Queue Sizes</h1>
+    <canvas id="queueChart" width="600" height="400"></canvas>
+
+    <script>
+        const ctx = document.getElementById('queueChart').getContext('2d');
+
+        let labels = /*[[${#lists.keys(queueSizes)}]]*/ ['queue1','queue2','queue3','queue4','queue5'];
+        let dataValues = /*[[${#lists.values(queueSizes)}]]*/ [0,0,0,0,0];
+
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Queue Size',
+                    data: dataValues,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Poll every 5 seconds
+        setInterval(() => {
+            fetch('/')
+                .then(resp => resp.text())
+                .then(html => {
+                    // Very simple: reload the page to update chart
+                    location.reload();
+                });
+        }, 5000);
+    </script>
+</body>
+</html>
+

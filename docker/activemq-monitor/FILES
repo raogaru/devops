@@ -1,0 +1,10 @@
+# ################################################################################
+# files
+
+activemq-monitor/
+├── Dockerfile
+├── pom.xml
+└── src/main/java/com/example/monitor/
+    ├── MonitorApplication.java
+    └── QueueMonitorService.java
+└── src/main/resources/application.yml

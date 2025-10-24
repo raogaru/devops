@@ -1,0 +1,26 @@
+# ################################################################################
+# purpose: activemq-monitor - microservice to monitor msessages on activemq server
+# status: working
+#
+# build java code
+mvn clean install -DskipTests
+#
+docker stop c-activemq-monitor
+docker rm c-activemq-monitor
+docker rmi i-activemq-monitor
+#
+# build
+docker build -t i-activemq-monitor .
+#
+# run
+docker run -d --name c-activemq-monitor --network="host" -e SPRING_ACTIVEMQ_BROKER-URL=tcp://localhost:61616 i-activemq-monitor
+#
+#docker stop c-activemq-monitor
+#docker start c-activemq-monitor
+#
+# connect
+#docker exec -it c-activemq-monitor /bin/bash
+#
+# monitor docker container logs for output of the monitoring activity
+#
+# ################################################################################
