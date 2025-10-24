@@ -1,0 +1,24 @@
+# ################################################################################
+# purpose: activemq-producer - microservice to procude msessages to activemq server - multiple queues - queue1..queue5
+# status: working
+#
+# build java code
+mvn clean install -DskipTests
+#
+docker stop c-activemq-producer
+docker rm c-activemq-producer
+docker rmi i-activemq-producer
+#
+# build
+docker build -t i-activemq-producer .
+#
+# run
+docker run -d --name c-activemq-producer --network="host" -e SPRING_ACTIVEMQ_BROKER-URL=tcp://localhost:61616 i-activemq-producer
+#
+#docker stop c-activemq-producer
+#docker start c-activemq-producer
+#
+# connect
+#docker exec -it c-activemq-producer /bin/bash
+#
+# ################################################################################

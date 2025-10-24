@@ -1,0 +1,12 @@
+activemq-producer/
+├── Dockerfile
+├── pom.xml
+└── src/
+    └── main/
+        ├── java/
+        │   └── com/example/producer/
+        │       ├── ProducerApplication.java
+        │       └── MessageProducerService.java
+        └── resources/
+            └── application.yml
+
