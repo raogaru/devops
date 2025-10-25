@@ -28,7 +28,7 @@ docker exec -it c-postgres /bin/bash
 brew install libpq
 brew link --force libpq
 which psql
-psql -version
+psql --version
 export PGPASSWORD=postgres
 psql -h localhost -p 8432 -U postgres -d postgres 
 # ################################################################################
