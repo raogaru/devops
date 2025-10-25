@@ -1,0 +1,30 @@
+-- ===== Improved psql CLI Experience =====
+
+-- 🟦 General appearance
+\set QUIET 1
+\pset pager off
+\pset linestyle unicode
+\pset border 2
+\pset null '(null)'
+\pset format aligned
+\pset footer off
+\timing on
+\set VERBOSITY verbose
+
+-- 🟩 Color and prompt
+\setenv PAGER 'less -R'
+\set QUIET 0
+\set PROMPT1 '%[%033[1;34m%]%n@%/%R%[%033[0m%]%# '
+\set PROMPT2 '%[%033[1;33m%]%R%[%033[0m%]%# '
+
+-- 🟨 Auto-expanded display for wide tables
+\x auto
+
+-- 🟪 Safer settings
+\set HISTFILE ~/.psql_history
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+
+-- 🟥 Default search_path
+SET search_path TO public;
+

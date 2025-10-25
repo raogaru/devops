@@ -11,13 +11,24 @@ docker volume inspect v-postgres
 docker stop c-postgres
 docker rm c-postgres
 docker rmi i-postgres
+#
 # build
 docker build -t i-postgres .
+#
 # run
 docker run -d --name c-postgres -p 8432:5432 -v v-postgres:/var/lib/postgresql i-postgres
 #
 docker stop c-postgres
 docker start c-postgres
+#
 # connect
 docker exec -it c-postgres /bin/bash
+#
+#connecting from host
+brew install libpq
+brew link --force libpq
+which psql
+psql -version
+export PGPASSWORD=postgres
+psql -h localhost -p 8432 -U postgres -d postgres 
 # ################################################################################
