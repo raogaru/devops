@@ -1,12 +1,23 @@
 # ################################################################################
 # purpose: postgres database
 # status: working
-
+#
+# volume
+docker volume rm v-postgres
+docker volume create v-postgres
+docker volume list
+docker volume inspect v-postgres
+#
 docker stop c-postgres
 docker rm c-postgres
 docker rmi i-postgres
+# build
 docker build -t i-postgres .
-docker run -d --name c-postgres -p 8432:5432 i-postgres
+# run
+docker run -d --name c-postgres -p 8432:5432 -v v-postgres:/var/lib/postgresql i-postgres
+#
 docker stop c-postgres
 docker start c-postgres
+# connect
 docker exec -it c-postgres /bin/bash
+# ################################################################################
