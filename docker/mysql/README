@@ -1,20 +1,41 @@
 # ################################################################################
 # purpose: mysql database
-# status: testing needed
-
+# status: working
+#
+# volume
+docker volume rm v-mysql
+docker volume create v-mysql
+docker volume list
+docker volume inspect v-mysql
+#
 docker stop c-mysql
 docker rm c-mysql
 docker rmi i-mysql
+#
+# build
 docker build -t i-mysql .
-docker run -d --name c-mysql -p 8306:3306 i-mysql
+#
+# run
+docker run -d --name c-mysql -p 8306:3306 -v v-mysql:/var/lib/mysql  i-mysql
+#
 docker stop c-mysql
 docker start c-mysql
-#docker exec -it c-mysql /bin/bash
-
+#
+# connect
+docker exec -it c-mysql /bin/bash
+#
 #connecting from host
+brew install mysql
+export MYSQL_PWD='mysql'
 mysql -h 127.0.0.1 -P 8306 -u mysql -p mysql
-
+#
+# test
+create table t1 ( id int);
+show tables;
+insert into t1 values (10);
+select * from t1;
+exit
+#
 # connecting from another container
 mysql -h mysql -u mysql -p mysql
-
-
+# ################################################################################
