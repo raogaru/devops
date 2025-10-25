@@ -1,0 +1,73 @@
+# ################################################################################
+# purpose: Hashicorp vault server
+# status: working
+#
+# volume
+docker volume rm v-vault
+docker volume create v-vault
+docker volume list
+docker volume inspect v-vault
+#
+docker stop c-vault
+docker rm c-vault
+docker rmi i-vault
+#
+# --------------------------------------------------------------------------------
+# build for DEVELOPMENT environment - with predefined root key - no persistence
+docker build -t i-vault -f Dockerfile.dev .
+#
+mkdir -p file logs data 
+#
+docker run -d --name c-vault --cap-add=IPC_LOCK -p 8200:8200 -v ./file:/vault/file -v ./logs:/vault/logs -v ./data:/vault/data i-vault server -dev 
+#
+# access via webconsole
+http://localhost:8200/
+Method: Token
+Token: root
+#
+#
+# --------------------------------------------------------------------------------
+# build for PRODUCTION environment
+docker build -t i-vault -f Dockerfile.prod .
+#
+mkdir -p file logs
+#
+# run - production environment
+docker run -d --name c-vault --cap-add=IPC_LOCK -p 8200:8200 -v ./file:/vault/file -v ./logs:/vault/logs -v v-vault:/vault/data i-vault server
+#
+# connect, init (capture Unseal Key(s) and Token info), unseal (provide one of keys), status (capture Unseal Nonce info)
+docker exec -it c-vault /bin/sh
+	chown -R vault:vault /vault/data
+	chmod -R 750 /vault/data
+	vault vault operator init -key-shares=3 -key-threshold=2
+	vault operator unseal
+	vault status
+	exit
+#
+Unseal Key 1: zEI2m4dmKsQm0bZ96ZrHZmyMitwE6QuNH50MkPJeytmf
+Unseal Key 2: lGAH7KhnZ5BJuWreQXWeV85S55y1/B0iB14HOKiA+HOq
+Unseal Key 3: L+uLol2Nkb80ZF+0HwPP206oVRQysXXcNPgzZtx6UeKj
+Initial Root Token: hvs.RAmE7qtY6OZMQH90eu3qCdGi
+Unseal Nonce       04a90c8a-2eec-48d2-66de-8fd09dc9e854
+#
+# access via webconsole
+http://localhost:8200/
+Keys: provide any unseal key(s) (noted above from init command)
+Method: Token
+Token: (noted above from init command)
+#
+# ######################################################################
+# vault cli from host computer
+#
+# install Vault CLI on your host computer
+brew tap hashicorp/tap
+brew install hashicorp/tap/vault
+#
+# login and execute cli commands
+export VAULT_ADDR=http://localhost:8200 
+echo <vaul-token> > ~/.vault-token
+chmod 600 ~/.vault-token
+vault login
+vault secrets list
+#
+# ################################################################################
