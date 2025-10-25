@@ -16,7 +16,7 @@ docker rmi i-mysql
 docker build -t i-mysql .
 #
 # run
-docker run -d --name c-mysql -p 8306:3306 -v v-mysql:/var/lib/mysql  i-mysql
+docker run -d --name c-mysql -p 8306:3306 -v v-mysql:/var/lib/mysql i-mysql
 #
 docker stop c-mysql
 docker start c-mysql
@@ -26,6 +26,7 @@ docker exec -it c-mysql /bin/bash
 #
 #connecting from host
 brew install mysql
+mysql --version
 export MYSQL_PWD='mysql'
 mysql -h 127.0.0.1 -P 8306 -u mysql -p mysql
 #
