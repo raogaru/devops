@@ -1,0 +1,61 @@
+# ################################################################################
+# purpose: raodb - customized version of postgres software on amazon linux 2023
+# status: working
+#
+# volume
+docker volume rm v-raodb
+docker volume create v-raodb
+docker volume list
+docker volume inspect v-raodb
+#
+docker stop c-raodb
+docker rm c-raodb
+docker rmi i-raodb
+#
+# build
+docker build -t i-raodb .
+#
+# run
+docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8433:5432 -v v-raodb:/raodb i-raodb tail -f /dev/null
+
+docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8433:5432 i-raodb tail -f /dev/null
+#
+docker stop c-raodb
+docker start c-raodb
+#
+# --------------------------------------------------------------------------------
+# IF boot.sh run was disabled in Dockerfile, then run boot to download source and create runtime software
+# clone, build postgres software, start db
+#
+su - postgres
+source ${HOME}/.bash_profile
+${HOME}/.boot.sh
+# connect, start DB
+docker exec -it c-raodb /bin/bash
+su - postgres
+PGstart
+psql
+# --------------------------------------------------------------------------------
+# connect from host computer
+brew install libpq
+brew link --force libpq
+which psql
+psql --version
+export PGPASSWORD=postgres
+psql -h 127.0.0.1 -p 8433 -U postgres -d postgres
+# --------------------------------------------------------------------------------
+# test
+psql
+create table t1 (id int);
+\dt
+insert into t1 values (10);
+select * from t1;
+exit
+#
+# --------------------------------------------------------------------------------
+# connecting from another container
+#
+# --------------------------------------------------------------------------------
+# copy files to container
+docker cp contrib/rdb_catalog c-raodb:/postgres
+# ################################################################################
