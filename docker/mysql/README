@@ -29,7 +29,7 @@ brew install mysql
 mysql --version
 export MYSQL_PWD='mysql'
 mysql -h 127.0.0.1 -P 8306 -u mysql -p mysql
-#
+# -------------------------------------------------------------------------------
 # test
 create table t1 ( id int);
 show tables;
