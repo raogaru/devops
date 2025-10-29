@@ -1,0 +1,24 @@
+# ################################################################################
+# purpose: rabbitmq-consumer - microservice to consume msessages from rabbitmq server - multiple queues - queue1..queue5
+# status: working
+#
+# build java code
+mvn clean install -DskipTests
+#
+docker stop c-rabbitmq-consumer
+docker rm c-rabbitmq-consumer
+docker rmi i-rabbitmq-consumer
+#
+# build
+docker build -t i-rabbitmq-consumer .
+#
+# run
+docker run -d --name c-rabbitmq-consumer -e CONSUMER_INTERVAL_MS=5000 -e RABBITMQ_HOST=host.docker.internal -p 8072:8082 i-rabbitmq-consumer
+#
+#docker stop c-rabbitmq-consumer
+#docker start c-rabbitmq-consumer
+#
+# connect
+docker exec -it c-rabbitmq-consumer /bin/bash
+#
+# ################################################################################

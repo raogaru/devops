@@ -1,0 +1,15 @@
+consumer/
+├── pom.xml
+├── Dockerfile
+├── README.md
+└── src
+    └── main
+        ├── java
+        │   └── com/raogaru/consumer
+        │       ├── ConsumerApplication.java
+        │       ├── config/RabbitConfig.java
+        │       └── service/MessageConsumer.java
+        └── resources
+            ├── application.properties
+            └── logback-spring.xml
+
