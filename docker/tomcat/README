@@ -22,7 +22,13 @@ docker start c-tomcat
 # connect
 docker exec -it c-tomcat /bin/bash
 #
+# logs
+docker logs c-tomcat
+#
 # connect from webconsole
+# if helloworld.war copied to webapps dir as ROOT.war
+http://localhost:8062/  
+# if helloworld.war copied to webapps dir
 http://localhost:8062/helloworld/
 
 # ################################################################################
