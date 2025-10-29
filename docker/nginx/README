@@ -1,0 +1,25 @@
+# ################################################################################
+# purpose: nginx database
+# status: working
+#
+docker stop c-nginx
+docker rm c-nginx
+docker rmi i-nginx
+#
+# build
+docker build -t i-nginx .
+#
+# run
+docker run -d --name c-nginx -p 8060:80  i-nginx
+docker run -d --name c-nginx -p 8060:80 -v ./html:/usr/share/nginx/html i-nginx
+#
+docker stop c-nginx
+docker start c-nginx
+#
+# connect
+docker exec -it c-nginx /bin/bash
+#
+# connect from webconsole
+http://localhost:8090
+
+# ################################################################################
