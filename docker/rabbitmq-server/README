@@ -30,6 +30,8 @@ username: admin
 password: admin
 Choose: Queues and Streams tab to view queue depth
 #
+# check rabbitmq plugs that are enabled
+docker exec -it c-rabbitmq rabbitmq-plugins list
 # ################################################################################
 ## Microservide to Send random messages to ActiveMQ server
 #
