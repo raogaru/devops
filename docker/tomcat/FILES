@@ -1,0 +1,11 @@
+hello-world-war/
+├── pom.xml
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/raogaru/helloworld/HelloServlet.java
+│   │   └── webapp/
+│   │       ├── WEB-INF/
+│   │       │   └── web.xml
+│   │       └── index.jsp
+

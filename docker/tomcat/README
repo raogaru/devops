@@ -1,0 +1,28 @@
+# ################################################################################
+# purpose: tomcat database
+# status: working
+#
+# build java code
+mvn clean install -DskipTests
+#
+docker stop c-tomcat
+docker rm c-tomcat
+docker rmi i-tomcat
+#
+# build
+docker build -t i-tomcat .
+#
+# run
+docker run -d --name c-tomcat -p 8062:8080  i-tomcat
+#docker run -d --name c-tomcat -p 8062:80 -v ./wars:/usr/local/tomcat/webapps/ i-tomcat
+#
+docker stop c-tomcat
+docker start c-tomcat
+#
+# connect
+docker exec -it c-tomcat /bin/bash
+#
+# connect from webconsole
+http://localhost:8062/helloworld/
+
+# ################################################################################
