@@ -1,0 +1,43 @@
+# ################################################################################
+# purpose: mongo-express database
+# status: working
+#
+# volume
+docker volume rm v-mongo-express
+docker volume create v-mongo-express
+docker volume list
+docker volume inspect v-mongo-express
+#
+docker stop c-mongo-express
+docker rm c-mongo-express
+docker rmi i-mongo-express
+#
+# build
+docker build -t i-mongo-express .
+#
+# run
+docker run -d --name c-mongo-express -p 8095:8081  i-mongo-express
+
+docker run -d --name c-mongo-express -p 8095:8081 \
+  --link c-mongodb:mongo \
+  -e ME_CONFIG_MONGODB_SERVER=c-mongodb \
+  -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+  -e ME_CONFIG_MONGODB_ADMINPASSWORD=admin123 \
+  -e ME_CONFIG_BASICAUTH_USERNAME=admin \
+  -e ME_CONFIG_BASICAUTH_PASSWORD=admin123 \
+  i-mongo-express
+
+
+
+#
+docker stop c-mongo-express
+docker start c-mongo-express
+#
+# connect
+docker exec -it c-mongo-express /bin/bash
+#
+#connecting via console
+http://localhost:8095/
+user: admin
+pwd: pass
+# ################################################################################
