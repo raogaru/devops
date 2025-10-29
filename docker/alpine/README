@@ -18,6 +18,4 @@ docker start c-alpine
 # connect
 docker exec -it c-alpine /bin/bash
 #
-# run and connect at same time - but container will be gone when you exit container
-docker run -it --rm --name c-alpineb i-alpine 
 # ################################################################################
