@@ -18,6 +18,4 @@ docker start c-al2023
 # connect
 docker exec -it c-al2023 /bin/bash
 #
-# run and connect at same time - but container will be gone when you exit container
-docker run -it --rm --name c-al2023b i-al2023 
 # ################################################################################
