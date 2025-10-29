@@ -1,0 +1,24 @@
+docker stop c-rabbitmq-producer# ################################################################################
+# purpose: rabbitmq-producer - microservice to procude msessages to rabbitmq server - multiple queues - queue1..queue5
+# status: working
+#
+# build java code
+mvn clean install -DskipTests
+#
+docker stop c-rabbitmq-producer
+docker rm c-rabbitmq-producer
+docker rmi i-rabbitmq-producer
+#
+# build
+docker build -t i-rabbitmq-producer .
+#
+# run
+docker run -d --name c-rabbitmq-producer -e PRODUCER_INTERVAL_MS=1000 -e RABBITMQ_HOST=host.docker.internal -p 8071:8081 i-rabbitmq-producer
+#
+docker stop c-rabbitmq-producer
+docker start c-rabbitmq-producer
+#
+# connect
+docker exec -it c-rabbitmq-producer /bin/bash
+#
+# ################################################################################

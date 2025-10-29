@@ -1,0 +1,15 @@
+producer/
+├── pom.xml
+├── Dockerfile
+├── README.md
+└── src
+    └── main
+        ├── java
+        │   └── com/raogaru/producer
+        │       ├── ProducerApplication.java
+        │       ├── config/RabbitConfig.java
+        │       └── service/RandomMessageProducer.java
+        └── resources
+            ├── application.properties
+            └── logback-spring.xml
+
