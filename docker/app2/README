@@ -1,0 +1,28 @@
+# ################################################################################
+# purpose: java web app - CRUD employees/departments
+# status: working
+# 
+# build jar file
+mvn clean install -DskipTests
+#
+docker stop c-app2
+docker rm c-app2
+docker rmi i-app2
+#
+# build
+docker build -t i-app2 .
+#
+# run
+docker run -d --name c-app2 -p 8082:8080 i-app2
+#
+docker stop c-app2
+docker start c-app2
+#
+# connect
+docker exec -it c-app2 /bin/bash
+#
+# access via console
+http://localhost:8082/employees
+http://localhost:8082/departments
+#
+# ################################################################################

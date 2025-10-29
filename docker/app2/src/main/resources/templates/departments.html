@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>departments</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<h2>Department List</h2>
+<form th:action="@{/departments/search}" method="get">
+    <input type="text" name="keyword" placeholder="Search by name"/>
+    <button type="submit">Search</button>
+</form>
+
+<a th:href="@{/departments/new}" class="add-btn">+ Add </a>
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+    <tr th:each="dept : ${departments}">
+        <td th:text="${dept.id}"></td>
+        <td th:text="${dept.name}"></td>
+        <td class="actions">
+            <a th:href="@{/departments/edit/{id}(id=${dept.id})}" class="edit-link">Edit</a>
+            <a th:href="@{/departments/delete/{id}(id=${dept.id})}" class="delete-link">Delete</a>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(departments)}">
+        <td colspan="4" style="text-align:center; color:#888;">No record found</td>
+    </tr>
+</table>
+</body>
+</html>
+
