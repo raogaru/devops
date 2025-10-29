@@ -1,0 +1,23 @@
+# ################################################################################
+# purpose: alpine linux 
+# status: working
+#
+docker stop c-alpine
+docker rm c-alpine
+docker rmi i-alpine
+#
+# build
+docker build -t i-alpine .
+#
+# run
+docker run -d --name c-alpine i-alpine tail -f /dev/null
+#
+docker stop c-alpine
+docker start c-alpine
+#
+# connect
+docker exec -it c-alpine /bin/bash
+#
+# run and connect at same time - but container will be gone when you exit container
+docker run -it --rm --name c-alpineb i-alpine 
+# ################################################################################
