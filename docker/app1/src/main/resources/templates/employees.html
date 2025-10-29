@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employees</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<h2>Employee List</h2>
+
+<form th:action="@{/employees/search}" method="get">
+    <input type="text" name="keyword" placeholder="Search by name"/>
+    <button type="submit">Search</button>
+</form>
+
+<a th:href="@{/employees/new}" class="add-btn">+ Add</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="emp : ${employees}">
+        <td th:text="${emp.id}"></td>
+        <td th:text="${emp.name}"></td>
+        <td th:text="${emp.salary}"></td>
+        <td class="actions">
+            <a th:href="@{/employees/edit/{id}(id=${emp.id})}" class="edit-link">Edit</a>
+            <a th:href="@{/employees/delete/{id}(id=${emp.id})}" class="delete-link">Delete</a>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(employees)}">
+        <td colspan="4" style="text-align:center; color:#888;">No record found</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
