@@ -1,0 +1,46 @@
+# ################################################################################
+# RabbitMQ server - Messaging Queue service
+# status: working
+#
+# volume
+docker volume rm v-rabbitmq
+docker volume create v-rabbitmq
+docker volume list
+docker volume inspect v-rabbitmq
+#
+docker stop c-rabbitmq
+docker rm c-rabbitmq
+docker rmi i-rabbitmq
+#
+# build
+docker build -t i-rabbitmq .
+#
+# run
+docker run -d --name c-rabbitmq -p 8672:5672 -p 15672:15672 -v v-rabbitmq:/var/lib/rabbitmq i-rabbitmq
+#
+#docker stop c-rabbitmq
+#docker start c-rabbitmq
+#
+# connect
+docker exec -it c-rabbitmq /bin/bash
+#
+# access via webconsole
+http://localhost:15672/
+username: admin
+password: admin
+Choose: Queues and Streams tab to view queue depth
+#
+# ################################################################################
+## Microservide to Send random messages to ActiveMQ server
+#
+#export QUEUE=queue0
+#export MESSAGE="Hello World $RANDOM"
+#export WEBURL="http://localhost:8161"
+#
+## send msg via bash shell
+#curl -u admin:admin -d "body=${RANDOM}" "${WEBURL}/api/message/${QUEUE}?type=queue"
+#
+## receive msg via bash shell
+#curl -u admin:admin "${WEBURL}/api/message/${QUEUE}?type=queue&consumer=true&readTimeout=1000"
+#
+## ################################################################################
