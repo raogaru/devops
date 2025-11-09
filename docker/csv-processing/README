@@ -1,0 +1,9 @@
+File processing has a series of dockers
+
+csv-producer: Produce one CSV file every INTERVAL_SECONDS with rows between MIN_ROWS and MAX_ROWS and place in incoming dir
+
+csv-consumer: Consume CSV files every INTERVAL_SECONDS - move from "incoming" dir to "processing" dir to "processed" dir
+
+csv-archiver: Delete CSV files  every INTERVAL_SECONDS  from "processed" dir
+
+

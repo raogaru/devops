@@ -1,0 +1,19 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+
+COPY csv-archiver.py ./
+
+RUN mkdir -p /data/processed
+
+ENV PROCESSED_DIR=/data/processed
+ENV ARCHIVER_LOG=/data/archiver.log
+
+# how often to check
+ENV INTERVAL_SECONDS=60          
+
+# delete files older than 1 hour
+ENV MAX_FILE_AGE_SECONDS=3600    
+
+CMD ["sh", "-c", "python csv-archiver.py --interval ${INTERVAL_SECONDS} --max_age ${MAX_FILE_AGE_SECONDS}"]
+

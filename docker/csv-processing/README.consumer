@@ -1,0 +1,39 @@
+# ################################################################################
+# purpose: csv-consumer 
+# status: working
+#
+docker stop c-csv-consumer
+docker rm c-csv-consumer
+docker rmi i-csv-consumer
+#
+# build
+docker build -t i-csv-consumer -f Dockerfile.consumer .
+#
+# run
+mkdir -p data/incoming data/processing data/processed data/failed
+#
+# test run local
+python3 csv-consumer.py
+#
+# run
+docker run -d --name c-csv-consumer -v $(PWD)/data:/data i-csv-consumer
+#
+# Optional:
+	-e INTERVAL_SECONDS=5 \
+	-e INCOMING_DIR=/data/incoming \
+	-e PROCESSING_DIR=/data/processing \
+	-e PROCESSED_DIR=/data/processed \
+	-e FAILED_DIR=/data/failed \
+	-e CONSUMER_LOG=/data/consumer.log \
+
+#
+docker stop c-csv-consumer
+docker start c-csv-consumer
+#
+# connect
+docker exec -it c-csv-consumer /bin/sh
+cd /data
+#
+# --------------------------------------------------------------------------------
+# test
+# ################################################################################

@@ -1,0 +1,36 @@
+# ################################################################################
+# purpose: csv-archiver 
+# status: working
+#
+docker stop c-csv-archiver
+docker rm c-csv-archiver
+docker rmi i-csv-archiver
+#
+# build
+docker build -t i-csv-archiver -f Dockerfile.archiver .
+#
+# run
+mkdir -p data/incoming data/processing data/processed data/failed
+#
+# test run local
+python3 csv-archiver.py
+#
+# run
+docker run -d --name c-csv-archiver -v $(PWD)/data:/data i-csv-archiver
+#
+# Optional:
+	-e INTERVAL_SECONDS=10 \
+	-e MAX_FILE_AGE_SECONDS=1800 \
+	-e PROCESSED_DIR=/data/processed \
+	-e ARCHIVER_LOG=/data/archiver.log \
+#
+docker stop c-csv-archiver
+docker start c-csv-archiver
+#
+# connect
+docker exec -it c-csv-archiver /bin/sh
+cd /data
+#
+# --------------------------------------------------------------------------------
+# test
+# ################################################################################

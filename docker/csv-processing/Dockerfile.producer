@@ -1,0 +1,14 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+COPY csv-producer.py ./
+
+RUN mkdir -p /data/incoming
+
+ENV INCOMING_DIR=/data/incoming
+ENV INTERVAL_SECONDS=5
+ENV MIN_ROWS=5
+ENV MAX_ROWS=25
+
+CMD ["python", "csv-producer.py"]
+

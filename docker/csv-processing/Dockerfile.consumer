@@ -1,0 +1,18 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+COPY csv-consumer.py ./
+
+# Create necessary directories
+RUN mkdir -p /data/incoming /data/processing /data/processed /data/failed
+
+# Default environment variables
+ENV INCOMING_DIR=/data/incoming
+ENV PROCESSING_DIR=/data/processing
+ENV PROCESSED_DIR=/data/processed
+ENV FAILED_DIR=/data/failed
+ENV INTERVAL_SECONDS=3
+
+# Default command: continuous scheduled run
+CMD ["sh", "-c", "python csv-consumer.py --interval ${INTERVAL_SECONDS}"]
+

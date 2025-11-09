@@ -1,0 +1,37 @@
+# ################################################################################
+# purpose: csv-producer 
+# status: working
+#
+docker stop c-csv-producer
+docker rm c-csv-producer
+docker rmi i-csv-producer
+#
+# build
+docker build -t i-csv-producer -f Dockerfile.producer .
+#
+# run
+mkdir -p data/incoming
+#
+# test run local
+python3 csv-producer.py
+#
+# run
+docker run -d --name c-csv-producer -v $(PWD)/data:/data i-csv-producer 
+#
+# Optional:
+	-e INTERVAL_SECONDS=5 \
+	-e INCOMING_DIR=/data/incoming \
+	-e PRODUCER_LOG=/data/producer.log \
+	-e MIN_ROWS=5 \
+	-e MAX_ROWS=25 \
+#
+docker stop c-csv-producer
+docker start c-csv-producer
+#
+# connect
+docker exec -it c-csv-producer /bin/sh
+cd /data
+#
+# --------------------------------------------------------------------------------
+# test
+# ################################################################################
