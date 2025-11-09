@@ -1,0 +1,30 @@
+# ################################################################################
+# purpose: file-archiver 
+# status: working
+#
+docker stop c-file-archiver
+docker rm c-file-archiver
+docker rmi i-file-archiver
+#
+# build
+docker build -t i-file-archiver -f Dockerfile.archiver .
+#
+# run
+mkdir -p data/incoming data/processing data/processed data/failed
+#
+# test run local
+python3 file-archiver.py
+#
+# run
+docker run -d --name c-file-archiver -e INTERVAL_SECONDS=10 -e MAX_FILE_AGE_SECONDS=1800 -v $(PWD)/data:/data i-file-archiver
+#
+docker stop c-file-archiver
+docker start c-file-archiver
+#
+# connect
+docker exec -it c-file-archiver /bin/sh
+cd /data
+#
+# --------------------------------------------------------------------------------
+# test
+# ################################################################################

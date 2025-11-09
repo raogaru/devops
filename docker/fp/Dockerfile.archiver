@@ -1,0 +1,18 @@
+FROM python:3.11-alpine
+
+WORKDIR /app
+COPY file-archiver.py python-modules.txt ./
+RUN pip install --no-cache-dir -r python-modules.txt
+
+RUN mkdir -p /data/processed
+
+ENV PROCESSED_DIR=/data/processed
+
+# how often to check
+ENV INTERVAL_SECONDS=10          
+
+# delete files older than 1 hour
+ENV MAX_FILE_AGE_SECONDS=3600    
+
+CMD ["sh", "-c", "python file-archiver.py --interval ${INTERVAL_SECONDS} --max_age ${MAX_FILE_AGE_SECONDS}"]
+
