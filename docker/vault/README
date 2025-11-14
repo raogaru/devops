@@ -45,13 +45,6 @@ docker exec -it c-vault /bin/sh
 	vault status
 	exit
 #
-
-Unseal Key 1: PefDF420ivd+EIJBdniHwGbTEgRoK17SNkYcOR7TbvGZ
-Unseal Key 2: +0SGeClD6zThCsd+M2u/Cm777P33FGjLH/wx1JEAOk+1
-Unseal Key 3: amMfWxEL9mKVBV6ZqkVHfSOZhYuD865wEWCUk3/MVXh8
-Initial Root Token: hvs.3WS6CXh6YkhH2e129FdHZXTy
-
-
 # access via webconsole
 http://localhost:8200/
 Keys: provide any unseal key(s) (noted above from init command)
