@@ -15,8 +15,6 @@ docker build -t i-rabbitmq-monitor .
 # run
 docker run -d --name c-rabbitmq-monitor --network="host" -p 8073:8090 \
   -e RABBITMQ_MANAGEMENT_URL=http://host.docker.internal:15672 \
-  -e RABBITMQ_USERNAME=admin \
-  -e RABBITMQ_PASSWORD=admin \
   i-rabbitmq-monitor
 
 docker run -d --name c-rabbitmq-monitor --network="host" -e SPRING_ACTIVEMQ_BROKER-URL=tcp://localhost:61616 i-rabbitmq-monitor
