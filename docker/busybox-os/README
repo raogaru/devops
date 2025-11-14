@@ -1,0 +1,21 @@
+# ################################################################################
+# purpose: busybox linux 
+# status: working
+#
+docker stop c-busybox
+docker rm c-busybox
+docker rmi i-busybox
+#
+# build
+docker build -t i-busybox .
+#
+# run
+docker run -d --name c-busybox i-busybox tail -f /dev/null
+#
+docker stop c-busybox
+docker start c-busybox
+#
+# connect
+docker exec -it c-busybox /bin/sh
+#
+# ################################################################################
