@@ -30,20 +30,28 @@ Token: root
 # build for PRODUCTION environment
 docker build -t i-vault -f Dockerfile.prod .
 #
-mkdir -p file logs
+mkdir -p file logs data
 #
 # run - production environment
 docker run -d --name c-vault --cap-add=IPC_LOCK -p 8200:8200 -v ./file:/vault/file -v ./logs:/vault/logs -v v-vault:/vault/data i-vault server
+docker run -d --name c-vault --cap-add=IPC_LOCK -p 8200:8200 -v ./file:/vault/file -v ./logs:/vault/logs -v ./data:/vault/data i-vault server
 #
 # connect, init (capture Unseal Key(s) and Token info), unseal (provide one of keys), status (capture Unseal Nonce info)
 docker exec -it c-vault /bin/sh
 	chown -R vault:vault /vault/data
 	chmod -R 750 /vault/data
-	vault vault operator init -key-shares=3 -key-threshold=2
+	vault operator init -key-shares=3 -key-threshold=2
 	vault operator unseal
 	vault status
 	exit
 #
+
+Unseal Key 1: PefDF420ivd+EIJBdniHwGbTEgRoK17SNkYcOR7TbvGZ
+Unseal Key 2: +0SGeClD6zThCsd+M2u/Cm777P33FGjLH/wx1JEAOk+1
+Unseal Key 3: amMfWxEL9mKVBV6ZqkVHfSOZhYuD865wEWCUk3/MVXh8
+Initial Root Token: hvs.3WS6CXh6YkhH2e129FdHZXTy
+
+
 # access via webconsole
 http://localhost:8200/
 Keys: provide any unseal key(s) (noted above from init command)
@@ -63,5 +71,11 @@ echo <vaul-token> > ~/.vault-token
 chmod 600 ~/.vault-token
 vault login
 vault secrets list
+vault secrets enable -path=secret kv-v2
+vault kv put secret/secret1 key1="value1"
+vault kv put secret/secret2 key2="value2"
+vault kv get secret/secret1
+vault kv get secret/secret2
+vault kv delete secret/secret2
 #
 # ################################################################################
