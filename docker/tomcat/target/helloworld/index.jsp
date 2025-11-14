@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nginx Demo Page</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #007acc, #00c6ff);
+      color: white;
+      font-family: "Segoe UI", Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+    p {
+      font-size: 1.2em;
+      margin-top: 0;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 30px;
+      border-radius: 15px;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Tomcat Demo Docker</h1>
+    <p>Your custom helloworld.war file deployed to tomcat !</p>
+    <p>Served from <code>/usr/local/tomcat/webapps/ directory</code></p>
+    <p><a href="helloworld">Click here for Hello Servlet</a></p>
+  </div>
+
+  <footer>
+    <p>Powered by <strong>Apache TOMCAT</strong> and Docker by raogaru 🐳</p>
+  </footer>
+</body>
+</html>
+

@@ -13,8 +13,8 @@ docker rmi i-tomcat
 docker build -t i-tomcat .
 #
 # run
-docker run -d --name c-tomcat -p 8062:8080  i-tomcat
-#docker run -d --name c-tomcat -p 8062:80 -v ./wars:/usr/local/tomcat/webapps/ i-tomcat
+docker run -d --name c-tomcat -p 8073:8080  i-tomcat
+#docker run -d --name c-tomcat -p 8073:80 -v ./wars:/usr/local/tomcat/webapps/ i-tomcat
 #
 docker stop c-tomcat
 docker start c-tomcat
@@ -27,7 +27,7 @@ docker logs c-tomcat
 #
 # connect from webconsole
 # if helloworld.war copied to webapps dir as ROOT.war
-http://localhost:8062/  
+http://localhost:8073/  
 # if helloworld.war copied to webapps dir
 http://localhost:8062/helloworld/
 
