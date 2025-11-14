@@ -1,0 +1,21 @@
+# ################################################################################
+# purpose: fedora linux 
+# status: working
+#
+docker stop c-fedora
+docker rm c-fedora
+docker rmi i-fedora
+#
+# build
+docker build -t i-fedora .
+#
+# run
+docker run -d --name c-fedora i-fedora tail -f /dev/null
+#
+docker stop c-fedora
+docker start c-fedora
+#
+# connect
+docker exec -it c-fedora /bin/bash
+#
+# ################################################################################
