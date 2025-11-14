@@ -17,6 +17,7 @@ docker build -t i-raodb .
 #
 # run
 docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8433:5432 -v v-raodb:/raodb i-raodb tail -f /dev/null
+docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8434:5432 -v ./c:/raodb i-raodb tail -f /dev/null
 
 docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8433:5432 i-raodb tail -f /dev/null
 #
@@ -24,7 +25,7 @@ docker stop c-raodb
 docker start c-raodb
 #
 # --------------------------------------------------------------------------------
-# IF boot.sh run was disabled in Dockerfile, then run boot to download source and create runtime software
+# IF boot.sh was disabled in Dockerfile, then run boot to download source and build runtime software
 # clone, build postgres software, start db
 #
 su - postgres
@@ -56,6 +57,10 @@ exit
 # connecting from another container
 #
 # --------------------------------------------------------------------------------
+# contribute extensions to raodb
+# copy files to persisted directories
+cp -r ext/rdb_catalog c/code/contrib/
+# OR
 # copy files to container
-docker cp contrib/rdb_catalog c-raodb:/postgres
+docker cp ext/rdb_catalog c-raodb:/raodb/code/contrib/
 # ################################################################################

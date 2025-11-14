@@ -12,7 +12,7 @@ ENV HOME=/home/${OWNER}
 EXPOSE 5432
 
 RUN dnf update -y 
-RUN dnf install -y vim wget tar gzip unzip less git cmake perl systemd lsof iproute net-tools
+RUN dnf install -y vim wget tar gzip unzip less git cmake perl systemd lsof iproute net-tools procps-ng
 RUN dnf install -y -q -e 0 bison-devel readline-devel zlib-devel openssl-devel shadow-utils glibc-langpack-en
 RUN dnf groups install 'Development Tools' -y
 RUN dnf clean all
@@ -35,8 +35,6 @@ RUN source ${HOME}/.bash_profile
 RUN ${HOME}/.boot.sh
 
 VOLUME ["${MYDIR}"]
-
-
 
 USER root
 
