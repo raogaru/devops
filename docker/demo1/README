@@ -1,5 +1,5 @@
 # ################################################################################
-# purpose: java web app - CRUD employees
+# purpose: Sprintboot java web app - CRUD application connecting to Postgres DB - employees
 # status: working
 # 
 # build jar file
@@ -13,7 +13,7 @@ docker rmi i-app1
 docker build -t i-app1 .
 #
 # run
-docker run -d --name c-app1 -p 8081:8080 i-app1
+docker run -d --name c-app1 -p 8101:8080 i-app1
 #
 docker stop c-app1
 docker start c-app1
@@ -22,6 +22,6 @@ docker start c-app1
 docker exec -it c-app1 /bin/bash
 #
 # access via console
-http://localhost:8081/employees
+http://localhost:8101/employees
 #
 # ################################################################################
