@@ -1,0 +1,31 @@
+# ################################################################################
+# purpose: prometheus database
+# status: working
+#
+# build java code
+mvn clean install -DskipTests
+#
+docker stop c-prometheus
+docker rm c-prometheus
+docker rmi i-prometheus
+#
+# build
+docker build -t i-prometheus .
+#
+# run
+docker run -d --name c-prometheus -p 8094:9090 -v ./data:/prometheus i-prometheus
+
+#
+docker stop c-prometheus
+docker start c-prometheus
+#
+# connect
+docker exec -it c-prometheus /bin/bash
+#
+# logs
+docker logs c-prometheus
+#
+# connect from webconsole
+http://localhost:8094/  
+#
+# ################################################################################

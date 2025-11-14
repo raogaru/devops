@@ -1,0 +1,42 @@
+# ---------------------------------------------
+# Dockerfile for Prometheus
+# ---------------------------------------------
+FROM alpine:3.20
+
+# Prometheus version
+ENV PROMETHEUS_VERSION=2.55.0
+ENV PROMETHEUS_USER=prometheus
+ENV PROMETHEUS_HOME=/etc/prometheus
+
+# Install dependencies
+RUN apk add --no-cache ca-certificates wget tar
+
+# Create user and directories
+RUN adduser -S -D -H $PROMETHEUS_USER && \
+    mkdir -p /prometheus /etc/prometheus /var/lib/prometheus && \
+    chown -R $PROMETHEUS_USER:$PROMETHEUS_USER /prometheus /etc/prometheus /var/lib/prometheus
+
+# Download Prometheus binary
+RUN wget https://github.com/prometheus/prometheus/releases/download/v${PROMETHEUS_VERSION}/prometheus-${PROMETHEUS_VERSION}.linux-arm64.tar.gz -O /tmp/prometheus.tar.gz && \
+    tar -xzf /tmp/prometheus.tar.gz -C /tmp && \
+    mv /tmp/prometheus-${PROMETHEUS_VERSION}.linux-arm64/prometheus /usr/local/bin/ && \
+    mv /tmp/prometheus-${PROMETHEUS_VERSION}.linux-arm64/promtool /usr/local/bin/ && \
+    mv /tmp/prometheus-${PROMETHEUS_VERSION}.linux-arm64/consoles /etc/prometheus/ && \
+    mv /tmp/prometheus-${PROMETHEUS_VERSION}.linux-arm64/console_libraries /etc/prometheus/ && \
+    rm -rf /tmp/*
+
+# Copy configuration
+COPY prometheus.yml /etc/prometheus/prometheus.yml
+
+# Expose default port
+EXPOSE 9090
+
+# Define volumes for config and data
+VOLUME ["/etc/prometheus", "/prometheus"]
+
+USER $PROMETHEUS_USER
+
+# Entrypoint
+ENTRYPOINT ["/usr/local/bin/prometheus"]
+CMD [ "--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus", "--web.console.libraries=/etc/prometheus/console_libraries", "--web.console.templates=/etc/prometheus/consoles", "--web.enable-lifecycle" ]
+

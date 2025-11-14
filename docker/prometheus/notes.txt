@@ -1,0 +1,8 @@
+You can easily extend your monitoring stack:
+
+Exporter	Docker Image	Port	Purpose
+Node Exporter	prom/node-exporter	9100	Host metrics (CPU, memory, disk, etc.)
+cAdvisor	gcr.io/cadvisor/cadvisor	8080	Container metrics
+PostgreSQL Exporter	prometheuscommunity/postgres-exporter	9187	DB metrics
+RabbitMQ Exporter	kbudde/rabbitmq-exporter	9419	Messaging metrics
+Kafka Exporter	danielqsj/kafka-exporter	9308	Kafka broker/topic metrics
