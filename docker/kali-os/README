@@ -1,0 +1,21 @@
+# ################################################################################
+# purpose: kali linux 
+# status: working
+#
+docker stop c-kali
+docker rm c-kali
+docker rmi i-kali
+#
+# build
+docker build -t i-kali .
+#
+# run
+docker run -d --name c-kali i-kali tail -f /dev/null
+#
+docker stop c-kali
+docker start c-kali
+#
+# connect
+docker exec -it c-kali /bin/bash
+#
+# ################################################################################
