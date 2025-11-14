@@ -1,0 +1,15 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY converter.py /app/
+
+ENV TARGET_FORMAT=json
+
+RUN pip install pandas pyarrow pyyaml msgpack openpyxl
+
+VOLUME ["/data"]
+
+CMD ["sh", "-c", "python converter.py --format ${TARGET_FORMAT}"]
+
+

@@ -1,0 +1,68 @@
+# ################################################################################
+# purpose: format-converter 
+# status: working
+#
+docker stop c-format-converter
+docker rm c-format-converter
+docker rmi i-format-converter
+#
+# build
+docker build -t i-format-converter -f Dockerfile.converter .
+#
+# run
+mkdir -p data/converted 
+#
+# test run local
+python3 converter.py
+#
+# run
+docker run -d --name c-csv2json -v $(PWD)/data:/data \
+	-e SOURCE_DIR=/data/processed \
+	-e TARGET_DIR=/data/converted/json \
+	-e TARGET_FORMAT=json \
+	i-format-converter
+
+docker run -d --name c-csv2xml -v $(PWD)/data:/data \
+	-e SOURCE_DIR=/data/processed \
+	-e TARGET_DIR=/data/converted/xml \
+	-e TARGET_FORMAT=xml \
+	i-format-converter
+
+docker run -d --name c-csv2yaml -v $(PWD)/data:/data \
+	-e SOURCE_DIR=/data/processed \
+	-e TARGET_DIR=/data/converted/yaml \
+	-e TARGET_FORMAT=yaml \
+	i-format-converter
+
+docker run -d --name c-json2xml -v $(PWD)/data:/data \
+	-e SOURCE_DIR=/data/processed \
+	-e TARGET_DIR=/data/converted/xml \
+	-e TARGET_FORMAT=xml \
+	i-format-converter
+#
+docker stop c-format-converter
+docker start c-format-converter
+#
+# connect
+docker exec -it c-format-converter /bin/sh
+cd /data
+#
+# --------------------------------------------------------------------------------
+# test
+Examples:
+
+Convert CSV → Excel
+python format_converter_service.py --format xlsx
+
+Convert JSON → YAML
+python format_converter_service.py --format yaml
+
+Convert YAML → JSON
+python format_converter_service.py --format json
+
+Convert JSON → MessagePack
+python format_converter_service.py --format msgpack
+
+Convert MessagePack → JSON
+python format_converter_service.py --format json
+# ################################################################################
