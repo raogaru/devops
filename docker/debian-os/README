@@ -1,0 +1,21 @@
+# ################################################################################
+# purpose: debian linux 
+# status: working
+#
+docker stop c-debian
+docker rm c-debian
+docker rmi i-debian
+#
+# build
+docker build -t i-debian .
+#
+# run
+docker run -d --name c-debian i-debian tail -f /dev/null
+#
+docker stop c-debian
+docker start c-debian
+#
+# connect
+docker exec -it c-debian /bin/bash
+#
+# ################################################################################
