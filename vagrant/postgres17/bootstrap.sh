@@ -66,7 +66,7 @@ sudo -u postgres bash -c 'cd $HOME/code; make -s'
 
 ECHO  "make check ..."
 sudo -u postgres bash -c 'cd $HOME/code; make -s check'
-
+dnf install -y shadow-utils 
 ECHO  "make install ..."
 sudo -u postgres bash -c 'cd $HOME/code; make -s install'
 
