@@ -1,0 +1,21 @@
+# ################################################################################
+# purpose: ubuntu linux 
+# status: working
+#
+docker stop c-ubuntu
+docker rm c-ubuntu
+docker rmi i-ubuntu
+#
+# build
+docker build -t i-ubuntu .
+#
+# run
+docker run -d --name c-ubuntu i-ubuntu tail -f /dev/null
+#
+docker stop c-ubuntu
+docker start c-ubuntu
+#
+# connect
+docker exec -it c-ubuntu /bin/bash
+#
+# ################################################################################
