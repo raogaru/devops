@@ -1,0 +1,55 @@
+# ################################################################################
+# purpose: mongodb database
+# status: working
+#
+# volume
+docker volume rm v-mongodb
+docker volume create v-mongodb
+docker volume list
+docker volume inspect v-mongodb
+#
+docker stop c-mongodb
+docker rm c-mongodb
+docker rmi i-mongodb
+#
+# build
+docker build -t i-mongodb .
+#
+# run
+mkdir -p data config
+docker run -d --name c-mongodb -p 27017:27017 -v v-mongodb:/data/db -v ./config:/data/configdb i-mongodb
+#
+docker stop c-mongodb
+docker start c-mongodb
+#
+# connect
+docker exec -it c-mongodb /bin/bash
+#
+# connect using mongosh
+docker exec -it c-mongodb mongosh -u admin -p admin123
+#
+# --------------------------------------------------------------------------------
+# test
+# Create a collection and insert one document
+db.employees.insertOne({ name: "Rao", role: "Architect", salary: 120000 })
+# Insert multiple documents
+db.employees.insertMany([
+  { name: "Anita", role: "Engineer", salary: 95000 },
+  { name: "Vijay", role: "Analyst", salary: 87000 }
+])
+# View documents
+db.employees.find().pretty()
+# Filter results
+db.employees.find({ role: "Engineer" })
+# Update one document
+db.employees.updateOne( { name: "Rao" }, { $set: { salary: 125000 } })
+# Delete one document
+db.employees.deleteOne({ name: "Vijay" })
+# --------------------------------------------------------------------------------
+#
+#connecting from host
+brew install mongosh
+which mongosh
+mongosh "mongodb://admin:admin123@localhost:27017"
+user test
+# ################################################################################
