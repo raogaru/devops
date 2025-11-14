@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>RAOGARU Docker Service Links Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #121831;
+      --cardHover: #1b2344;
+      --text: #e9eefc;
+      --muted: #a8b1c7;
+      --accent: #4ea1ff;
+      --ring: rgba(78,161,255,0.5);
+      --radius: 16px;
+      --gap: 18px;
+      --shadow: 0 6px 20px rgba(0,0,0,.25);
+    }
+    body {
+      margin: 0;
+      font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+      color: var(--text);
+      background: var(--bg);
+      padding: 28px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .muted { color: var(--muted); font-size: 0.95rem; margin-bottom: 18px; }
+    .search {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .search input {
+      width: 100%;
+      padding: 12px 14px 12px 40px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      background: var(--card);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      outline: none;
+      font-size: 1rem;
+    }
+    .search input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--ring), var(--shadow);
+    }
+    .search svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px; height: 18px;
+      opacity: 0.7;
+    }
+    h2 {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 4px;
+      margin-top: 32px;
+    }
+    .grid {
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      margin-top: 12px;
+    }
+    .tile {
+      display: block;
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform .15s ease, background .15s ease;
+    }
+    .tile:hover {
+      background: var(--cardHover);
+      transform: translateY(-3px);
+    }
+    .title { font-weight: 600; font-size: 1.05rem; margin-bottom: 6px; }
+    .desc { font-size: 0.9rem; color: var(--muted); }
+    .site { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+    .status { font-size: 0.8rem; color: green; margin-top: 4px; }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>RAOGARU Docker Service Links Hub</h1>
+  <div class="muted">Centralized dashboard of all your local and remote services.</div>
+
+  <div class="search">
+    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28h.79l5 5 1.5-1.5-5-5ZM9.5 14a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z"/></svg>
+    <input id="searchBox" type="search" placeholder="Search across all sections... (Press / to focus)" autocomplete="off" />
+  </div>
+
+  <!-- Dashboards Section -->
+  <h2>Dashboards </h2>
+  <div class="grid section" data-section="dashboards">
+    <a class="tile" href="http://localhost:3000" target="_blank" data-tags="grafana dashboards metrics">
+      <div class="title">Grafana</div>
+      <div class="desc">Monitoring dashboards for metrics and logs.</div>
+      <div class="site">localhost:3000</div>
+      <div class="status"></div>
+    </a>
+    <a class="tile" href="http://localhost:9090" target="_blank" data-tags="prometheus metrics monitoring">
+      <div class="title">Prometheus</div>
+      <div class="desc">Metrics collection and time-series analysis.</div>
+      <div class="site">localhost:9090</div>
+    </a>
+  </div>
+
+
+  <!-- Databases Section -->
+  <h2>Databases</h2>
+  <div class="grid section" data-section="databases">
+    <a class="tile" href="http://localhost:5432" target="_blank" data-tags="postgres database sql">
+      <div class="title">PostgreSQL</div>
+      <div class="desc">Relational database service</div>
+      <div class="site">localhost:5432</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:3306" target="_blank" data-tags="mysql database sql">
+      <div class="title">MySQL</div>
+      <div class="desc">Relational database service</div>
+      <div class="site">mysql:8306</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:27017" target="_blank" data-tags="mongodb nosql database">
+      <div class="title">MongoDB</div>
+      <div class="desc">Document store database</div>
+      <div class="site">mongosh:27017</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:6379" target="_blank" data-tags="redis cache database">
+      <div class="title">Redis</div>
+      <div class="desc">In-memory + key-value store</div>
+      <div class="site">redis-cli:8379</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:6379" target="_blank" data-tags="oracle relational database">
+      <div class="title">Oracle</div>
+      <div class="desc">Relational database service</div>
+      <div class="site">localhost:8521</div>
+      <div class="status">WIP</div>
+    </a>
+  </div>
+
+  <!-- Messaging Section -->
+  <h2>Messaging</h2>
+  <div class="grid section" data-section="messaging">
+    <a class="tile" href="http://localhost:8161" target="_blank" data-tags="activemq classic jms">
+      <div class="title">ActiveMQ Server</div>
+      <div class="desc">Apache JMS message broker.</div>
+      <div class="site">localhost:8161</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:15672" target="_blank" data-tags="rabbitmq mq queue messaging">
+      <div class="title">RabbitMQ</div>
+      <div class="desc">Queues and exchanges management UI.</div>
+      <div class="site">port:15672</div>
+      <div class="status">port:15672</div>
+    </a>
+    <a class="tile" href="http://localhost:9000" target="_blank" data-tags="kafka messaging queue topics">
+      <div class="title">Kafka UI</div>
+      <div class="desc">Kafka topics, consumers, and brokers dashboard.</div>
+      <div class="site">localhost:9000</div>
+      <div class="status">port:9000</div>
+    </a>
+    <a class="tile" href="http://localhost:8162" target="_blank" data-tags="artemis jms messaging">
+      <div class="title">ActiveMQ Artemis</div>
+      <div class="desc">High-performance message broker.</div>
+      <div class="site">localhost:8162</div>
+      <div class="status">port:8162</div>
+    </a>
+  </div>
+
+  <!-- Processing Section -->
+  <h2>Processing / CI</h2>
+  <div class="grid section" data-section="processing">
+    <a class="tile" href="http://localhost:8080" target="_blank" data-tags="jenkins ci cd build">
+      <div class="title">Jenkins</div>
+      <div class="desc">Continuous integration and deployment.</div>
+      <div class="site">localhost:8080</div>
+    </a>
+    <a class="tile" href="http://localhost:9001" target="_blank" data-tags="airflow orchestration workflow">
+      <div class="title">Airflow</div>
+      <div class="desc">Workflow orchestration and DAG management.</div>
+      <div class="site">localhost:9001</div>
+    </a>
+    <a class="tile" href="http://localhost:8200" target="_blank" data-tags="vault secrets security">
+      <div class="title">HashiCorp Vault</div>
+      <div class="desc">Secrets management and encryption service.</div>
+      <div class="site">localhost:8200</div>
+    </a>
+  </div>
+
+  <!-- Webapps Section -->
+  <h2>Webapps </h2>
+  <div class="grid section" data-section="webapps">
+    <a class="tile" href="http://localhost:8071" target="_blank" data-tags="httpd web page">
+      <div class="title">HTTPD</div>
+      <div class="desc">HTTP Web Page</div>
+      <div class="site">localhost:8071</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8072" target="_blank" data-tags="nginx web server">
+      <div class="title">Nginx</div>
+      <div class="desc">Nginx Web server</div>
+      <div class="site">localhost:8072</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8073" target="_blank" data-tags="tomcat java webapp">
+      <div class="title">Tomcat</div>
+      <div class="desc">Tomcat application server</div>
+      <div class="site">localhost:8073</div>
+      <div class="status">GOOD</div>
+    </a>
+  </div>
+
+  <!-- Operating Systems SSection -->
+  <h2>OS </h2>
+  <div class="grid section" data-section="OS">
+    <a class="tile" href="" target="_blank" data-tags="amazon al2023 linux">
+      <div class="title">Amazon</div>
+      <div class="desc">Amazon Linux OS</div>
+      <div class="site">ssh</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="" target="_blank" data-tags="alpine linux">
+      <div class="title">Alpine</div>
+      <div class="desc">Alpine Linux OS</div>
+      <div class="site">ssh</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="" target="_blank" data-tags="BusyBox linux">
+      <div class="title">BusyBox</div>
+      <div class="desc">BusyBox Linux OS</div>
+      <div class="site">ssh</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="" target="_blank" data-tags="Debian linux">
+      <div class="title">Debian</div>
+      <div class="desc">Debian Linux OS</div>
+      <div class="site">ssh</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="" target="_blank" data-tags="kali linux">
+      <div class="title">Kali</div>
+      <div class="desc">Kali Linux OS</div>
+      <div class="site">ssh</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="" target="_blank" data-tags="ubuntu linux">
+      <div class="title">Ubuntu</div>
+      <div class="desc">Ubuntu Linux OS</div>
+      <div class="site">ssh</div>
+      <div class="status">GOOD</div>
+    </a>
+
+  </div>
+
+
+
+  <footer>
+    Press <kbd>/</kbd> to focus search • Add your own tiles by duplicating a <code>.tile</code> block
+  </footer>
+
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    const tiles = Array.from(document.querySelectorAll(".tile"));
+    const sections = Array.from(document.querySelectorAll(".section"));
+
+    // Keyboard shortcut
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "/" && document.activeElement !== searchBox) {
+        e.preventDefault();
+        searchBox.focus();
+        searchBox.select();
+      }
+    });
+
+    function normalize(str) {
+      return (str || "").toLowerCase();
+    }
+
+    searchBox.addEventListener("input", () => {
+      const query = normalize(searchBox.value.trim());
+      tiles.forEach(tile => {
+        const text = normalize(tile.textContent + " " + (tile.dataset.tags || ""));
+        tile.style.display = text.includes(query) ? "" : "none";
+      });
+
+      // Hide entire section if all tiles are hidden
+      sections.forEach(section => {
+        const visible = Array.from(section.querySelectorAll(".tile")).some(t => t.style.display !== "none");
+        section.style.display = visible ? "" : "none";
+        const header = section.previousElementSibling;
+        if (header.tagName === "H2") header.style.display = visible ? "" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
+
