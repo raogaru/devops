@@ -10,8 +10,8 @@ docker rmi i-httpd
 docker build -t i-httpd .
 #
 # run
-docker run -d --name c-httpd -p 8061:80  i-httpd
-docker run -d --name c-httpd -p 8061:80 -v ./html:/usr/local/apache2/htdocs/ i-httpd
+docker run -d --name c-httpd -p 8071:80  i-httpd
+docker run -d --name c-httpd -p 8071:80 -v ./html:/usr/local/apache2/htdocs/ i-httpd
 #
 docker stop c-httpd
 docker start c-httpd
@@ -20,6 +20,6 @@ docker start c-httpd
 docker exec -it c-httpd /bin/bash
 #
 # connect from webconsole
-http://localhost:8090
+http://localhost:8071
 
 # ################################################################################
