@@ -24,8 +24,8 @@ docker build -t i-activemq .
 # run
 docker run -d --name c-activemq --network "n-activemq" -v v-activemq:/opt/activemq/data -p 8161:8161 -p 61616:61616 i-activemq
 #
-#docker stop c-activemq
-#docker start c-activemq
+docker stop c-activemq
+docker start c-activemq
 # connect
 docker exec -it c-activemq /bin/bash
 #

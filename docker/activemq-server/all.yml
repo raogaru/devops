@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  activemq:
+    build: ./activemq-server
+    container_name: activemq
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+
+  producer:
+    build: ./activemq-producer
+    image: i-activemq-producer
+    container_name: c-activemq-producer
+    depends_on:
+      - activemq
+    environment:
+      SPRING_ACTIVEMQ_BROKER-URL: tcp://c-activemq:61616
+    networks:
+      - n-activemq
+
+  consumer:
+    build: ./activemq-consumer
+    image: i-activemq-consumer
+    container_name: c-activemq-consumer
+    depends_on:
+      - activemq
+    environment:
+      SPRING_ACTIVEMQ_BROKER-URL: tcp://c-activemq:61616
+    networks:
+      - n-activemq
+
+  monitor:
+    build: ./activemq-monitor
+    image: i-activemq-monitor
+    container_name: c-activemq-monitor
+    depends_on:
+      - activemq
+    environment:
+      SPRING_ACTIVEMQ_BROKER-URL: tcp://activemq:61616
+    networks:
+      - n-activemq
+
+networks:
+  n-activemq:
+    driver: bridge
+
