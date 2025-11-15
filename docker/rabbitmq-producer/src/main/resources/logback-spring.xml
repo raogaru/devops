@@ -2,7 +2,7 @@
   <springProperty scope="context" name="appName" source="spring.application.name" defaultValue="producer"/>
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>{"ts":"%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}","level":"%p","app":"${appName}","logger":"%logger{36}","msg":%msg}%n</pattern>
+      <pattern>{"ts":"%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}","level":"%p","app":"${appName}","msg":%msg}%n</pattern>
     </encoder>
   </appender>
   <root level="INFO">
