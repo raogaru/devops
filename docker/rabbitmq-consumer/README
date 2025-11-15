@@ -25,4 +25,9 @@ docker run -d --name c-rabbitmq-consumer --network n-rabbitmq -e RABBITMQ_HOST=c
 # connect
 docker exec -it c-rabbitmq-consumer /bin/bash
 #
+# health check
+curl -l http://localhost:8675/actuator/health
+curl -l http://localhost:8675/actuator/info
+curl -l http://localhost:8675/actuator/metrics | jq
+#
 # ################################################################################
