@@ -45,6 +45,7 @@ public class QueueMonitorService {
                 ),
                 error -> log.warn("⚠️  Management API request failed: {}", error.getMessage())
             );
+            log.info("================================================================================");
     }
 
     /** REST endpoint: GET /metrics/queues */

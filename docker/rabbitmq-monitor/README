@@ -13,11 +13,11 @@ docker rmi i-rabbitmq-monitor
 docker build -t i-rabbitmq-monitor .
 #
 # run
-docker run -d --name c-rabbitmq-monitor --network="host" -p 8073:8090 \
-  -e RABBITMQ_MANAGEMENT_URL=http://host.docker.internal:15672 \
-  i-rabbitmq-monitor
-
-docker run -d --name c-rabbitmq-monitor --network="host" -e SPRING_ACTIVEMQ_BROKER-URL=tcp://localhost:61616 i-rabbitmq-monitor
+docker run -d --name c-rabbitmq-monitor --network=n-rabbitmq -e RABBITMQ_MANAGEMENT_URL=http://c-rabbitmq:15672  i-rabbitmq-monitor       
+#
+# Optional:
+        -e MONITOR_INTERVAL_MS=5000
+        -e RABBITMQ_MANAGEMENT_URL=http://host.docker.internal:8673
 #
 #docker stop c-rabbitmq-monitor
 #docker start c-rabbitmq-monitor
