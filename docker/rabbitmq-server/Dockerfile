@@ -12,6 +12,7 @@ ENV RABBITMQ_DEFAULT_VHOST=/
 EXPOSE 5672 15672
 
 # Optional: copy custom configuration (uncomment if you have one)
+#ENV RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq
 #COPY rabbitmq.conf /etc/rabbitmq/rabbitmq.conf
 
 # Copy optional definitions (for queues, exchanges, users, etc.)
@@ -19,8 +20,6 @@ EXPOSE 5672 15672
 
 # Define volume for persistence
 VOLUME ["/var/lib/rabbitmq"]
-
-# ENV RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq
 
 # Start RabbitMQ server
 CMD ["rabbitmq-server"]

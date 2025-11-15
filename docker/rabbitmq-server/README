@@ -2,6 +2,12 @@
 # RabbitMQ server - Messaging Queue service
 # status: working
 #
+# network
+docker network rm n-rabbitmq
+docker network create n-rabbitmq
+docker network ls
+docker network inspect n-rabbitmq
+#
 # volume
 docker volume rm v-rabbitmq
 docker volume create v-rabbitmq
@@ -16,7 +22,7 @@ docker rmi i-rabbitmq
 docker build -t i-rabbitmq .
 #
 # run
-docker run -d --name c-rabbitmq -p 8672:5672 -p 15672:15672 -v v-rabbitmq:/var/lib/rabbitmq i-rabbitmq
+docker run -d --name c-rabbitmq --network n-rabbitmq -p 8672:5672 -p 8673:15672 -v v-rabbitmq:/var/lib/rabbitmq i-rabbitmq
 #
 #docker stop c-rabbitmq
 #docker start c-rabbitmq
@@ -32,12 +38,50 @@ Choose: Queues and Streams tab to view queue depth
 #
 # check rabbitmq plugs that are enabled
 docker exec -it c-rabbitmq rabbitmq-plugins list
-# ################################################################################
-## Microservide to Send random messages to ActiveMQ server
 #
-#export QUEUE=queue0
+docker exec -it c-rabbitmq /bin/bash 
+rabbitmq-plugins enable rabbitmq_management
+rabbitmqadmin declare queue name=queue1 durable=true
+rabbitmqadmin declare queue name=queue2 durable=true
+rabbitmqadmin declare queue name=queue3 durable=true
+rabbitmqadmin declare queue name=queue4 durable=true
+rabbitmqadmin declare queue name=queue5 durable=true
+#
+# ################################################################################
+# send messages to queue from command line
+#
+# install rabbitmqadmin
+curl -O http://localhost:15672/cli/rabbitmqadmin
+chmod +x rabbitmqadmin
+#
+# health check
+curl -i http://localhost:8673/api/overview
+#
+curl -i http://localhost:8673/api/health/checks
+#
+curl -u admin:admin http://localhost:8673/api/queues
+#
+# list queues
+curl -u guest:guest http://localhost:15672/api/queues
+#
+# list queue info
+curl -u guest:guest http://localhost:15672/api/queues/%2F/queue1
+#
+# send message
+./rabbitmqadmin publish exchange=amq.default routing_key=queue1 payload="Hello World"
+
+curl -u admin:admin -H "content-type:application/json" \
+-X POST -d '{"properties":{},"routing_key":"queue1","payload":"Hello world","payload_encoding":"string"}' \
+http://localhost:15672/api/exchanges/%2F/amq.default/publish
+
+
+sudo apt install amqp-tools
+
+
+#
+#export QUEUE=queue1
 #export MESSAGE="Hello World $RANDOM"
-#export WEBURL="http://localhost:8161"
+#export WEBURL="http://localhost:15672"
 #
 ## send msg via bash shell
 #curl -u admin:admin -d "body=${RANDOM}" "${WEBURL}/api/message/${QUEUE}?type=queue"
