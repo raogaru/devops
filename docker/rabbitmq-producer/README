@@ -15,8 +15,6 @@ docker build -t i-rabbitmq-producer .
 # run
 docker run -d --name c-rabbitmq-producer --network n-rabbitmq -e RABBITMQ_HOST=c-rabbitmq -e RABBITMQ_PORT=5672 -p 8674:8082 i-rabbitmq-producer
 
-docker run -d --name c-rabbitmq-producer --network n-rabbitmq -e RABBITMQ_HOST=c-rabbitmq -e RABBITMQ_PORT=5672 -p 8674:8081 -p 8675:8082 i-rabbitmq-producer
-
 # Optional:
 	-e PRODUCER_INTERVAL_MS=1000 
 	-e RABBITMQ_HOST=host.docker.internal
