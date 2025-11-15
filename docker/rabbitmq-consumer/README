@@ -13,7 +13,11 @@ docker rmi i-rabbitmq-consumer
 docker build -t i-rabbitmq-consumer .
 #
 # run
-docker run -d --name c-rabbitmq-consumer -e CONSUMER_INTERVAL_MS=5000 -e RABBITMQ_HOST=host.docker.internal -p 8072:8082 i-rabbitmq-consumer
+docker run -d --name c-rabbitmq-consumer --network n-rabbitmq -e RABBITMQ_HOST=c-rabbitmq -e RABBITMQ_PORT=5672 -p 8675:8082 i-rabbitmq-consumer
+
+# Optional:
+	-e CONSUMER_INTERVAL_MS=1000
+	-e RABBITMQ_HOST=host.docker.internal
 #
 #docker stop c-rabbitmq-consumer
 #docker start c-rabbitmq-consumer
