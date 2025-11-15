@@ -25,6 +25,8 @@ docker run -d --name c-rabbitmq-monitor --network=n-rabbitmq -e RABBITMQ_MANAGEM
 # connect
 #docker exec -it c-rabbitmq-monitor /bin/bash
 #
+# console
+# http://localhost:8676/actuator/health
 # health check
 curl -l http://localhost:8676/actuator/health
 curl -l http://localhost:8676/actuator/info
