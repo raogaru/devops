@@ -14,12 +14,15 @@ docker rmi i-activemq-consumer
 docker build -t i-activemq-consumer .
 #
 # run
-docker run -d --name c-activemq-consumer --network="host" -e SPRING_ACTIVEMQ_BROKER-URL=tcp://localhost:61616 i-activemq-consumer
+docker run -d --name c-activemq-consumer --network=n-activemq  -e SPRING_ACTIVEMQ_BROKER-URL=tcp://c-activemq:61616 -p 8164:8082 -e CONSUMER_INTERVAL_MS=1000 i-activemq-consumer
 #
 #docker stop c-activemq-consumer
 #docker start c-activemq-consumer
 #
 # connect
 docker exec -it c-activemq-consumer /bin/bash
+#
+# logs
+docker logs c-activemq-consumer 
 #
 # ################################################################################
