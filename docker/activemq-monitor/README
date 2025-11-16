@@ -13,13 +13,16 @@ docker rmi i-activemq-monitor
 docker build -t i-activemq-monitor .
 #
 # run
-docker run -d --name c-activemq-monitor --network="host" -e SPRING_ACTIVEMQ_BROKER-URL=tcp://localhost:61616 i-activemq-monitor
+docker run -d --name c-activemq-monitor --network=n-activemq -e SPRING_ACTIVEMQ_BROKER-URL=tcp://c-activemq:61616 -p 8165:8082 -e MONITOR_INTERVAL_MS=5000 i-activemq-monitor
 #
 #docker stop c-activemq-monitor
 #docker start c-activemq-monitor
 #
 # connect
-#docker exec -it c-activemq-monitor /bin/bash
+docker exec -it c-activemq-monitor /bin/bash
+#
+# logs
+docker logs c-activemq-monitor
 #
 # monitor docker container logs for output of the monitoring activity
 #

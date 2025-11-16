@@ -1,4 +1,4 @@
-package com.example.monitor;
+package com.raogaru.monitor;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
