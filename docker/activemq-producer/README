@@ -13,12 +13,15 @@ docker rmi i-activemq-producer
 docker build -t i-activemq-producer .
 #
 # run
-docker run -d --name c-activemq-producer --network="host" -e SPRING_ACTIVEMQ_BROKER-URL=tcp://localhost:61616 i-activemq-producer
+docker run -d --name c-activemq-producer --network=n-activemq -e SPRING_ACTIVEMQ_BROKER-URL=tcp://c-activemq:61616 -p 8163:8082 -e PRODUCER_INTERVAL_MS=1000 i-activemq-producer
 #
 #docker stop c-activemq-producer
 #docker start c-activemq-producer
 #
 # connect
-#docker exec -it c-activemq-producer /bin/bash
+docker exec -it c-activemq-producer /bin/bash
+#
+# logs
+docker logs c-activemq-producer
 #
 # ################################################################################
