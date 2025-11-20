@@ -1,0 +1,69 @@
+# ################################################################################
+# Download activiti software from github and build using mvn - and use the war files from build step
+# ################################################################################
+##############################################
+# 1. BUILDER STAGE – Build Activiti 8.7.x
+##############################################
+FROM eclipse-temurin:11-jdk AS builder
+
+#FROM eclipse-temurin:8-jdk as builder
+
+RUN apt-get update && apt-get install -y git wget maven unzip && rm -rf /var/lib/apt/lists/*
+
+
+WORKDIR /build
+ARG MAVEN_VERSION=3.8.6
+RUN wget https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.zip \
+    && unzip apache-maven-${MAVEN_VERSION}-bin.zip -d /opt \
+    && ln -sf /opt/apache-maven-${MAVEN_VERSION}/bin/mvn /usr/bin/mvn
+
+RUN echo "JAVA_HOME=$JAVA_HOME"
+RUN java -version
+RUN /usr/bin/java -version || true
+RUN /usr/local/bin/java -version || true
+RUN java -version
+RUN mvn -version
+
+ENV VER=8.7.x
+RUN git clone https://github.com/Activiti/Activiti.git -b ${VER}
+WORKDIR /build/Activiti
+#
+ARG FORCE_REBUILD=1
+RUN mvn clean install -DskipTests -Dmaven.enforcer.skip=true -Denforcer.skip=true -DskipEnforcer=true
+
+#
+##############################################
+# 2. TOMCAT RUNTIME STAGE
+##############################################
+FROM tomcat:9-jdk11
+RUN apt-get update && apt-get install -y unzip && rm -rf /var/lib/apt/lists/*
+ENV WEBDIR=/usr/local/tomcat/webapps
+RUN rm -rf ${WEBDIR}/*
+WORKDIR ${WEBDIR}
+
+# ----------------------------------------
+# Copy WAR files from builder
+COPY --from=builder /build/Activiti/modules/activiti-rest/target/activiti-rest.war ${WEBDIR}/activiti-rest.war
+COPY --from=builder /build/Activiti/modules/activiti-admin/target/activiti-admin.war ${WEBDIR}/activiti-admin.war
+COPY --from=builder /build/Activiti/modules/activiti-app/target/activiti-app.war ${WEBDIR}/activiti-app.war
+#
+# OR
+#
+#COPY activiti-*.war /tmp
+# ----------------------------------------
+# Extract WARs manually
+#RUN mkdir ${WEBDIR}/activiti-app ${WEBDIR}/activiti-admin   ${WEBDIR}/activiti-rest 
+RUN unzip -q -d ${WEBDIR}/activiti-app /tmp/activiti-app.war
+RUN unzip -q -d ${WEBDIR}/activiti-admin /tmp/activiti-admin.war
+RUN unzip -q -d ${WEBDIR}/activiti-rest /tmp/activiti-rest.war
+
+# ----------------------------------------
+# copy properties files
+COPY config/activiti-rest.properties ${WEBDIR}/activiti-rest/WEB-INF/classes/db.properties
+COPY config/activiti-admin.properties ${WEBDIR}/activiti-admin/WEB-INF/classes/META-INF/activiti-admin.properties
+COPY config/activiti-app.properties ${WEBDIR}/activiti-app/WEB-INF/classes/META-INF/activiti-app.properties
+
+EXPOSE 8080
+
+CMD ["catalina.sh", "run"]
+

@@ -1,0 +1,57 @@
+# ################################################################################
+# Activiti server - Apache opensource Messaging Queue service
+# status: working
+#
+# download activiti pre-built files
+# 
+#
+# volume
+docker volume rm v-activiti
+docker volume create v-activiti
+docker volume list
+docker volume inspect v-activiti
+#
+docker stop c-activiti
+docker rm c-activiti
+docker rmi i-activiti
+#
+# build
+docker build -t i-activiti .
+#
+# run
+
+docker run -d --name c-activiti -p 8701:8080 i-activiti
+
+docker run -d --name c-activiti -p 8701:8080 -v ./webapps:/usr/local/tomcat/webapps -v ./build:/build i-activiti
+
+docker run -d --name c-activiti -p 8701:8080 -v v-activiti:/usr/local/tomcat/webapps/ i-activiti
+#
+docker stop c-activiti
+docker start c-activiti
+#
+# connect
+docker exec -it c-activiti /bin/bash
+#
+# access via browser
+
+# activiti admin
+http://localhost:8701/activiti-admin
+username: admin
+password: admin
+#
+# activiti application 
+http://localhost:8701/activiti-app"
+username: admin
+password: test
+#
+# activiti modeler
+http://localhost:8701/activiti-app/editor"
+username: admin
+password: test
+#
+# activiti REST API
+http://localhost:8701/activiti-rest"
+username: kermit
+password: kermit
+#
+# ################################################################################
