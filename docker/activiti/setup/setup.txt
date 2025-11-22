@@ -95,9 +95,16 @@ curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} ${RUNTIME}/tasks
 # Find task
 curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} ${RUNTIME}/tasks?processInstanceId=123
 
+# list active tasks
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} ${RUNTIME}/tasks?active=true
+
+# list tasks by group
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} ${RUNTIME}/tasks?candidateGroup=managers
 
 # Complete task with approval variable
 curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} ${RUNTIME}/tasks/123 \ 
 	-d '{"action":"complete", "variables":[{"name":"approved", "value":true}]}'
+
+# 
 
 # ----------------------------------------
