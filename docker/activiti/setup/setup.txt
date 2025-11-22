@@ -1,0 +1,103 @@
+# ################################################################################
+# 1. CONFIGURE users, groups, membership 
+# 2. Create forms, decision-tables, processes and apps
+# 3. Process forms, tasks
+# ----------------------------------------
+
+ACT_USER=kermit
+ACT_PASS=kermit
+vACCEPT="Accept: application/json"
+vCONTENT="Content-Type: application/json"
+AUTH=" -u ${ACT_USER}:${ACT_USER}"
+BASE_URL="http://localhost:8701/activiti-rest"
+ID_URL="${BASE_URL}/service/identity"
+GROUPS="${BASE_URL}/service/identity/groups"
+USERS="${BASE_URL}/service/identity/users"
+MEMBERS="${BASE_URL}/service/identity/memberships"
+
+# ----------------------------------------
+# GROUP MANAGEMENT
+
+# list groups
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} -X GET "${GROUPS}" | jq
+
+# show one group - "admin"
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} -X GET "${GROUPS}/admin" | jq
+
+# create group - "managers"
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} "${GROUPS}" -d '{"id":"managers","name":"Some Managers","type":"security-role"}' 
+
+# update group - "managers"
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} -X PUT "${GROUPS}/managers" -d '{"name":"Managers","type":"security-role"}'
+
+# delete group
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} -X DELETE "${GROUPS}/managers"
+
+# ----------------------------------------
+# USER MANAGEMENT
+
+# list users
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} -X GET "${USERS}" | jq
+
+# show one user - "kermit"
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} -X GET "${USERS}/kermit" | jq
+
+# show one user details - "kermit"
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} -X GET "${USERS}/kermit/info" | jq
+
+# create user
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} "${USERS}" \
+	-d '{"id":"manager1","firstName":"first1","lastName":"last1","email":"first1.last1@raogaru.com","password":"manager1pwd"}'
+
+# update user - "manager1"
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} -X PUT "${USERS}/manager1" \
+	-d '{"email":"manager1@raogaru.com","password":"manager1password"}'
+
+# delete user - "manager1"
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} -X DELETE "${USERS}/manager1" 
+
+# ----------------------------------------
+# MEMBERSHIP MANAGEMENT
+
+# add user to group - "manager1" to "managers"
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} -X POST "${GROUPS}/managers/members" -d '{"userId":"manager1"}'
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} -X POST "${GROUPS}/sales/members" -d '{"userId":"manager1"}'
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} -X POST "${GROUPS}/admin/members" -d '{"userId":"manager1"}'
+
+# remove user from group - "manager1" from "managers"
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} -X DELETE "${GROUPS}/managers/members/manager1"
+
+# list user groups - NOT GIVING CORRECT RESULTS
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} -X GET "${GROUPS}?userId=manager1" | jq
+
+# list group members - NOT GIVING CORRECT RESULTS
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} -X GET "${USERS}?groupId=managers" | jq
+
+# ################################################################################
+
+# DEPLOYMENTS
+
+DEPLOYMENTS="${BASE_URL}/service/repository/deployments"
+RUNTIME="${BASE_URL}/service/runtime"
+
+# prepare deployment zip
+zip leave-request-deployment.zip leave-request.bpmn20.xml leave-request.form
+
+# deploy
+curl -sS -u ${ACT_USER}:${ACT_USER} -F "file=@leave-request-deployment.zip" ${DEPLOYMENTS} | jq
+
+# Start process
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} ${RUNTIME}/process-instances -d '{"processDefinitionKey":"leaveRequestForm"}'
+
+# list tasks
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} ${RUNTIME}/tasks 
+
+# Find task
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} ${RUNTIME}/tasks?processInstanceId=123
+
+
+# Complete task with approval variable
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} ${RUNTIME}/tasks/123 \ 
+	-d '{"action":"complete", "variables":[{"name":"approved", "value":true}]}'
+
+# ----------------------------------------

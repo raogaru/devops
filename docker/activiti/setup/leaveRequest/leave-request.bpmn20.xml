@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:activiti="http://activiti.org/bpmn"
+             targetNamespace="http://www.activiti.org/bpmn20">
+             
+  <process id="leaveRequest" name="Leave Request Process" isExecutable="true">
+
+    <!-- START -->
+    <startEvent id="startEvent" name="Start">
+      <extensionElements>
+        <activiti:formProperty id="employeeID" name="Employee ID" type="string" required="true"/>
+        <activiti:formProperty id="employeeName" name="Employee Name" type="string" required="true"/>
+        <activiti:formProperty id="startDate" name="Start Date" type="date" required="true"/>
+        <activiti:formProperty id="endDate" name="End Date" type="date" required="true"/>
+        <activiti:formProperty id="requestReason" name="Reason" type="string" required="true"/>
+      </extensionElements>
+    </startEvent>
+
+    <!-- Submit → Review -->
+    <sequenceFlow id="flow1" sourceRef="startEvent" targetRef="reviewTask"/>
+
+    <!-- REVIEW TASK -->
+    <userTask id="reviewTask" name="Review Leave Request" activiti:assignee="reviewer">
+      <extensionElements>
+        <activiti:formProperty id="reviewComments" name="Review Comments" type="string"/>
+      </extensionElements>
+    </userTask>
+
+    <sequenceFlow id="flow2" sourceRef="reviewTask" targetRef="approveTask"/>
+
+    <!-- APPROVE TASK -->
+    <userTask id="approveTask" name="Approve Leave Request" activiti:assignee="approver">
+      <extensionElements>
+        <activiti:formProperty id="approvalDecision" name="Approve?" type="enum">
+          <activiti:value id="approved" name="Approved"/>
+          <activiti:value id="rejected" name="Rejected"/>
+        </activiti:formProperty>
+      </extensionElements>
+    </userTask>
+
+    <sequenceFlow id="flow3" sourceRef="approveTask" targetRef="endEvent"/>
+
+    <!-- END -->
+    <endEvent id="endEvent" name="End"/>
+
+  </process>
+</definitions>
+

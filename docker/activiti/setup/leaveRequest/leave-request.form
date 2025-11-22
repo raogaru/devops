@@ -1,0 +1,14 @@
+<form name="Leave Request Form" key="leaveRequestForm" version="1">
+  <fields>
+
+    <field id="employeeID" name="Employee ID" type="text" required="true"/>
+    <field id="employeeName" name="Employee Name" type="text" required="true"/>
+
+    <field id="startDate" name="Start Date" type="date" required="true"/>
+    <field id="endDate" name="End Date" type="date" required="true"/>
+
+    <field id="requestReason" name="Reason" type="text" required="true"/>
+
+  </fields>
+</form>
+
