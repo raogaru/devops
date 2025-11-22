@@ -20,7 +20,7 @@ RUN rm -rf activiti-${VER} activiti-${VER}.zip
 
 #COPY activiti-*.war /code
 # ----------------------------------------
-# Extract WARs manually
+# Extract WARs manually - so it can be customized with properties files
 RUN unzip -q -d ${WEBDIR}/activiti-app /code/activiti-app.war
 RUN unzip -q -d ${WEBDIR}/activiti-admin /code/activiti-admin.war
 RUN unzip -q -d ${WEBDIR}/activiti-rest /code/activiti-rest.war

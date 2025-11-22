@@ -16,15 +16,16 @@ docker rm c-activiti
 docker rmi i-activiti
 #
 # build
-docker build -t i-activiti .
+docker build -t i-activiti -f Dockerfile.prebuilt .
+docker build -t i-activiti -f Dockerfile.build .
 #
 # run
 
 docker run -d --name c-activiti -p 8701:8080 i-activiti
 
-docker run -d --name c-activiti -p 8701:8080 -v ./webapps:/usr/local/tomcat/webapps -v ./build:/build i-activiti
+docker run -d --name c-activiti -p 8701:8080 -v ./data:/usr/local/tomcat i-activiti
 
-docker run -d --name c-activiti -p 8701:8080 -v v-activiti:/usr/local/tomcat/webapps/ i-activiti
+docker run -d --name c-activiti -p 8701:8080 -v v-activiti:/usr/local/tomcat i-activiti
 #
 docker stop c-activiti
 docker start c-activiti
@@ -53,5 +54,108 @@ password: test
 http://localhost:8701/activiti-rest"
 username: kermit
 password: kermit
+# --------------------------------------------------------------------------------
+# test
+ACT_USER=kermit
+ACT_PASS=kermit
+REST_BASE="http://localhost:8701/activiti-rest"
+ACCEPT_JSON="Accept: application/json"
+CONTENT_JSON="Content-Type: application/json"
 #
+# ----------------------------------------
+# GROUP MANAGEMENT
+# list groups
+REST_URL="${REST_BASE}/service/identity/groups"
+curl -u ${ACT_USER}:${ACT_USER} -H ${ACCEPT_JSON} -X GET "${REST_URL}" | jq
+#
+# show one group - "admin"
+REST_URL="${REST_BASE}/service/identity/groups"
+curl -u ${ACT_USER}:${ACT_USER} -H ${ACCEPT_JSON} -X GET "${REST_URL}/admin" | jq
+#
+# create group - "managers"
+REST_URL="${REST_BASE}/service/identity/groups"
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} "${REST_URL}" \
+	-d '{"id":"managers","name":"Some Managers","type":"security-role"}' 
+#
+# update group - "managers"
+REST_URL="${REST_BASE}/service/identity/groups"
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} -X PUT "${REST_URL}/managers" \
+	-d '{"name":"Managers","type":"security-role"}'
+#
+# delete group
+REST_URL="${REST_BASE}/service/identity/groups"
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} -X DELETE "${REST_URL}/managers"
+#
+# ----------------------------------------
+# USER MANAGEMENT
+# list users
+REST_URL="${REST_BASE}/service/identity/users"
+curl -u ${ACT_USER}:${ACT_USER} -H ${ACCEPT_JSON} -X GET "${REST_URL}" | jq
+#
+# show one user - "kermit"
+REST_URL="${REST_BASE}/service/identity/users"
+curl -u ${ACT_USER}:${ACT_USER} -H ${ACCEPT_JSON} -X GET "${REST_URL}/kermit" | jq
+#
+# show one user details - "kermit"
+REST_URL="${REST_BASE}/service/identity/users"
+curl -u ${ACT_USER}:${ACT_USER} -H ${ACCEPT_JSON} -X GET "${REST_URL}/kermit/info" | jq
+#
+# create user
+REST_URL="${REST_BASE}/service/identity/users"
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} "${REST_URL}" \
+	-d '{"id":"manager1","firstName":"first1","lastName":"last1","email":"first1.last1@raogaru.com","password":"manager1pwd"}'
+#
+# update user - "manager1"
+REST_URL="${REST_BASE}/service/identity/users"
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} -X PUT "${REST_URL}/manager1" \
+	-d '{"email":"manager1@raogaru.com","password":"manager1password"}'
+#
+# delete user - "manager1"
+REST_URL="${REST_BASE}/service/identity/users"
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} -X DELETE "${REST_URL}/manager1" 
+#
+# ----------------------------------------
+# MEMBERSHIP MANAGEMENT
+# list user groups
+REST_URL="${REST_BASE}/service/identity/groups"
+curl -u ${ACT_USER}:${ACT_USER} -H ${ACCEPT_JSON} -X GET "${REST_URL}?userId=manager1" | jq
+#
+# list group members
+REST_URL="${REST_BASE}/service/identity/users"
+curl -u ${ACT_USER}:${ACT_USER} -H ${ACCEPT_JSON} -X GET "${REST_URL}?groupId=managers" | jq
+#
+# add user to group - "manager1" to "managers"
+REST_URL="${REST_BASE}/service/identity/groups"
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} -X POST "${REST_URL}/managers/members" -d '{"userId":"manager1"}'
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} -X POST "${REST_URL}/sales/members" -d '{"userId":"manager1"}'
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} -X POST "${REST_URL}/admin/members" -d '{"userId":"manager1"}'
+#
+# remove user from group - "manager1" from "managers"
+REST_URL="${REST_BASE}/service/identity/groups"
+curl -u ${ACT_USER}:${ACT_USER} -H ${CONTENT_JSON} -X DELETE "${REST_URL}/managers/members/manager1"
+#
+# ################################################################################
+# purpose of 3 war files
+activiti-app.war
+	This is the end-user interface:
+	Process Modeler
+	Workflow app designer
+	Task management UI
+	Process instance monitoring (limited)
+
+activiti-admin.war
+	This is the administration/operations UI:
+	Process definitions
+	Deployments
+	Jobs
+	System info
+	Users & groups
+	Runtime management (cancel instances, etc.)
+
+activiti-rest.war
+	REST API layer for integration:
+	Deploy processes
+	Start/stop process instances
+	Query tasks, variables, history
+	Engine operations via REST
 # ################################################################################
