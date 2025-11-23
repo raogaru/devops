@@ -20,7 +20,7 @@ docker build -t i-activiti -f Dockerfile.build .
 #
 # run
 
-docker run -d --name c-activiti -p 8701:8080 i-activiti
+docker run -d --name c-activiti --network v-raogaru -p 8701:8080 i-activiti
 
 docker run -d --name c-activiti -p 8701:8080 -v ./data:/usr/local/tomcat i-activiti
 

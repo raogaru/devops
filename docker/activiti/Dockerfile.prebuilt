@@ -28,8 +28,12 @@ RUN rm -f /code/activiti-*.war
 # ----------------------------------------
 # copy custom properties files
 COPY config/activiti-rest.properties ${WEBDIR}/activiti-rest/WEB-INF/classes/db.properties
-COPY config/activiti-admin.properties ${WEBDIR}/activiti-admin/WEB-INF/classes/META-INF/activiti-admin.properties
-COPY config/activiti-app.properties ${WEBDIR}/activiti-app/WEB-INF/classes/META-INF/activiti-app.properties
+COPY config/activiti-admin.properties ${WEBDIR}/activiti-admin/WEB-INF/classes/activiti-admin.properties
+COPY config/activiti-app.properties ${WEBDIR}/activiti-app/WEB-INF/classes/activiti-app.properties
+
+# Download PostgreSQL JDBC driver
+ADD https://jdbc.postgresql.org/download/postgresql-42.7.4.jar /usr/local/tomcat/lib/postgresql.jar
+
 # ----------------------------------------
 WORKDIR ${WEBDIR}
 EXPOSE 8080
