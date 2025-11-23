@@ -1,0 +1,48 @@
+# ################################################################################
+# purpose: h2 database
+# status: working
+#
+# volume
+docker volume rm v-h2
+docker volume create v-h2
+docker volume list
+docker volume inspect v-h2
+#
+docker stop c-h2
+docker rm c-h2
+docker rmi i-h2
+#
+# build
+docker build -t i-h2 .
+#
+# run
+mkdir data
+docker run -d --name c-h2 -p 9092:9092 -p 8182:8082 i-h2
+docker run -d --name c-h2 -p 9092:9092 -p 8182:8082 -v ./data:/root i-h2
+docker run -d --name c-h2 -p 9092:9092 -p 8182:8082 -v v-h2:/root i-h2
+#
+docker stop c-h2
+docker start c-h2
+#
+# connect
+docker exec -it c-h2 /bin/bash
+#
+#connecting from browser
+http://localhost:8182
+#
+# connect using java
+docker exec -it c-h2 /bin/bash
+curl -L -o /tmp/h2.jar https://repo1.maven.org/maven2/com/h2database/h2/1.4.197/h2-1.4.197.jar
+
+
+java -cp /tmp/h2.jar org.h2.tools.Shell -url "jdbc:h2:mem:activiti"  -user sa -password ""
+OR
+java -cp /tmp/h2.jar org.h2.tools.Shell -url "jdbc:h2:file:./activiti" -user sa -password ""
+OR
+java -cp /tmp/h2.jar org.h2.tools.Shell -url "jdbc:h2:~/activiti-app" -user sa -password ""
+OR
+echo 'export JAVA_OPTS="$JAVA_OPTS -Dh2.tcpPort=9092 -Dh2.tcpAllowOthers=true -Dh2.console.enabled=true"' > /usr/local/tomcat/bin/setenv.sh
+
+
+
+# ################################################################################
