@@ -32,15 +32,15 @@ password: admin
 # activiti application 
 http://localhost:8701/activiti-app"
 username: admin
-password: test
+password: admin
 #
 # activiti modeler
 http://localhost:8701/activiti-app/editor"
 username: admin
-password: test
+password: admin
 #
-# activiti REST API
-http://localhost:8701/activiti-rest"
+# activiti REST API - refer to setup.txt
+http://localhost:8701/activiti-rest/"
 username: kermit
 password: kermit
 # --------------------------------------------------------------------------------
