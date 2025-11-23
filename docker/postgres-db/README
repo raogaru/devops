@@ -16,7 +16,7 @@ docker rmi i-postgres
 docker build -t i-postgres .
 #
 # run
-docker run -d --name c-postgres -p 8432:5432 -v v-postgres:/var/lib/postgresql i-postgres
+docker run -d --name c-postgres --network n-raogaru -p 8432:5432 -v v-postgres:/var/lib/postgresql i-postgres
 #
 docker stop c-postgres
 docker start c-postgres
