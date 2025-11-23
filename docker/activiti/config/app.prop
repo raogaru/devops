@@ -1,0 +1,64 @@
+# ################################################################################
+# FILE : activiti-app.properties
+# TARGET: activiti-app/WEB-INF/classes/activiti-app.properties
+# ################################################################################
+
+datasource.driver=org.postgresql.Driver
+datasource.url=jdbc:postgresql://c-postgres:5432/activiti
+datasource.username=activiti
+datasource.password=activiti
+datasource.maxActive=50
+datasource.maxIdle=5
+datasource.minIdle=1
+datasource.maxWait=5000
+
+database.schema.update=true
+
+hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+hibernate.show_sql=false
+hibernate.format_sql=false
+
+admin.app.server.address=http://localhost:8080/activiti-admin
+admin.app.server.username=admin
+admin.app.server.password=admin
+
+
+security.user.provider=activiti
+security.admin.group=admin
+security.user.group=users
+
+idm.enabled=true
+idm.sync.enabled=true
+
+activiti.process-definitions.cache.max=500
+activiti.modeler.app_name=Activiti Modeler
+file.upload.max.size=104857600
+admin.user=admin
+admin.password=admin
+
+# ################################################################################
+
+#email.enabled=true
+#email.host=localhost
+#email.port=1025
+#email.useCredentials=false
+#email.username=
+#email.password=
+
+# The base url that will be used to create urls in emails.
+#email.base.url=http://localhost:8080/activiti-app
+
+#email.from.default=no-reply@activiti.alfresco.com
+#email.from.default.name=Activiti
+#email.feedback.default=activiti@alfresco.com
+
+
+
+#admin.lastname=Administrator
+#admin.group=Superusers
+
+#contentstorage.fs.rootFolder=data/
+#contentstorage.fs.createRoot=true
+#contentstorage.fs.depth=4
+#contentstorage.fs.blockSize=1024
+

@@ -59,9 +59,9 @@ RUN unzip -q -d ${WEBDIR}/activiti-rest /tmp/activiti-rest.war
 
 # ----------------------------------------
 # copy properties files
-COPY config/activiti-rest.properties ${WEBDIR}/activiti-rest/WEB-INF/classes/db.properties
-COPY config/activiti-admin.properties ${WEBDIR}/activiti-admin/WEB-INF/classes/META-INF/activiti-admin.properties
-COPY config/activiti-app.properties ${WEBDIR}/activiti-app/WEB-INF/classes/META-INF/activiti-app.properties
+COPY config/activiti-rest.properties ${WEBDIR}/activiti-rest/WEB-INF/classes/activiti-rest.properties
+COPY config/activiti-admin.properties ${WEBDIR}/activiti-admin/WEB-INF/classes/activiti-admin.properties
+COPY config/activiti-app.properties ${WEBDIR}/activiti-app/WEB-INF/classes/activiti-app.properties
 
 EXPOSE 8080
 

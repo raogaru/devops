@@ -4,8 +4,8 @@
 # 3. Process forms, tasks
 # ----------------------------------------
 
-ACT_USER=kermit
-ACT_PASS=kermit
+ACT_USER=admin
+ACT_PASS=admin
 vACCEPT="Accept: application/json"
 vCONTENT="Content-Type: application/json"
 AUTH=" -u ${ACT_USER}:${ACT_USER}"
@@ -14,6 +14,9 @@ ID_URL="${BASE_URL}/service/identity"
 GROUPS="${BASE_URL}/service/identity/groups"
 USERS="${BASE_URL}/service/identity/users"
 MEMBERS="${BASE_URL}/service/identity/memberships"
+DEPLOYMENTS="${BASE_URL}/service/repository/deployments"
+RUNTIME="${BASE_URL}/service/runtime"
+MODELS="${BASE_URL}/service/repository/models"
 
 # ----------------------------------------
 # GROUP MANAGEMENT
@@ -77,8 +80,6 @@ curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} -X GET "${USERS}?groupId=manag
 
 # DEPLOYMENTS
 
-DEPLOYMENTS="${BASE_URL}/service/repository/deployments"
-RUNTIME="${BASE_URL}/service/runtime"
 
 # prepare deployment zip
 zip leave-request-deployment.zip leave-request.bpmn20.xml leave-request.form
@@ -105,6 +106,17 @@ curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} ${RUNTIME}/tasks?candidateGrou
 curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vCONTENT} ${RUNTIME}/tasks/123 \ 
 	-d '{"action":"complete", "variables":[{"name":"approved", "value":true}]}'
 
-# 
+# ################################################################################
+# FORMS MANAGEMENT
 
-# ----------------------------------------
+# list all forms
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} "${MODELS}?modelType=3" | jq
+
+# get form model
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} "${MODELS}/37" | jq
+
+# get form model json
+curl -sS -u ${ACT_USER}:${ACT_USER} -H ${vACCEPT} "${MODELS}/37/source" -o demoForm.json
+
+
+# ################################################################################

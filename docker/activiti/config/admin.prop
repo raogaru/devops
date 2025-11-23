@@ -1,7 +1,7 @@
+# ################################################################################
+# FILE : activiti-admin.properties
 # TARGET: activiti-admin/WEB-INF/classes/activiti-admin.properties
-# ===============================
-# Activiti Admin Datasource (PostgreSQL)
-# ===============================
+# ################################################################################
 admin.datasource.driver=org.postgresql.Driver
 admin.datasource.url=jdbc:postgresql://c-postgres:5432/activiti
 admin.datasource.username=activiti
@@ -33,3 +33,4 @@ datasource.maxIdle=5
 datasource.minIdle=1
 datasource.maxWait=5000
 
+# ################################################################################

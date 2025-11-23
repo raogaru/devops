@@ -1,0 +1,58 @@
+# ################################################################################
+# FILE : engine.properties
+# TARGET: activiti-rest/WEB-INF/classes/engine.properties
+# ################################################################################
+########################################
+# PROCESS ENGINE SETTINGS (POSTGRES)
+########################################
+
+engine.name=Activiti Engine
+history=full
+
+# Enable job executor
+job-executor-activate=true
+
+########################################
+# JDBC DATABASE CONFIG
+########################################
+
+jdbc.driver=org.postgresql.Driver
+jdbc.url=jdbc:postgresql://c-postgres:5432/activiti
+jdbc.username=activiti
+jdbc.password=activiti
+
+# Let Activiti create/validate tables automatically
+databaseSchemaUpdate=true
+
+########################################
+# EMAIL SERVER (optional)
+########################################
+mail-server-host=localhost
+mail-server-port=5025
+
+########################################
+# XML VALIDATION
+########################################
+xml-validation-enabled=false
+bpmn-xml-validation-enabled=false
+
+# demo data properties
+create.demo.users=true
+create.demo.definitions=true
+create.demo.models=true
+
+# engine properties
+engine.schema.update=true
+engine.activate.jobexecutor=false
+engine.asyncexecutor.enabled=true
+engine.asyncexecutor.activate=true
+engine.history.level=full
+
+# rest properties
+
+# Enable/disable Java serializable objects to be passed as variables in the REST API.
+rest.variables.allow.serializable=true
+
+# Enable/disable whether the docs are available on /docs
+rest.docs.swagger.enabled=true
+
