@@ -1,0 +1,28 @@
+# ################################################################################
+# purpose: DataStax is GII for cassandra-db
+# status: working
+#
+docker volume inspect v-cassandra-gui
+#
+docker stop c-cassandra-gui
+docker rm c-cassandra-gui
+docker rmi i-cassandra-gui
+#
+# build
+docker build -t i-cassandra-gui --platform linux/amd64  .
+#
+# run
+docker run -d --name c-cassandra-gui --network n-raogaru -p 8043:9091 i-cassandra-gui
+#
+docker stop c-cassandra-gui
+docker start c-cassandra-gui
+#
+# connect inside container
+docker exec -it c-cassandra-gui /bin/bash
+nodetool status
+cqlsh
+#
+#connecting from browser
+http://localhost:8043
+#
+# ################################################################################
