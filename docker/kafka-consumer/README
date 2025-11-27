@@ -1,0 +1,30 @@
+# ################################################################################
+# purpose: kafka-consumer - microservice to consume msessages from kafka server - topic1..topic5
+# status: working
+#
+# build java code
+mvn clean install -DskipTests
+#
+docker stop c-kafka-consumer
+docker rm c-kafka-consumer
+docker rmi i-kafka-consumer
+#
+# build
+docker build -t i-kafka-consumer .
+#
+# run
+docker run -d --name c-kafka-consumer --network=n-raogaru i-kafka-consumer
+#
+Optional:
+  -e KAFKA_BOOTSTRAP_SERVERS=c-kafka:9092 
+#
+docker stop c-kafka-consumer
+docker start c-kafka-consumer
+#
+# connect
+docker exec -it c-kafka-consumer /bin/bash
+#
+docker exec -it c-kafka kafka-consumer-groups.sh --bootstrap-server c-kafka:9092 --describe --group consumer-group-1
+#
+# ################################################################################
+
