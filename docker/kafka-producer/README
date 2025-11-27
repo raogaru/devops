@@ -1,0 +1,26 @@
+# ################################################################################
+# purpose: kafka-producer - microservice to procude msessages to kafka server - topic1..topic5
+# status: working
+#
+# build java code
+mvn clean install -DskipTests
+#
+docker stop c-kafka-producer
+docker rm c-kafka-producer
+docker rmi i-kafka-producer
+#
+# build
+docker build -t i-kafka-producer .
+#
+# run
+docker run -d --name c-kafka-producer --network=n-raogaru i-kafka-producer
+#
+docker stop c-kafka-producer
+docker start c-kafka-producer
+#
+# connect
+docker exec -it c-kafka-producer /bin/bash
+#
+# no browser connection available - backend microservice
+#
+# ################################################################################
