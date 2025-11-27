@@ -1,0 +1,29 @@
+# ################################################################################
+# purpose: kafka-ui - microservice to procude msessages to kafka server - multiple topics - topic1..topic5
+# status: working
+#
+docker stop c-kafka-ui
+docker rm c-kafka-ui
+docker rmi i-kafka-ui
+#
+# build
+docker build -t i-kafka-ui .
+#
+# run
+docker run -d --name c-kafka-ui --network n-raogaru -p 8194:8080 i-kafka-ui
+#
+Optional:
+	-e KAFKA_CLUSTERS_0_NAME=my-cluster-name \
+	-e KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=c-kafka:9092 \
+	-e KAFKA_CLUSTERS_0_SCHEMAREGISTRY=http://schema-registry:8081
+#
+docker stop c-kafka-ui
+docker start c-kafka-ui
+#
+# connect
+docker exec -it c-kafka-ui /bin/bash
+#
+# access via console
+http://localhost:8194
+#
+# ################################################################################
