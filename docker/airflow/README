@@ -1,0 +1,43 @@
+# ################################################################################
+# Airflow  - Apache opensource workflow automation service
+# status: working
+#
+# download airflow pre-built files
+# 
+docker stop c-airflow
+docker rm c-airflow
+docker rmi i-airflow
+#
+# build
+docker build -t i-airflow .
+#
+# run
+docker run -d --name c-airflow --network n-raogaru -p 8151:8080 i-airflow
+#
+mkdir dags logs
+docker run -d --name c-airflow --network n-raogaru -p 8151:8080 -v ./dags:/opt/airflow/dags -v ./logs:/opt/airflow/logs i-airflow
+#
+docker run -d --name c-airflow --network n-raogaru -p 8151:8080 -v ./dags:/opt/airflow/dags -v ./logs:/opt/airflow/logs -e AIRFLOW__CORE__LOAD_EXAMPLES=True i-airflow
+#
+docker run -d --name c-airflow --network n-raogaru -p 8151:8080 -e AIRFLOW__CORE__LOAD_EXAMPLES=True i-airflow
+#
+Optional 
+-e AIRFLOW__CORE__EXECUTOR=LocalExecutor \
+-e AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@c-postgres:5432/airflow \
+-e AIRFLOW__CORE__LOAD_EXAMPLES=False \
+-e AIRFLOW__WEBSERVER__EXPOSE_CONFIG=True
+#
+docker stop c-airflow
+docker start c-airflow
+#
+# connect
+docker exec -it c-airflow /bin/bash
+#
+# access via browser
+
+# airflow admin
+http://localhost:8151
+username: admin
+password: admin
+#
+# ################################################################################
