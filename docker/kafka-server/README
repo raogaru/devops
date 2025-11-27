@@ -1,0 +1,66 @@
+# ################################################################################
+# kafka server - Apache Opensource Messaging service
+# status: working
+#
+# volume
+docker volume rm v-kafka
+docker volume create v-kafka
+docker volume list
+docker volume inspect v-kafka
+#
+docker stop c-kafka
+docker rm c-kafka
+docker rmi i-kafka
+#
+# download (taking time) - hence moved out from Dockerfile
+KAFKA_VERSION=4.1.0
+SCALA_VERSION=2.13
+URL=https://archive.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz
+curl -fsSL ${URL} -o /tmp/kafka.tgz
+#
+# build
+docker build -t i-kafka .
+#
+# run
+docker run -d --name c-kafka --network n-raogaru \
+  -p 8191:9092 -p 8192:19092 -p 8193:9093 \
+  -v v-kafka:/var/lib/kafka \
+  i-kafka
+
+#
+docker stop c-kafka
+docker start c-kafka
+#
+# connect
+docker exec -it c-kafka /bin/bash
+#
+# use kafka-ui docker to access via webconsole
+# no access to console from kafka container
+#
+# --------------------------------------------------------------------------------
+# test
+#
+docker exec -it c-kafka /bin/bash
+
+kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic1 --partitions 1 --replication-factor 1
+kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic2 --partitions 1 --replication-factor 1
+kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic3 --partitions 1 --replication-factor 1
+kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic4 --partitions 1 --replication-factor 1
+kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic5 --partitions 1 --replication-factor 1
+kafka-topics.sh --bootstrap-server localhost:9092 --list
+#
+# List topics
+kafka-topics.sh --bootstrap-server localhost:9092 --list
+# Create a topic
+kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test --partitions 1 --replication-factor 1
+# Produce messages
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test
+# Consume messages
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+#
+# ################################################################################
+
+docker exec -it c-kafka /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:19092 --topic test
+
+docker exec -it c-kafka kafka-console-consumer.sh --bootstrap-server localhost:19092 --topic test  --from-beginning
+
