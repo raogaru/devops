@@ -1,0 +1,25 @@
+cluster_name: raogaru-cluster
+
+listen_address: 0.0.0.0
+rpc_address: 0.0.0.0
+broadcast_rpc_address: c-cassandra-db
+
+endpoint_snitch: GossipingPropertyFileSnitch
+start_native_transport: true
+
+partitioner: org.apache.cassandra.dht.Murmur3Partitioner
+
+commitlog_sync: periodic
+commitlog_sync_period_in_ms: 10000
+
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+    parameters:
+      - seeds: c-cassandra-db
+
+data_file_directories:
+  - /var/lib/cassandra/data
+
+commitlog_directory: /var/lib/cassandra/commitlog
+saved_caches_directory: /var/lib/cassandra/saved_caches
+

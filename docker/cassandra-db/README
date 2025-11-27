@@ -1,0 +1,47 @@
+# ################################################################################
+# purpose: cassandra-db database
+# status: working
+#
+# volume
+docker volume rm v-cassandra-db
+docker volume create v-cassandra-db
+docker volume list
+docker volume inspect v-cassandra-db
+#
+docker stop c-cassandra-db
+docker rm c-cassandra-db
+docker rmi i-cassandra-db
+#
+# build
+docker build -t i-cassandra-db .
+#
+# run
+docker run -d --name c-cassandra-db --network n-raogaru -p 8042:9042  i-cassandra-db
+docker run -d --name c-cassandra-db --network n-raogaru -p 8042:9042 -v v-cassandra-db:/var/lib/cassandra i-cassandra-db
+#
+docker stop c-cassandra-db
+docker start c-cassandra-db
+#
+# connect inside container
+docker exec -it c-cassandra-db /bin/bash
+nodetool status
+cqlsh
+#
+#connecting from host
+brew install cql
+brew install cassandra
+cqlsh --version
+cqlsh localhost 8042
+# --------------------------------------------------------------------------------
+# create objects
+
+CREATE KEYSPACE raogaru WITH replication = {'class':'SimpleStrategy','replication_factor':1};
+
+USE raogaru;
+
+CREATE TABLE users ( id UUID PRIMARY KEY, name TEXT, created_at TIMESTAMP);
+
+INSERT INTO users (id, name, created_at) VALUES (uuid(), 'Rao', toTimestamp(now()));
+
+SELECT * FROM users;
+# ################################################################################
