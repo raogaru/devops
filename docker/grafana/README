@@ -1,0 +1,40 @@
+# ################################################################################
+# purpose: grafana dashboard
+# status: working
+#
+# volume
+docker volume rm v-grafana
+docker volume create v-grafana
+docker volume list
+docker volume inspect v-grafana
+#
+docker stop c-grafana
+docker rm c-grafana
+docker rmi i-grafana
+#
+# build
+docker build -t i-grafana .
+#
+# run
+docker run -d --name c-grafana -p 9091:3000 -v v-grafana i-grafana
+#
+Optiona:
+  -e GF_SECURITY_ADMIN_USER=admin
+  -e GF_SECURITY_ADMIN_PASSWORD=admin
+#
+docker stop c-grafana
+docker start c-grafana
+#
+# connect
+docker exec -it c-grafana /bin/bash
+#
+# logs
+docker logs c-grafana
+#
+# connect from webconsole
+# if helloworld.war copied to webapps dir as ROOT.war
+http://localhost:8073/  
+# if helloworld.war copied to webapps dir
+http://localhost:8062/helloworld/
+
+# ################################################################################
