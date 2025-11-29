@@ -1,0 +1,48 @@
+# ################################################################################
+# create rdb_sqlstat extension from pg_stat_statements
+
+cd ~/code/contrib
+rm -rf rdb_sqlstat
+cp -r pg_stat_statements rdb_sqlstat 
+
+#======================================================================
+# rename files
+find rdb_sqlstat -type f | while read Fname
+do   
+        mv ${Fname} $(echo ${Fname}|sed -e 's/pg_stat_statements/rdb_sqlstat/') 2> /dev/null
+done
+
+#======================================================================
+# replace
+find rdb_sqlstat -type f -print | while read Fname
+do
+echo Processing file ${Fname}
+cat ${Fname} | sed -e's/pg_stat_statements/rdb_sqlstat/g' > ${Fname}.new
+mv ${Fname}.new ${Fname}
+done
+
+cat rdb_sqlstat/rdb_sqlstat.control | sed -e "s|^comment.*$|comment='RAO DB Extension: rdb_sqlstat - SQL statistics'|" > rdb_sqlstat/rdb_sqlstat.control.new
+
+mv rdb_sqlstat/rdb_sqlstat.control.new rdb_sqlstat/rdb_sqlstat.control
+
+#======================================================================
+# install
+cd rdb_sqlstat
+
+
+make install
+
+vi ~/data/postgresql.conf
+shared_preload_libraries='rdb_sqlstat'
+track_io_timing=on
+
+PGstop
+PGstart
+
+psql
+drop extension if exists rdb_sqlstat;
+create extension if not exists rdb_sqlstat;
+
+select * from rdb_sqlstat;
+
+#======================================================================

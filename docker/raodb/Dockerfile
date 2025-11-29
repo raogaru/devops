@@ -5,9 +5,9 @@ FROM amazonlinux:2023
 # Set environment variables
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
-ENV MYDIR=/raodb
 ENV OWNER=postgres
 ENV HOME=/home/${OWNER}
+ENV MYDIR=/opt/rdb
 
 EXPOSE 5432
 
@@ -19,8 +19,8 @@ RUN dnf clean all
 
 RUN adduser --home ${HOME} ${OWNER}
 
-COPY profile.sh ${HOME}/.bash_profile
-COPY boot.sh ${HOME}/.boot.sh
+COPY dot_profile.sh ${HOME}/.bash_profile
+COPY dot_boot.sh ${HOME}/.boot.sh
 RUN chown ${OWNER}:${OWNER} ${HOME}/.bash_profile ${HOME}/.boot.sh
 RUN chmod +700 ${HOME}/.bash_profile ${HOME}/.boot.sh
 RUN mkdir -p ${MYDIR}
@@ -32,7 +32,7 @@ CMD ["/bin/bash"]
 
 USER ${OWNER}
 RUN source ${HOME}/.bash_profile
-RUN ${HOME}/.boot.sh
+#RUN ${HOME}/.boot.sh
 
 VOLUME ["${MYDIR}"]
 

@@ -16,9 +16,8 @@ docker rmi i-raodb
 docker build -t i-raodb .
 #
 # run
-docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8433:5432 -v v-raodb:/raodb i-raodb tail -f /dev/null
-docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8434:5432 -v ./c:/raodb i-raodb tail -f /dev/null
-
+docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8433:5432 -v v-raodb:/opt/rdb i-raodb tail -f /dev/null
+docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8434:5432 -v ./c:/opt/rdb i-raodb tail -f /dev/null
 docker run -d --name c-raodb --hostname raodb --cpus=4 -p 8433:5432 i-raodb tail -f /dev/null
 #
 docker stop c-raodb
@@ -31,6 +30,7 @@ docker start c-raodb
 su - postgres
 source ${HOME}/.bash_profile
 ${HOME}/.boot.sh
+#
 # connect, start DB
 docker exec -it c-raodb /bin/bash
 su - postgres
@@ -58,9 +58,12 @@ exit
 #
 # --------------------------------------------------------------------------------
 # contribute extensions to raodb
+#
 # copy files to persisted directories
 cp -r ext/rdb_catalog c/code/contrib/
 # OR
 # copy files to container
-docker cp ext/rdb_catalog c-raodb:/raodb/code/contrib/
+docker cp ext/rdb_catalog c-raodb:/opt/rdb/code/contrib/
+
+cp -r ext/rdb_sqlstat c/code/contrib/
 # ################################################################################

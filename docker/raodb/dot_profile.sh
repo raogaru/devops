@@ -1,4 +1,4 @@
-export MYDIR=/raodb
+export MYDIR=/opt/rdb
 export PGCODE=$MYDIR/code
 export PGDATA=$MYDIR/data
 export PGSOFT=$MYDIR/soft
