@@ -1,0 +1,28 @@
+# ################################################################################
+# purpose: keycloak identify access management
+# status: working
+#
+docker stop c-keycloak
+docker rm c-keycloak
+docker rmi i-keycloak
+#
+# build
+docker build -t i-keycloak .
+#
+# run
+docker run -d --name c-keycloak --network n-raogaru -p 8153:8080  i-keycloak start --import-realm --log-level=DEBUG
+#
+docker stop c-keycloak
+docker start c-keycloak
+#
+# connect
+docker exec -it c-keycloak /bin/bash
+#
+# logs
+docker logs c-keycloak
+#
+# connect from webconsole
+http://localhost:8153/  
+http://localhost:8153/realms/raogaru
+#
+# ################################################################################
