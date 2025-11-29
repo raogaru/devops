@@ -43,7 +43,11 @@ brew link --force libpq
 which psql
 psql --version
 export PGPASSWORD=postgres
+echo "host    all     all     0.0.0.0/0     scram-sha-256" >> /opt/rdb/data/pg_hba.conf
+
 psql -h 127.0.0.1 -p 8433 -U postgres -d postgres
+alter system set listen_addresses = '*';
+
 # --------------------------------------------------------------------------------
 # test
 psql
