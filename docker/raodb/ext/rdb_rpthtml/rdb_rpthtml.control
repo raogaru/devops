@@ -1,0 +1,6 @@
+comment = 'RAO DB: rdb_rpthtml - HTML Report'
+default_version = '1.1'
+relocatable = false
+schema = public
+requires = ''
+
