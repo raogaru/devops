@@ -101,23 +101,26 @@
     <input id="searchBox" type="search" placeholder="Search across all sections... (Press / to focus)" autocomplete="off" />
   </div>
 
+  <!-- -------------------------------------------------------------------------------- -->
   <!-- Dashboards Section -->
   <h2>Dashboards </h2>
   <div class="grid section" data-section="dashboards">
-    <a class="tile" href="http://localhost:3000" target="_blank" data-tags="grafana dashboards metrics">
+    <a class="tile" href="http://localhost:9091" target="_blank" data-tags="grafana dashboards metrics">
       <div class="title">Grafana</div>
-      <div class="desc">Monitoring dashboards for metrics and logs.</div>
-      <div class="site">localhost:3000</div>
-      <div class="status"></div>
+      <div class="desc">Monitoring dashboards</div>
+      <div class="site">localhost:9091</div>
+      <div class="status">GOOD</div>
     </a>
     <a class="tile" href="http://localhost:9090" target="_blank" data-tags="prometheus metrics monitoring">
       <div class="title">Prometheus</div>
       <div class="desc">Metrics collection and time-series analysis.</div>
       <div class="site">localhost:9090</div>
+      <div class="status">WIP</div>
     </a>
   </div>
 
 
+  <!-- -------------------------------------------------------------------------------- -->
   <!-- Applications Section -->
   <h2>Applications</h2>
   <div class="grid section" data-section="applications">
@@ -135,6 +138,7 @@
     </a>
   </div>
 
+  <!-- -------------------------------------------------------------------------------- -->
   <!-- Databases Section -->
   <h2>Databases</h2>
   <div class="grid section" data-section="databases">
@@ -162,16 +166,29 @@
       <div class="site">redis-cli:8379</div>
       <div class="status">GOOD</div>
     </a>
-    <a class="tile" href="http://localhost:6379" target="_blank" data-tags="oracle relational database">
+    <a class="tile" href="sqlplus:8521" target="_blank" data-tags="oracle relational database">
       <div class="title">Oracle</div>
       <div class="desc">Relational database service</div>
       <div class="site">localhost:8521</div>
       <div class="status">WIP</div>
     </a>
+    <a class="tile" href="localhost:8043" target="_blank" data-tags="cassandra database">
+      <div class="title">Cassandra DB/GUI</div>
+      <div class="desc">Cassandra database service</div>
+      <div class="site">cqlsh:8042,gui:8043</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="localhost:8182" target="_blank" data-tags="H2 database">
+      <div class="title">H2 DB</div>
+      <div class="desc">H2 database service</div>
+      <div class="site">localhost:8182</div>
+      <div class="status">GOOD</div>
+    </a>
   </div>
 
-  <!-- Messaging Section -->
-  <h2>Messaging</h2>
+  <!-- -------------------------------------------------------------------------------- -->
+  <!-- ActiveMQ Messaging Section -->
+  <h2>ActiveMQ Messaging</h2>
   <div class="grid section" data-section="messaging">
     <a class="tile" href="http://localhost:8161" target="_blank" data-tags="activemq classic jms">
       <div class="title">ActiveMQ Server</div>
@@ -179,26 +196,113 @@
       <div class="site">localhost:8161</div>
       <div class="status">GOOD</div>
     </a>
-    <a class="tile" href="http://localhost:15672" target="_blank" data-tags="rabbitmq mq queue messaging">
-      <div class="title">RabbitMQ</div>
-      <div class="desc">Queues and exchanges management UI.</div>
-      <div class="site">port:15672</div>
-      <div class="status">port:15672</div>
+    <a class="tile" href="http://localhost:8163/actuator/health" target="_blank" data-tags="activemq classic jms">
+      <div class="title">ActiveMQ Producer</div>
+      <div class="desc">ActiveMQ Message Producer</div>
+      <div class="site">localhost:8163</div>
+      <div class="status">GOOD</div>
     </a>
-    <a class="tile" href="http://localhost:9000" target="_blank" data-tags="kafka messaging queue topics">
-      <div class="title">Kafka UI</div>
-      <div class="desc">Kafka topics, consumers, and brokers dashboard.</div>
-      <div class="site">localhost:9000</div>
-      <div class="status">port:9000</div>
+    <a class="tile" href="http://localhost:8164/actuator/health" target="_blank" data-tags="activemq classic jms">
+      <div class="title">ActiveMQ Consumer</div>
+      <div class="desc">ActiveMQ Message Consumer</div>
+      <div class="site">localhost:8164</div>
+      <div class="status">GOOD</div>
     </a>
-    <a class="tile" href="http://localhost:8162" target="_blank" data-tags="artemis jms messaging">
-      <div class="title">ActiveMQ Artemis</div>
-      <div class="desc">High-performance message broker.</div>
-      <div class="site">localhost:8162</div>
-      <div class="status">port:8162</div>
+    <a class="tile" href="http://localhost:8165/actuator/health" target="_blank" data-tags="activemq classic jms">
+      <div class="title">ActiveMQ Monitor</div>
+      <div class="desc">ActiveMQ Message Monitor</div>
+      <div class="site">localhost:8165</div>
+      <div class="status">GOOD</div>
     </a>
   </div>
 
+  <!-- -------------------------------------------------------------------------------- -->
+  <!-- RabbitMQ Messaging Section -->
+  <h2>RabitMQ Messaging</h2>
+  <div class="grid section" data-section="messaging">
+    <a class="tile" href="http://localhost:8673" target="_blank" data-tags="rabbitmq mq queue messaging">
+      <div class="title">RabbitMQ</div>
+      <div class="desc">Queues and exchanges management UI.</div>
+      <div class="site">port:8673</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8674/actuator/health" target="_blank" data-tags="rabbitmq mq queue messaging">
+      <div class="title">RabbitMQ Producer</div>
+      <div class="desc">RabbitMQ Message Producer</div>
+      <div class="site">port:8674</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8675/actuator/health" target="_blank" data-tags="rabbitmq mq queue messaging">
+      <div class="title">RabbitMQ Consumer</div>
+      <div class="desc">RabbitMQ Message Consumer</div>
+      <div class="site">port:8675</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8676/actuator/health" target="_blank" data-tags="rabbitmq mq queue messaging">
+      <div class="title">RabbitMQ Monitor</div>
+      <div class="desc">RabbitMQ Message Monitor</div>
+      <div class="site">port:8676</div>
+      <div class="status">GOOD</div>
+    </a>
+  </div>
+
+
+  <!-- -------------------------------------------------------------------------------- -->
+  <!-- Kafka Messaging Section -->
+  <h2>Kafka Messaging</h2>
+  <div class="grid section" data-section="messaging">
+    <a class="tile" href="http://localhost:8191/actuator/health" target="_blank" data-tags="kafka messaging">
+      <div class="title">Kafka Server</div>
+      <div class="desc">Messaging Service</div>
+      <div class="site">port:8191</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8194" target="_blank" data-tags="kafka messaging">
+      <div class="title">Kafka UI</div>
+      <div class="desc">Kafka UI Console</div>
+      <div class="site">localhost:8194</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8195/actuator/health" target="_blank" data-tags="kafka messaging">
+      <div class="title">Kafka Producer</div>
+      <div class="desc">Kafka Message Producer</div>
+      <div class="site">backend:8195</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8196/actuator/health" target="_blank" data-tags="kafka messaging">
+      <div class="title">Kafka Consumer</div>
+      <div class="desc">Kafka Message Consumer</div>
+      <div class="site">backend:8196</div>
+      <div class="status">GOOD</div>
+    </a>
+  </div>
+
+
+  <!-- -------------------------------------------------------------------------------- -->
+  <!-- Activiti Workflow Section -->
+  <h2>Activiti Workflow</h2>
+  <div class="grid section" data-section="activiti">
+    <a class="tile" href="http://localhost:8701/activiti-admin" target="_blank" data-tags="activiti workflow">
+      <div class="title">Activiti Admin</div>
+      <div class="desc">Activiti workflow Administration</div>
+      <div class="site">localhost:8701</div>
+      <div class="status">TODO</div>
+    </a>
+    <a class="tile" href="http://localhost:8701/activiti-app" target="_blank" data-tags="activiti workflow">
+      <div class="title">Activiti Application</div>
+      <div class="desc">Activiti workflow application</div>
+      <div class="site">localhost:8701</div>
+      <div class="status">TODO</div>
+    </a>
+    <a class="tile" href="http://localhost:8701/activiti-app/editor" target="_blank" data-tags="activiti  workflow">
+      <div class="title">Activiti Modeler</div>
+      <div class="desc">Activiti workflow modeler/designer</div>
+      <div class="site">localhost:8701</div>
+      <div class="status">TODO</div>
+    </a>
+  </div>
+
+  <!-- -------------------------------------------------------------------------------- -->
   <!-- Processing Section -->
   <h2>Processing / CI</h2>
   <div class="grid section" data-section="processing">
@@ -206,19 +310,41 @@
       <div class="title">Jenkins</div>
       <div class="desc">Continuous integration and deployment.</div>
       <div class="site">localhost:8080</div>
+      <div class="status">GOOD</div>
     </a>
-    <a class="tile" href="http://localhost:9001" target="_blank" data-tags="airflow orchestration workflow">
+    <a class="tile" href="http://localhost:8151" target="_blank" data-tags="airflow orchestration workflow">
       <div class="title">Airflow</div>
       <div class="desc">Workflow orchestration and DAG management.</div>
-      <div class="site">localhost:9001</div>
+      <div class="site">localhost:8151</div>
+      <div class="status">GOOD</div>
     </a>
-    <a class="tile" href="http://localhost:8200" target="_blank" data-tags="vault secrets security">
-      <div class="title">HashiCorp Vault</div>
-      <div class="desc">Secrets management and encryption service.</div>
-      <div class="site">localhost:8200</div>
+    <a class="tile" href="http://localhost:8152" target="_blank" data-tags="flink orchestration workflow">
+      <div class="title">Flink</div>
+      <div class="desc">Apache Flink streaming analytics</div>
+      <div class="site">localhost:8152</div>
+      <div class="status">GOOD</div>
     </a>
   </div>
 
+  <!-- -------------------------------------------------------------------------------- -->
+  <!-- Security Section -->
+  <h2>Security</h2>
+  <div class="grid section" data-section="security">
+    <a class="tile" href="http://localhost:8153" target="_blank" data-tags="keyclock iam security">
+      <div class="title">Keycloak</div>
+      <div class="desc">Identity Access Management</div>
+      <div class="site">localhost:8153</div>
+      <div class="status">WIP</div>
+    </a>
+    <a class="tile" href="http://localhost:8200" target="_blank" data-tags="vault secrets security">
+      <div class="title">HashiCorp Vault</div>
+      <div class="desc">Secrets management and encryption service</div>
+      <div class="site">localhost:8200</div>
+      <div class="status">GOOD</div>
+    </a>
+  </div>
+
+  <!-- -------------------------------------------------------------------------------- -->
   <!-- Webapps Section -->
   <h2>Webapps </h2>
   <div class="grid section" data-section="webapps">
@@ -242,6 +368,7 @@
     </a>
   </div>
 
+  <!-- -------------------------------------------------------------------------------- -->
   <!-- Operating Systems SSection -->
   <h2>OS </h2>
   <div class="grid section" data-section="OS">
@@ -284,12 +411,12 @@
 
   </div>
 
-
-
+  <!-- -------------------------------------------------------------------------------- -->
   <footer>
     Press <kbd>/</kbd> to focus search • Add your own tiles by duplicating a <code>.tile</code> block
   </footer>
 
+  <!-- -------------------------------------------------------------------------------- -->
   <script>
     const searchBox = document.getElementById("searchBox");
     const tiles = Array.from(document.querySelectorAll(".tile"));
@@ -324,6 +451,7 @@
       });
     });
   </script>
+  <!-- -------------------------------------------------------------------------------- -->
 </body>
 </html>
 
