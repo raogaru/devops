@@ -1,0 +1,66 @@
+================================================================================
+USING API CALLS
+
+Get Admin Token
+export TOKEN=$(curl -s \
+  -X POST http://localhost:8153/realms/master/protocol/openid-connect/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=admin" \
+  -d "password=admin" \
+  -d "grant_type=password" \
+  -d "client_id=admin-cli" \
+| jq -r .access_token)
+
+Create Group
+curl -X POST http://localhost:8153/admin/realms/raogaru/groups \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"developers"}'
+
+Create User
+curl -X POST http://localhost:8153/admin/realms/raogaru/users \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username":"rao",
+    "enabled":true,
+    "email":"rao@test.com",
+    "firstName":"Rao",
+    "lastName":"Vangaru"
+  }'
+
+Set Password
+curl -X PUT http://localhost:8153/admin/realms/raogaru/users/{USER_ID}/reset-password \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "type":"password",
+    "temporary":false,
+    "value":"welcome123"
+  }'
+
+Assign User to Group
+curl -X PUT http://localhost:8153/admin/realms/raogaru/users/{USER_ID}/groups/{GROUP_ID} \
+  -H "Authorization: Bearer $TOKEN"
+
+================================================================================
+USING IMPORT METHOD
+
+Login
+/opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 \
+  --realm master --user admin --password admin
+
+Import Realm
+/opt/keycloak/bin/kcadm.sh create realms -f realm.json
+/opt/keycloak/bin/kcadm.sh get realms
+/opt/keycloak/bin/kcadm.sh get realms/raogaru
+
+Import Users
+/opt/keycloak/bin/kcadm.sh create users -r raogaru -f users.json
+
+Import Groups
+/opt/keycloak/bin/kcadm.sh create groups -r raogaru -f groups.json
+
+================================================================================
+
+

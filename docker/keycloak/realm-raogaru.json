@@ -1,0 +1,35 @@
+{
+  "realm": "raogaru",
+  "enabled": true,
+  "displayName": "RAOGARU Platform",
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": true,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": true,
+
+  "roles": { "realm": [
+      { "name": "admin", "description": "Realm Administrator" },
+      { "name": "user", "description": "Standard User" },
+      { "name": "viewer", "description": "Read Only User" }
+    ] },
+
+  "groups": [
+    { "name": "users", "realmRoles": ["user"] },
+    { "name": "admins", "realmRoles": ["admin"] }
+  ],
+
+  "users": [
+    { "username": "rao", "enabled": true, "emailVerified": true, "firstName": "Rao", "lastName": "Admin", "email": "rao@raogaru.com",
+      "realmRoles": ["admin"], "groups": ["admins"], "credentials": [ { "type": "password", "value": "Admin@123", "temporary": false } ] },
+    { "username": "user1", "enabled": true, "emailVerified": true, "firstName": "First1", "lastName": "Last1", "email": "user1@raogaru.com",
+      "realmRoles": ["user"], "groups": ["users"], "credentials": [ { "type": "password", "value": "User@123", "temporary": false } ] },
+    { "username": "user2", "enabled": true, "emailVerified": true, "firstName": "First2", "lastName": "Last2", "email": "user2@raogaru.com",
+      "realmRoles": ["user"], "groups": ["users"], "credentials": [ { "type": "password", "value": "User@123", "temporary": false } ] },
+    { "username": "viewer1", "enabled": true, "emailVerified": true, "firstName": "Viewer1", "lastName": "Last1", "email": "viewer1@raogaru.com",
+      "realmRoles": ["user"], "groups": ["users"], "credentials": [ { "type": "password", "value": "User@123", "temporary": false } ] },
+    { "username": "viewer2", "enabled": true, "emailVerified": true, "firstName": "Viewer2", "lastName": "Last2", "email": "viewer2@raogaru.com",
+      "realmRoles": ["user"], "groups": ["users"], "credentials": [ { "type": "password", "value": "User@123", "temporary": false } ] }
+  ]
+}
+

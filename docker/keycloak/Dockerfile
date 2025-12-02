@@ -13,12 +13,7 @@ ENV KC_DB_USERNAME=keycloak
 ENV KC_DB_PASSWORD=keycloak
 ENV KC_HOSTNAME_STRICT=false
 
-#COPY realm.json /opt/keycloak/data/import/
-#COPY roles.json /opt/keycloak/data/import/
-#COPY groups.json /opt/keycloak/data/import/
-#COPY users.json /opt/keycloak/data/import/
-#COPY clients.json /opt/keycloak/data/import/
-#COPY apps.json /opt/keycloak/data/import/
+COPY realm.json /opt/keycloak/data/import/
 
 # Build the optimized runtime
 RUN /opt/keycloak/bin/kc.sh build

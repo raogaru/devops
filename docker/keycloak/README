@@ -10,7 +10,7 @@ docker rmi i-keycloak
 docker build -t i-keycloak .
 #
 # run
-docker run -d --name c-keycloak --network n-raogaru -p 8153:8080  i-keycloak start --import-realm --log-level=DEBUG
+docker run -d --name c-keycloak --network n-raogaru -p 8153:8080  i-keycloak start 
 #
 docker stop c-keycloak
 docker start c-keycloak
@@ -25,4 +25,18 @@ docker logs c-keycloak
 http://localhost:8153/  
 http://localhost:8153/realms/raogaru
 #
+# ################################################################################
+# create users
+cd /opt/keycloak/data/import/
+
+#Login
+/opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 \
+  --realm master --user admin --password admin
+
+#Import Realm
+/opt/keycloak/bin/kcadm.sh create realms -f realm.json
+/opt/keycloak/bin/kcadm.sh get realms
+/opt/keycloak/bin/kcadm.sh get realms/raogaru
+
+
 # ################################################################################
