@@ -1,0 +1,37 @@
+# ################################################################################
+# purpose: kanboard - agile task documentation
+# status: working
+#
+docker stop c-kanboard
+docker rm c-kanboard
+docker rmi i-kanboard
+#
+# build
+docker build -t i-kanboard -f Dockerfile.postgres .
+docker build -t i-kanboard -f Dockerfile.sqllite .
+#
+# run
+docker run -d --name c-kanboard --network n-raogaru -p 8092:80  i-kanboard
+#
+docker stop c-kanboard
+docker start c-kanboard
+#
+# connect
+docker exec -it c-kanboard /bin/bash
+#
+# logs
+docker logs c-kanboard
+#
+# connect from webconsole
+http://localhost:8092/  
+user: admin
+password: admin
+#
+# connect to postgres database and verify objects
+exec -it c-postgres /bin/bash
+su - postgres
+psql
+\c kanboard
+\d
+#
+# ################################################################################
