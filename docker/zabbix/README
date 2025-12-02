@@ -1,0 +1,46 @@
+# ################################################################################
+# purpose: zabbix - network monitoring
+# status: working
+#
+docker stop c-zabbix
+docker rm c-zabbix
+docker rmi i-zabbix
+#
+# build
+docker build -t i-zabbix -f Dockerfile .
+#
+# run
+docker run -d --name c-zabbix --network n-raogaru -p 8171:80 -p 8172:10051 i-zabbix
+#
+docker stop c-zabbix
+docker start c-zabbix
+#
+# connect
+docker exec -it c-zabbix /bin/bash
+#
+# logs
+docker logs c-zabbix
+#
+# connect
+docker exec -it c-zabbix /bin/bash
+#
+# configure zabbix 
+docker exec -it c-zabbix /bin/bash
+su - postgres
+export PGPASSWORD=zabbix
+psql -h c-postgres -p 5432 -d zabbix -U zabbix  -f /usr/share/zabbix-sql-scripts/postgresql/server.sql
+\q
+#
+# verify in database
+exec -it c-postgres /bin/bash
+su - postgres
+psql
+\c zabbix
+\d
+#
+# connect from webconsole
+http://localhost:8171/zabbix
+user: Admin
+password: zabbix
+#
+# ################################################################################

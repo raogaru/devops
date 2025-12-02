@@ -1,0 +1,5 @@
+CREATE DATABASE zabbix;
+CREATE USER zabbix WITH ENCRYPTED PASSWORD 'zabbix';
+ALTER USER zabbix Superuser;
+GRANT ALL PRIVILEGES ON DATABASE zabbix TO zabbix;
+
