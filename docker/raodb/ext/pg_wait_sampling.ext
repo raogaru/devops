@@ -1,0 +1,40 @@
+# ----------------------------------------
+# pg_wait_sampling - WORKING 
+# Reference: https://github.com/powa-team/pg_wait_sampling
+
+sudo su - postgres
+cd $PGCODE/contrib/
+git clone https://github.com/powa-team/pg_wait_sampling.git
+cd $PGCODE/contrib/pg_wait_sampling
+make 
+make install
+
+psql
+CREATE EXTENSION pg_wait_sampling;
+ALTER SYSTEM SET pg_wait_sampling.history_size=5000;
+ALTER SYSTEM SET pg_wait_sampling.history_period=10;
+ALTER SYSTEM SET pg_wait_sampling.profile_period=10;
+ALTER SYSTEM SET pg_wait_sampling.profile_pid=true;
+ALTER SYSTEM SET pg_wait_sampling.profile_queries=top;
+ALTER SYSTEM SET pg_wait_sampling.sample_cpu=true;
+
+vi $PGDATA/postgresql.conf
+add pg_wait_sampling to shared_preload_libraries
+
+#restart postgresql
+PGstop
+PGstart
+
+psql
+\d pg_wait_sampling_current
+select * from pg_wait_sampling_current;
+select * from pg_wait_sampling_get_current(pid); 
+select * from pg_wait_sampling_history;
+select * from pg_wait_sampling_profile;
+select pg_wait_sampling_reset_profile();
+\x 
+How to use?
+Refer to $PGCODE/contrib/pg_wait_sampling/test/sql/*.sql
+
+# ----------------------------------------
+
