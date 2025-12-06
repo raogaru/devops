@@ -1,0 +1,33 @@
+# ----------------------------------------
+# pg_qualstats - WORKING 
+# Reference: https://github.com/powa-team/pg_qualstats
+
+sudo su - postgres
+cd $PGCODE/contrib/
+git clone https://github.com/powa-team/pg_qualstats.git
+cd $PGCODE/contrib/pg_qualstats
+make 
+make install
+
+psql
+CREATE EXTENSION pg_qualstats;
+ALTER SYSTEM SET pg_qualstats.enabled=true;
+ALTER SYSTEM SET pg_qualstats.max=1000;
+ALTER SYSTEM SET pg_qualstats.track_pg_catalog=false;
+ALTER SYSTEM SET pg_qualstats.resolve_oids=false;
+ALTER SYSTEM SET pg_qualstats.track_constants=true;
+ALTER SYSTEM SET pg_qualstats.sample_rate=-1;
+
+#restart postgresql
+PGstop
+PGstart
+
+psql
+\d pg_qualstats
+select * from pg_qualstats;
+\x 
+How to use?
+Refer to $PGCODE/contrib/pg_qualstats/test/sql/*.sql
+
+# ----------------------------------------
+
