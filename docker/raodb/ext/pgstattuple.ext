@@ -1,0 +1,32 @@
+# Find candidate tables/indexes for vaccuming 
+# ----------------------------------------
+# pgstattuple - WORKING 
+Reference: https://github.com/postgres/postgres/tree/master
+
+sudo su - postgres
+cd $PGCODE/contrib/pgstattuple
+make 
+make install
+
+psql
+CREATE EXTENSION pgstattuple;
+
+
+-- TABLE 
+SELECT * FROM pgstattuple('test');
+Dead tuples > 10–15% → vacuum tuning required
+Dead + free > 25% → table rewrite needed
+Free space large → fillfactor wrong
+
+-- INDEX
+SELECT * FROM pgstatindex('test_pkey');
+Field	Action trigger
+leaf_fragmentation > 30%	REINDEX
+avg_leaf_density < 70%		Wrong fillfactor
+deleted_pages growing		Vacuum lag
+
+How to use?
+Refer to $PGCODE/contrib/pgstattuple/sql/*.sql
+
+# ----------------------------------------
+
