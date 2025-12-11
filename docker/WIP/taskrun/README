@@ -1,0 +1,26 @@
+# ################################################################################
+# purpose: Run tasks in postgres
+# status: WIP
+#
+docker stop c-taskrun
+docker rm c-taskrun
+docker rmi i-taskrun
+#
+# build
+docker build -t i-taskrun .
+#
+# run
+docker run -d --name c-taskrun --network n-raogaru -v ./sql:/app/sql i-taskrun tail -f /dev/null
+#
+docker stop c-taskrun
+docker start c-taskrun
+#
+# connect
+docker exec -it c-taskrun /bin/sh
+#
+# test
+python3 taskrun.py job.yaml
+python3 taskrun.py job.yaml --dry-run
+
+#
+# ################################################################################

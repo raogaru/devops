@@ -1,0 +1,59 @@
+1️⃣ No indexes
+2️⃣ Add single-column indexes
+3️⃣ Add multi-column index
+4️⃣ Increase work_mem
+5️⃣ Enable parallelism
+6️⃣ VACUUM FULL vs ANALYZE
+7️⃣ Stale stats experiment
+
+
+SET enable_seqscan = off;
+EXPLAIN ANALYZE <query>;
+
+
+✅ Why This Schema Is Good for You
+
+✔ Fact / dimension pattern
+✔ Skew & selectivity
+✔ Big tables stress planner & IO
+✔ Works with pg_stat_statements
+✔ Perfect for AWR-style dashboards
+
+
+
+-- pg_bench
+--50% read, 30% mixed, 20% write
+pgbench -d mydb \
+  -U myuser \
+  -c 16 \
+  -j 16 \
+  -T 600 \
+  -f pgbench_read.sql@50 \
+  -f pgbench_mixed.sql@30 \
+  -f pgbench_write.sql@20
+
+Advanced flags for pg_bench
+--progress=10
+--log
+--max-tries=3
+--latency-limit=5s
+
+
+DISCARD ALL;
+CHECKPOINT;
+
+Key Metrics to Watch From pgbench:
+TPS
+Latency avg / p95
+
+SELECT * FROM pg_stat_statements ORDER BY total_time DESC LIMIT 10;
+SELECT * FROM pg_stat_io;
+SELECT * FROM pg_stat_bgwriter;
+
+1️⃣ No indexes → baseline
+2️⃣ Add indexes → rerun
+3️⃣ Increase work_mem
+4️⃣ Enable parallel query
+5️⃣ Partition orders
+6️⃣ Increase shared_buffers
+7️⃣ Vacuum tuning

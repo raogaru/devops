@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS products ;
+CREATE TABLE products (
+    product_id    bigserial PRIMARY KEY,
+    category      text NOT NULL,
+    price         numeric(10,2) NOT NULL
+);
+
