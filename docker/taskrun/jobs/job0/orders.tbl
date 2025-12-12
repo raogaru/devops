@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS orders ;
-CREATE TABLE orders (
+DROP TABLE IF EXISTS job0.orders ;
+CREATE TABLE job0.orders (
     order_id      bigserial PRIMARY KEY,
     customer_id   bigint NOT NULL,
     order_date    date NOT NULL,

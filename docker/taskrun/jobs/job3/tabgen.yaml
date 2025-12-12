@@ -1,0 +1,22 @@
+# ----------------------------------------
+# configuration for tabgen.py
+input:
+  table_schema: "job3"                            
+  table_name_prefix: "t"                           
+  table_count: 1000                                 
+  column_name_prefix: "c"                         
+  column_count_min: 3                                                                
+  column_count_max: 5                    
+  table_rows_min: 100                                            
+  table_rows_max: 500                                            
+                                                                
+output:
+  create_table_file: "jobs/job3/c.sql"                                     
+  drop_table_file: "jobs/job3/d.sql"                                       
+  insert_table_file: "jobs/job3/i.sql"                                     
+  analyze_table_file: "jobs/job3/a.sql"                                    
+  truncate_table_file: "jobs/job3/t.sql"                              
+  select_table_file: "jobs/job3/s.sql"                                
+  bench_table_file: "jobs/job3/b.sql"                                      
+
+# ----------------------------------------

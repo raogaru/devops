@@ -20,8 +20,33 @@ docker exec -it c-taskrun /bin/sh
 #
 # test
 docker exec -it c-taskrun /bin/sh
+#
+# create ddl scripts - for the purpose of running tasks on postgres. 
+
+# repat for job1 to job5
+vi tabgen.yaml
+./tabgen.py 
+cp tabgen.yaml jobs/job1/
+
+in postgres create schemas job0, job1, .... job5
+
+# execute jobs
 ./taskrun.py jobs/job0/job.yaml
+./taskrun.py jobs/job0/cleanup.yaml
+
 ./taskrun.py jobs/job1/job.yaml
+./taskrun.py jobs/job1/cleanup.yaml
+
 ./taskrun.py jobs/job2/job.yaml
+./taskrun.py jobs/job2/cleanuo.yaml
+
+./taskrun.py jobs/job3/job.yaml
+./taskrun.py jobs/job3/cleanuo.yaml
+
+./taskrun.py jobs/job4/job.yaml
+./taskrun.py jobs/job4/cleanuo.yaml
+
+./taskrun.py jobs/job5/job.yaml
+./taskrun.py jobs/job5/cleanuo.yaml
 #
 # ################################################################################

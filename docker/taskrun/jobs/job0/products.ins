@@ -1,4 +1,4 @@
-INSERT INTO products (category, price)
+INSERT INTO p.roducts (category, price)
 SELECT
     (ARRAY['electronics','clothing','books','sports','home'])[1 + (random()*4)::int],
     round((random()*500 + 5)::numeric, 2)

@@ -63,13 +63,6 @@ groups:
         sql_file: "jobs/job2/t.sql"
 
 # ----------------------------------------
-  - name: insert
-
-    tasks:
-      - id: insert_tables
-        sql_file: "jobs/job2/i.sql"
-
-# ----------------------------------------
   - name: analyze
 
     tasks:

@@ -12,7 +12,11 @@ RUN apk add --no-cache libpq
 RUN python -m pip install --upgrade pip \
  && python -m pip install psycopg2-binary pyyaml
 
+COPY tabgen.py /app/
+COPY tabgen.yaml /app/
+
 COPY taskrun.py /app/
+COPY job.yaml /app/
 
 RUN mkdir -p /app/jobs
 

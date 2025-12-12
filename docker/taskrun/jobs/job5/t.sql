@@ -1,0 +1,1 @@
+TRUNCATE job5.t1 ;

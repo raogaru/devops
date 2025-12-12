@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS products ;
-CREATE TABLE products (
+DROP TABLE IF EXISTS job0.products ;
+CREATE TABLE job0.products (
     product_id    bigserial PRIMARY KEY,
     category      text NOT NULL,
     price         numeric(10,2) NOT NULL
