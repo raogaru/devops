@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS customers ;
+CREATE TABLE customers (
+    customer_id   bigserial PRIMARY KEY,
+    country       text NOT NULL,
+    segment       text NOT NULL,
+    created_at    timestamptz NOT NULL
+);
+

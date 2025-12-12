@@ -1,7 +1,5 @@
-#!/usr/local/bin/python3
 # ################################################################################
 # Python script to read input yaml file and run tasks on postgres
-# Refer job.yaml for requirements definition
 # ################################################################################
 import yaml
 import psycopg2
@@ -193,7 +191,6 @@ def run_group(dsn, group, defaults, execution_cfg):
     # -----------------------------------------
     # NORMAL EXECUTION
     repeat = group.get("repeat", 1)  
-    max_workers = group.get("parallel", 1)  
 
     for iteration in range(1, repeat + 1):
         if (repeat > 1):
@@ -206,6 +203,7 @@ def run_group(dsn, group, defaults, execution_cfg):
         running   = {}
         failed    = False
     
+        max_workers = group["parallelism"]
         executor = ThreadPoolExecutor(max_workers=max_workers)
     
         def ready_tasks():
@@ -268,7 +266,7 @@ def run_group(dsn, group, defaults, execution_cfg):
     group_end_time = datetime.now()
     group_duration = (group_end_time - group_start_time).total_seconds()
     print(f"    group:{group['name']} end_time: {group_end_time}")
-    print(f"    group:{group['name']} duration: {group_duration:.2f}s")
+    print(f"\a    group:{group['name']} duration: {group_duration:.2f}s")
 
 # -----------------------------------------
 # Main

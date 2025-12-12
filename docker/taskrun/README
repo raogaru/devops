@@ -10,7 +10,7 @@ docker rmi i-taskrun
 docker build -t i-taskrun .
 #
 # run
-docker run -d --name c-taskrun --network n-raogaru -v ./sql:/app/sql i-taskrun tail -f /dev/null
+docker run -d --name c-taskrun --network n-raogaru -v ./jobs:/app/jobs i-taskrun tail -f /dev/null
 #
 docker stop c-taskrun
 docker start c-taskrun
@@ -19,8 +19,9 @@ docker start c-taskrun
 docker exec -it c-taskrun /bin/sh
 #
 # test
-python3 taskrun.py job.yaml
-python3 taskrun.py job.yaml --dry-run
-
+docker exec -it c-taskrun /bin/sh
+./taskrun.py jobs/job0/job.yaml
+./taskrun.py jobs/job1/job.yaml
+./taskrun.py jobs/job2/job.yaml
 #
 # ################################################################################
