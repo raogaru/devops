@@ -18,6 +18,8 @@ WORKDIR /app
 COPY tabgen.py /app/bin
 COPY jobrun.py /app/bin
 
+RUN chmod +x /app/bin/*.py
+
 COPY sample_tabgen.yaml /app/tabgen.yaml
 COPY sample_jobrun.yaml /app/jobrun.yaml
 

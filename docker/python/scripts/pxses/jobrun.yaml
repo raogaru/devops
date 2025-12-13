@@ -1,0 +1,2077 @@
+# ================================================================================
+# Specify tasks to be performed by python script.Group tasks. 
+#
+# Group attributes: 
+#    name: <group-name>
+#    parallel: 1
+#    skip: false
+#    repeat: 1
+#
+# Task attributges:     
+#    id: <task-name>
+#    sql: "REFRESH MATERIALIZED VIEW CONCURRENTLY mv_sales;"
+#    sql_file
+#    depends_on: [task1, task2]
+#    retries: 3
+#    retry_delay_sec: 5
+#    statement_timeout_sec: 600
+#    timeout: 
+#    on_failure: continue
+
+# ================================================================================
+database:
+  dsn: "host=c-postgres port=5432 dbname=postgres user=postgres password=postgres"
+
+execution:
+  dry_run: false   # true = no SQL execution
+  default_on_failure: abort  # skip | continue | abort
+
+defaults:
+  retries: 1
+  retry_delay_sec: 5
+  statement_timeout_sec: 300
+  repeat: 1
+  skip: false
+
+groups:
+# ----------------------------------------
+  - name: cleanup
+
+    tasks:
+      - id: drop_tables
+        sql_file: "scripts/pxses/d.sql"
+
+# ----------------------------------------
+  - name: create
+
+    tasks:
+      - id: create_tables
+        sql_file: "scripts/pxses/c.sql"
+
+# ----------------------------------------
+  - name: insert_analyze_truncate
+
+    tasks:
+      - id: insert_tables
+        sql_file: "scripts/pxses/i.sql"
+
+      - id: analyze_tables
+        sql_file: "scripts/pxses/a.sql"
+
+      - id: truncate_tables
+        sql_file: "scripts/pxses/t.sql"
+
+# ----------------------------------------
+  - name: insert
+
+    tasks:
+      - id: insert_tables
+        sql_file: "scripts/pxses/i.sql"
+
+# ----------------------------------------
+  - name: pxses_activity
+    parallel: 1
+    repeat: 1
+
+    tasks:
+      - id: table_t1
+        sql_file: "scripts/pxses/sql/t1.sql"
+      - id: table_t2
+        sql_file: "scripts/pxses/sql/t2.sql"
+      - id: table_t3
+        sql_file: "scripts/pxses/sql/t3.sql"
+      - id: table_t4
+        sql_file: "scripts/pxses/sql/t4.sql"
+      - id: table_t5
+        sql_file: "scripts/pxses/sql/t5.sql"
+      - id: table_t6
+        sql_file: "scripts/pxses/sql/t6.sql"
+      - id: table_t7
+        sql_file: "scripts/pxses/sql/t7.sql"
+      - id: table_t8
+        sql_file: "scripts/pxses/sql/t8.sql"
+      - id: table_t9
+        sql_file: "scripts/pxses/sql/t9.sql"
+      - id: table_t10
+        sql_file: "scripts/pxses/sql/t10.sql"
+      - id: table_t11
+        sql_file: "scripts/pxses/sql/t11.sql"
+      - id: table_t12
+        sql_file: "scripts/pxses/sql/t12.sql"
+      - id: table_t13
+        sql_file: "scripts/pxses/sql/t13.sql"
+      - id: table_t14
+        sql_file: "scripts/pxses/sql/t14.sql"
+      - id: table_t15
+        sql_file: "scripts/pxses/sql/t15.sql"
+      - id: table_t16
+        sql_file: "scripts/pxses/sql/t16.sql"
+      - id: table_t17
+        sql_file: "scripts/pxses/sql/t17.sql"
+      - id: table_t18
+        sql_file: "scripts/pxses/sql/t18.sql"
+      - id: table_t19
+        sql_file: "scripts/pxses/sql/t19.sql"
+      - id: table_t20
+        sql_file: "scripts/pxses/sql/t20.sql"
+      - id: table_t21
+        sql_file: "scripts/pxses/sql/t21.sql"
+      - id: table_t22
+        sql_file: "scripts/pxses/sql/t22.sql"
+      - id: table_t23
+        sql_file: "scripts/pxses/sql/t23.sql"
+      - id: table_t24
+        sql_file: "scripts/pxses/sql/t24.sql"
+      - id: table_t25
+        sql_file: "scripts/pxses/sql/t25.sql"
+      - id: table_t26
+        sql_file: "scripts/pxses/sql/t26.sql"
+      - id: table_t27
+        sql_file: "scripts/pxses/sql/t27.sql"
+      - id: table_t28
+        sql_file: "scripts/pxses/sql/t28.sql"
+      - id: table_t29
+        sql_file: "scripts/pxses/sql/t29.sql"
+      - id: table_t30
+        sql_file: "scripts/pxses/sql/t30.sql"
+      - id: table_t31
+        sql_file: "scripts/pxses/sql/t31.sql"
+      - id: table_t32
+        sql_file: "scripts/pxses/sql/t32.sql"
+      - id: table_t33
+        sql_file: "scripts/pxses/sql/t33.sql"
+      - id: table_t34
+        sql_file: "scripts/pxses/sql/t34.sql"
+      - id: table_t35
+        sql_file: "scripts/pxses/sql/t35.sql"
+      - id: table_t36
+        sql_file: "scripts/pxses/sql/t36.sql"
+      - id: table_t37
+        sql_file: "scripts/pxses/sql/t37.sql"
+      - id: table_t38
+        sql_file: "scripts/pxses/sql/t38.sql"
+      - id: table_t39
+        sql_file: "scripts/pxses/sql/t39.sql"
+      - id: table_t40
+        sql_file: "scripts/pxses/sql/t40.sql"
+      - id: table_t41
+        sql_file: "scripts/pxses/sql/t41.sql"
+      - id: table_t42
+        sql_file: "scripts/pxses/sql/t42.sql"
+      - id: table_t43
+        sql_file: "scripts/pxses/sql/t43.sql"
+      - id: table_t44
+        sql_file: "scripts/pxses/sql/t44.sql"
+      - id: table_t45
+        sql_file: "scripts/pxses/sql/t45.sql"
+      - id: table_t46
+        sql_file: "scripts/pxses/sql/t46.sql"
+      - id: table_t47
+        sql_file: "scripts/pxses/sql/t47.sql"
+      - id: table_t48
+        sql_file: "scripts/pxses/sql/t48.sql"
+      - id: table_t49
+        sql_file: "scripts/pxses/sql/t49.sql"
+      - id: table_t50
+        sql_file: "scripts/pxses/sql/t50.sql"
+      - id: table_t51
+        sql_file: "scripts/pxses/sql/t51.sql"
+      - id: table_t52
+        sql_file: "scripts/pxses/sql/t52.sql"
+      - id: table_t53
+        sql_file: "scripts/pxses/sql/t53.sql"
+      - id: table_t54
+        sql_file: "scripts/pxses/sql/t54.sql"
+      - id: table_t55
+        sql_file: "scripts/pxses/sql/t55.sql"
+      - id: table_t56
+        sql_file: "scripts/pxses/sql/t56.sql"
+      - id: table_t57
+        sql_file: "scripts/pxses/sql/t57.sql"
+      - id: table_t58
+        sql_file: "scripts/pxses/sql/t58.sql"
+      - id: table_t59
+        sql_file: "scripts/pxses/sql/t59.sql"
+      - id: table_t60
+        sql_file: "scripts/pxses/sql/t60.sql"
+      - id: table_t61
+        sql_file: "scripts/pxses/sql/t61.sql"
+      - id: table_t62
+        sql_file: "scripts/pxses/sql/t62.sql"
+      - id: table_t63
+        sql_file: "scripts/pxses/sql/t63.sql"
+      - id: table_t64
+        sql_file: "scripts/pxses/sql/t64.sql"
+      - id: table_t65
+        sql_file: "scripts/pxses/sql/t65.sql"
+      - id: table_t66
+        sql_file: "scripts/pxses/sql/t66.sql"
+      - id: table_t67
+        sql_file: "scripts/pxses/sql/t67.sql"
+      - id: table_t68
+        sql_file: "scripts/pxses/sql/t68.sql"
+      - id: table_t69
+        sql_file: "scripts/pxses/sql/t69.sql"
+      - id: table_t70
+        sql_file: "scripts/pxses/sql/t70.sql"
+      - id: table_t71
+        sql_file: "scripts/pxses/sql/t71.sql"
+      - id: table_t72
+        sql_file: "scripts/pxses/sql/t72.sql"
+      - id: table_t73
+        sql_file: "scripts/pxses/sql/t73.sql"
+      - id: table_t74
+        sql_file: "scripts/pxses/sql/t74.sql"
+      - id: table_t75
+        sql_file: "scripts/pxses/sql/t75.sql"
+      - id: table_t76
+        sql_file: "scripts/pxses/sql/t76.sql"
+      - id: table_t77
+        sql_file: "scripts/pxses/sql/t77.sql"
+      - id: table_t78
+        sql_file: "scripts/pxses/sql/t78.sql"
+      - id: table_t79
+        sql_file: "scripts/pxses/sql/t79.sql"
+      - id: table_t80
+        sql_file: "scripts/pxses/sql/t80.sql"
+      - id: table_t81
+        sql_file: "scripts/pxses/sql/t81.sql"
+      - id: table_t82
+        sql_file: "scripts/pxses/sql/t82.sql"
+      - id: table_t83
+        sql_file: "scripts/pxses/sql/t83.sql"
+      - id: table_t84
+        sql_file: "scripts/pxses/sql/t84.sql"
+      - id: table_t85
+        sql_file: "scripts/pxses/sql/t85.sql"
+      - id: table_t86
+        sql_file: "scripts/pxses/sql/t86.sql"
+      - id: table_t87
+        sql_file: "scripts/pxses/sql/t87.sql"
+      - id: table_t88
+        sql_file: "scripts/pxses/sql/t88.sql"
+      - id: table_t89
+        sql_file: "scripts/pxses/sql/t89.sql"
+      - id: table_t90
+        sql_file: "scripts/pxses/sql/t90.sql"
+      - id: table_t91
+        sql_file: "scripts/pxses/sql/t91.sql"
+      - id: table_t92
+        sql_file: "scripts/pxses/sql/t92.sql"
+      - id: table_t93
+        sql_file: "scripts/pxses/sql/t93.sql"
+      - id: table_t94
+        sql_file: "scripts/pxses/sql/t94.sql"
+      - id: table_t95
+        sql_file: "scripts/pxses/sql/t95.sql"
+      - id: table_t96
+        sql_file: "scripts/pxses/sql/t96.sql"
+      - id: table_t97
+        sql_file: "scripts/pxses/sql/t97.sql"
+      - id: table_t98
+        sql_file: "scripts/pxses/sql/t98.sql"
+      - id: table_t99
+        sql_file: "scripts/pxses/sql/t99.sql"
+      - id: table_t100
+        sql_file: "scripts/pxses/sql/t100.sql"
+      - id: table_t101
+        sql_file: "scripts/pxses/sql/t101.sql"
+      - id: table_t102
+        sql_file: "scripts/pxses/sql/t102.sql"
+      - id: table_t103
+        sql_file: "scripts/pxses/sql/t103.sql"
+      - id: table_t104
+        sql_file: "scripts/pxses/sql/t104.sql"
+      - id: table_t105
+        sql_file: "scripts/pxses/sql/t105.sql"
+      - id: table_t106
+        sql_file: "scripts/pxses/sql/t106.sql"
+      - id: table_t107
+        sql_file: "scripts/pxses/sql/t107.sql"
+      - id: table_t108
+        sql_file: "scripts/pxses/sql/t108.sql"
+      - id: table_t109
+        sql_file: "scripts/pxses/sql/t109.sql"
+      - id: table_t110
+        sql_file: "scripts/pxses/sql/t110.sql"
+      - id: table_t111
+        sql_file: "scripts/pxses/sql/t111.sql"
+      - id: table_t112
+        sql_file: "scripts/pxses/sql/t112.sql"
+      - id: table_t113
+        sql_file: "scripts/pxses/sql/t113.sql"
+      - id: table_t114
+        sql_file: "scripts/pxses/sql/t114.sql"
+      - id: table_t115
+        sql_file: "scripts/pxses/sql/t115.sql"
+      - id: table_t116
+        sql_file: "scripts/pxses/sql/t116.sql"
+      - id: table_t117
+        sql_file: "scripts/pxses/sql/t117.sql"
+      - id: table_t118
+        sql_file: "scripts/pxses/sql/t118.sql"
+      - id: table_t119
+        sql_file: "scripts/pxses/sql/t119.sql"
+      - id: table_t120
+        sql_file: "scripts/pxses/sql/t120.sql"
+      - id: table_t121
+        sql_file: "scripts/pxses/sql/t121.sql"
+      - id: table_t122
+        sql_file: "scripts/pxses/sql/t122.sql"
+      - id: table_t123
+        sql_file: "scripts/pxses/sql/t123.sql"
+      - id: table_t124
+        sql_file: "scripts/pxses/sql/t124.sql"
+      - id: table_t125
+        sql_file: "scripts/pxses/sql/t125.sql"
+      - id: table_t126
+        sql_file: "scripts/pxses/sql/t126.sql"
+      - id: table_t127
+        sql_file: "scripts/pxses/sql/t127.sql"
+      - id: table_t128
+        sql_file: "scripts/pxses/sql/t128.sql"
+      - id: table_t129
+        sql_file: "scripts/pxses/sql/t129.sql"
+      - id: table_t130
+        sql_file: "scripts/pxses/sql/t130.sql"
+      - id: table_t131
+        sql_file: "scripts/pxses/sql/t131.sql"
+      - id: table_t132
+        sql_file: "scripts/pxses/sql/t132.sql"
+      - id: table_t133
+        sql_file: "scripts/pxses/sql/t133.sql"
+      - id: table_t134
+        sql_file: "scripts/pxses/sql/t134.sql"
+      - id: table_t135
+        sql_file: "scripts/pxses/sql/t135.sql"
+      - id: table_t136
+        sql_file: "scripts/pxses/sql/t136.sql"
+      - id: table_t137
+        sql_file: "scripts/pxses/sql/t137.sql"
+      - id: table_t138
+        sql_file: "scripts/pxses/sql/t138.sql"
+      - id: table_t139
+        sql_file: "scripts/pxses/sql/t139.sql"
+      - id: table_t140
+        sql_file: "scripts/pxses/sql/t140.sql"
+      - id: table_t141
+        sql_file: "scripts/pxses/sql/t141.sql"
+      - id: table_t142
+        sql_file: "scripts/pxses/sql/t142.sql"
+      - id: table_t143
+        sql_file: "scripts/pxses/sql/t143.sql"
+      - id: table_t144
+        sql_file: "scripts/pxses/sql/t144.sql"
+      - id: table_t145
+        sql_file: "scripts/pxses/sql/t145.sql"
+      - id: table_t146
+        sql_file: "scripts/pxses/sql/t146.sql"
+      - id: table_t147
+        sql_file: "scripts/pxses/sql/t147.sql"
+      - id: table_t148
+        sql_file: "scripts/pxses/sql/t148.sql"
+      - id: table_t149
+        sql_file: "scripts/pxses/sql/t149.sql"
+      - id: table_t150
+        sql_file: "scripts/pxses/sql/t150.sql"
+      - id: table_t151
+        sql_file: "scripts/pxses/sql/t151.sql"
+      - id: table_t152
+        sql_file: "scripts/pxses/sql/t152.sql"
+      - id: table_t153
+        sql_file: "scripts/pxses/sql/t153.sql"
+      - id: table_t154
+        sql_file: "scripts/pxses/sql/t154.sql"
+      - id: table_t155
+        sql_file: "scripts/pxses/sql/t155.sql"
+      - id: table_t156
+        sql_file: "scripts/pxses/sql/t156.sql"
+      - id: table_t157
+        sql_file: "scripts/pxses/sql/t157.sql"
+      - id: table_t158
+        sql_file: "scripts/pxses/sql/t158.sql"
+      - id: table_t159
+        sql_file: "scripts/pxses/sql/t159.sql"
+      - id: table_t160
+        sql_file: "scripts/pxses/sql/t160.sql"
+      - id: table_t161
+        sql_file: "scripts/pxses/sql/t161.sql"
+      - id: table_t162
+        sql_file: "scripts/pxses/sql/t162.sql"
+      - id: table_t163
+        sql_file: "scripts/pxses/sql/t163.sql"
+      - id: table_t164
+        sql_file: "scripts/pxses/sql/t164.sql"
+      - id: table_t165
+        sql_file: "scripts/pxses/sql/t165.sql"
+      - id: table_t166
+        sql_file: "scripts/pxses/sql/t166.sql"
+      - id: table_t167
+        sql_file: "scripts/pxses/sql/t167.sql"
+      - id: table_t168
+        sql_file: "scripts/pxses/sql/t168.sql"
+      - id: table_t169
+        sql_file: "scripts/pxses/sql/t169.sql"
+      - id: table_t170
+        sql_file: "scripts/pxses/sql/t170.sql"
+      - id: table_t171
+        sql_file: "scripts/pxses/sql/t171.sql"
+      - id: table_t172
+        sql_file: "scripts/pxses/sql/t172.sql"
+      - id: table_t173
+        sql_file: "scripts/pxses/sql/t173.sql"
+      - id: table_t174
+        sql_file: "scripts/pxses/sql/t174.sql"
+      - id: table_t175
+        sql_file: "scripts/pxses/sql/t175.sql"
+      - id: table_t176
+        sql_file: "scripts/pxses/sql/t176.sql"
+      - id: table_t177
+        sql_file: "scripts/pxses/sql/t177.sql"
+      - id: table_t178
+        sql_file: "scripts/pxses/sql/t178.sql"
+      - id: table_t179
+        sql_file: "scripts/pxses/sql/t179.sql"
+      - id: table_t180
+        sql_file: "scripts/pxses/sql/t180.sql"
+      - id: table_t181
+        sql_file: "scripts/pxses/sql/t181.sql"
+      - id: table_t182
+        sql_file: "scripts/pxses/sql/t182.sql"
+      - id: table_t183
+        sql_file: "scripts/pxses/sql/t183.sql"
+      - id: table_t184
+        sql_file: "scripts/pxses/sql/t184.sql"
+      - id: table_t185
+        sql_file: "scripts/pxses/sql/t185.sql"
+      - id: table_t186
+        sql_file: "scripts/pxses/sql/t186.sql"
+      - id: table_t187
+        sql_file: "scripts/pxses/sql/t187.sql"
+      - id: table_t188
+        sql_file: "scripts/pxses/sql/t188.sql"
+      - id: table_t189
+        sql_file: "scripts/pxses/sql/t189.sql"
+      - id: table_t190
+        sql_file: "scripts/pxses/sql/t190.sql"
+      - id: table_t191
+        sql_file: "scripts/pxses/sql/t191.sql"
+      - id: table_t192
+        sql_file: "scripts/pxses/sql/t192.sql"
+      - id: table_t193
+        sql_file: "scripts/pxses/sql/t193.sql"
+      - id: table_t194
+        sql_file: "scripts/pxses/sql/t194.sql"
+      - id: table_t195
+        sql_file: "scripts/pxses/sql/t195.sql"
+      - id: table_t196
+        sql_file: "scripts/pxses/sql/t196.sql"
+      - id: table_t197
+        sql_file: "scripts/pxses/sql/t197.sql"
+      - id: table_t198
+        sql_file: "scripts/pxses/sql/t198.sql"
+      - id: table_t199
+        sql_file: "scripts/pxses/sql/t199.sql"
+      - id: table_t200
+        sql_file: "scripts/pxses/sql/t200.sql"
+      - id: table_t201
+        sql_file: "scripts/pxses/sql/t201.sql"
+      - id: table_t202
+        sql_file: "scripts/pxses/sql/t202.sql"
+      - id: table_t203
+        sql_file: "scripts/pxses/sql/t203.sql"
+      - id: table_t204
+        sql_file: "scripts/pxses/sql/t204.sql"
+      - id: table_t205
+        sql_file: "scripts/pxses/sql/t205.sql"
+      - id: table_t206
+        sql_file: "scripts/pxses/sql/t206.sql"
+      - id: table_t207
+        sql_file: "scripts/pxses/sql/t207.sql"
+      - id: table_t208
+        sql_file: "scripts/pxses/sql/t208.sql"
+      - id: table_t209
+        sql_file: "scripts/pxses/sql/t209.sql"
+      - id: table_t210
+        sql_file: "scripts/pxses/sql/t210.sql"
+      - id: table_t211
+        sql_file: "scripts/pxses/sql/t211.sql"
+      - id: table_t212
+        sql_file: "scripts/pxses/sql/t212.sql"
+      - id: table_t213
+        sql_file: "scripts/pxses/sql/t213.sql"
+      - id: table_t214
+        sql_file: "scripts/pxses/sql/t214.sql"
+      - id: table_t215
+        sql_file: "scripts/pxses/sql/t215.sql"
+      - id: table_t216
+        sql_file: "scripts/pxses/sql/t216.sql"
+      - id: table_t217
+        sql_file: "scripts/pxses/sql/t217.sql"
+      - id: table_t218
+        sql_file: "scripts/pxses/sql/t218.sql"
+      - id: table_t219
+        sql_file: "scripts/pxses/sql/t219.sql"
+      - id: table_t220
+        sql_file: "scripts/pxses/sql/t220.sql"
+      - id: table_t221
+        sql_file: "scripts/pxses/sql/t221.sql"
+      - id: table_t222
+        sql_file: "scripts/pxses/sql/t222.sql"
+      - id: table_t223
+        sql_file: "scripts/pxses/sql/t223.sql"
+      - id: table_t224
+        sql_file: "scripts/pxses/sql/t224.sql"
+      - id: table_t225
+        sql_file: "scripts/pxses/sql/t225.sql"
+      - id: table_t226
+        sql_file: "scripts/pxses/sql/t226.sql"
+      - id: table_t227
+        sql_file: "scripts/pxses/sql/t227.sql"
+      - id: table_t228
+        sql_file: "scripts/pxses/sql/t228.sql"
+      - id: table_t229
+        sql_file: "scripts/pxses/sql/t229.sql"
+      - id: table_t230
+        sql_file: "scripts/pxses/sql/t230.sql"
+      - id: table_t231
+        sql_file: "scripts/pxses/sql/t231.sql"
+      - id: table_t232
+        sql_file: "scripts/pxses/sql/t232.sql"
+      - id: table_t233
+        sql_file: "scripts/pxses/sql/t233.sql"
+      - id: table_t234
+        sql_file: "scripts/pxses/sql/t234.sql"
+      - id: table_t235
+        sql_file: "scripts/pxses/sql/t235.sql"
+      - id: table_t236
+        sql_file: "scripts/pxses/sql/t236.sql"
+      - id: table_t237
+        sql_file: "scripts/pxses/sql/t237.sql"
+      - id: table_t238
+        sql_file: "scripts/pxses/sql/t238.sql"
+      - id: table_t239
+        sql_file: "scripts/pxses/sql/t239.sql"
+      - id: table_t240
+        sql_file: "scripts/pxses/sql/t240.sql"
+      - id: table_t241
+        sql_file: "scripts/pxses/sql/t241.sql"
+      - id: table_t242
+        sql_file: "scripts/pxses/sql/t242.sql"
+      - id: table_t243
+        sql_file: "scripts/pxses/sql/t243.sql"
+      - id: table_t244
+        sql_file: "scripts/pxses/sql/t244.sql"
+      - id: table_t245
+        sql_file: "scripts/pxses/sql/t245.sql"
+      - id: table_t246
+        sql_file: "scripts/pxses/sql/t246.sql"
+      - id: table_t247
+        sql_file: "scripts/pxses/sql/t247.sql"
+      - id: table_t248
+        sql_file: "scripts/pxses/sql/t248.sql"
+      - id: table_t249
+        sql_file: "scripts/pxses/sql/t249.sql"
+      - id: table_t250
+        sql_file: "scripts/pxses/sql/t250.sql"
+      - id: table_t251
+        sql_file: "scripts/pxses/sql/t251.sql"
+      - id: table_t252
+        sql_file: "scripts/pxses/sql/t252.sql"
+      - id: table_t253
+        sql_file: "scripts/pxses/sql/t253.sql"
+      - id: table_t254
+        sql_file: "scripts/pxses/sql/t254.sql"
+      - id: table_t255
+        sql_file: "scripts/pxses/sql/t255.sql"
+      - id: table_t256
+        sql_file: "scripts/pxses/sql/t256.sql"
+      - id: table_t257
+        sql_file: "scripts/pxses/sql/t257.sql"
+      - id: table_t258
+        sql_file: "scripts/pxses/sql/t258.sql"
+      - id: table_t259
+        sql_file: "scripts/pxses/sql/t259.sql"
+      - id: table_t260
+        sql_file: "scripts/pxses/sql/t260.sql"
+      - id: table_t261
+        sql_file: "scripts/pxses/sql/t261.sql"
+      - id: table_t262
+        sql_file: "scripts/pxses/sql/t262.sql"
+      - id: table_t263
+        sql_file: "scripts/pxses/sql/t263.sql"
+      - id: table_t264
+        sql_file: "scripts/pxses/sql/t264.sql"
+      - id: table_t265
+        sql_file: "scripts/pxses/sql/t265.sql"
+      - id: table_t266
+        sql_file: "scripts/pxses/sql/t266.sql"
+      - id: table_t267
+        sql_file: "scripts/pxses/sql/t267.sql"
+      - id: table_t268
+        sql_file: "scripts/pxses/sql/t268.sql"
+      - id: table_t269
+        sql_file: "scripts/pxses/sql/t269.sql"
+      - id: table_t270
+        sql_file: "scripts/pxses/sql/t270.sql"
+      - id: table_t271
+        sql_file: "scripts/pxses/sql/t271.sql"
+      - id: table_t272
+        sql_file: "scripts/pxses/sql/t272.sql"
+      - id: table_t273
+        sql_file: "scripts/pxses/sql/t273.sql"
+      - id: table_t274
+        sql_file: "scripts/pxses/sql/t274.sql"
+      - id: table_t275
+        sql_file: "scripts/pxses/sql/t275.sql"
+      - id: table_t276
+        sql_file: "scripts/pxses/sql/t276.sql"
+      - id: table_t277
+        sql_file: "scripts/pxses/sql/t277.sql"
+      - id: table_t278
+        sql_file: "scripts/pxses/sql/t278.sql"
+      - id: table_t279
+        sql_file: "scripts/pxses/sql/t279.sql"
+      - id: table_t280
+        sql_file: "scripts/pxses/sql/t280.sql"
+      - id: table_t281
+        sql_file: "scripts/pxses/sql/t281.sql"
+      - id: table_t282
+        sql_file: "scripts/pxses/sql/t282.sql"
+      - id: table_t283
+        sql_file: "scripts/pxses/sql/t283.sql"
+      - id: table_t284
+        sql_file: "scripts/pxses/sql/t284.sql"
+      - id: table_t285
+        sql_file: "scripts/pxses/sql/t285.sql"
+      - id: table_t286
+        sql_file: "scripts/pxses/sql/t286.sql"
+      - id: table_t287
+        sql_file: "scripts/pxses/sql/t287.sql"
+      - id: table_t288
+        sql_file: "scripts/pxses/sql/t288.sql"
+      - id: table_t289
+        sql_file: "scripts/pxses/sql/t289.sql"
+      - id: table_t290
+        sql_file: "scripts/pxses/sql/t290.sql"
+      - id: table_t291
+        sql_file: "scripts/pxses/sql/t291.sql"
+      - id: table_t292
+        sql_file: "scripts/pxses/sql/t292.sql"
+      - id: table_t293
+        sql_file: "scripts/pxses/sql/t293.sql"
+      - id: table_t294
+        sql_file: "scripts/pxses/sql/t294.sql"
+      - id: table_t295
+        sql_file: "scripts/pxses/sql/t295.sql"
+      - id: table_t296
+        sql_file: "scripts/pxses/sql/t296.sql"
+      - id: table_t297
+        sql_file: "scripts/pxses/sql/t297.sql"
+      - id: table_t298
+        sql_file: "scripts/pxses/sql/t298.sql"
+      - id: table_t299
+        sql_file: "scripts/pxses/sql/t299.sql"
+      - id: table_t300
+        sql_file: "scripts/pxses/sql/t300.sql"
+      - id: table_t301
+        sql_file: "scripts/pxses/sql/t301.sql"
+      - id: table_t302
+        sql_file: "scripts/pxses/sql/t302.sql"
+      - id: table_t303
+        sql_file: "scripts/pxses/sql/t303.sql"
+      - id: table_t304
+        sql_file: "scripts/pxses/sql/t304.sql"
+      - id: table_t305
+        sql_file: "scripts/pxses/sql/t305.sql"
+      - id: table_t306
+        sql_file: "scripts/pxses/sql/t306.sql"
+      - id: table_t307
+        sql_file: "scripts/pxses/sql/t307.sql"
+      - id: table_t308
+        sql_file: "scripts/pxses/sql/t308.sql"
+      - id: table_t309
+        sql_file: "scripts/pxses/sql/t309.sql"
+      - id: table_t310
+        sql_file: "scripts/pxses/sql/t310.sql"
+      - id: table_t311
+        sql_file: "scripts/pxses/sql/t311.sql"
+      - id: table_t312
+        sql_file: "scripts/pxses/sql/t312.sql"
+      - id: table_t313
+        sql_file: "scripts/pxses/sql/t313.sql"
+      - id: table_t314
+        sql_file: "scripts/pxses/sql/t314.sql"
+      - id: table_t315
+        sql_file: "scripts/pxses/sql/t315.sql"
+      - id: table_t316
+        sql_file: "scripts/pxses/sql/t316.sql"
+      - id: table_t317
+        sql_file: "scripts/pxses/sql/t317.sql"
+      - id: table_t318
+        sql_file: "scripts/pxses/sql/t318.sql"
+      - id: table_t319
+        sql_file: "scripts/pxses/sql/t319.sql"
+      - id: table_t320
+        sql_file: "scripts/pxses/sql/t320.sql"
+      - id: table_t321
+        sql_file: "scripts/pxses/sql/t321.sql"
+      - id: table_t322
+        sql_file: "scripts/pxses/sql/t322.sql"
+      - id: table_t323
+        sql_file: "scripts/pxses/sql/t323.sql"
+      - id: table_t324
+        sql_file: "scripts/pxses/sql/t324.sql"
+      - id: table_t325
+        sql_file: "scripts/pxses/sql/t325.sql"
+      - id: table_t326
+        sql_file: "scripts/pxses/sql/t326.sql"
+      - id: table_t327
+        sql_file: "scripts/pxses/sql/t327.sql"
+      - id: table_t328
+        sql_file: "scripts/pxses/sql/t328.sql"
+      - id: table_t329
+        sql_file: "scripts/pxses/sql/t329.sql"
+      - id: table_t330
+        sql_file: "scripts/pxses/sql/t330.sql"
+      - id: table_t331
+        sql_file: "scripts/pxses/sql/t331.sql"
+      - id: table_t332
+        sql_file: "scripts/pxses/sql/t332.sql"
+      - id: table_t333
+        sql_file: "scripts/pxses/sql/t333.sql"
+      - id: table_t334
+        sql_file: "scripts/pxses/sql/t334.sql"
+      - id: table_t335
+        sql_file: "scripts/pxses/sql/t335.sql"
+      - id: table_t336
+        sql_file: "scripts/pxses/sql/t336.sql"
+      - id: table_t337
+        sql_file: "scripts/pxses/sql/t337.sql"
+      - id: table_t338
+        sql_file: "scripts/pxses/sql/t338.sql"
+      - id: table_t339
+        sql_file: "scripts/pxses/sql/t339.sql"
+      - id: table_t340
+        sql_file: "scripts/pxses/sql/t340.sql"
+      - id: table_t341
+        sql_file: "scripts/pxses/sql/t341.sql"
+      - id: table_t342
+        sql_file: "scripts/pxses/sql/t342.sql"
+      - id: table_t343
+        sql_file: "scripts/pxses/sql/t343.sql"
+      - id: table_t344
+        sql_file: "scripts/pxses/sql/t344.sql"
+      - id: table_t345
+        sql_file: "scripts/pxses/sql/t345.sql"
+      - id: table_t346
+        sql_file: "scripts/pxses/sql/t346.sql"
+      - id: table_t347
+        sql_file: "scripts/pxses/sql/t347.sql"
+      - id: table_t348
+        sql_file: "scripts/pxses/sql/t348.sql"
+      - id: table_t349
+        sql_file: "scripts/pxses/sql/t349.sql"
+      - id: table_t350
+        sql_file: "scripts/pxses/sql/t350.sql"
+      - id: table_t351
+        sql_file: "scripts/pxses/sql/t351.sql"
+      - id: table_t352
+        sql_file: "scripts/pxses/sql/t352.sql"
+      - id: table_t353
+        sql_file: "scripts/pxses/sql/t353.sql"
+      - id: table_t354
+        sql_file: "scripts/pxses/sql/t354.sql"
+      - id: table_t355
+        sql_file: "scripts/pxses/sql/t355.sql"
+      - id: table_t356
+        sql_file: "scripts/pxses/sql/t356.sql"
+      - id: table_t357
+        sql_file: "scripts/pxses/sql/t357.sql"
+      - id: table_t358
+        sql_file: "scripts/pxses/sql/t358.sql"
+      - id: table_t359
+        sql_file: "scripts/pxses/sql/t359.sql"
+      - id: table_t360
+        sql_file: "scripts/pxses/sql/t360.sql"
+      - id: table_t361
+        sql_file: "scripts/pxses/sql/t361.sql"
+      - id: table_t362
+        sql_file: "scripts/pxses/sql/t362.sql"
+      - id: table_t363
+        sql_file: "scripts/pxses/sql/t363.sql"
+      - id: table_t364
+        sql_file: "scripts/pxses/sql/t364.sql"
+      - id: table_t365
+        sql_file: "scripts/pxses/sql/t365.sql"
+      - id: table_t366
+        sql_file: "scripts/pxses/sql/t366.sql"
+      - id: table_t367
+        sql_file: "scripts/pxses/sql/t367.sql"
+      - id: table_t368
+        sql_file: "scripts/pxses/sql/t368.sql"
+      - id: table_t369
+        sql_file: "scripts/pxses/sql/t369.sql"
+      - id: table_t370
+        sql_file: "scripts/pxses/sql/t370.sql"
+      - id: table_t371
+        sql_file: "scripts/pxses/sql/t371.sql"
+      - id: table_t372
+        sql_file: "scripts/pxses/sql/t372.sql"
+      - id: table_t373
+        sql_file: "scripts/pxses/sql/t373.sql"
+      - id: table_t374
+        sql_file: "scripts/pxses/sql/t374.sql"
+      - id: table_t375
+        sql_file: "scripts/pxses/sql/t375.sql"
+      - id: table_t376
+        sql_file: "scripts/pxses/sql/t376.sql"
+      - id: table_t377
+        sql_file: "scripts/pxses/sql/t377.sql"
+      - id: table_t378
+        sql_file: "scripts/pxses/sql/t378.sql"
+      - id: table_t379
+        sql_file: "scripts/pxses/sql/t379.sql"
+      - id: table_t380
+        sql_file: "scripts/pxses/sql/t380.sql"
+      - id: table_t381
+        sql_file: "scripts/pxses/sql/t381.sql"
+      - id: table_t382
+        sql_file: "scripts/pxses/sql/t382.sql"
+      - id: table_t383
+        sql_file: "scripts/pxses/sql/t383.sql"
+      - id: table_t384
+        sql_file: "scripts/pxses/sql/t384.sql"
+      - id: table_t385
+        sql_file: "scripts/pxses/sql/t385.sql"
+      - id: table_t386
+        sql_file: "scripts/pxses/sql/t386.sql"
+      - id: table_t387
+        sql_file: "scripts/pxses/sql/t387.sql"
+      - id: table_t388
+        sql_file: "scripts/pxses/sql/t388.sql"
+      - id: table_t389
+        sql_file: "scripts/pxses/sql/t389.sql"
+      - id: table_t390
+        sql_file: "scripts/pxses/sql/t390.sql"
+      - id: table_t391
+        sql_file: "scripts/pxses/sql/t391.sql"
+      - id: table_t392
+        sql_file: "scripts/pxses/sql/t392.sql"
+      - id: table_t393
+        sql_file: "scripts/pxses/sql/t393.sql"
+      - id: table_t394
+        sql_file: "scripts/pxses/sql/t394.sql"
+      - id: table_t395
+        sql_file: "scripts/pxses/sql/t395.sql"
+      - id: table_t396
+        sql_file: "scripts/pxses/sql/t396.sql"
+      - id: table_t397
+        sql_file: "scripts/pxses/sql/t397.sql"
+      - id: table_t398
+        sql_file: "scripts/pxses/sql/t398.sql"
+      - id: table_t399
+        sql_file: "scripts/pxses/sql/t399.sql"
+      - id: table_t400
+        sql_file: "scripts/pxses/sql/t400.sql"
+      - id: table_t401
+        sql_file: "scripts/pxses/sql/t401.sql"
+      - id: table_t402
+        sql_file: "scripts/pxses/sql/t402.sql"
+      - id: table_t403
+        sql_file: "scripts/pxses/sql/t403.sql"
+      - id: table_t404
+        sql_file: "scripts/pxses/sql/t404.sql"
+      - id: table_t405
+        sql_file: "scripts/pxses/sql/t405.sql"
+      - id: table_t406
+        sql_file: "scripts/pxses/sql/t406.sql"
+      - id: table_t407
+        sql_file: "scripts/pxses/sql/t407.sql"
+      - id: table_t408
+        sql_file: "scripts/pxses/sql/t408.sql"
+      - id: table_t409
+        sql_file: "scripts/pxses/sql/t409.sql"
+      - id: table_t410
+        sql_file: "scripts/pxses/sql/t410.sql"
+      - id: table_t411
+        sql_file: "scripts/pxses/sql/t411.sql"
+      - id: table_t412
+        sql_file: "scripts/pxses/sql/t412.sql"
+      - id: table_t413
+        sql_file: "scripts/pxses/sql/t413.sql"
+      - id: table_t414
+        sql_file: "scripts/pxses/sql/t414.sql"
+      - id: table_t415
+        sql_file: "scripts/pxses/sql/t415.sql"
+      - id: table_t416
+        sql_file: "scripts/pxses/sql/t416.sql"
+      - id: table_t417
+        sql_file: "scripts/pxses/sql/t417.sql"
+      - id: table_t418
+        sql_file: "scripts/pxses/sql/t418.sql"
+      - id: table_t419
+        sql_file: "scripts/pxses/sql/t419.sql"
+      - id: table_t420
+        sql_file: "scripts/pxses/sql/t420.sql"
+      - id: table_t421
+        sql_file: "scripts/pxses/sql/t421.sql"
+      - id: table_t422
+        sql_file: "scripts/pxses/sql/t422.sql"
+      - id: table_t423
+        sql_file: "scripts/pxses/sql/t423.sql"
+      - id: table_t424
+        sql_file: "scripts/pxses/sql/t424.sql"
+      - id: table_t425
+        sql_file: "scripts/pxses/sql/t425.sql"
+      - id: table_t426
+        sql_file: "scripts/pxses/sql/t426.sql"
+      - id: table_t427
+        sql_file: "scripts/pxses/sql/t427.sql"
+      - id: table_t428
+        sql_file: "scripts/pxses/sql/t428.sql"
+      - id: table_t429
+        sql_file: "scripts/pxses/sql/t429.sql"
+      - id: table_t430
+        sql_file: "scripts/pxses/sql/t430.sql"
+      - id: table_t431
+        sql_file: "scripts/pxses/sql/t431.sql"
+      - id: table_t432
+        sql_file: "scripts/pxses/sql/t432.sql"
+      - id: table_t433
+        sql_file: "scripts/pxses/sql/t433.sql"
+      - id: table_t434
+        sql_file: "scripts/pxses/sql/t434.sql"
+      - id: table_t435
+        sql_file: "scripts/pxses/sql/t435.sql"
+      - id: table_t436
+        sql_file: "scripts/pxses/sql/t436.sql"
+      - id: table_t437
+        sql_file: "scripts/pxses/sql/t437.sql"
+      - id: table_t438
+        sql_file: "scripts/pxses/sql/t438.sql"
+      - id: table_t439
+        sql_file: "scripts/pxses/sql/t439.sql"
+      - id: table_t440
+        sql_file: "scripts/pxses/sql/t440.sql"
+      - id: table_t441
+        sql_file: "scripts/pxses/sql/t441.sql"
+      - id: table_t442
+        sql_file: "scripts/pxses/sql/t442.sql"
+      - id: table_t443
+        sql_file: "scripts/pxses/sql/t443.sql"
+      - id: table_t444
+        sql_file: "scripts/pxses/sql/t444.sql"
+      - id: table_t445
+        sql_file: "scripts/pxses/sql/t445.sql"
+      - id: table_t446
+        sql_file: "scripts/pxses/sql/t446.sql"
+      - id: table_t447
+        sql_file: "scripts/pxses/sql/t447.sql"
+      - id: table_t448
+        sql_file: "scripts/pxses/sql/t448.sql"
+      - id: table_t449
+        sql_file: "scripts/pxses/sql/t449.sql"
+      - id: table_t450
+        sql_file: "scripts/pxses/sql/t450.sql"
+      - id: table_t451
+        sql_file: "scripts/pxses/sql/t451.sql"
+      - id: table_t452
+        sql_file: "scripts/pxses/sql/t452.sql"
+      - id: table_t453
+        sql_file: "scripts/pxses/sql/t453.sql"
+      - id: table_t454
+        sql_file: "scripts/pxses/sql/t454.sql"
+      - id: table_t455
+        sql_file: "scripts/pxses/sql/t455.sql"
+      - id: table_t456
+        sql_file: "scripts/pxses/sql/t456.sql"
+      - id: table_t457
+        sql_file: "scripts/pxses/sql/t457.sql"
+      - id: table_t458
+        sql_file: "scripts/pxses/sql/t458.sql"
+      - id: table_t459
+        sql_file: "scripts/pxses/sql/t459.sql"
+      - id: table_t460
+        sql_file: "scripts/pxses/sql/t460.sql"
+      - id: table_t461
+        sql_file: "scripts/pxses/sql/t461.sql"
+      - id: table_t462
+        sql_file: "scripts/pxses/sql/t462.sql"
+      - id: table_t463
+        sql_file: "scripts/pxses/sql/t463.sql"
+      - id: table_t464
+        sql_file: "scripts/pxses/sql/t464.sql"
+      - id: table_t465
+        sql_file: "scripts/pxses/sql/t465.sql"
+      - id: table_t466
+        sql_file: "scripts/pxses/sql/t466.sql"
+      - id: table_t467
+        sql_file: "scripts/pxses/sql/t467.sql"
+      - id: table_t468
+        sql_file: "scripts/pxses/sql/t468.sql"
+      - id: table_t469
+        sql_file: "scripts/pxses/sql/t469.sql"
+      - id: table_t470
+        sql_file: "scripts/pxses/sql/t470.sql"
+      - id: table_t471
+        sql_file: "scripts/pxses/sql/t471.sql"
+      - id: table_t472
+        sql_file: "scripts/pxses/sql/t472.sql"
+      - id: table_t473
+        sql_file: "scripts/pxses/sql/t473.sql"
+      - id: table_t474
+        sql_file: "scripts/pxses/sql/t474.sql"
+      - id: table_t475
+        sql_file: "scripts/pxses/sql/t475.sql"
+      - id: table_t476
+        sql_file: "scripts/pxses/sql/t476.sql"
+      - id: table_t477
+        sql_file: "scripts/pxses/sql/t477.sql"
+      - id: table_t478
+        sql_file: "scripts/pxses/sql/t478.sql"
+      - id: table_t479
+        sql_file: "scripts/pxses/sql/t479.sql"
+      - id: table_t480
+        sql_file: "scripts/pxses/sql/t480.sql"
+      - id: table_t481
+        sql_file: "scripts/pxses/sql/t481.sql"
+      - id: table_t482
+        sql_file: "scripts/pxses/sql/t482.sql"
+      - id: table_t483
+        sql_file: "scripts/pxses/sql/t483.sql"
+      - id: table_t484
+        sql_file: "scripts/pxses/sql/t484.sql"
+      - id: table_t485
+        sql_file: "scripts/pxses/sql/t485.sql"
+      - id: table_t486
+        sql_file: "scripts/pxses/sql/t486.sql"
+      - id: table_t487
+        sql_file: "scripts/pxses/sql/t487.sql"
+      - id: table_t488
+        sql_file: "scripts/pxses/sql/t488.sql"
+      - id: table_t489
+        sql_file: "scripts/pxses/sql/t489.sql"
+      - id: table_t490
+        sql_file: "scripts/pxses/sql/t490.sql"
+      - id: table_t491
+        sql_file: "scripts/pxses/sql/t491.sql"
+      - id: table_t492
+        sql_file: "scripts/pxses/sql/t492.sql"
+      - id: table_t493
+        sql_file: "scripts/pxses/sql/t493.sql"
+      - id: table_t494
+        sql_file: "scripts/pxses/sql/t494.sql"
+      - id: table_t495
+        sql_file: "scripts/pxses/sql/t495.sql"
+      - id: table_t496
+        sql_file: "scripts/pxses/sql/t496.sql"
+      - id: table_t497
+        sql_file: "scripts/pxses/sql/t497.sql"
+      - id: table_t498
+        sql_file: "scripts/pxses/sql/t498.sql"
+      - id: table_t499
+        sql_file: "scripts/pxses/sql/t499.sql"
+      - id: table_t500
+        sql_file: "scripts/pxses/sql/t500.sql"
+      - id: table_t501
+        sql_file: "scripts/pxses/sql/t501.sql"
+      - id: table_t502
+        sql_file: "scripts/pxses/sql/t502.sql"
+      - id: table_t503
+        sql_file: "scripts/pxses/sql/t503.sql"
+      - id: table_t504
+        sql_file: "scripts/pxses/sql/t504.sql"
+      - id: table_t505
+        sql_file: "scripts/pxses/sql/t505.sql"
+      - id: table_t506
+        sql_file: "scripts/pxses/sql/t506.sql"
+      - id: table_t507
+        sql_file: "scripts/pxses/sql/t507.sql"
+      - id: table_t508
+        sql_file: "scripts/pxses/sql/t508.sql"
+      - id: table_t509
+        sql_file: "scripts/pxses/sql/t509.sql"
+      - id: table_t510
+        sql_file: "scripts/pxses/sql/t510.sql"
+      - id: table_t511
+        sql_file: "scripts/pxses/sql/t511.sql"
+      - id: table_t512
+        sql_file: "scripts/pxses/sql/t512.sql"
+      - id: table_t513
+        sql_file: "scripts/pxses/sql/t513.sql"
+      - id: table_t514
+        sql_file: "scripts/pxses/sql/t514.sql"
+      - id: table_t515
+        sql_file: "scripts/pxses/sql/t515.sql"
+      - id: table_t516
+        sql_file: "scripts/pxses/sql/t516.sql"
+      - id: table_t517
+        sql_file: "scripts/pxses/sql/t517.sql"
+      - id: table_t518
+        sql_file: "scripts/pxses/sql/t518.sql"
+      - id: table_t519
+        sql_file: "scripts/pxses/sql/t519.sql"
+      - id: table_t520
+        sql_file: "scripts/pxses/sql/t520.sql"
+      - id: table_t521
+        sql_file: "scripts/pxses/sql/t521.sql"
+      - id: table_t522
+        sql_file: "scripts/pxses/sql/t522.sql"
+      - id: table_t523
+        sql_file: "scripts/pxses/sql/t523.sql"
+      - id: table_t524
+        sql_file: "scripts/pxses/sql/t524.sql"
+      - id: table_t525
+        sql_file: "scripts/pxses/sql/t525.sql"
+      - id: table_t526
+        sql_file: "scripts/pxses/sql/t526.sql"
+      - id: table_t527
+        sql_file: "scripts/pxses/sql/t527.sql"
+      - id: table_t528
+        sql_file: "scripts/pxses/sql/t528.sql"
+      - id: table_t529
+        sql_file: "scripts/pxses/sql/t529.sql"
+      - id: table_t530
+        sql_file: "scripts/pxses/sql/t530.sql"
+      - id: table_t531
+        sql_file: "scripts/pxses/sql/t531.sql"
+      - id: table_t532
+        sql_file: "scripts/pxses/sql/t532.sql"
+      - id: table_t533
+        sql_file: "scripts/pxses/sql/t533.sql"
+      - id: table_t534
+        sql_file: "scripts/pxses/sql/t534.sql"
+      - id: table_t535
+        sql_file: "scripts/pxses/sql/t535.sql"
+      - id: table_t536
+        sql_file: "scripts/pxses/sql/t536.sql"
+      - id: table_t537
+        sql_file: "scripts/pxses/sql/t537.sql"
+      - id: table_t538
+        sql_file: "scripts/pxses/sql/t538.sql"
+      - id: table_t539
+        sql_file: "scripts/pxses/sql/t539.sql"
+      - id: table_t540
+        sql_file: "scripts/pxses/sql/t540.sql"
+      - id: table_t541
+        sql_file: "scripts/pxses/sql/t541.sql"
+      - id: table_t542
+        sql_file: "scripts/pxses/sql/t542.sql"
+      - id: table_t543
+        sql_file: "scripts/pxses/sql/t543.sql"
+      - id: table_t544
+        sql_file: "scripts/pxses/sql/t544.sql"
+      - id: table_t545
+        sql_file: "scripts/pxses/sql/t545.sql"
+      - id: table_t546
+        sql_file: "scripts/pxses/sql/t546.sql"
+      - id: table_t547
+        sql_file: "scripts/pxses/sql/t547.sql"
+      - id: table_t548
+        sql_file: "scripts/pxses/sql/t548.sql"
+      - id: table_t549
+        sql_file: "scripts/pxses/sql/t549.sql"
+      - id: table_t550
+        sql_file: "scripts/pxses/sql/t550.sql"
+      - id: table_t551
+        sql_file: "scripts/pxses/sql/t551.sql"
+      - id: table_t552
+        sql_file: "scripts/pxses/sql/t552.sql"
+      - id: table_t553
+        sql_file: "scripts/pxses/sql/t553.sql"
+      - id: table_t554
+        sql_file: "scripts/pxses/sql/t554.sql"
+      - id: table_t555
+        sql_file: "scripts/pxses/sql/t555.sql"
+      - id: table_t556
+        sql_file: "scripts/pxses/sql/t556.sql"
+      - id: table_t557
+        sql_file: "scripts/pxses/sql/t557.sql"
+      - id: table_t558
+        sql_file: "scripts/pxses/sql/t558.sql"
+      - id: table_t559
+        sql_file: "scripts/pxses/sql/t559.sql"
+      - id: table_t560
+        sql_file: "scripts/pxses/sql/t560.sql"
+      - id: table_t561
+        sql_file: "scripts/pxses/sql/t561.sql"
+      - id: table_t562
+        sql_file: "scripts/pxses/sql/t562.sql"
+      - id: table_t563
+        sql_file: "scripts/pxses/sql/t563.sql"
+      - id: table_t564
+        sql_file: "scripts/pxses/sql/t564.sql"
+      - id: table_t565
+        sql_file: "scripts/pxses/sql/t565.sql"
+      - id: table_t566
+        sql_file: "scripts/pxses/sql/t566.sql"
+      - id: table_t567
+        sql_file: "scripts/pxses/sql/t567.sql"
+      - id: table_t568
+        sql_file: "scripts/pxses/sql/t568.sql"
+      - id: table_t569
+        sql_file: "scripts/pxses/sql/t569.sql"
+      - id: table_t570
+        sql_file: "scripts/pxses/sql/t570.sql"
+      - id: table_t571
+        sql_file: "scripts/pxses/sql/t571.sql"
+      - id: table_t572
+        sql_file: "scripts/pxses/sql/t572.sql"
+      - id: table_t573
+        sql_file: "scripts/pxses/sql/t573.sql"
+      - id: table_t574
+        sql_file: "scripts/pxses/sql/t574.sql"
+      - id: table_t575
+        sql_file: "scripts/pxses/sql/t575.sql"
+      - id: table_t576
+        sql_file: "scripts/pxses/sql/t576.sql"
+      - id: table_t577
+        sql_file: "scripts/pxses/sql/t577.sql"
+      - id: table_t578
+        sql_file: "scripts/pxses/sql/t578.sql"
+      - id: table_t579
+        sql_file: "scripts/pxses/sql/t579.sql"
+      - id: table_t580
+        sql_file: "scripts/pxses/sql/t580.sql"
+      - id: table_t581
+        sql_file: "scripts/pxses/sql/t581.sql"
+      - id: table_t582
+        sql_file: "scripts/pxses/sql/t582.sql"
+      - id: table_t583
+        sql_file: "scripts/pxses/sql/t583.sql"
+      - id: table_t584
+        sql_file: "scripts/pxses/sql/t584.sql"
+      - id: table_t585
+        sql_file: "scripts/pxses/sql/t585.sql"
+      - id: table_t586
+        sql_file: "scripts/pxses/sql/t586.sql"
+      - id: table_t587
+        sql_file: "scripts/pxses/sql/t587.sql"
+      - id: table_t588
+        sql_file: "scripts/pxses/sql/t588.sql"
+      - id: table_t589
+        sql_file: "scripts/pxses/sql/t589.sql"
+      - id: table_t590
+        sql_file: "scripts/pxses/sql/t590.sql"
+      - id: table_t591
+        sql_file: "scripts/pxses/sql/t591.sql"
+      - id: table_t592
+        sql_file: "scripts/pxses/sql/t592.sql"
+      - id: table_t593
+        sql_file: "scripts/pxses/sql/t593.sql"
+      - id: table_t594
+        sql_file: "scripts/pxses/sql/t594.sql"
+      - id: table_t595
+        sql_file: "scripts/pxses/sql/t595.sql"
+      - id: table_t596
+        sql_file: "scripts/pxses/sql/t596.sql"
+      - id: table_t597
+        sql_file: "scripts/pxses/sql/t597.sql"
+      - id: table_t598
+        sql_file: "scripts/pxses/sql/t598.sql"
+      - id: table_t599
+        sql_file: "scripts/pxses/sql/t599.sql"
+      - id: table_t600
+        sql_file: "scripts/pxses/sql/t600.sql"
+      - id: table_t601
+        sql_file: "scripts/pxses/sql/t601.sql"
+      - id: table_t602
+        sql_file: "scripts/pxses/sql/t602.sql"
+      - id: table_t603
+        sql_file: "scripts/pxses/sql/t603.sql"
+      - id: table_t604
+        sql_file: "scripts/pxses/sql/t604.sql"
+      - id: table_t605
+        sql_file: "scripts/pxses/sql/t605.sql"
+      - id: table_t606
+        sql_file: "scripts/pxses/sql/t606.sql"
+      - id: table_t607
+        sql_file: "scripts/pxses/sql/t607.sql"
+      - id: table_t608
+        sql_file: "scripts/pxses/sql/t608.sql"
+      - id: table_t609
+        sql_file: "scripts/pxses/sql/t609.sql"
+      - id: table_t610
+        sql_file: "scripts/pxses/sql/t610.sql"
+      - id: table_t611
+        sql_file: "scripts/pxses/sql/t611.sql"
+      - id: table_t612
+        sql_file: "scripts/pxses/sql/t612.sql"
+      - id: table_t613
+        sql_file: "scripts/pxses/sql/t613.sql"
+      - id: table_t614
+        sql_file: "scripts/pxses/sql/t614.sql"
+      - id: table_t615
+        sql_file: "scripts/pxses/sql/t615.sql"
+      - id: table_t616
+        sql_file: "scripts/pxses/sql/t616.sql"
+      - id: table_t617
+        sql_file: "scripts/pxses/sql/t617.sql"
+      - id: table_t618
+        sql_file: "scripts/pxses/sql/t618.sql"
+      - id: table_t619
+        sql_file: "scripts/pxses/sql/t619.sql"
+      - id: table_t620
+        sql_file: "scripts/pxses/sql/t620.sql"
+      - id: table_t621
+        sql_file: "scripts/pxses/sql/t621.sql"
+      - id: table_t622
+        sql_file: "scripts/pxses/sql/t622.sql"
+      - id: table_t623
+        sql_file: "scripts/pxses/sql/t623.sql"
+      - id: table_t624
+        sql_file: "scripts/pxses/sql/t624.sql"
+      - id: table_t625
+        sql_file: "scripts/pxses/sql/t625.sql"
+      - id: table_t626
+        sql_file: "scripts/pxses/sql/t626.sql"
+      - id: table_t627
+        sql_file: "scripts/pxses/sql/t627.sql"
+      - id: table_t628
+        sql_file: "scripts/pxses/sql/t628.sql"
+      - id: table_t629
+        sql_file: "scripts/pxses/sql/t629.sql"
+      - id: table_t630
+        sql_file: "scripts/pxses/sql/t630.sql"
+      - id: table_t631
+        sql_file: "scripts/pxses/sql/t631.sql"
+      - id: table_t632
+        sql_file: "scripts/pxses/sql/t632.sql"
+      - id: table_t633
+        sql_file: "scripts/pxses/sql/t633.sql"
+      - id: table_t634
+        sql_file: "scripts/pxses/sql/t634.sql"
+      - id: table_t635
+        sql_file: "scripts/pxses/sql/t635.sql"
+      - id: table_t636
+        sql_file: "scripts/pxses/sql/t636.sql"
+      - id: table_t637
+        sql_file: "scripts/pxses/sql/t637.sql"
+      - id: table_t638
+        sql_file: "scripts/pxses/sql/t638.sql"
+      - id: table_t639
+        sql_file: "scripts/pxses/sql/t639.sql"
+      - id: table_t640
+        sql_file: "scripts/pxses/sql/t640.sql"
+      - id: table_t641
+        sql_file: "scripts/pxses/sql/t641.sql"
+      - id: table_t642
+        sql_file: "scripts/pxses/sql/t642.sql"
+      - id: table_t643
+        sql_file: "scripts/pxses/sql/t643.sql"
+      - id: table_t644
+        sql_file: "scripts/pxses/sql/t644.sql"
+      - id: table_t645
+        sql_file: "scripts/pxses/sql/t645.sql"
+      - id: table_t646
+        sql_file: "scripts/pxses/sql/t646.sql"
+      - id: table_t647
+        sql_file: "scripts/pxses/sql/t647.sql"
+      - id: table_t648
+        sql_file: "scripts/pxses/sql/t648.sql"
+      - id: table_t649
+        sql_file: "scripts/pxses/sql/t649.sql"
+      - id: table_t650
+        sql_file: "scripts/pxses/sql/t650.sql"
+      - id: table_t651
+        sql_file: "scripts/pxses/sql/t651.sql"
+      - id: table_t652
+        sql_file: "scripts/pxses/sql/t652.sql"
+      - id: table_t653
+        sql_file: "scripts/pxses/sql/t653.sql"
+      - id: table_t654
+        sql_file: "scripts/pxses/sql/t654.sql"
+      - id: table_t655
+        sql_file: "scripts/pxses/sql/t655.sql"
+      - id: table_t656
+        sql_file: "scripts/pxses/sql/t656.sql"
+      - id: table_t657
+        sql_file: "scripts/pxses/sql/t657.sql"
+      - id: table_t658
+        sql_file: "scripts/pxses/sql/t658.sql"
+      - id: table_t659
+        sql_file: "scripts/pxses/sql/t659.sql"
+      - id: table_t660
+        sql_file: "scripts/pxses/sql/t660.sql"
+      - id: table_t661
+        sql_file: "scripts/pxses/sql/t661.sql"
+      - id: table_t662
+        sql_file: "scripts/pxses/sql/t662.sql"
+      - id: table_t663
+        sql_file: "scripts/pxses/sql/t663.sql"
+      - id: table_t664
+        sql_file: "scripts/pxses/sql/t664.sql"
+      - id: table_t665
+        sql_file: "scripts/pxses/sql/t665.sql"
+      - id: table_t666
+        sql_file: "scripts/pxses/sql/t666.sql"
+      - id: table_t667
+        sql_file: "scripts/pxses/sql/t667.sql"
+      - id: table_t668
+        sql_file: "scripts/pxses/sql/t668.sql"
+      - id: table_t669
+        sql_file: "scripts/pxses/sql/t669.sql"
+      - id: table_t670
+        sql_file: "scripts/pxses/sql/t670.sql"
+      - id: table_t671
+        sql_file: "scripts/pxses/sql/t671.sql"
+      - id: table_t672
+        sql_file: "scripts/pxses/sql/t672.sql"
+      - id: table_t673
+        sql_file: "scripts/pxses/sql/t673.sql"
+      - id: table_t674
+        sql_file: "scripts/pxses/sql/t674.sql"
+      - id: table_t675
+        sql_file: "scripts/pxses/sql/t675.sql"
+      - id: table_t676
+        sql_file: "scripts/pxses/sql/t676.sql"
+      - id: table_t677
+        sql_file: "scripts/pxses/sql/t677.sql"
+      - id: table_t678
+        sql_file: "scripts/pxses/sql/t678.sql"
+      - id: table_t679
+        sql_file: "scripts/pxses/sql/t679.sql"
+      - id: table_t680
+        sql_file: "scripts/pxses/sql/t680.sql"
+      - id: table_t681
+        sql_file: "scripts/pxses/sql/t681.sql"
+      - id: table_t682
+        sql_file: "scripts/pxses/sql/t682.sql"
+      - id: table_t683
+        sql_file: "scripts/pxses/sql/t683.sql"
+      - id: table_t684
+        sql_file: "scripts/pxses/sql/t684.sql"
+      - id: table_t685
+        sql_file: "scripts/pxses/sql/t685.sql"
+      - id: table_t686
+        sql_file: "scripts/pxses/sql/t686.sql"
+      - id: table_t687
+        sql_file: "scripts/pxses/sql/t687.sql"
+      - id: table_t688
+        sql_file: "scripts/pxses/sql/t688.sql"
+      - id: table_t689
+        sql_file: "scripts/pxses/sql/t689.sql"
+      - id: table_t690
+        sql_file: "scripts/pxses/sql/t690.sql"
+      - id: table_t691
+        sql_file: "scripts/pxses/sql/t691.sql"
+      - id: table_t692
+        sql_file: "scripts/pxses/sql/t692.sql"
+      - id: table_t693
+        sql_file: "scripts/pxses/sql/t693.sql"
+      - id: table_t694
+        sql_file: "scripts/pxses/sql/t694.sql"
+      - id: table_t695
+        sql_file: "scripts/pxses/sql/t695.sql"
+      - id: table_t696
+        sql_file: "scripts/pxses/sql/t696.sql"
+      - id: table_t697
+        sql_file: "scripts/pxses/sql/t697.sql"
+      - id: table_t698
+        sql_file: "scripts/pxses/sql/t698.sql"
+      - id: table_t699
+        sql_file: "scripts/pxses/sql/t699.sql"
+      - id: table_t700
+        sql_file: "scripts/pxses/sql/t700.sql"
+      - id: table_t701
+        sql_file: "scripts/pxses/sql/t701.sql"
+      - id: table_t702
+        sql_file: "scripts/pxses/sql/t702.sql"
+      - id: table_t703
+        sql_file: "scripts/pxses/sql/t703.sql"
+      - id: table_t704
+        sql_file: "scripts/pxses/sql/t704.sql"
+      - id: table_t705
+        sql_file: "scripts/pxses/sql/t705.sql"
+      - id: table_t706
+        sql_file: "scripts/pxses/sql/t706.sql"
+      - id: table_t707
+        sql_file: "scripts/pxses/sql/t707.sql"
+      - id: table_t708
+        sql_file: "scripts/pxses/sql/t708.sql"
+      - id: table_t709
+        sql_file: "scripts/pxses/sql/t709.sql"
+      - id: table_t710
+        sql_file: "scripts/pxses/sql/t710.sql"
+      - id: table_t711
+        sql_file: "scripts/pxses/sql/t711.sql"
+      - id: table_t712
+        sql_file: "scripts/pxses/sql/t712.sql"
+      - id: table_t713
+        sql_file: "scripts/pxses/sql/t713.sql"
+      - id: table_t714
+        sql_file: "scripts/pxses/sql/t714.sql"
+      - id: table_t715
+        sql_file: "scripts/pxses/sql/t715.sql"
+      - id: table_t716
+        sql_file: "scripts/pxses/sql/t716.sql"
+      - id: table_t717
+        sql_file: "scripts/pxses/sql/t717.sql"
+      - id: table_t718
+        sql_file: "scripts/pxses/sql/t718.sql"
+      - id: table_t719
+        sql_file: "scripts/pxses/sql/t719.sql"
+      - id: table_t720
+        sql_file: "scripts/pxses/sql/t720.sql"
+      - id: table_t721
+        sql_file: "scripts/pxses/sql/t721.sql"
+      - id: table_t722
+        sql_file: "scripts/pxses/sql/t722.sql"
+      - id: table_t723
+        sql_file: "scripts/pxses/sql/t723.sql"
+      - id: table_t724
+        sql_file: "scripts/pxses/sql/t724.sql"
+      - id: table_t725
+        sql_file: "scripts/pxses/sql/t725.sql"
+      - id: table_t726
+        sql_file: "scripts/pxses/sql/t726.sql"
+      - id: table_t727
+        sql_file: "scripts/pxses/sql/t727.sql"
+      - id: table_t728
+        sql_file: "scripts/pxses/sql/t728.sql"
+      - id: table_t729
+        sql_file: "scripts/pxses/sql/t729.sql"
+      - id: table_t730
+        sql_file: "scripts/pxses/sql/t730.sql"
+      - id: table_t731
+        sql_file: "scripts/pxses/sql/t731.sql"
+      - id: table_t732
+        sql_file: "scripts/pxses/sql/t732.sql"
+      - id: table_t733
+        sql_file: "scripts/pxses/sql/t733.sql"
+      - id: table_t734
+        sql_file: "scripts/pxses/sql/t734.sql"
+      - id: table_t735
+        sql_file: "scripts/pxses/sql/t735.sql"
+      - id: table_t736
+        sql_file: "scripts/pxses/sql/t736.sql"
+      - id: table_t737
+        sql_file: "scripts/pxses/sql/t737.sql"
+      - id: table_t738
+        sql_file: "scripts/pxses/sql/t738.sql"
+      - id: table_t739
+        sql_file: "scripts/pxses/sql/t739.sql"
+      - id: table_t740
+        sql_file: "scripts/pxses/sql/t740.sql"
+      - id: table_t741
+        sql_file: "scripts/pxses/sql/t741.sql"
+      - id: table_t742
+        sql_file: "scripts/pxses/sql/t742.sql"
+      - id: table_t743
+        sql_file: "scripts/pxses/sql/t743.sql"
+      - id: table_t744
+        sql_file: "scripts/pxses/sql/t744.sql"
+      - id: table_t745
+        sql_file: "scripts/pxses/sql/t745.sql"
+      - id: table_t746
+        sql_file: "scripts/pxses/sql/t746.sql"
+      - id: table_t747
+        sql_file: "scripts/pxses/sql/t747.sql"
+      - id: table_t748
+        sql_file: "scripts/pxses/sql/t748.sql"
+      - id: table_t749
+        sql_file: "scripts/pxses/sql/t749.sql"
+      - id: table_t750
+        sql_file: "scripts/pxses/sql/t750.sql"
+      - id: table_t751
+        sql_file: "scripts/pxses/sql/t751.sql"
+      - id: table_t752
+        sql_file: "scripts/pxses/sql/t752.sql"
+      - id: table_t753
+        sql_file: "scripts/pxses/sql/t753.sql"
+      - id: table_t754
+        sql_file: "scripts/pxses/sql/t754.sql"
+      - id: table_t755
+        sql_file: "scripts/pxses/sql/t755.sql"
+      - id: table_t756
+        sql_file: "scripts/pxses/sql/t756.sql"
+      - id: table_t757
+        sql_file: "scripts/pxses/sql/t757.sql"
+      - id: table_t758
+        sql_file: "scripts/pxses/sql/t758.sql"
+      - id: table_t759
+        sql_file: "scripts/pxses/sql/t759.sql"
+      - id: table_t760
+        sql_file: "scripts/pxses/sql/t760.sql"
+      - id: table_t761
+        sql_file: "scripts/pxses/sql/t761.sql"
+      - id: table_t762
+        sql_file: "scripts/pxses/sql/t762.sql"
+      - id: table_t763
+        sql_file: "scripts/pxses/sql/t763.sql"
+      - id: table_t764
+        sql_file: "scripts/pxses/sql/t764.sql"
+      - id: table_t765
+        sql_file: "scripts/pxses/sql/t765.sql"
+      - id: table_t766
+        sql_file: "scripts/pxses/sql/t766.sql"
+      - id: table_t767
+        sql_file: "scripts/pxses/sql/t767.sql"
+      - id: table_t768
+        sql_file: "scripts/pxses/sql/t768.sql"
+      - id: table_t769
+        sql_file: "scripts/pxses/sql/t769.sql"
+      - id: table_t770
+        sql_file: "scripts/pxses/sql/t770.sql"
+      - id: table_t771
+        sql_file: "scripts/pxses/sql/t771.sql"
+      - id: table_t772
+        sql_file: "scripts/pxses/sql/t772.sql"
+      - id: table_t773
+        sql_file: "scripts/pxses/sql/t773.sql"
+      - id: table_t774
+        sql_file: "scripts/pxses/sql/t774.sql"
+      - id: table_t775
+        sql_file: "scripts/pxses/sql/t775.sql"
+      - id: table_t776
+        sql_file: "scripts/pxses/sql/t776.sql"
+      - id: table_t777
+        sql_file: "scripts/pxses/sql/t777.sql"
+      - id: table_t778
+        sql_file: "scripts/pxses/sql/t778.sql"
+      - id: table_t779
+        sql_file: "scripts/pxses/sql/t779.sql"
+      - id: table_t780
+        sql_file: "scripts/pxses/sql/t780.sql"
+      - id: table_t781
+        sql_file: "scripts/pxses/sql/t781.sql"
+      - id: table_t782
+        sql_file: "scripts/pxses/sql/t782.sql"
+      - id: table_t783
+        sql_file: "scripts/pxses/sql/t783.sql"
+      - id: table_t784
+        sql_file: "scripts/pxses/sql/t784.sql"
+      - id: table_t785
+        sql_file: "scripts/pxses/sql/t785.sql"
+      - id: table_t786
+        sql_file: "scripts/pxses/sql/t786.sql"
+      - id: table_t787
+        sql_file: "scripts/pxses/sql/t787.sql"
+      - id: table_t788
+        sql_file: "scripts/pxses/sql/t788.sql"
+      - id: table_t789
+        sql_file: "scripts/pxses/sql/t789.sql"
+      - id: table_t790
+        sql_file: "scripts/pxses/sql/t790.sql"
+      - id: table_t791
+        sql_file: "scripts/pxses/sql/t791.sql"
+      - id: table_t792
+        sql_file: "scripts/pxses/sql/t792.sql"
+      - id: table_t793
+        sql_file: "scripts/pxses/sql/t793.sql"
+      - id: table_t794
+        sql_file: "scripts/pxses/sql/t794.sql"
+      - id: table_t795
+        sql_file: "scripts/pxses/sql/t795.sql"
+      - id: table_t796
+        sql_file: "scripts/pxses/sql/t796.sql"
+      - id: table_t797
+        sql_file: "scripts/pxses/sql/t797.sql"
+      - id: table_t798
+        sql_file: "scripts/pxses/sql/t798.sql"
+      - id: table_t799
+        sql_file: "scripts/pxses/sql/t799.sql"
+      - id: table_t800
+        sql_file: "scripts/pxses/sql/t800.sql"
+      - id: table_t801
+        sql_file: "scripts/pxses/sql/t801.sql"
+      - id: table_t802
+        sql_file: "scripts/pxses/sql/t802.sql"
+      - id: table_t803
+        sql_file: "scripts/pxses/sql/t803.sql"
+      - id: table_t804
+        sql_file: "scripts/pxses/sql/t804.sql"
+      - id: table_t805
+        sql_file: "scripts/pxses/sql/t805.sql"
+      - id: table_t806
+        sql_file: "scripts/pxses/sql/t806.sql"
+      - id: table_t807
+        sql_file: "scripts/pxses/sql/t807.sql"
+      - id: table_t808
+        sql_file: "scripts/pxses/sql/t808.sql"
+      - id: table_t809
+        sql_file: "scripts/pxses/sql/t809.sql"
+      - id: table_t810
+        sql_file: "scripts/pxses/sql/t810.sql"
+      - id: table_t811
+        sql_file: "scripts/pxses/sql/t811.sql"
+      - id: table_t812
+        sql_file: "scripts/pxses/sql/t812.sql"
+      - id: table_t813
+        sql_file: "scripts/pxses/sql/t813.sql"
+      - id: table_t814
+        sql_file: "scripts/pxses/sql/t814.sql"
+      - id: table_t815
+        sql_file: "scripts/pxses/sql/t815.sql"
+      - id: table_t816
+        sql_file: "scripts/pxses/sql/t816.sql"
+      - id: table_t817
+        sql_file: "scripts/pxses/sql/t817.sql"
+      - id: table_t818
+        sql_file: "scripts/pxses/sql/t818.sql"
+      - id: table_t819
+        sql_file: "scripts/pxses/sql/t819.sql"
+      - id: table_t820
+        sql_file: "scripts/pxses/sql/t820.sql"
+      - id: table_t821
+        sql_file: "scripts/pxses/sql/t821.sql"
+      - id: table_t822
+        sql_file: "scripts/pxses/sql/t822.sql"
+      - id: table_t823
+        sql_file: "scripts/pxses/sql/t823.sql"
+      - id: table_t824
+        sql_file: "scripts/pxses/sql/t824.sql"
+      - id: table_t825
+        sql_file: "scripts/pxses/sql/t825.sql"
+      - id: table_t826
+        sql_file: "scripts/pxses/sql/t826.sql"
+      - id: table_t827
+        sql_file: "scripts/pxses/sql/t827.sql"
+      - id: table_t828
+        sql_file: "scripts/pxses/sql/t828.sql"
+      - id: table_t829
+        sql_file: "scripts/pxses/sql/t829.sql"
+      - id: table_t830
+        sql_file: "scripts/pxses/sql/t830.sql"
+      - id: table_t831
+        sql_file: "scripts/pxses/sql/t831.sql"
+      - id: table_t832
+        sql_file: "scripts/pxses/sql/t832.sql"
+      - id: table_t833
+        sql_file: "scripts/pxses/sql/t833.sql"
+      - id: table_t834
+        sql_file: "scripts/pxses/sql/t834.sql"
+      - id: table_t835
+        sql_file: "scripts/pxses/sql/t835.sql"
+      - id: table_t836
+        sql_file: "scripts/pxses/sql/t836.sql"
+      - id: table_t837
+        sql_file: "scripts/pxses/sql/t837.sql"
+      - id: table_t838
+        sql_file: "scripts/pxses/sql/t838.sql"
+      - id: table_t839
+        sql_file: "scripts/pxses/sql/t839.sql"
+      - id: table_t840
+        sql_file: "scripts/pxses/sql/t840.sql"
+      - id: table_t841
+        sql_file: "scripts/pxses/sql/t841.sql"
+      - id: table_t842
+        sql_file: "scripts/pxses/sql/t842.sql"
+      - id: table_t843
+        sql_file: "scripts/pxses/sql/t843.sql"
+      - id: table_t844
+        sql_file: "scripts/pxses/sql/t844.sql"
+      - id: table_t845
+        sql_file: "scripts/pxses/sql/t845.sql"
+      - id: table_t846
+        sql_file: "scripts/pxses/sql/t846.sql"
+      - id: table_t847
+        sql_file: "scripts/pxses/sql/t847.sql"
+      - id: table_t848
+        sql_file: "scripts/pxses/sql/t848.sql"
+      - id: table_t849
+        sql_file: "scripts/pxses/sql/t849.sql"
+      - id: table_t850
+        sql_file: "scripts/pxses/sql/t850.sql"
+      - id: table_t851
+        sql_file: "scripts/pxses/sql/t851.sql"
+      - id: table_t852
+        sql_file: "scripts/pxses/sql/t852.sql"
+      - id: table_t853
+        sql_file: "scripts/pxses/sql/t853.sql"
+      - id: table_t854
+        sql_file: "scripts/pxses/sql/t854.sql"
+      - id: table_t855
+        sql_file: "scripts/pxses/sql/t855.sql"
+      - id: table_t856
+        sql_file: "scripts/pxses/sql/t856.sql"
+      - id: table_t857
+        sql_file: "scripts/pxses/sql/t857.sql"
+      - id: table_t858
+        sql_file: "scripts/pxses/sql/t858.sql"
+      - id: table_t859
+        sql_file: "scripts/pxses/sql/t859.sql"
+      - id: table_t860
+        sql_file: "scripts/pxses/sql/t860.sql"
+      - id: table_t861
+        sql_file: "scripts/pxses/sql/t861.sql"
+      - id: table_t862
+        sql_file: "scripts/pxses/sql/t862.sql"
+      - id: table_t863
+        sql_file: "scripts/pxses/sql/t863.sql"
+      - id: table_t864
+        sql_file: "scripts/pxses/sql/t864.sql"
+      - id: table_t865
+        sql_file: "scripts/pxses/sql/t865.sql"
+      - id: table_t866
+        sql_file: "scripts/pxses/sql/t866.sql"
+      - id: table_t867
+        sql_file: "scripts/pxses/sql/t867.sql"
+      - id: table_t868
+        sql_file: "scripts/pxses/sql/t868.sql"
+      - id: table_t869
+        sql_file: "scripts/pxses/sql/t869.sql"
+      - id: table_t870
+        sql_file: "scripts/pxses/sql/t870.sql"
+      - id: table_t871
+        sql_file: "scripts/pxses/sql/t871.sql"
+      - id: table_t872
+        sql_file: "scripts/pxses/sql/t872.sql"
+      - id: table_t873
+        sql_file: "scripts/pxses/sql/t873.sql"
+      - id: table_t874
+        sql_file: "scripts/pxses/sql/t874.sql"
+      - id: table_t875
+        sql_file: "scripts/pxses/sql/t875.sql"
+      - id: table_t876
+        sql_file: "scripts/pxses/sql/t876.sql"
+      - id: table_t877
+        sql_file: "scripts/pxses/sql/t877.sql"
+      - id: table_t878
+        sql_file: "scripts/pxses/sql/t878.sql"
+      - id: table_t879
+        sql_file: "scripts/pxses/sql/t879.sql"
+      - id: table_t880
+        sql_file: "scripts/pxses/sql/t880.sql"
+      - id: table_t881
+        sql_file: "scripts/pxses/sql/t881.sql"
+      - id: table_t882
+        sql_file: "scripts/pxses/sql/t882.sql"
+      - id: table_t883
+        sql_file: "scripts/pxses/sql/t883.sql"
+      - id: table_t884
+        sql_file: "scripts/pxses/sql/t884.sql"
+      - id: table_t885
+        sql_file: "scripts/pxses/sql/t885.sql"
+      - id: table_t886
+        sql_file: "scripts/pxses/sql/t886.sql"
+      - id: table_t887
+        sql_file: "scripts/pxses/sql/t887.sql"
+      - id: table_t888
+        sql_file: "scripts/pxses/sql/t888.sql"
+      - id: table_t889
+        sql_file: "scripts/pxses/sql/t889.sql"
+      - id: table_t890
+        sql_file: "scripts/pxses/sql/t890.sql"
+      - id: table_t891
+        sql_file: "scripts/pxses/sql/t891.sql"
+      - id: table_t892
+        sql_file: "scripts/pxses/sql/t892.sql"
+      - id: table_t893
+        sql_file: "scripts/pxses/sql/t893.sql"
+      - id: table_t894
+        sql_file: "scripts/pxses/sql/t894.sql"
+      - id: table_t895
+        sql_file: "scripts/pxses/sql/t895.sql"
+      - id: table_t896
+        sql_file: "scripts/pxses/sql/t896.sql"
+      - id: table_t897
+        sql_file: "scripts/pxses/sql/t897.sql"
+      - id: table_t898
+        sql_file: "scripts/pxses/sql/t898.sql"
+      - id: table_t899
+        sql_file: "scripts/pxses/sql/t899.sql"
+      - id: table_t900
+        sql_file: "scripts/pxses/sql/t900.sql"
+      - id: table_t901
+        sql_file: "scripts/pxses/sql/t901.sql"
+      - id: table_t902
+        sql_file: "scripts/pxses/sql/t902.sql"
+      - id: table_t903
+        sql_file: "scripts/pxses/sql/t903.sql"
+      - id: table_t904
+        sql_file: "scripts/pxses/sql/t904.sql"
+      - id: table_t905
+        sql_file: "scripts/pxses/sql/t905.sql"
+      - id: table_t906
+        sql_file: "scripts/pxses/sql/t906.sql"
+      - id: table_t907
+        sql_file: "scripts/pxses/sql/t907.sql"
+      - id: table_t908
+        sql_file: "scripts/pxses/sql/t908.sql"
+      - id: table_t909
+        sql_file: "scripts/pxses/sql/t909.sql"
+      - id: table_t910
+        sql_file: "scripts/pxses/sql/t910.sql"
+      - id: table_t911
+        sql_file: "scripts/pxses/sql/t911.sql"
+      - id: table_t912
+        sql_file: "scripts/pxses/sql/t912.sql"
+      - id: table_t913
+        sql_file: "scripts/pxses/sql/t913.sql"
+      - id: table_t914
+        sql_file: "scripts/pxses/sql/t914.sql"
+      - id: table_t915
+        sql_file: "scripts/pxses/sql/t915.sql"
+      - id: table_t916
+        sql_file: "scripts/pxses/sql/t916.sql"
+      - id: table_t917
+        sql_file: "scripts/pxses/sql/t917.sql"
+      - id: table_t918
+        sql_file: "scripts/pxses/sql/t918.sql"
+      - id: table_t919
+        sql_file: "scripts/pxses/sql/t919.sql"
+      - id: table_t920
+        sql_file: "scripts/pxses/sql/t920.sql"
+      - id: table_t921
+        sql_file: "scripts/pxses/sql/t921.sql"
+      - id: table_t922
+        sql_file: "scripts/pxses/sql/t922.sql"
+      - id: table_t923
+        sql_file: "scripts/pxses/sql/t923.sql"
+      - id: table_t924
+        sql_file: "scripts/pxses/sql/t924.sql"
+      - id: table_t925
+        sql_file: "scripts/pxses/sql/t925.sql"
+      - id: table_t926
+        sql_file: "scripts/pxses/sql/t926.sql"
+      - id: table_t927
+        sql_file: "scripts/pxses/sql/t927.sql"
+      - id: table_t928
+        sql_file: "scripts/pxses/sql/t928.sql"
+      - id: table_t929
+        sql_file: "scripts/pxses/sql/t929.sql"
+      - id: table_t930
+        sql_file: "scripts/pxses/sql/t930.sql"
+      - id: table_t931
+        sql_file: "scripts/pxses/sql/t931.sql"
+      - id: table_t932
+        sql_file: "scripts/pxses/sql/t932.sql"
+      - id: table_t933
+        sql_file: "scripts/pxses/sql/t933.sql"
+      - id: table_t934
+        sql_file: "scripts/pxses/sql/t934.sql"
+      - id: table_t935
+        sql_file: "scripts/pxses/sql/t935.sql"
+      - id: table_t936
+        sql_file: "scripts/pxses/sql/t936.sql"
+      - id: table_t937
+        sql_file: "scripts/pxses/sql/t937.sql"
+      - id: table_t938
+        sql_file: "scripts/pxses/sql/t938.sql"
+      - id: table_t939
+        sql_file: "scripts/pxses/sql/t939.sql"
+      - id: table_t940
+        sql_file: "scripts/pxses/sql/t940.sql"
+      - id: table_t941
+        sql_file: "scripts/pxses/sql/t941.sql"
+      - id: table_t942
+        sql_file: "scripts/pxses/sql/t942.sql"
+      - id: table_t943
+        sql_file: "scripts/pxses/sql/t943.sql"
+      - id: table_t944
+        sql_file: "scripts/pxses/sql/t944.sql"
+      - id: table_t945
+        sql_file: "scripts/pxses/sql/t945.sql"
+      - id: table_t946
+        sql_file: "scripts/pxses/sql/t946.sql"
+      - id: table_t947
+        sql_file: "scripts/pxses/sql/t947.sql"
+      - id: table_t948
+        sql_file: "scripts/pxses/sql/t948.sql"
+      - id: table_t949
+        sql_file: "scripts/pxses/sql/t949.sql"
+      - id: table_t950
+        sql_file: "scripts/pxses/sql/t950.sql"
+      - id: table_t951
+        sql_file: "scripts/pxses/sql/t951.sql"
+      - id: table_t952
+        sql_file: "scripts/pxses/sql/t952.sql"
+      - id: table_t953
+        sql_file: "scripts/pxses/sql/t953.sql"
+      - id: table_t954
+        sql_file: "scripts/pxses/sql/t954.sql"
+      - id: table_t955
+        sql_file: "scripts/pxses/sql/t955.sql"
+      - id: table_t956
+        sql_file: "scripts/pxses/sql/t956.sql"
+      - id: table_t957
+        sql_file: "scripts/pxses/sql/t957.sql"
+      - id: table_t958
+        sql_file: "scripts/pxses/sql/t958.sql"
+      - id: table_t959
+        sql_file: "scripts/pxses/sql/t959.sql"
+      - id: table_t960
+        sql_file: "scripts/pxses/sql/t960.sql"
+      - id: table_t961
+        sql_file: "scripts/pxses/sql/t961.sql"
+      - id: table_t962
+        sql_file: "scripts/pxses/sql/t962.sql"
+      - id: table_t963
+        sql_file: "scripts/pxses/sql/t963.sql"
+      - id: table_t964
+        sql_file: "scripts/pxses/sql/t964.sql"
+      - id: table_t965
+        sql_file: "scripts/pxses/sql/t965.sql"
+      - id: table_t966
+        sql_file: "scripts/pxses/sql/t966.sql"
+      - id: table_t967
+        sql_file: "scripts/pxses/sql/t967.sql"
+      - id: table_t968
+        sql_file: "scripts/pxses/sql/t968.sql"
+      - id: table_t969
+        sql_file: "scripts/pxses/sql/t969.sql"
+      - id: table_t970
+        sql_file: "scripts/pxses/sql/t970.sql"
+      - id: table_t971
+        sql_file: "scripts/pxses/sql/t971.sql"
+      - id: table_t972
+        sql_file: "scripts/pxses/sql/t972.sql"
+      - id: table_t973
+        sql_file: "scripts/pxses/sql/t973.sql"
+      - id: table_t974
+        sql_file: "scripts/pxses/sql/t974.sql"
+      - id: table_t975
+        sql_file: "scripts/pxses/sql/t975.sql"
+      - id: table_t976
+        sql_file: "scripts/pxses/sql/t976.sql"
+      - id: table_t977
+        sql_file: "scripts/pxses/sql/t977.sql"
+      - id: table_t978
+        sql_file: "scripts/pxses/sql/t978.sql"
+      - id: table_t979
+        sql_file: "scripts/pxses/sql/t979.sql"
+      - id: table_t980
+        sql_file: "scripts/pxses/sql/t980.sql"
+      - id: table_t981
+        sql_file: "scripts/pxses/sql/t981.sql"
+      - id: table_t982
+        sql_file: "scripts/pxses/sql/t982.sql"
+      - id: table_t983
+        sql_file: "scripts/pxses/sql/t983.sql"
+      - id: table_t984
+        sql_file: "scripts/pxses/sql/t984.sql"
+      - id: table_t985
+        sql_file: "scripts/pxses/sql/t985.sql"
+      - id: table_t986
+        sql_file: "scripts/pxses/sql/t986.sql"
+      - id: table_t987
+        sql_file: "scripts/pxses/sql/t987.sql"
+      - id: table_t988
+        sql_file: "scripts/pxses/sql/t988.sql"
+      - id: table_t989
+        sql_file: "scripts/pxses/sql/t989.sql"
+      - id: table_t990
+        sql_file: "scripts/pxses/sql/t990.sql"
+      - id: table_t991
+        sql_file: "scripts/pxses/sql/t991.sql"
+      - id: table_t992
+        sql_file: "scripts/pxses/sql/t992.sql"
+      - id: table_t993
+        sql_file: "scripts/pxses/sql/t993.sql"
+      - id: table_t994
+        sql_file: "scripts/pxses/sql/t994.sql"
+      - id: table_t995
+        sql_file: "scripts/pxses/sql/t995.sql"
+      - id: table_t996
+        sql_file: "scripts/pxses/sql/t996.sql"
+      - id: table_t997
+        sql_file: "scripts/pxses/sql/t997.sql"
+      - id: table_t998
+        sql_file: "scripts/pxses/sql/t998.sql"
+      - id: table_t999
+        sql_file: "scripts/pxses/sql/t999.sql"
+      - id: table_t1000
+        sql_file: "scripts/pxses/sql/t1000.sql"
+# ----------------------------------------

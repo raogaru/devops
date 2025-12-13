@@ -334,7 +334,7 @@ for t in range(1, table_count + 1):
 
     insert_output.append(
         f"INSERT INTO {fqtn} ({','.join(c for c,_ in columns)})\n"
-        f"SELECT {', '.join(exprs)}\n"
+        f"SELECT\n    " + ",\n    ".join(exprs) + "\n"
         f"FROM generate_series(1, {rows_per_table});\n"
     )
 

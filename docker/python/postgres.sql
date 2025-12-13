@@ -1,5 +1,5 @@
 -- store execution details 
-CREATE TABLE IF NOT EXISTS public.pg_task_run
+CREATE TABLE IF NOT EXISTS public.rdb_jobrun_log
 (
     run_id BIGSERIAL PRIMARY KEY,
     run_ts timestamp with time zone DEFAULT now(),
@@ -12,9 +12,9 @@ CREATE TABLE IF NOT EXISTS public.pg_task_run
     dry_run boolean
 ) ;
 
-CREATE INDEX IF NOT EXISTS pg_task_run_run_ts_idx ON public.pg_task_run USING btree (run_ts) ;
+CREATE INDEX IF NOT EXISTS rdb_jobrun_log_run_ts_idx ON public.rdb_jobrun_log USING btree (run_ts) ;
 
-CREATE INDEX pg_task_run_task_id_idx ON public.pg_task_run USING btree (task_id) ;
+CREATE INDEX rdb_jobrun_log_task_id_idx ON public.rdb_jobrun_log USING btree (task_id) ;
 
 
 CREATE SCHEMA sample;

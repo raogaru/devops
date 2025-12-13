@@ -22,7 +22,7 @@ def advisory_key(task_id):
 def log_result(conn, group, result, dry_run):
     with conn.cursor() as cur:
         cur.execute("""
-            INSERT INTO pg_task_run
+            INSERT INTO public.rdb_jobrun_log
               (group_name, task_id, status, attempts, duration_sec, error_message, dry_run)
             VALUES (%s,%s,%s,%s,%s,%s,%s)
         """, (
@@ -128,8 +128,15 @@ def run_task(dsn, group, task, defaults, execution_cfg):
 
                     key = advisory_key(task["id"])
                     cur.execute("SELECT pg_try_advisory_lock(%s)", (key,))
-                    if not cur.fetchone()[0]:
-                        raise Exception("advisory lock already held")
+                    got_lock = cur.fetchone()[0]
+
+                    if not got_lock:
+                        return {
+                            "status": "SKIPPED",
+                            "reason": "advisory lock already held",
+                            "attempts": attempts,
+                            "duration": time.time() - start
+                        }
 
                     if not dry_run:
                         cur.execute(f"SET statement_timeout = {timeout * 1000}")

@@ -21,6 +21,8 @@ docker exec -it c-python /bin/sh
 # --------------------------------------------------------------------------------
 # test
 docker exec -it c-python /bin/sh
+
+docker exec -it c-python jobrun.py scripts/job1/jobrun.yaml
 #
 # create ddl scripts - for the purpose of running tasks on postgres. 
 vLINE="################################################################################"
@@ -28,6 +30,7 @@ vLINE="#########################################################################
 # repat for job1 to job5
 for DIRNAME in job1 job2 job3 job4 job5 part_list part_hash part_range part_random
 do
+echo ${vLINE}
 #vi jobs/job1/tabgen.yaml
 tabgen.py scripts/${DIRNAME}/tabgen.yaml
 done
@@ -41,8 +44,24 @@ su - postgres
 for DIRNAME in sample job1 job2 job3 job4 job5 part_list part_hash part_range part_random
 do
 echo ${vLINE}
-#jobrun.py scripts/${DIRNAME}/job.yaml
-jobrun.py scripts/${DIRNAME}/cleanup.yaml
+jobrun.py scripts/${DIRNAME}/jobrun.yaml
+#jobrun.py scripts/${DIRNAME}/cleanup.yaml
 done
+
+
+# sql query to check number of tables by schema
+SELECT
+    n.nspname AS schema_name,
+    COUNT(*)  AS table_count
+FROM pg_class c
+JOIN pg_namespace n ON n.oid = c.relnamespace
+WHERE c.relkind IN ('r', 'p')              -- regular + partitioned tables
+  AND n.nspname NOT IN ('pg_catalog', 'information_schema')
+GROUP BY n.nspname
+ORDER BY n.nspname;
+
+
+select count(1) from public.rdb_jobrun_log;
+
 
 # ################################################################################
