@@ -1,0 +1,1898 @@
+CREATE TABLE part_range.t1 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 bigint
+    ,c3 numeric(7,2)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t1_p0 PARTITION OF part_range.t1 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t1_p1 PARTITION OF part_range.t1 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t1_p2 PARTITION OF part_range.t1 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t1_p3 PARTITION OF part_range.t1 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t1_p4 PARTITION OF part_range.t1 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t1_p5 PARTITION OF part_range.t1 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t1_p6 PARTITION OF part_range.t1 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t1_px PARTITION OF part_range.t1 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t2 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 integer
+    ,c3 time
+    ,c4 char(6)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t2_p0 PARTITION OF part_range.t2 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t2_p1 PARTITION OF part_range.t2 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t2_p2 PARTITION OF part_range.t2 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t2_p3 PARTITION OF part_range.t2 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t2_p4 PARTITION OF part_range.t2 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t2_p5 PARTITION OF part_range.t2 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t2_p6 PARTITION OF part_range.t2 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t2_p7 PARTITION OF part_range.t2 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t2_px PARTITION OF part_range.t2 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t3 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 bytea
+    ,c3 date
+    ,c4 bytea
+    ,c5 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t3_p0 PARTITION OF part_range.t3 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t3_p1 PARTITION OF part_range.t3 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t3_p2 PARTITION OF part_range.t3 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t3_p3 PARTITION OF part_range.t3 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t3_p4 PARTITION OF part_range.t3 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t3_p5 PARTITION OF part_range.t3 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t3_p6 PARTITION OF part_range.t3 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t3_p7 PARTITION OF part_range.t3 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t3_p8 PARTITION OF part_range.t3 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t3_px PARTITION OF part_range.t3 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t4 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 bigint
+    ,c3 time
+    ,c4 char(4)
+    ,c5 timestamp
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t4_p0 PARTITION OF part_range.t4 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t4_p1 PARTITION OF part_range.t4 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t4_p2 PARTITION OF part_range.t4 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t4_p3 PARTITION OF part_range.t4 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t4_p4 PARTITION OF part_range.t4 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t4_p5 PARTITION OF part_range.t4 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t4_p6 PARTITION OF part_range.t4 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t4_p7 PARTITION OF part_range.t4 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t4_p8 PARTITION OF part_range.t4 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t4_px PARTITION OF part_range.t4 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t5 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 numeric(7,1)
+    ,c3 text
+    ,c4 smallint
+    ,c5 double precision
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t5_p0 PARTITION OF part_range.t5 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t5_p1 PARTITION OF part_range.t5 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t5_p2 PARTITION OF part_range.t5 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t5_p3 PARTITION OF part_range.t5 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t5_p4 PARTITION OF part_range.t5 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t5_p5 PARTITION OF part_range.t5 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t5_p6 PARTITION OF part_range.t5 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t5_px PARTITION OF part_range.t5 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t6 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 time
+    ,c3 text
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t6_p0 PARTITION OF part_range.t6 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t6_p1 PARTITION OF part_range.t6 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t6_p2 PARTITION OF part_range.t6 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t6_p3 PARTITION OF part_range.t6 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t6_p4 PARTITION OF part_range.t6 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t6_p5 PARTITION OF part_range.t6 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t6_p6 PARTITION OF part_range.t6 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t6_px PARTITION OF part_range.t6 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t7 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 double precision
+    ,c3 double precision
+    ,c4 jsonb
+    ,c5 text
+    ,c6 varchar(12)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t7_p0 PARTITION OF part_range.t7 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t7_p1 PARTITION OF part_range.t7 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t7_p2 PARTITION OF part_range.t7 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t7_p3 PARTITION OF part_range.t7 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t7_p4 PARTITION OF part_range.t7 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t7_p5 PARTITION OF part_range.t7 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t7_p6 PARTITION OF part_range.t7 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t7_px PARTITION OF part_range.t7 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t8 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 bigint
+    ,c3 double precision
+    ,c4 bytea
+    ,c5 timestamp
+    ,c6 numeric(4,2)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t8_p0 PARTITION OF part_range.t8 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t8_p1 PARTITION OF part_range.t8 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t8_p2 PARTITION OF part_range.t8 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t8_p3 PARTITION OF part_range.t8 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t8_p4 PARTITION OF part_range.t8 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t8_p5 PARTITION OF part_range.t8 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t8_p6 PARTITION OF part_range.t8 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t8_p7 PARTITION OF part_range.t8 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t8_p8 PARTITION OF part_range.t8 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t8_p9 PARTITION OF part_range.t8 FOR VALUES FROM ('2060-01-01') TO ('2070-01-01');
+CREATE TABLE part_range.t8_px PARTITION OF part_range.t8 FOR VALUES FROM ('2070-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t9 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 boolean
+    ,c3 text
+    ,c4 boolean
+    ,c5 numeric(8,0)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t9_p0 PARTITION OF part_range.t9 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t9_p1 PARTITION OF part_range.t9 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t9_p2 PARTITION OF part_range.t9 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t9_p3 PARTITION OF part_range.t9 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t9_p4 PARTITION OF part_range.t9 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t9_p5 PARTITION OF part_range.t9 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t9_px PARTITION OF part_range.t9 FOR VALUES FROM (6000000) TO (2147483647);
+
+CREATE TABLE part_range.t10 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 double precision
+    ,c3 integer
+    ,c4 text
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t10_p0 PARTITION OF part_range.t10 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t10_p1 PARTITION OF part_range.t10 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t10_p2 PARTITION OF part_range.t10 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t10_p3 PARTITION OF part_range.t10 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t10_p4 PARTITION OF part_range.t10 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t10_p5 PARTITION OF part_range.t10 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t10_p6 PARTITION OF part_range.t10 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t10_p7 PARTITION OF part_range.t10 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t10_px PARTITION OF part_range.t10 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t11 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 char(16)
+    ,c3 bytea
+    ,c4 jsonb
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t11_p0 PARTITION OF part_range.t11 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t11_p1 PARTITION OF part_range.t11 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t11_p2 PARTITION OF part_range.t11 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t11_p3 PARTITION OF part_range.t11 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t11_p4 PARTITION OF part_range.t11 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t11_p5 PARTITION OF part_range.t11 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t11_p6 PARTITION OF part_range.t11 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t11_p7 PARTITION OF part_range.t11 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t11_p8 PARTITION OF part_range.t11 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t11_p9 PARTITION OF part_range.t11 FOR VALUES FROM ('2060-01-01') TO ('2070-01-01');
+CREATE TABLE part_range.t11_px PARTITION OF part_range.t11 FOR VALUES FROM ('2070-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t12 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 boolean
+    ,c3 double precision
+    ,c4 text
+    ,c5 bigint
+    ,c6 timestamp
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t12_p0 PARTITION OF part_range.t12 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t12_p1 PARTITION OF part_range.t12 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t12_p2 PARTITION OF part_range.t12 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t12_p3 PARTITION OF part_range.t12 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t12_p4 PARTITION OF part_range.t12 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t12_p5 PARTITION OF part_range.t12 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t12_p6 PARTITION OF part_range.t12 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t12_p7 PARTITION OF part_range.t12 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t12_px PARTITION OF part_range.t12 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t13 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 varchar(38)
+    ,c3 time
+    ,c4 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t13_p0 PARTITION OF part_range.t13 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t13_p1 PARTITION OF part_range.t13 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t13_p2 PARTITION OF part_range.t13 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t13_p3 PARTITION OF part_range.t13 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t13_p4 PARTITION OF part_range.t13 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t13_p5 PARTITION OF part_range.t13 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t13_p6 PARTITION OF part_range.t13 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t13_p7 PARTITION OF part_range.t13 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t13_p8 PARTITION OF part_range.t13 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t13_p9 PARTITION OF part_range.t13 FOR VALUES FROM (9000000) TO (10000000);
+CREATE TABLE part_range.t13_px PARTITION OF part_range.t13 FOR VALUES FROM (10000000) TO (2147483647);
+
+CREATE TABLE part_range.t14 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 varchar(26)
+    ,c3 bytea
+    ,c4 bigint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t14_p0 PARTITION OF part_range.t14 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t14_p1 PARTITION OF part_range.t14 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t14_p2 PARTITION OF part_range.t14 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t14_p3 PARTITION OF part_range.t14 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t14_p4 PARTITION OF part_range.t14 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t14_px PARTITION OF part_range.t14 FOR VALUES FROM (5000000) TO (2147483647);
+
+CREATE TABLE part_range.t15 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 double precision
+    ,c3 jsonb
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t15_p0 PARTITION OF part_range.t15 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t15_p1 PARTITION OF part_range.t15 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t15_p2 PARTITION OF part_range.t15 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t15_p3 PARTITION OF part_range.t15 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t15_p4 PARTITION OF part_range.t15 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t15_p5 PARTITION OF part_range.t15 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t15_p6 PARTITION OF part_range.t15 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t15_p7 PARTITION OF part_range.t15 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t15_p8 PARTITION OF part_range.t15 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t15_px PARTITION OF part_range.t15 FOR VALUES FROM (9000000) TO (2147483647);
+
+CREATE TABLE part_range.t16 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 jsonb
+    ,c3 bigint
+    ,c4 bigint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t16_p0 PARTITION OF part_range.t16 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t16_p1 PARTITION OF part_range.t16 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t16_p2 PARTITION OF part_range.t16 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t16_p3 PARTITION OF part_range.t16 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t16_p4 PARTITION OF part_range.t16 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t16_p5 PARTITION OF part_range.t16 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t16_p6 PARTITION OF part_range.t16 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t16_p7 PARTITION OF part_range.t16 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t16_p8 PARTITION OF part_range.t16 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t16_p9 PARTITION OF part_range.t16 FOR VALUES FROM ('2060-01-01') TO ('2070-01-01');
+CREATE TABLE part_range.t16_px PARTITION OF part_range.t16 FOR VALUES FROM ('2070-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t17 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 text
+    ,c3 uuid
+    ,c4 bytea
+    ,c5 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t17_p0 PARTITION OF part_range.t17 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t17_p1 PARTITION OF part_range.t17 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t17_p2 PARTITION OF part_range.t17 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t17_p3 PARTITION OF part_range.t17 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t17_p4 PARTITION OF part_range.t17 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t17_p5 PARTITION OF part_range.t17 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t17_p6 PARTITION OF part_range.t17 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t17_p7 PARTITION OF part_range.t17 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t17_p8 PARTITION OF part_range.t17 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t17_px PARTITION OF part_range.t17 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t18 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 char(19)
+    ,c3 char(11)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t18_p0 PARTITION OF part_range.t18 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t18_p1 PARTITION OF part_range.t18 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t18_p2 PARTITION OF part_range.t18 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t18_p3 PARTITION OF part_range.t18 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t18_p4 PARTITION OF part_range.t18 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t18_p5 PARTITION OF part_range.t18 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t18_p6 PARTITION OF part_range.t18 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t18_p7 PARTITION OF part_range.t18 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t18_px PARTITION OF part_range.t18 FOR VALUES FROM ('2050-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t19 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 boolean
+    ,c3 jsonb
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t19_p0 PARTITION OF part_range.t19 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t19_p1 PARTITION OF part_range.t19 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t19_p2 PARTITION OF part_range.t19 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t19_p3 PARTITION OF part_range.t19 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t19_p4 PARTITION OF part_range.t19 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t19_px PARTITION OF part_range.t19 FOR VALUES FROM ('2020-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t20 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 boolean
+    ,c3 real
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t20_p0 PARTITION OF part_range.t20 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t20_p1 PARTITION OF part_range.t20 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t20_p2 PARTITION OF part_range.t20 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t20_p3 PARTITION OF part_range.t20 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t20_p4 PARTITION OF part_range.t20 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t20_p5 PARTITION OF part_range.t20 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t20_p6 PARTITION OF part_range.t20 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t20_px PARTITION OF part_range.t20 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t21 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 double precision
+    ,c3 bytea
+    ,c4 smallint
+    ,c5 char(16)
+    ,c6 uuid
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t21_p0 PARTITION OF part_range.t21 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t21_p1 PARTITION OF part_range.t21 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t21_p2 PARTITION OF part_range.t21 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t21_p3 PARTITION OF part_range.t21 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t21_p4 PARTITION OF part_range.t21 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t21_p5 PARTITION OF part_range.t21 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t21_p6 PARTITION OF part_range.t21 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t21_p7 PARTITION OF part_range.t21 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t21_p8 PARTITION OF part_range.t21 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t21_px PARTITION OF part_range.t21 FOR VALUES FROM (9000000) TO (2147483647);
+
+CREATE TABLE part_range.t22 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 integer
+    ,c3 text
+    ,c4 time
+    ,c5 bytea
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t22_p0 PARTITION OF part_range.t22 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t22_p1 PARTITION OF part_range.t22 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t22_p2 PARTITION OF part_range.t22 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t22_p3 PARTITION OF part_range.t22 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t22_p4 PARTITION OF part_range.t22 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t22_p5 PARTITION OF part_range.t22 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t22_p6 PARTITION OF part_range.t22 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t22_p7 PARTITION OF part_range.t22 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t22_p8 PARTITION OF part_range.t22 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t22_p9 PARTITION OF part_range.t22 FOR VALUES FROM (9000000) TO (10000000);
+CREATE TABLE part_range.t22_px PARTITION OF part_range.t22 FOR VALUES FROM (10000000) TO (2147483647);
+
+CREATE TABLE part_range.t23 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 bytea
+    ,c3 double precision
+    ,c4 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t23_p0 PARTITION OF part_range.t23 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t23_p1 PARTITION OF part_range.t23 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t23_p2 PARTITION OF part_range.t23 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t23_p3 PARTITION OF part_range.t23 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t23_p4 PARTITION OF part_range.t23 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t23_p5 PARTITION OF part_range.t23 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t23_p6 PARTITION OF part_range.t23 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t23_px PARTITION OF part_range.t23 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t24 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 char(17)
+    ,c3 uuid
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t24_p0 PARTITION OF part_range.t24 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t24_p1 PARTITION OF part_range.t24 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t24_p2 PARTITION OF part_range.t24 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t24_p3 PARTITION OF part_range.t24 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t24_p4 PARTITION OF part_range.t24 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t24_p5 PARTITION OF part_range.t24 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t24_p6 PARTITION OF part_range.t24 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t24_px PARTITION OF part_range.t24 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t25 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 timestamp
+    ,c3 numeric(12,0)
+    ,c4 char(5)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t25_p0 PARTITION OF part_range.t25 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t25_p1 PARTITION OF part_range.t25 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t25_p2 PARTITION OF part_range.t25 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t25_p3 PARTITION OF part_range.t25 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t25_p4 PARTITION OF part_range.t25 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t25_p5 PARTITION OF part_range.t25 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t25_px PARTITION OF part_range.t25 FOR VALUES FROM ('2030-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t26 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 real
+    ,c3 numeric(4,1)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t26_p0 PARTITION OF part_range.t26 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t26_p1 PARTITION OF part_range.t26 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t26_p2 PARTITION OF part_range.t26 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t26_p3 PARTITION OF part_range.t26 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t26_p4 PARTITION OF part_range.t26 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t26_p5 PARTITION OF part_range.t26 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t26_p6 PARTITION OF part_range.t26 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t26_px PARTITION OF part_range.t26 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t27 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 char(2)
+    ,c3 boolean
+    ,c4 time
+    ,c5 text
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t27_p0 PARTITION OF part_range.t27 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t27_p1 PARTITION OF part_range.t27 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t27_p2 PARTITION OF part_range.t27 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t27_p3 PARTITION OF part_range.t27 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t27_p4 PARTITION OF part_range.t27 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t27_px PARTITION OF part_range.t27 FOR VALUES FROM ('2020-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t28 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 jsonb
+    ,c3 time
+    ,c4 boolean
+    ,c5 boolean
+    ,c6 numeric(4,1)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t28_p0 PARTITION OF part_range.t28 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t28_p1 PARTITION OF part_range.t28 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t28_p2 PARTITION OF part_range.t28 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t28_p3 PARTITION OF part_range.t28 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t28_p4 PARTITION OF part_range.t28 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t28_p5 PARTITION OF part_range.t28 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t28_px PARTITION OF part_range.t28 FOR VALUES FROM (6000000) TO (2147483647);
+
+CREATE TABLE part_range.t29 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 integer
+    ,c3 text
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t29_p0 PARTITION OF part_range.t29 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t29_p1 PARTITION OF part_range.t29 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t29_p2 PARTITION OF part_range.t29 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t29_p3 PARTITION OF part_range.t29 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t29_p4 PARTITION OF part_range.t29 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t29_p5 PARTITION OF part_range.t29 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t29_p6 PARTITION OF part_range.t29 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t29_p7 PARTITION OF part_range.t29 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t29_p8 PARTITION OF part_range.t29 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t29_px PARTITION OF part_range.t29 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t30 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 bytea
+    ,c3 numeric(6,0)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t30_p0 PARTITION OF part_range.t30 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t30_p1 PARTITION OF part_range.t30 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t30_p2 PARTITION OF part_range.t30 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t30_p3 PARTITION OF part_range.t30 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t30_p4 PARTITION OF part_range.t30 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t30_p5 PARTITION OF part_range.t30 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t30_px PARTITION OF part_range.t30 FOR VALUES FROM (6000000) TO (2147483647);
+
+CREATE TABLE part_range.t31 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 text
+    ,c3 date
+    ,c4 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t31_p0 PARTITION OF part_range.t31 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t31_p1 PARTITION OF part_range.t31 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t31_p2 PARTITION OF part_range.t31 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t31_p3 PARTITION OF part_range.t31 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t31_p4 PARTITION OF part_range.t31 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t31_p5 PARTITION OF part_range.t31 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t31_p6 PARTITION OF part_range.t31 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t31_px PARTITION OF part_range.t31 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t32 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 real
+    ,c3 timestamp
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t32_p0 PARTITION OF part_range.t32 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t32_p1 PARTITION OF part_range.t32 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t32_p2 PARTITION OF part_range.t32 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t32_p3 PARTITION OF part_range.t32 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t32_p4 PARTITION OF part_range.t32 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t32_p5 PARTITION OF part_range.t32 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t32_p6 PARTITION OF part_range.t32 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t32_p7 PARTITION OF part_range.t32 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t32_px PARTITION OF part_range.t32 FOR VALUES FROM ('2050-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t33 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 varchar(50)
+    ,c3 smallint
+    ,c4 real
+    ,c5 bytea
+    ,c6 jsonb
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t33_p0 PARTITION OF part_range.t33 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t33_p1 PARTITION OF part_range.t33 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t33_p2 PARTITION OF part_range.t33 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t33_p3 PARTITION OF part_range.t33 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t33_p4 PARTITION OF part_range.t33 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t33_p5 PARTITION OF part_range.t33 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t33_p6 PARTITION OF part_range.t33 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t33_px PARTITION OF part_range.t33 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t34 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 text
+    ,c3 varchar(32)
+    ,c4 time
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t34_p0 PARTITION OF part_range.t34 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t34_p1 PARTITION OF part_range.t34 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t34_p2 PARTITION OF part_range.t34 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t34_p3 PARTITION OF part_range.t34 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t34_p4 PARTITION OF part_range.t34 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t34_p5 PARTITION OF part_range.t34 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t34_p6 PARTITION OF part_range.t34 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t34_px PARTITION OF part_range.t34 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t35 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 uuid
+    ,c3 char(16)
+    ,c4 time
+    ,c5 text
+    ,c6 numeric(8,3)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t35_p0 PARTITION OF part_range.t35 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t35_p1 PARTITION OF part_range.t35 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t35_p2 PARTITION OF part_range.t35 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t35_p3 PARTITION OF part_range.t35 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t35_p4 PARTITION OF part_range.t35 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t35_px PARTITION OF part_range.t35 FOR VALUES FROM ('2020-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t36 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 double precision
+    ,c3 double precision
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t36_p0 PARTITION OF part_range.t36 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t36_p1 PARTITION OF part_range.t36 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t36_p2 PARTITION OF part_range.t36 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t36_p3 PARTITION OF part_range.t36 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t36_p4 PARTITION OF part_range.t36 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t36_p5 PARTITION OF part_range.t36 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t36_px PARTITION OF part_range.t36 FOR VALUES FROM (6000000) TO (2147483647);
+
+CREATE TABLE part_range.t37 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 boolean
+    ,c3 double precision
+    ,c4 numeric(4,2)
+    ,c5 varchar(45)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t37_p0 PARTITION OF part_range.t37 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t37_p1 PARTITION OF part_range.t37 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t37_p2 PARTITION OF part_range.t37 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t37_p3 PARTITION OF part_range.t37 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t37_p4 PARTITION OF part_range.t37 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t37_p5 PARTITION OF part_range.t37 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t37_p6 PARTITION OF part_range.t37 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t37_p7 PARTITION OF part_range.t37 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t37_p8 PARTITION OF part_range.t37 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t37_p9 PARTITION OF part_range.t37 FOR VALUES FROM (9000000) TO (10000000);
+CREATE TABLE part_range.t37_px PARTITION OF part_range.t37 FOR VALUES FROM (10000000) TO (2147483647);
+
+CREATE TABLE part_range.t38 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 smallint
+    ,c3 jsonb
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t38_p0 PARTITION OF part_range.t38 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t38_p1 PARTITION OF part_range.t38 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t38_p2 PARTITION OF part_range.t38 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t38_p3 PARTITION OF part_range.t38 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t38_p4 PARTITION OF part_range.t38 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t38_p5 PARTITION OF part_range.t38 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t38_p6 PARTITION OF part_range.t38 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t38_p7 PARTITION OF part_range.t38 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t38_p8 PARTITION OF part_range.t38 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t38_px PARTITION OF part_range.t38 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t39 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 integer
+    ,c3 date
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t39_p0 PARTITION OF part_range.t39 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t39_p1 PARTITION OF part_range.t39 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t39_p2 PARTITION OF part_range.t39 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t39_p3 PARTITION OF part_range.t39 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t39_p4 PARTITION OF part_range.t39 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t39_p5 PARTITION OF part_range.t39 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t39_p6 PARTITION OF part_range.t39 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t39_p7 PARTITION OF part_range.t39 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t39_p8 PARTITION OF part_range.t39 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t39_p9 PARTITION OF part_range.t39 FOR VALUES FROM ('2060-01-01') TO ('2070-01-01');
+CREATE TABLE part_range.t39_px PARTITION OF part_range.t39 FOR VALUES FROM ('2070-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t40 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 date
+    ,c3 real
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t40_p0 PARTITION OF part_range.t40 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t40_p1 PARTITION OF part_range.t40 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t40_p2 PARTITION OF part_range.t40 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t40_p3 PARTITION OF part_range.t40 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t40_p4 PARTITION OF part_range.t40 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t40_p5 PARTITION OF part_range.t40 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t40_p6 PARTITION OF part_range.t40 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t40_p7 PARTITION OF part_range.t40 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t40_px PARTITION OF part_range.t40 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t41 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 double precision
+    ,c3 real
+    ,c4 boolean
+    ,c5 text
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t41_p0 PARTITION OF part_range.t41 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t41_p1 PARTITION OF part_range.t41 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t41_p2 PARTITION OF part_range.t41 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t41_p3 PARTITION OF part_range.t41 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t41_p4 PARTITION OF part_range.t41 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t41_p5 PARTITION OF part_range.t41 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t41_p6 PARTITION OF part_range.t41 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t41_p7 PARTITION OF part_range.t41 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t41_px PARTITION OF part_range.t41 FOR VALUES FROM ('2050-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t42 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 real
+    ,c3 varchar(3)
+    ,c4 bytea
+    ,c5 integer
+    ,c6 timestamp
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t42_p0 PARTITION OF part_range.t42 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t42_p1 PARTITION OF part_range.t42 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t42_p2 PARTITION OF part_range.t42 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t42_p3 PARTITION OF part_range.t42 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t42_p4 PARTITION OF part_range.t42 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t42_p5 PARTITION OF part_range.t42 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t42_p6 PARTITION OF part_range.t42 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t42_p7 PARTITION OF part_range.t42 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t42_p8 PARTITION OF part_range.t42 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t42_px PARTITION OF part_range.t42 FOR VALUES FROM (9000000) TO (2147483647);
+
+CREATE TABLE part_range.t43 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 smallint
+    ,c3 char(15)
+    ,c4 uuid
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t43_p0 PARTITION OF part_range.t43 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t43_p1 PARTITION OF part_range.t43 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t43_p2 PARTITION OF part_range.t43 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t43_p3 PARTITION OF part_range.t43 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t43_p4 PARTITION OF part_range.t43 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t43_p5 PARTITION OF part_range.t43 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t43_p6 PARTITION OF part_range.t43 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t43_px PARTITION OF part_range.t43 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t44 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 integer
+    ,c3 integer
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t44_p0 PARTITION OF part_range.t44 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t44_p1 PARTITION OF part_range.t44 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t44_p2 PARTITION OF part_range.t44 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t44_p3 PARTITION OF part_range.t44 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t44_p4 PARTITION OF part_range.t44 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t44_p5 PARTITION OF part_range.t44 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t44_px PARTITION OF part_range.t44 FOR VALUES FROM ('2030-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t45 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 bigint
+    ,c3 numeric(5,3)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t45_p0 PARTITION OF part_range.t45 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t45_p1 PARTITION OF part_range.t45 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t45_p2 PARTITION OF part_range.t45 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t45_p3 PARTITION OF part_range.t45 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t45_p4 PARTITION OF part_range.t45 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t45_p5 PARTITION OF part_range.t45 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t45_p6 PARTITION OF part_range.t45 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t45_px PARTITION OF part_range.t45 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t46 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 bytea
+    ,c3 real
+    ,c4 date
+    ,c5 numeric(7,1)
+    ,c6 numeric(8,3)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t46_p0 PARTITION OF part_range.t46 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t46_p1 PARTITION OF part_range.t46 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t46_p2 PARTITION OF part_range.t46 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t46_p3 PARTITION OF part_range.t46 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t46_p4 PARTITION OF part_range.t46 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t46_p5 PARTITION OF part_range.t46 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t46_p6 PARTITION OF part_range.t46 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t46_p7 PARTITION OF part_range.t46 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t46_p8 PARTITION OF part_range.t46 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t46_p9 PARTITION OF part_range.t46 FOR VALUES FROM (9000000) TO (10000000);
+CREATE TABLE part_range.t46_px PARTITION OF part_range.t46 FOR VALUES FROM (10000000) TO (2147483647);
+
+CREATE TABLE part_range.t47 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 timestamp
+    ,c3 integer
+    ,c4 numeric(4,2)
+    ,c5 bytea
+    ,c6 timestamp
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t47_p0 PARTITION OF part_range.t47 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t47_p1 PARTITION OF part_range.t47 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t47_p2 PARTITION OF part_range.t47 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t47_p3 PARTITION OF part_range.t47 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t47_p4 PARTITION OF part_range.t47 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t47_p5 PARTITION OF part_range.t47 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t47_p6 PARTITION OF part_range.t47 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t47_p7 PARTITION OF part_range.t47 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t47_px PARTITION OF part_range.t47 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t48 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 real
+    ,c3 bytea
+    ,c4 double precision
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t48_p0 PARTITION OF part_range.t48 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t48_p1 PARTITION OF part_range.t48 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t48_p2 PARTITION OF part_range.t48 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t48_p3 PARTITION OF part_range.t48 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t48_p4 PARTITION OF part_range.t48 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t48_p5 PARTITION OF part_range.t48 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t48_px PARTITION OF part_range.t48 FOR VALUES FROM ('2030-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t49 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 numeric(4,2)
+    ,c3 timestamp
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t49_p0 PARTITION OF part_range.t49 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t49_p1 PARTITION OF part_range.t49 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t49_p2 PARTITION OF part_range.t49 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t49_p3 PARTITION OF part_range.t49 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t49_p4 PARTITION OF part_range.t49 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t49_p5 PARTITION OF part_range.t49 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t49_p6 PARTITION OF part_range.t49 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t49_p7 PARTITION OF part_range.t49 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t49_p8 PARTITION OF part_range.t49 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t49_px PARTITION OF part_range.t49 FOR VALUES FROM (9000000) TO (2147483647);
+
+CREATE TABLE part_range.t50 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 numeric(12,3)
+    ,c3 time
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t50_p0 PARTITION OF part_range.t50 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t50_p1 PARTITION OF part_range.t50 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t50_p2 PARTITION OF part_range.t50 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t50_p3 PARTITION OF part_range.t50 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t50_p4 PARTITION OF part_range.t50 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t50_p5 PARTITION OF part_range.t50 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t50_p6 PARTITION OF part_range.t50 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t50_px PARTITION OF part_range.t50 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t51 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 boolean
+    ,c3 double precision
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t51_p0 PARTITION OF part_range.t51 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t51_p1 PARTITION OF part_range.t51 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t51_p2 PARTITION OF part_range.t51 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t51_p3 PARTITION OF part_range.t51 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t51_p4 PARTITION OF part_range.t51 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t51_p5 PARTITION OF part_range.t51 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t51_p6 PARTITION OF part_range.t51 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t51_p7 PARTITION OF part_range.t51 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t51_px PARTITION OF part_range.t51 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t52 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 smallint
+    ,c3 integer
+    ,c4 char(16)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t52_p0 PARTITION OF part_range.t52 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t52_p1 PARTITION OF part_range.t52 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t52_p2 PARTITION OF part_range.t52 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t52_p3 PARTITION OF part_range.t52 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t52_p4 PARTITION OF part_range.t52 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t52_p5 PARTITION OF part_range.t52 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t52_px PARTITION OF part_range.t52 FOR VALUES FROM (6000000) TO (2147483647);
+
+CREATE TABLE part_range.t53 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 boolean
+    ,c3 text
+    ,c4 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t53_p0 PARTITION OF part_range.t53 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t53_p1 PARTITION OF part_range.t53 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t53_p2 PARTITION OF part_range.t53 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t53_p3 PARTITION OF part_range.t53 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t53_p4 PARTITION OF part_range.t53 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t53_p5 PARTITION OF part_range.t53 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t53_p6 PARTITION OF part_range.t53 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t53_px PARTITION OF part_range.t53 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t54 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 numeric(12,0)
+    ,c3 timestamp
+    ,c4 boolean
+    ,c5 bytea
+    ,c6 bigint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t54_p0 PARTITION OF part_range.t54 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t54_p1 PARTITION OF part_range.t54 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t54_p2 PARTITION OF part_range.t54 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t54_p3 PARTITION OF part_range.t54 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t54_p4 PARTITION OF part_range.t54 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t54_p5 PARTITION OF part_range.t54 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t54_p6 PARTITION OF part_range.t54 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t54_p7 PARTITION OF part_range.t54 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t54_p8 PARTITION OF part_range.t54 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t54_p9 PARTITION OF part_range.t54 FOR VALUES FROM (9000000) TO (10000000);
+CREATE TABLE part_range.t54_px PARTITION OF part_range.t54 FOR VALUES FROM (10000000) TO (2147483647);
+
+CREATE TABLE part_range.t55 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 char(3)
+    ,c3 boolean
+    ,c4 varchar(20)
+    ,c5 text
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t55_p0 PARTITION OF part_range.t55 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t55_p1 PARTITION OF part_range.t55 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t55_p2 PARTITION OF part_range.t55 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t55_p3 PARTITION OF part_range.t55 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t55_p4 PARTITION OF part_range.t55 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t55_p5 PARTITION OF part_range.t55 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t55_p6 PARTITION OF part_range.t55 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t55_p7 PARTITION OF part_range.t55 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t55_px PARTITION OF part_range.t55 FOR VALUES FROM ('2050-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t56 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 integer
+    ,c3 integer
+    ,c4 integer
+    ,c5 integer
+    ,c6 varchar(32)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t56_p0 PARTITION OF part_range.t56 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t56_p1 PARTITION OF part_range.t56 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t56_p2 PARTITION OF part_range.t56 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t56_p3 PARTITION OF part_range.t56 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t56_p4 PARTITION OF part_range.t56 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t56_p5 PARTITION OF part_range.t56 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t56_p6 PARTITION OF part_range.t56 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t56_p7 PARTITION OF part_range.t56 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t56_p8 PARTITION OF part_range.t56 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t56_p9 PARTITION OF part_range.t56 FOR VALUES FROM (9000000) TO (10000000);
+CREATE TABLE part_range.t56_px PARTITION OF part_range.t56 FOR VALUES FROM (10000000) TO (2147483647);
+
+CREATE TABLE part_range.t57 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 double precision
+    ,c3 numeric(6,2)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t57_p0 PARTITION OF part_range.t57 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t57_p1 PARTITION OF part_range.t57 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t57_p2 PARTITION OF part_range.t57 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t57_p3 PARTITION OF part_range.t57 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t57_p4 PARTITION OF part_range.t57 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t57_p5 PARTITION OF part_range.t57 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t57_p6 PARTITION OF part_range.t57 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t57_p7 PARTITION OF part_range.t57 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t57_p8 PARTITION OF part_range.t57 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t57_p9 PARTITION OF part_range.t57 FOR VALUES FROM ('2060-01-01') TO ('2070-01-01');
+CREATE TABLE part_range.t57_px PARTITION OF part_range.t57 FOR VALUES FROM ('2070-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t58 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 varchar(7)
+    ,c3 bytea
+    ,c4 bigint
+    ,c5 timestamp
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t58_p0 PARTITION OF part_range.t58 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t58_p1 PARTITION OF part_range.t58 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t58_p2 PARTITION OF part_range.t58 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t58_p3 PARTITION OF part_range.t58 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t58_p4 PARTITION OF part_range.t58 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t58_p5 PARTITION OF part_range.t58 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t58_p6 PARTITION OF part_range.t58 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t58_px PARTITION OF part_range.t58 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t59 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 uuid
+    ,c3 bytea
+    ,c4 smallint
+    ,c5 bigint
+    ,c6 time
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t59_p0 PARTITION OF part_range.t59 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t59_p1 PARTITION OF part_range.t59 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t59_p2 PARTITION OF part_range.t59 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t59_p3 PARTITION OF part_range.t59 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t59_p4 PARTITION OF part_range.t59 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t59_p5 PARTITION OF part_range.t59 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t59_p6 PARTITION OF part_range.t59 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t59_px PARTITION OF part_range.t59 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t60 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 date
+    ,c3 real
+    ,c4 char(17)
+    ,c5 double precision
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t60_p0 PARTITION OF part_range.t60 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t60_p1 PARTITION OF part_range.t60 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t60_p2 PARTITION OF part_range.t60 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t60_p3 PARTITION OF part_range.t60 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t60_p4 PARTITION OF part_range.t60 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t60_p5 PARTITION OF part_range.t60 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t60_p6 PARTITION OF part_range.t60 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t60_p7 PARTITION OF part_range.t60 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t60_p8 PARTITION OF part_range.t60 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t60_px PARTITION OF part_range.t60 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t61 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 real
+    ,c3 numeric(4,1)
+    ,c4 numeric(12,0)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t61_p0 PARTITION OF part_range.t61 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t61_p1 PARTITION OF part_range.t61 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t61_p2 PARTITION OF part_range.t61 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t61_p3 PARTITION OF part_range.t61 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t61_p4 PARTITION OF part_range.t61 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t61_px PARTITION OF part_range.t61 FOR VALUES FROM ('2020-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t62 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 char(10)
+    ,c3 smallint
+    ,c4 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t62_p0 PARTITION OF part_range.t62 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t62_p1 PARTITION OF part_range.t62 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t62_p2 PARTITION OF part_range.t62 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t62_p3 PARTITION OF part_range.t62 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t62_p4 PARTITION OF part_range.t62 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t62_px PARTITION OF part_range.t62 FOR VALUES FROM (5000000) TO (2147483647);
+
+CREATE TABLE part_range.t63 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 date
+    ,c3 varchar(5)
+    ,c4 bytea
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t63_p0 PARTITION OF part_range.t63 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t63_p1 PARTITION OF part_range.t63 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t63_p2 PARTITION OF part_range.t63 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t63_p3 PARTITION OF part_range.t63 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t63_p4 PARTITION OF part_range.t63 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t63_p5 PARTITION OF part_range.t63 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t63_p6 PARTITION OF part_range.t63 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t63_p7 PARTITION OF part_range.t63 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t63_p8 PARTITION OF part_range.t63 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t63_px PARTITION OF part_range.t63 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t64 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 numeric(7,3)
+    ,c3 jsonb
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t64_p0 PARTITION OF part_range.t64 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t64_p1 PARTITION OF part_range.t64 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t64_p2 PARTITION OF part_range.t64 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t64_p3 PARTITION OF part_range.t64 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t64_p4 PARTITION OF part_range.t64 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t64_p5 PARTITION OF part_range.t64 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t64_p6 PARTITION OF part_range.t64 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t64_p7 PARTITION OF part_range.t64 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t64_px PARTITION OF part_range.t64 FOR VALUES FROM ('2050-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t65 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 bigint
+    ,c3 numeric(12,2)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t65_p0 PARTITION OF part_range.t65 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t65_p1 PARTITION OF part_range.t65 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t65_p2 PARTITION OF part_range.t65 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t65_p3 PARTITION OF part_range.t65 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t65_p4 PARTITION OF part_range.t65 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t65_p5 PARTITION OF part_range.t65 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t65_p6 PARTITION OF part_range.t65 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t65_p7 PARTITION OF part_range.t65 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t65_p8 PARTITION OF part_range.t65 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t65_p9 PARTITION OF part_range.t65 FOR VALUES FROM ('2060-01-01') TO ('2070-01-01');
+CREATE TABLE part_range.t65_px PARTITION OF part_range.t65 FOR VALUES FROM ('2070-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t66 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 jsonb
+    ,c3 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t66_p0 PARTITION OF part_range.t66 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t66_p1 PARTITION OF part_range.t66 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t66_p2 PARTITION OF part_range.t66 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t66_p3 PARTITION OF part_range.t66 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t66_p4 PARTITION OF part_range.t66 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t66_p5 PARTITION OF part_range.t66 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t66_p6 PARTITION OF part_range.t66 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t66_p7 PARTITION OF part_range.t66 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t66_px PARTITION OF part_range.t66 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t67 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 boolean
+    ,c3 bigint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t67_p0 PARTITION OF part_range.t67 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t67_p1 PARTITION OF part_range.t67 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t67_p2 PARTITION OF part_range.t67 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t67_p3 PARTITION OF part_range.t67 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t67_p4 PARTITION OF part_range.t67 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t67_p5 PARTITION OF part_range.t67 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t67_p6 PARTITION OF part_range.t67 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t67_p7 PARTITION OF part_range.t67 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t67_p8 PARTITION OF part_range.t67 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t67_px PARTITION OF part_range.t67 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t68 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 numeric(12,2)
+    ,c3 double precision
+    ,c4 timestamp
+    ,c5 jsonb
+    ,c6 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t68_p0 PARTITION OF part_range.t68 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t68_p1 PARTITION OF part_range.t68 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t68_p2 PARTITION OF part_range.t68 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t68_p3 PARTITION OF part_range.t68 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t68_p4 PARTITION OF part_range.t68 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t68_p5 PARTITION OF part_range.t68 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t68_p6 PARTITION OF part_range.t68 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t68_px PARTITION OF part_range.t68 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t69 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 boolean
+    ,c3 uuid
+    ,c4 double precision
+    ,c5 uuid
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t69_p0 PARTITION OF part_range.t69 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t69_p1 PARTITION OF part_range.t69 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t69_p2 PARTITION OF part_range.t69 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t69_p3 PARTITION OF part_range.t69 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t69_p4 PARTITION OF part_range.t69 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t69_p5 PARTITION OF part_range.t69 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t69_p6 PARTITION OF part_range.t69 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t69_p7 PARTITION OF part_range.t69 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t69_p8 PARTITION OF part_range.t69 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t69_px PARTITION OF part_range.t69 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t70 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 integer
+    ,c3 bytea
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t70_p0 PARTITION OF part_range.t70 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t70_p1 PARTITION OF part_range.t70 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t70_p2 PARTITION OF part_range.t70 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t70_p3 PARTITION OF part_range.t70 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t70_p4 PARTITION OF part_range.t70 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t70_px PARTITION OF part_range.t70 FOR VALUES FROM ('2020-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t71 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 integer
+    ,c3 smallint
+    ,c4 numeric(7,0)
+    ,c5 date
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t71_p0 PARTITION OF part_range.t71 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t71_p1 PARTITION OF part_range.t71 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t71_p2 PARTITION OF part_range.t71 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t71_p3 PARTITION OF part_range.t71 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t71_p4 PARTITION OF part_range.t71 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t71_p5 PARTITION OF part_range.t71 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t71_p6 PARTITION OF part_range.t71 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t71_p7 PARTITION OF part_range.t71 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t71_p8 PARTITION OF part_range.t71 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t71_px PARTITION OF part_range.t71 FOR VALUES FROM (9000000) TO (2147483647);
+
+CREATE TABLE part_range.t72 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 jsonb
+    ,c3 time
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t72_p0 PARTITION OF part_range.t72 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t72_p1 PARTITION OF part_range.t72 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t72_p2 PARTITION OF part_range.t72 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t72_p3 PARTITION OF part_range.t72 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t72_p4 PARTITION OF part_range.t72 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t72_px PARTITION OF part_range.t72 FOR VALUES FROM ('2020-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t73 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 timestamp
+    ,c3 boolean
+    ,c4 double precision
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t73_p0 PARTITION OF part_range.t73 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t73_p1 PARTITION OF part_range.t73 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t73_p2 PARTITION OF part_range.t73 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t73_p3 PARTITION OF part_range.t73 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t73_p4 PARTITION OF part_range.t73 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t73_p5 PARTITION OF part_range.t73 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t73_p6 PARTITION OF part_range.t73 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t73_px PARTITION OF part_range.t73 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t74 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 varchar(46)
+    ,c3 jsonb
+    ,c4 uuid
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t74_p0 PARTITION OF part_range.t74 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t74_p1 PARTITION OF part_range.t74 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t74_p2 PARTITION OF part_range.t74 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t74_p3 PARTITION OF part_range.t74 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t74_p4 PARTITION OF part_range.t74 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t74_p5 PARTITION OF part_range.t74 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t74_px PARTITION OF part_range.t74 FOR VALUES FROM ('2030-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t75 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 varchar(40)
+    ,c3 bigint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t75_p0 PARTITION OF part_range.t75 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t75_p1 PARTITION OF part_range.t75 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t75_p2 PARTITION OF part_range.t75 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t75_p3 PARTITION OF part_range.t75 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t75_p4 PARTITION OF part_range.t75 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t75_p5 PARTITION OF part_range.t75 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t75_p6 PARTITION OF part_range.t75 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t75_px PARTITION OF part_range.t75 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t76 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 real
+    ,c3 bigint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t76_p0 PARTITION OF part_range.t76 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t76_p1 PARTITION OF part_range.t76 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t76_p2 PARTITION OF part_range.t76 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t76_p3 PARTITION OF part_range.t76 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t76_p4 PARTITION OF part_range.t76 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t76_p5 PARTITION OF part_range.t76 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t76_p6 PARTITION OF part_range.t76 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t76_px PARTITION OF part_range.t76 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t77 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 timestamp
+    ,c3 double precision
+    ,c4 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t77_p0 PARTITION OF part_range.t77 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t77_p1 PARTITION OF part_range.t77 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t77_p2 PARTITION OF part_range.t77 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t77_p3 PARTITION OF part_range.t77 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t77_p4 PARTITION OF part_range.t77 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t77_p5 PARTITION OF part_range.t77 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t77_p6 PARTITION OF part_range.t77 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t77_p7 PARTITION OF part_range.t77 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t77_p8 PARTITION OF part_range.t77 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t77_p9 PARTITION OF part_range.t77 FOR VALUES FROM ('2060-01-01') TO ('2070-01-01');
+CREATE TABLE part_range.t77_px PARTITION OF part_range.t77 FOR VALUES FROM ('2070-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t78 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 char(2)
+    ,c3 jsonb
+    ,c4 double precision
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t78_p0 PARTITION OF part_range.t78 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t78_p1 PARTITION OF part_range.t78 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t78_p2 PARTITION OF part_range.t78 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t78_p3 PARTITION OF part_range.t78 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t78_p4 PARTITION OF part_range.t78 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t78_p5 PARTITION OF part_range.t78 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t78_p6 PARTITION OF part_range.t78 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t78_p7 PARTITION OF part_range.t78 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t78_px PARTITION OF part_range.t78 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t79 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 char(8)
+    ,c3 uuid
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t79_p0 PARTITION OF part_range.t79 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t79_p1 PARTITION OF part_range.t79 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t79_p2 PARTITION OF part_range.t79 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t79_p3 PARTITION OF part_range.t79 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t79_p4 PARTITION OF part_range.t79 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t79_p5 PARTITION OF part_range.t79 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t79_p6 PARTITION OF part_range.t79 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t79_px PARTITION OF part_range.t79 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t80 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 real
+    ,c3 char(9)
+    ,c4 numeric(12,3)
+    ,c5 jsonb
+    ,c6 jsonb
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t80_p0 PARTITION OF part_range.t80 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t80_p1 PARTITION OF part_range.t80 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t80_p2 PARTITION OF part_range.t80 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t80_p3 PARTITION OF part_range.t80 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t80_p4 PARTITION OF part_range.t80 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t80_p5 PARTITION OF part_range.t80 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t80_p6 PARTITION OF part_range.t80 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t80_px PARTITION OF part_range.t80 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t81 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 bytea
+    ,c3 numeric(4,2)
+    ,c4 varchar(38)
+    ,c5 bytea
+    ,c6 date
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t81_p0 PARTITION OF part_range.t81 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t81_p1 PARTITION OF part_range.t81 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t81_p2 PARTITION OF part_range.t81 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t81_p3 PARTITION OF part_range.t81 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t81_p4 PARTITION OF part_range.t81 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t81_p5 PARTITION OF part_range.t81 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t81_p6 PARTITION OF part_range.t81 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t81_px PARTITION OF part_range.t81 FOR VALUES FROM (7000000) TO (2147483647);
+
+CREATE TABLE part_range.t82 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 double precision
+    ,c3 smallint
+    ,c4 timestamp
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t82_p0 PARTITION OF part_range.t82 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t82_p1 PARTITION OF part_range.t82 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t82_p2 PARTITION OF part_range.t82 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t82_p3 PARTITION OF part_range.t82 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t82_p4 PARTITION OF part_range.t82 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t82_p5 PARTITION OF part_range.t82 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t82_p6 PARTITION OF part_range.t82 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t82_p7 PARTITION OF part_range.t82 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t82_p8 PARTITION OF part_range.t82 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t82_p9 PARTITION OF part_range.t82 FOR VALUES FROM (9000000) TO (10000000);
+CREATE TABLE part_range.t82_px PARTITION OF part_range.t82 FOR VALUES FROM (10000000) TO (2147483647);
+
+CREATE TABLE part_range.t83 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 integer
+    ,c3 boolean
+    ,c4 char(11)
+    ,c5 boolean
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t83_p0 PARTITION OF part_range.t83 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t83_p1 PARTITION OF part_range.t83 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t83_p2 PARTITION OF part_range.t83 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t83_p3 PARTITION OF part_range.t83 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t83_p4 PARTITION OF part_range.t83 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t83_p5 PARTITION OF part_range.t83 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t83_p6 PARTITION OF part_range.t83 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t83_p7 PARTITION OF part_range.t83 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t83_px PARTITION OF part_range.t83 FOR VALUES FROM ('2050-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t84 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 boolean
+    ,c3 text
+    ,c4 timestamp
+    ,c5 date
+    ,c6 boolean
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t84_p0 PARTITION OF part_range.t84 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t84_p1 PARTITION OF part_range.t84 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t84_p2 PARTITION OF part_range.t84 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t84_p3 PARTITION OF part_range.t84 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t84_p4 PARTITION OF part_range.t84 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t84_px PARTITION OF part_range.t84 FOR VALUES FROM (5000000) TO (2147483647);
+
+CREATE TABLE part_range.t85 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 varchar(11)
+    ,c3 timestamp
+    ,c4 bytea
+    ,c5 integer
+    ,c6 date
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t85_p0 PARTITION OF part_range.t85 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t85_p1 PARTITION OF part_range.t85 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t85_p2 PARTITION OF part_range.t85 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t85_p3 PARTITION OF part_range.t85 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t85_p4 PARTITION OF part_range.t85 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t85_p5 PARTITION OF part_range.t85 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t85_p6 PARTITION OF part_range.t85 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t85_p7 PARTITION OF part_range.t85 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t85_px PARTITION OF part_range.t85 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t86 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 bytea
+    ,c3 bytea
+    ,c4 jsonb
+    ,c5 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t86_p0 PARTITION OF part_range.t86 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t86_p1 PARTITION OF part_range.t86 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t86_p2 PARTITION OF part_range.t86 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t86_p3 PARTITION OF part_range.t86 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t86_p4 PARTITION OF part_range.t86 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t86_p5 PARTITION OF part_range.t86 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t86_p6 PARTITION OF part_range.t86 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t86_px PARTITION OF part_range.t86 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t87 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 real
+    ,c3 integer
+    ,c4 char(9)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t87_p0 PARTITION OF part_range.t87 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t87_p1 PARTITION OF part_range.t87 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t87_p2 PARTITION OF part_range.t87 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t87_p3 PARTITION OF part_range.t87 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t87_p4 PARTITION OF part_range.t87 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t87_p5 PARTITION OF part_range.t87 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t87_p6 PARTITION OF part_range.t87 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t87_px PARTITION OF part_range.t87 FOR VALUES FROM ('2040-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t88 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 jsonb
+    ,c3 boolean
+    ,c4 char(7)
+    ,c5 real
+    ,c6 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t88_p0 PARTITION OF part_range.t88 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t88_p1 PARTITION OF part_range.t88 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t88_p2 PARTITION OF part_range.t88 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t88_p3 PARTITION OF part_range.t88 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t88_p4 PARTITION OF part_range.t88 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t88_p5 PARTITION OF part_range.t88 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t88_px PARTITION OF part_range.t88 FOR VALUES FROM (6000000) TO (2147483647);
+
+CREATE TABLE part_range.t89 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 real
+    ,c3 uuid
+    ,c4 jsonb
+    ,c5 real
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t89_p0 PARTITION OF part_range.t89 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t89_p1 PARTITION OF part_range.t89 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t89_p2 PARTITION OF part_range.t89 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t89_p3 PARTITION OF part_range.t89 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t89_p4 PARTITION OF part_range.t89 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t89_p5 PARTITION OF part_range.t89 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t89_p6 PARTITION OF part_range.t89 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t89_p7 PARTITION OF part_range.t89 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t89_px PARTITION OF part_range.t89 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t90 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 varchar(19)
+    ,c3 smallint
+    ,c4 bytea
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t90_p0 PARTITION OF part_range.t90 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t90_p1 PARTITION OF part_range.t90 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t90_p2 PARTITION OF part_range.t90 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t90_p3 PARTITION OF part_range.t90 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t90_p4 PARTITION OF part_range.t90 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t90_p5 PARTITION OF part_range.t90 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t90_p6 PARTITION OF part_range.t90 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t90_p7 PARTITION OF part_range.t90 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t90_px PARTITION OF part_range.t90 FOR VALUES FROM (8000000) TO (2147483647);
+
+CREATE TABLE part_range.t91 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 boolean
+    ,c3 timestamp
+    ,c4 jsonb
+    ,c5 double precision
+    ,c6 char(6)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t91_p0 PARTITION OF part_range.t91 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t91_p1 PARTITION OF part_range.t91 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t91_p2 PARTITION OF part_range.t91 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t91_p3 PARTITION OF part_range.t91 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t91_p4 PARTITION OF part_range.t91 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t91_px PARTITION OF part_range.t91 FOR VALUES FROM (5000000) TO (2147483647);
+
+CREATE TABLE part_range.t92 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 timestamp
+    ,c3 double precision
+    ,c4 real
+    ,c5 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t92_p0 PARTITION OF part_range.t92 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t92_p1 PARTITION OF part_range.t92 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t92_p2 PARTITION OF part_range.t92 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t92_p3 PARTITION OF part_range.t92 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t92_p4 PARTITION OF part_range.t92 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t92_p5 PARTITION OF part_range.t92 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t92_p6 PARTITION OF part_range.t92 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t92_p7 PARTITION OF part_range.t92 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t92_p8 PARTITION OF part_range.t92 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t92_p9 PARTITION OF part_range.t92 FOR VALUES FROM ('2060-01-01') TO ('2070-01-01');
+CREATE TABLE part_range.t92_px PARTITION OF part_range.t92 FOR VALUES FROM ('2070-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t93 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 time
+    ,c3 bigint
+    ,c4 date
+    ,c5 jsonb
+    ,c6 boolean
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t93_p0 PARTITION OF part_range.t93 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t93_p1 PARTITION OF part_range.t93 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t93_p2 PARTITION OF part_range.t93 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t93_p3 PARTITION OF part_range.t93 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t93_p4 PARTITION OF part_range.t93 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t93_p5 PARTITION OF part_range.t93 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t93_px PARTITION OF part_range.t93 FOR VALUES FROM ('2030-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t94 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 uuid
+    ,c3 text
+    ,c4 numeric(5,1)
+    ,c5 numeric(9,1)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t94_p0 PARTITION OF part_range.t94 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t94_p1 PARTITION OF part_range.t94 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t94_p2 PARTITION OF part_range.t94 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t94_p3 PARTITION OF part_range.t94 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t94_p4 PARTITION OF part_range.t94 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t94_p5 PARTITION OF part_range.t94 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t94_p6 PARTITION OF part_range.t94 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t94_p7 PARTITION OF part_range.t94 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t94_p8 PARTITION OF part_range.t94 FOR VALUES FROM ('2050-01-01') TO ('2060-01-01');
+CREATE TABLE part_range.t94_px PARTITION OF part_range.t94 FOR VALUES FROM ('2060-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t95 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 smallint
+    ,c3 jsonb
+    ,c4 varchar(17)
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t95_p0 PARTITION OF part_range.t95 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t95_p1 PARTITION OF part_range.t95 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t95_p2 PARTITION OF part_range.t95 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t95_p3 PARTITION OF part_range.t95 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t95_p4 PARTITION OF part_range.t95 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t95_px PARTITION OF part_range.t95 FOR VALUES FROM ('2020-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t96 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 text
+    ,c3 real
+    ,c4 time
+    ,c5 smallint
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t96_p0 PARTITION OF part_range.t96 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t96_p1 PARTITION OF part_range.t96 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t96_p2 PARTITION OF part_range.t96 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t96_p3 PARTITION OF part_range.t96 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t96_p4 PARTITION OF part_range.t96 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t96_p5 PARTITION OF part_range.t96 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t96_p6 PARTITION OF part_range.t96 FOR VALUES FROM ('2030-01-01') TO ('2040-01-01');
+CREATE TABLE part_range.t96_p7 PARTITION OF part_range.t96 FOR VALUES FROM ('2040-01-01') TO ('2050-01-01');
+CREATE TABLE part_range.t96_px PARTITION OF part_range.t96 FOR VALUES FROM ('2050-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t97 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 integer
+    ,c3 numeric(6,1)
+    ,c4 timestamp
+    ,c5 boolean
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t97_p0 PARTITION OF part_range.t97 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t97_p1 PARTITION OF part_range.t97 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t97_p2 PARTITION OF part_range.t97 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t97_p3 PARTITION OF part_range.t97 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t97_p4 PARTITION OF part_range.t97 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t97_p5 PARTITION OF part_range.t97 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t97_px PARTITION OF part_range.t97 FOR VALUES FROM (6000000) TO (2147483647);
+
+CREATE TABLE part_range.t98 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 time
+    ,c3 bytea
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t98_p0 PARTITION OF part_range.t98 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t98_p1 PARTITION OF part_range.t98 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t98_p2 PARTITION OF part_range.t98 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t98_p3 PARTITION OF part_range.t98 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t98_p4 PARTITION OF part_range.t98 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t98_p5 PARTITION OF part_range.t98 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t98_p6 PARTITION OF part_range.t98 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t98_p7 PARTITION OF part_range.t98 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t98_p8 PARTITION OF part_range.t98 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t98_p9 PARTITION OF part_range.t98 FOR VALUES FROM (9000000) TO (10000000);
+CREATE TABLE part_range.t98_px PARTITION OF part_range.t98 FOR VALUES FROM (10000000) TO (2147483647);
+
+CREATE TABLE part_range.t99 (
+    id BIGSERIAL
+    ,c1 date
+    ,c2 real
+    ,c3 date
+    ,c4 numeric(8,0)
+    ,c5 jsonb
+    ,c6 boolean
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t99_p0 PARTITION OF part_range.t99 FOR VALUES FROM ('1970-01-01') TO ('1980-01-01');
+CREATE TABLE part_range.t99_p1 PARTITION OF part_range.t99 FOR VALUES FROM ('1980-01-01') TO ('1990-01-01');
+CREATE TABLE part_range.t99_p2 PARTITION OF part_range.t99 FOR VALUES FROM ('1990-01-01') TO ('2000-01-01');
+CREATE TABLE part_range.t99_p3 PARTITION OF part_range.t99 FOR VALUES FROM ('2000-01-01') TO ('2010-01-01');
+CREATE TABLE part_range.t99_p4 PARTITION OF part_range.t99 FOR VALUES FROM ('2010-01-01') TO ('2020-01-01');
+CREATE TABLE part_range.t99_p5 PARTITION OF part_range.t99 FOR VALUES FROM ('2020-01-01') TO ('2030-01-01');
+CREATE TABLE part_range.t99_px PARTITION OF part_range.t99 FOR VALUES FROM ('2030-01-01') TO ('9999-01-01');
+
+CREATE TABLE part_range.t100 (
+    id BIGSERIAL
+    ,c1 integer
+    ,c2 real
+    ,c3 varchar(30)
+    ,c4 bytea
+    ,c5 text
+    ,PRIMARY KEY (id, c1)
+) PARTITION BY RANGE (c1);
+
+CREATE TABLE part_range.t100_p0 PARTITION OF part_range.t100 FOR VALUES FROM (0) TO (1000000);
+CREATE TABLE part_range.t100_p1 PARTITION OF part_range.t100 FOR VALUES FROM (1000000) TO (2000000);
+CREATE TABLE part_range.t100_p2 PARTITION OF part_range.t100 FOR VALUES FROM (2000000) TO (3000000);
+CREATE TABLE part_range.t100_p3 PARTITION OF part_range.t100 FOR VALUES FROM (3000000) TO (4000000);
+CREATE TABLE part_range.t100_p4 PARTITION OF part_range.t100 FOR VALUES FROM (4000000) TO (5000000);
+CREATE TABLE part_range.t100_p5 PARTITION OF part_range.t100 FOR VALUES FROM (5000000) TO (6000000);
+CREATE TABLE part_range.t100_p6 PARTITION OF part_range.t100 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE part_range.t100_p7 PARTITION OF part_range.t100 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE part_range.t100_p8 PARTITION OF part_range.t100 FOR VALUES FROM (8000000) TO (9000000);
+CREATE TABLE part_range.t100_p9 PARTITION OF part_range.t100 FOR VALUES FROM (9000000) TO (10000000);
+CREATE TABLE part_range.t100_px PARTITION OF part_range.t100 FOR VALUES FROM (10000000) TO (2147483647);

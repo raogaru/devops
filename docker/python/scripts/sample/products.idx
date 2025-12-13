@@ -1,0 +1,2 @@
+CREATE INDEX idx_products_category ON sample.products(category);
+

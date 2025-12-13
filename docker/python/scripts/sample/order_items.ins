@@ -1,0 +1,8 @@
+INSERT INTO sample.order_items (order_id, product_id, quantity, amount)
+SELECT
+    (random()*999999 + 1)::bigint,
+    (random()*9999 + 1)::bigint,
+    (random()*5 + 1)::int,
+    round((random()*200 + 5)::numeric, 2)
+FROM generate_series(1, 5000000);
+

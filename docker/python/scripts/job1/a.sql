@@ -1,0 +1,10 @@
+ANALYZE job1.t1;
+ANALYZE job1.t2;
+ANALYZE job1.t3;
+ANALYZE job1.t4;
+ANALYZE job1.t5;
+ANALYZE job1.t6;
+ANALYZE job1.t7;
+ANALYZE job1.t8;
+ANALYZE job1.t9;
+ANALYZE job1.t10;

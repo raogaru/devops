@@ -1,0 +1,6 @@
+INSERT INTO sample.products (category, price)
+SELECT
+    (ARRAY['electronics','clothing','books','sports','home'])[1 + (random()*4)::int],
+    round((random()*500 + 5)::numeric, 2)
+FROM generate_series(1, 10000);
+

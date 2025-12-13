@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS sample.order_items ;
+CREATE TABLE sample.order_items (
+    order_item_id bigserial PRIMARY KEY,
+    order_id      bigint NOT NULL,
+    product_id    bigint NOT NULL,
+    quantity      int NOT NULL,
+    amount        numeric(12,2) NOT NULL
+);
+

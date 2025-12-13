@@ -1,0 +1,24 @@
+# ================================================================================
+database:
+  dsn: "host=c-postgres port=5432 dbname=postgres user=postgres password=postgres"
+
+execution:
+  dry_run: false   # true = no SQL execution
+  default_on_failure: abort  # skip | continue | abort
+
+defaults:
+  retries: 1
+  retry_delay_sec: 5
+  statement_timeout_sec: 300
+  repeat: 1
+  skip: false
+
+groups:
+# ----------------------------------------
+  - name: cleanup
+
+    tasks:
+      - id: drop_tables
+        sql_file: "scripts/part_list/d.sql"
+
+# ----------------------------------------

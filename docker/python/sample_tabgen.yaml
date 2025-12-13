@@ -1,0 +1,28 @@
+# ----------------------------------------
+# configuration for tabgen.py
+input:
+  table_schema: "test"                            
+  table_name_prefix: "t"                           
+  table_count: 10
+  column_name_prefix: "c"                         
+  column_count_min: 3                                                                
+  column_count_max: 10                    
+  table_rows_min: 10                                            
+  table_rows_max: 50                                            
+
+  partition:
+    enabled: true          # false = normal tables
+    type: random           # random | random | list | hash
+    partition_count_min: 3
+    partition_count_max: 10
+    allowed_column_types: ["integer", "date"]
+                                                                
+output:
+  create_table_file: "scripts/test/c.sql"                                     
+  drop_table_file: "scripts/test/d.sql"                                       
+  insert_table_file: "scripts/test/i.sql"                                     
+  analyze_table_file: "scripts/test/a.sql"                                    
+  truncate_table_file: "scripts/test/t.sql"                              
+  select_table_file: "scripts/test/s.sql"                                
+
+# ----------------------------------------

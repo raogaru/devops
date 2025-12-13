@@ -1,0 +1,57 @@
+# ################################################################################
+# purpose: Run tasks in postgres
+# status: WIP
+#
+docker stop c-python
+docker rm c-python
+docker rmi i-python
+#
+# build
+docker build -t i-python .
+#
+# run
+docker run -d --name c-python --network n-raogaru -v ./scripts:/app/scripts i-python tail -f /dev/null
+#
+docker stop c-python
+docker start c-python
+#
+# connect
+docker exec -it c-python /bin/sh
+#
+# test
+docker exec -it c-python /bin/sh
+#
+# create ddl scripts - for the purpose of running tasks on postgres. 
+
+# repat for job1 to job5
+for job1 job2 job3 job4 job5 part_list part_hash part_range part_random
+do
+#vi jobs/job1/tabgen.yaml
+./tabgen.py jobs/job1/tabgen.yaml
+done
+
+# In postgres create schemas job0...job5 part_list part_hash part_range part_random
+docker exec -it c-postgres /bin/sh
+su - postgres
+\i postgres.sql
+
+# execute jobs
+./jobrun.py jobs/job0/job.yaml
+./jobrun.py jobs/job0/cleanup.yaml
+
+./jobrun.py jobs/job1/job.yaml
+./jobrun.py jobs/job1/cleanup.yaml
+
+./jobrun.py jobs/job2/job.yaml
+./jobrun.py jobs/job2/cleanup.yaml
+
+./jobrun.py jobs/job3/job.yaml
+./jobrun.py jobs/job3/cleanup.yaml
+
+./jobrun.py jobs/job4/job.yaml
+./jobrun.py jobs/job4/cleanup.yaml
+
+./jobrun.py jobs/job5/job.yaml
+./jobrun.py jobs/job5/cleanup.yaml
+#
+# ################################################################################

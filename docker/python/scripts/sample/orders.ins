@@ -1,0 +1,8 @@
+INSERT INTO sample.orders (customer_id, order_date, status, total_amount)
+SELECT
+    (random()*99999 + 1)::bigint,
+    date '2020-01-01' + (random() * 1500)::int,
+    (ARRAY['open','shipped','cancelled','completed'])[1 + (random()*3)::int],
+    round((random()*1000 + 20)::numeric, 2)
+FROM generate_series(1, 1000000);
+
