@@ -1,6 +1,6 @@
 # ################################################################################
 # purpose: Run tasks in postgres
-# status: WIP
+# status: WORKING
 #
 docker stop c-python
 docker rm c-python
@@ -22,7 +22,6 @@ docker exec -it c-python /bin/sh
 # test
 docker exec -it c-python /bin/sh
 
-docker exec -it c-python jobrun.py scripts/job1/jobrun.yaml
 #
 # create ddl scripts - for the purpose of running tasks on postgres. 
 vLINE="################################################################################"
@@ -32,7 +31,7 @@ for DIRNAME in job1 job2 job3 job4 job5 part_list part_hash part_range part_rand
 do
 echo ${vLINE}
 #vi jobs/job1/tabgen.yaml
-tabgen.py scripts/${DIRNAME}/tabgen.yaml
+docker exec -it c-python tabgen.py scripts/${DIRNAME}/tabgen.yaml
 done
 
 # In postgres create schemas job0...job5 part_list part_hash part_range part_random
@@ -44,8 +43,8 @@ su - postgres
 for DIRNAME in sample job1 job2 job3 job4 job5 part_list part_hash part_range part_random
 do
 echo ${vLINE}
-jobrun.py scripts/${DIRNAME}/jobrun.yaml
-#jobrun.py scripts/${DIRNAME}/cleanup.yaml
+docker exec -it c-python jobrun.py scripts/${DIRNAME}/jobrun.yaml
+docker exec -it c-python jobrun.py scripts/${DIRNAME}/cleanup.yaml
 done
 
 
