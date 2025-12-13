@@ -1,7 +1,0 @@
-INSERT INTO job0.customers (country, segment, created_at)
-SELECT
-    (ARRAY['US','US','US','EU','IN','APAC'])[1 + (random()*5)::int],
-    (ARRAY['retail','retail','corporate','smallbiz'])[1 + (random()*3)::int],
-    now() - (random() * interval '5 years')
-FROM generate_series(1, 100000);
-

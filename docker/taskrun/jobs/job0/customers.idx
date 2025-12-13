@@ -1,2 +1,0 @@
-CREATE INDEX idx_customers_country ON job0.customers(country);
-

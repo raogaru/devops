@@ -1,1 +1,0 @@
-ANALYZE job4.t1 ;

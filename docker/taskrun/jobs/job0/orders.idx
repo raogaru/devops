@@ -1,3 +1,0 @@
-CREATE INDEX idx_orders_customer ON job0.orders(customer_id);
-CREATE INDEX idx_orders_date ON job0.orders(order_date);
-
