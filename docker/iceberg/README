@@ -1,0 +1,32 @@
+# ################################################################################
+# purpose: Apache Iceberg for stream processing
+# status: working
+#
+# Goal: Read csv files from data/incoming directory in streaming mode and then write to iceberg warehouse in  data/warehouse directory.  Custom batch streaming process defined in iceberg_streaming_job.py - to read data/incoming directory and process them in streaming mode. Monitor docker log file for progress of batch processing.
+#
+docker stop c-iceberg
+docker rm c-iceberg
+docker rmi i-iceberg
+#
+# build
+docker build -t i-iceberg .
+#
+# run
+mkdir -p data/incoming
+mkdir -p data/warehouse
+docker run -d --name c-iceberg --network n-raogaru -v ./data:/data i-iceberg 
+#
+# produce files into data/incoming directory
+docker run -d --name c-csv-producer -v $(PWD)/data:/data i-csv-producer
+#
+docker stop c-iceberg
+docker start c-iceberg
+#
+# connect
+docker exec -it c-iceberg /bin/bash
+#
+# --------------------------------------------------------------------------------
+# test
+
+# ################################################################################
+
