@@ -1,0 +1,124 @@
+# ################################################################################
+# purpose: Apache Spark for data analytics
+# status: working
+#
+docker stop c-spark
+docker rm c-spark
+docker rmi i-spark
+#
+# build
+docker build -t i-spark .
+#
+# run
+docker run -d --name c-spark --network n-raogaru i-spark tail -f /dev/null
+docker exec -it c-spark /bin/bash
+pyspark
+
+# Run Spark Scala Shell
+docker run --rm -it --name c-spark-scala i-spark
+
+# Run PySpark Shell
+docker run --rm -it --name c-spark-pyspark i-spark pyspark
+
+# Run a Spark job
+docker run --rm --name c-spark -v $(pwd)/jobs:/jobs i-spark spark-submit /jobs/job.py
+#
+#
+docker stop c-spark
+docker start c-spark
+#
+# connect
+docker exec -it c-spark /bin/bash
+#
+# --------------------------------------------------------------------------------
+# test
+
+docker run --rm -it --name c-spark-scala i-spark
+
+
+# data frames 
+import spark.implicits._
+val df = Seq( (1, "Alice", 100), (2, "Bob", 200), (3, "Carol", 150)).toDF("id", "name", "value")
+df.show()
+df.printSchema()
+df.select("name", "value").show()
+df.filter($"value" > 150).show()
+df.groupBy("name").sum("value").show()
+
+# sql in spark-shell
+df.createOrReplaceTempView("people")
+spark.sql("SELECT * FROM people").show()
+
+# file operations
+val csvDf = spark.read
+  .option("header", "true")
+  .option("inferSchema", "true")
+  .csv("/data/incoming")
+
+csvDf.show()
+
+# write parquet
+csvDf.write.mode("overwrite").parquet("/tmp/output_parquet")
+
+# Iceberg-specific commands
+#List databases
+spark.sql("SHOW DATABASES").show()
+# List Iceberg tables
+spark.sql("SHOW TABLES IN local.db").show()
+# Query Iceberg table
+spark.sql("SELECT COUNT(*) FROM local.db.incoming_data").show()
+# Iceberg metadata tables 
+spark.sql("""
+  SELECT * FROM local.db.incoming_data.snapshots
+""").show(false)
+
+spark.sql("""
+  SELECT * FROM local.db.incoming_data.files
+""").show(false)
+
+spark.sql("""
+  SELECT * FROM local.db.incoming_data.history
+""").show(false)
+
+# Time travel
+spark.sql("""
+  SELECT * FROM local.db.incoming_data
+  VERSION AS OF 1
+""").show()
+
+spark.sql("""
+  SELECT * FROM local.db.incoming_data
+  TIMESTAMP AS OF '2025-12-14 16:30:00'
+""").show()
+
+# Explain query plan
+spark.sql("""
+  SELECT * FROM local.db.incoming_data WHERE value > 100
+""").explain(true)
+
+# Cache data
+df.cache()
+df.count()
+spark.catalog.clearCache()
+
+
+# list active streams
+spark.streams.active
+
+# check status
+spark.streams.active.foreach(println)
+
+# most used
+df.show()
+df.printSchema()
+spark.sql("SHOW TABLES")
+spark.sql("SELECT COUNT(*) FROM table")
+spark.sql("SELECT * FROM table.snapshots")
+
+
+#exit
+:quit
+control+d
+
+# ################################################################################
+
