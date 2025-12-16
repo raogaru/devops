@@ -10,7 +10,7 @@ docker rmi i-python
 docker build -t i-python .
 #
 # run
-docker run -d --name c-python --network n-raogaru -v ./scripts:/app/scripts i-python tail -f /dev/null
+docker run -d --name c-python --network n-raogaru -v ./scripts:/app/scripts -v ./data:/app/data i-python tail -f /dev/null
 #
 docker stop c-python
 docker start c-python
@@ -25,7 +25,8 @@ docker exec -it c-python /bin/sh
 #
 # create ddl scripts - for the purpose of running tasks on postgres. 
 vLINE="################################################################################"
-
+# --------------------------------------------------------------------------------
+# tabgen - genrate ddl scripts and dml scripts based on tabgen.yaml
 # repat for job1 to job5
 for DIRNAME in job1 job2 job3 job4 job5 part_list part_hash part_range part_random
 do
@@ -39,6 +40,8 @@ docker exec -it c-postgres /bin/sh
 su - postgres
 \i postgres.sql
 
+# --------------------------------------------------------------------------------
+# jobrun - execute scripts in postgres based on jobrun.yaml
 # execute jobs - which will create tables in postgres
 for DIRNAME in sample job1 job2 job3 job4 job5 part_list part_hash part_range part_random
 do
@@ -47,6 +50,13 @@ docker exec -it c-python jobrun.py scripts/${DIRNAME}/jobrun.yaml
 docker exec -it c-python jobrun.py scripts/${DIRNAME}/cleanup.yaml
 done
 
+# --------------------------------------------------------------------------------
+# csvgen - generate csvfiles based on csvgen.yaml
+docker exec -it c-python /bin/sh
+csvgen.py random		# choose random columns from yaml file
+csvgen.py person		# choose columns pre-defined in yaml file
+csvgen.py person --config csvgen.yaml
+csvgen.py person --config csvgen.yaml --files 10
 
 # sql query to check number of tables by schema
 SELECT

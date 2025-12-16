@@ -12,16 +12,20 @@ RUN python -m pip install --upgrade pip \
 
 RUN mkdir -p /app/bin
 RUN mkdir -p /app/scripts
+RUN mkdir -p /app/data
 
 WORKDIR /app
 
 COPY tabgen.py /app/bin
+COPY sample_tabgen.yaml /app/tabgen.yaml
+
 COPY jobrun.py /app/bin
+COPY sample_jobrun.yaml /app/jobrun.yaml
+
+COPY csvgen.py /app/bin
+COPY sample_csvgen.yaml /app/csvgen.yaml
 
 RUN chmod +x /app/bin/*.py
-
-COPY sample_tabgen.yaml /app/tabgen.yaml
-COPY sample_jobrun.yaml /app/jobrun.yaml
 
 ENV PATH="/app/bin:$PATH"
 

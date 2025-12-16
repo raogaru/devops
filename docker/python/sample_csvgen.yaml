@@ -1,0 +1,85 @@
+# ################################################################################ 
+config:
+  output_dir: data
+  file_prefix: x
+  min_columns: 5
+  max_columns: 12
+  min_rows: 100
+  max_rows: 500
+  interval_ms: 0
+
+columns:
+  - name: id
+    type: bigint
+
+  - name: first_name
+    type: varchar(30)
+
+  - name: last_name
+    type: varchar(30)
+
+  - name: name
+    type: varchar(30)
+
+  - name: dob
+    type: date
+
+  - name: salary
+    type: numeric(10,2)
+
+  - name: address
+    type: varchar(50)
+
+  - name: city
+    type: varchar(20)
+
+  - name: state
+    type: char(2)
+
+  - name: zip
+    type: char(5)
+
+  - name: created_ts
+    type: timestamp
+
+  - name: updated_ts
+    type: timestamp
+
+  - name: active
+    type: boolean
+
+  - name: payload_json
+    type: jsonb
+
+  - name: raw_bytes
+    type: bytea
+
+  - name: quantity
+    type: smallint
+
+  - name: price
+    type: numeric(10,2)
+
+  - name: country
+    type: char(2)
+
+  - name: currency
+    type: char(2)
+
+tables:
+  - name: person
+    cols: id,first_name,last_name,salary,dob,created_ts,active
+
+  - name: address
+    cols: id,address,city,state,zip,created_ts
+
+  - name: customer
+    cols: id,name,country
+
+  - name: product
+    cols: id,name,price,currency,created_ts,updated_ts
+
+  - name: order
+    cols: id,name,quantity,price,currency
+
+# ################################################################################ 
