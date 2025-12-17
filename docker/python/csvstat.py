@@ -68,7 +68,7 @@ def process_files(column_number, prefix):
         total_avg = total_sum / total_rows
 
         # Output
-        print("\n" + "-" * 140)
+        print("" + "-" * 140)
         print(f"|FILE                                     |         ROWS |                       SUM |             MIN |             MAX |             AVG |")
         print(f"|{csv_path.name:<40} | {file_rows:12d} | {file_sum:25.2f} | {file_min:15.2f} | {file_max:15.2f} | {file_avg:15.2f} |")
         print(f"|Cumulative files processed  {total_files:12d} | {total_rows:12d} | {total_sum:25.2f} | {total_min:15.2f} | {total_max:15.2f} | {total_avg:15.2f} |")
