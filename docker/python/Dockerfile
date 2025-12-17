@@ -17,13 +17,15 @@ RUN mkdir -p /app/data
 WORKDIR /app
 
 COPY tabgen.py /app/bin
-COPY sample_tabgen.yaml /app/tabgen.yaml
+COPY tabgen.yaml /app/tabgen.yaml
 
 COPY jobrun.py /app/bin
-COPY sample_jobrun.yaml /app/jobrun.yaml
+COPY jobrun.yaml /app/jobrun.yaml
 
 COPY csvgen.py /app/bin
-COPY sample_csvgen.yaml /app/csvgen.yaml
+COPY csvgen.yaml /app/csvgen.yaml
+
+COPY csvstats.py /app/bin
 
 RUN chmod +x /app/bin/*.py
 
