@@ -17,13 +17,16 @@ RUN mkdir -p /app/data
 WORKDIR /app
 
 COPY tabgen.py /app/bin
-COPY tabgen.yaml /app/tabgen.yaml
+COPY tabgen.yaml /app/
 
 COPY jobrun.py /app/bin
-COPY jobrun.yaml /app/jobrun.yaml
+COPY jobrun.yaml /app/
 
 COPY csvgen.py /app/bin
-COPY csvgen.yaml /app/csvgen.yaml
+COPY csvgen.yaml /app/
+
+COPY pgdatacomp.py /app/bin
+COPY pgdatacomp.yaml /app/
 
 COPY csvstats.py /app/bin
 
