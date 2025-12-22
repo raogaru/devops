@@ -16,7 +16,7 @@ import random
 # CONFIG
 # ============================================================
 
-def load_config(path="pgdatacomp.yaml"):
+def load_config(path="datacomp.yaml"):
     with open(path, "r") as f:
         cfg = yaml.safe_load(f)
     validate_config(cfg)
