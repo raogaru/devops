@@ -1,0 +1,36 @@
+# ----------------------------------------
+# pg_stat_kcache - WORKING 
+# Reference: https://github.com/powa-team/pg_stat_kcache
+
+# clone
+sudo su - postgres
+cd $PGCODE/contrib/
+git clone  https://github.com/powa-team/pg_stat_kcache.git
+cd $PGCODE/contrib/pg_stat_kcache
+make 
+make install
+
+psql
+CREATE EXTENSION pg_stat_kcache;
+ALTER SYSTEM SET pg_stat_kcache.linux_hz=-1;
+ALTER SYSTEM SET pg_stat_kcache.track=top;
+ALTER SYSTEM SET pg_stat_kcache.track_planning=false;
+
+vi $PGDATA/postgresql.conf
+add pg_stat_kcache to shared_preload_libraries
+
+#restart postgresql
+PGstop
+PGstart
+
+psql
+\d pg_stat_kcache
+select * from pg_stat_kcache;
+select * from pg_stat_kcache_statements;
+select * from pg_stat_kcache_all_tables;
+\x 
+How to use?
+Refer to $PGCODE/contrib/pg_stat_kcache/test/sql/*.sql
+
+# ----------------------------------------
+

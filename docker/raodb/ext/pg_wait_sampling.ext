@@ -1,10 +1,10 @@
 # ----------------------------------------
 # pg_wait_sampling - WORKING 
-# Reference: https://github.com/powa-team/pg_wait_sampling
+# Reference: https://github.com/postgrespro/pg_wait_sampling.git
 
 sudo su - postgres
 cd $PGCODE/contrib/
-git clone https://github.com/powa-team/pg_wait_sampling.git
+git clone https://github.com/postgrespro/pg_wait_sampling.git
 cd $PGCODE/contrib/pg_wait_sampling
 make 
 make install

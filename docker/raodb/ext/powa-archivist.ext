@@ -1,0 +1,35 @@
+# ----------------------------------------
+# powa-archivist - WORKING 
+# Reference: https://github.com/powa-team/powa-archivist
+
+sudo su - postgres
+cd $PGCODE/contrib/
+git clone https://github.com/powa-team/powa-archivist.git
+cd $PGCODE/contrib/powa-archivist
+make 
+make install
+
+psql
+CREATE EXTENSION powa-archivist;
+ALTER SYSTEM SET powa-archivist.enabled=true;
+ALTER SYSTEM SET powa-archivist.max=1000;
+ALTER SYSTEM SET powa-archivist.track_pg_catalog=false;
+ALTER SYSTEM SET powa-archivist.resolve_oids=false;
+ALTER SYSTEM SET powa-archivist.track_constants=true;
+ALTER SYSTEM SET powa-archivist.sample_rate=-1;
+ALTER SYSTEM SET powa-archivist.xxx=1000;
+ALTER SYSTEM SET powa-archivist.xxx=1000;
+
+#restart postgresql
+PGstop
+PGstart
+
+psql
+\d powa-archivist
+select * from powa-archivist;
+\x 
+How to use?
+Refer to $PGCODE/contrib/powa-archivist/test/sql/*.sql
+
+# ----------------------------------------
+

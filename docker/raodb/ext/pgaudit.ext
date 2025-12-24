@@ -1,0 +1,57 @@
+# ################################################################################
+# Extension: pgAudit
+# Status: WIP
+# Reference: 
+https://github.com/pgaudit/pgaudit.git
+
+# ################################################################################
+# Install on linux VM
+
+sudo su - postgres
+pg_config --version
+
+cd $PGCODE/contrib
+git clone https://github.com/pgaudit/pgaudit.git
+
+cd pgaudit
+mvn  clean  install
+
+
+
+
+# ################################################################################
+# create extension 
+
+psql
+create extension pgaudit;
+
+
+# ################################################################################
+# mofify parmaeters
+modify $PGDATA/postgressql.conf
+
+shared_preload_libraries = 'pgaudit'            # (change requires restart)
+pgaudit.log = 'read, write, ddl'# Defines which statement classes are logged.
+pgaudit.log_catalog = off       # on or off pg_catalog access
+pgaudit.log_level = log         # Sets log level for audit messages
+pgaudit.log_parameter = on      # logs sql statement parameter values
+pgaudit.role = 'auditor'        # enabling auditing only for users that are members of a specific role
+pgaudit.log_statement_once = on # Avoids duplicate logging for statements affecting multiple objects
+pgaudit.log_target = 'table';	# NEW: either file or target.
+
+SELECT audit_timestamp, session_user, command, object_name 
+FROM public.pgaudit_log 
+ORDER BY audit_timestamp DESC LIMIT 5;
+
+# ################################################################################
+
+PGstop
+PGstart
+
+# ################################################################################
+# EXAMPLE-1
+
+tail -f $PGLOG/postgresql.log
+
+
+# ################################################################################

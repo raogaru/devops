@@ -12,10 +12,11 @@ make install
 psql
 CREATE EXTENSION pg_qualstats;
 ALTER SYSTEM SET pg_qualstats.enabled=true;
-ALTER SYSTEM SET pg_qualstats.max=1000;
-ALTER SYSTEM SET pg_qualstats.track_pg_catalog=false;
-ALTER SYSTEM SET pg_qualstats.resolve_oids=false;
 ALTER SYSTEM SET pg_qualstats.track_constants=true;
+--ALTER SYSTEM SET pg_qualstats.track_pg_stats=true;
+ALTER SYSTEM SET pg_qualstats.max=1000;
+ALTER SYSTEM SET pg_qualstats.resolve_oids=false;
+ALTER SYSTEM SET pg_qualstats.track_pg_catalog=false;
 ALTER SYSTEM SET pg_qualstats.sample_rate=-1;
 
 #restart postgresql
@@ -23,11 +24,29 @@ PGstop
 PGstart
 
 psql
-\d pg_qualstats
 select * from pg_qualstats;
+select * from pg_qualstats_pretty;
+select * from pg_qualstats_all;
+select * from pg_qualstats_by_query;
 \x 
 How to use?
 Refer to $PGCODE/contrib/pg_qualstats/test/sql/*.sql
+
+# ----------------------------------------
+VIEWS
+
+pg_qualstats: filters calls to pg_qualstats() by the current database.
+
+pg_qualstats_pretty: performs the appropriate joins to display a readable aggregated form for every attribute from the pg_qualstats view
+
+pg_qualstats_all: sums the counts for each attribute / operator pair, regardless of its position as an operand (LEFT or RIGHT), grouping together attributes used in AND clauses.
+
+pg_qualstats_by_query: returns only predicates of the form VAR OPERATOR CONSTANT, aggregated by queryid.
+
+# ----------------------------------------
+FUNCTIONS
+
+
 
 # ----------------------------------------
 

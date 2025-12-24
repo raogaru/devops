@@ -1,0 +1,70 @@
+# Hypothetical Postgres Indexes
+# ----------------------------------------
+# hypopg - WORKING 
+Reference: https://github.com/HypoPG/hypopg
+
+sudo su - postgres
+cd $PGCODE/contrib/
+git clone https://github.com/HypoPG/hypopg.git
+cd $PGCODE/contrib/hypopg
+make 
+make install
+
+psql
+CREATE EXTENSION hypopg;
+
+-- List hypothetical indexes
+SELECT * FROM hypopg_list_indexes ;
+
+-- Remove all hypothetical indexes
+SELECT hypopg_reset();
+
+--create table with data
+CREATE TABLE test AS SELECT id, 'line ' || id AS val FROM generate_series(1,10000) id;
+
+-- explain plan show Seq Scan
+EXPLAIN SELECT * FROM test WHERE id = 1;
+
+-- Create real index
+CREATE INDEX test_id_idx ON test (id);
+CREATE INDEX test_id_val_idx ON test(id, val);
+
+-- explain plan show Index Scan
+EXPLAIN SELECT * FROM test WHERE id = 1;
+
+-- disable index scan. then optimizer uses bitmap scan
+SET enable_indexscan = off;
+EXPLAIN SELECT * FROM test WHERE id = 1;
+
+-- disable bitmap scan also. so both indexes are invisible. then optimizer uses seq scan
+SET enable_indexscan = off;
+SET enable_bitmapscan = off;
+EXPLAIN SELECT * FROM test WHERE id = 1;
+
+-- Drop real index
+DROP INDEX test_id_idx;
+DROP INDEX test_id_val_idx;
+
+-- create hypothetical index
+SELECT * FROM hypopg_create_index('CREATE INDEX test_hi1 ON test (id)');
+SELECT * FROM hypopg_list_indexes ;
+select * from hypopg();
+
+-- verify plan using hypothetical index
+EXPLAIN SELECT * FROM test WHERE id = 1;
+
+-- Hide hypothetical index
+SELECT hypopg_hide_index('btree_test_id'::REGCLASS);
+SELECT * FROM hypopg_hidden_indexes();
+
+-- unhide all indexes
+SELECT hypopg_unhide_all_indexes()
+
+-- only EXPLAIN without ANALYZE will use hypothetical indexes:
+EXPLAIN ANALYZE SELECT * FROM test WHERE id = 1;
+
+How to use?
+Refer to $PGCODE/contrib/hypopg/sql/*.sql
+
+# ----------------------------------------
+
