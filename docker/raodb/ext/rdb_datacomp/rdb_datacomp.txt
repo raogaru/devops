@@ -1,0 +1,55 @@
+# ################################################################################
+# rdb_datacomp.py - compare postgres data between two schemas
+
+# --------------------------------------------------------------------------------
+# CONFIGURE 
+vi rdb_datacomp.yaml
+
+1.specify source database connection information
+
+2. specify target database connection information
+
+3. specify schema name
+
+4. specify tables to compare
+   a) "all" - refers to all tables in given schema
+   b) list of tables in array format:  [ table_name_1, table_name_2, table_name_3 ]
+   c) list of tables in list format:
+      tables:
+        - table_name_1
+        - table_name_2
+        - table_name_3
+
+5. method of comparison. You can sepcify one or more methods.
+   available methods: column, rowcnt, chksum, sample
+   method="column" - table column_name ordered by ordinal_position. no data compare in this method.
+   method="rowcnt" - total number of rows in the table
+   method="chksum" - md5 checksum of columns data for each row
+   method="sample" - select 5% or rows based on built-in hash algorithm and compare data
+   Notes: better to specify column method always as it is faster and can be used for fail-fast before resource intensive methods for data compare.
+
+# --------------------------------------------------------------------------------
+# RUN
+
+rdb_datacomp.py 
+
+rdb_datacomp.py rdb_datacomp.yaml
+
+
+make sure to configure source and target databases before 
+
+# --------------------------------------------------------------------------------
+# TEST
+docker exec -it c-raodb /bin/bash
+su - postgres
+PGstart
+psql
+
+-- create databases for data compare
+create database dc1 with template postgres;
+create database dc2 with template postgres;
+\q
+
+rdb_datacomp.py rdb_datacomp.yaml
+
+# ################################################################################

@@ -1,0 +1,41 @@
+source:
+  host: localhost
+  port: 5432
+  database: dc1
+  user: postgres
+  password: postgres
+
+target:
+  host: localhost
+  port: 5432
+  database: dc2
+  user: postgres
+  password: postgres
+
+compare:
+  schema: job3
+  tables: all
+#    - t1
+#    - t2
+#    - t3
+#    - t4
+#    - t5
+#    - t6
+#    - t7
+#    - t8
+#    - t9
+#    - t10
+
+# availabe methods: rowcnt chksum sample colcnt coltype
+methods:
+  - rowcnt
+  - chksum
+  - sample
+  - column
+#  - coltype
+
+options:
+  ignore_columns:
+    - last_updated
+  sample_percent: 5
+
