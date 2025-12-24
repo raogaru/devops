@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+###############################################
+# rdb_schcomp testing
+# cd $PGCODE/contrib/rdb_schcomp/test
+# ./test.run 
+###############################################
+PGHOST1=${PGHOST1:-"localhost"}
+PGHOST2=${PGHOST2:-"localhost"}
+
+PGPORT1=${PGPORT1:-5432}
+PGPORT2=${PGPORT2:-5432}
+
+PGDB1=${PGDB1:-"test1"}
+PGDB2=${PGDB2:-"test2"}
+
+PGUSER1=${PGUSER1:-"postgres"}
+PGUSER2=${PGUSER2:-"postgres"}
+
+PGPASS1=${PGPASS1:-"postgres"}
+PGPASS2=${PGPASS2:-"postgres"}
+
+PGSOFT=/opt/rdb/soft
+
+PGV1="19"
+PGV2="19"
+
+VERBOSE=${VERBOSE:-"-v"}
+CLEANUP=${CLEANUP:-0}
+
+RDBCOMP=${PGSOFT}/bin/rdb_schcomp
+
+echo "loading into test1 database..."
+$PGSOFT/bin/psql -h ${PGHOST1} -p ${PGPORT1} -d postgres -U ${PGUSER1} -X -f test1.sql > /dev/null
+
+echo "loading nto test2 database..."
+$PGSOFT/bin/psql -h ${PGHOST2} -p ${PGPORT2} -d postgres -U ${PGUSER2} -X -f test2.sql > /dev/null
+
+echo "rdb_schcomp..."
+${RDBCOMP} $VERBOSE -c test.ini
+
+echo "applying changes..."
+$PGSOFT/bin/psql -h ${$PGHOST2} -p ${PGPORT1} -d test2 -U ${PGUSER1} -X -f /tmp/output.sql > /dev/null
+
+echo "test again..."
+$RDBCOMP -c test.ini
+
+echo "comparing dumps..."
+export PGPASSWORD=postgres
+$PGSOFT/bin/pg_dump -s -h $PGHOST1 -p $PGPORT1 -d $PGDB1 -U $PGUSER1 -f /tmp/q1.sql 2> /dev/null
+$PGSOFT/bin/pg_dump -s -h $PGHOST1 -p $PGPORT2 -d $PGDB2 -U $PGUSER2 -f /tmp/q2.sql 2> /dev/null
+
+#diff -u /tmp/q1.sql /tmp/q2.sql
+#diff -u <(sort /tmp/q1.sql) <(sort /tmp/q2.sql)
+
+#RAO if [ $CLEANUP -eq 1 ]; then
+#RAO 	rm -f /tmp/test.sql
+#RAO 	rm -f /tmp/test2.sql
+#RAO 	rm -f /tmp/q1.sql
+#RAO 	rm -f /tmp/q2.sql
+#RAO fi
+
+echo "E N D"
+
+exit 0

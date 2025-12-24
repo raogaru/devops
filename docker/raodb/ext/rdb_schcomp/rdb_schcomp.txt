@@ -1,0 +1,52 @@
+# ################################################################################
+# Database Compare - C-Program
+
+# ################################################################################
+
+# --------------------------------------------------------------------------------
+# INSTALL
+
+cd $PGCODE/contrib
+
+git clone https://github.com/raogaru/rdb_schcomp.git
+
+cd $PGCODE/contrib/rdb_schcomp
+
+cmake -DCMAKE_INSTALL_PREFIX=${PGSOFT} .
+
+make
+
+make install
+
+# --------------------------------------------------------------------------------
+# PREPARE FOR COMPARE
+
+vi rdb_schcomp.ini
+configure "source" and "target" databases - host, port, db, user, password
+include_schema: list down all schemas to schcomp between db1(source) and db2(target)
+
+# --------------------------------------------------------------------------------
+# RUN COMPARE
+rdb_schcomp -c rdb_schcomp.ini -v
+
+# debug goes to standard output
+rdb_schcomp -c rdb_schcomp.ini -v 2>&1
+
+# debug goes to debug.out
+rdb_schcomp -c rdb_schcomp.ini -v 2> debug.out
+
+rdb_schcomp \
+--source-dbname=db1 --source-host=localhost --source-port=5432 --source-username=postgres \
+--target-dbname=db2 --target-host=localhost --target-port=5432 --target-username=postgres \    
+job1
+
+# --------------------------------------------------------------------------------
+# REGRESSION TEST
+
+cd $PGCODE/contrib/rdb_schcomp/test
+
+vi test.ini
+
+./test.run
+
+# ################################################################################

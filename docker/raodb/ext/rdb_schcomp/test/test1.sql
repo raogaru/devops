@@ -1,0 +1,59 @@
+SET client_min_messages TO WARNING;
+
+DROP DATABASE IF EXISTS test1;
+CREATE DATABASE test1 WITH ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE   = 'en_US.UTF-8' TEMPLATE = template0;
+
+DROP ROLE IF EXISTS same_role_1;
+DROP ROLE IF EXISTS same_role_2;
+DROP ROLE IF EXISTS same_role_3;
+DROP ROLE IF EXISTS "PGQ_same_role_4";
+CREATE ROLE same_role_1;
+CREATE ROLE same_role_2;
+CREATE ROLE same_role_3;
+CREATE ROLE "PGQ_same_role_4";
+
+RESET client_min_messages;
+
+\c test1
+
+-- fdw tests
+CREATE EXTENSION postgres_fdw;
+CREATE EXTENSION file_fdw;
+
+\i dellstore.sql
+
+\i from-server.sql
+
+\i from-table.sql
+
+\i from-index.sql
+
+\i from-sequence.sql
+
+\i from-domain.sql
+
+\i from-function.sql
+
+\i from-extension.sql
+
+\i from-language.sql
+
+\i from-schema.sql
+
+--\i from-eventtrigger.sql
+
+\i from-cast.sql
+
+\i from-collation.sql
+
+\i from-view.sql
+
+\i from-matview.sql
+
+\i from-fdw.sql
+
+\i from-statistics.sql
+
+--\i from-user-mapping.sql
+
+\i from-publication.sql

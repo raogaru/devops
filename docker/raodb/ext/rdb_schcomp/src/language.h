@@ -1,0 +1,33 @@
+#ifndef LANGUAGE_H
+#define LANGUAGE_H
+
+#include "common.h"
+#include "privileges.h"
+
+typedef struct PQLLanguage
+{
+	Oid			oid;
+	char		*languagename;
+	bool		trusted;
+	PQLObject	callfunc;
+	PQLObject	inlinefunc;
+	PQLObject	validatorfunc;
+	char		*comment;
+	char		*owner;
+	char		*acl;
+
+	/* security labels */
+	PQLSecLabel	*seclabels;
+	int			nseclabels;
+} PQLLanguage;
+
+PQLLanguage *getLanguages(PGconn *c, int *n);
+void getLanguageSecurityLabels(PGconn *c, PQLLanguage *l);
+
+void dumpDropLanguage(FILE *output, PQLLanguage *l);
+void dumpCreateLanguage(FILE *output, PQLLanguage *l);
+void dumpAlterLanguage(FILE *output, PQLLanguage *a, PQLLanguage *b);
+
+void freeLanguages(PQLLanguage *l, int n);
+
+#endif	/* LANGUAGE_H */
