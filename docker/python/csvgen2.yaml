@@ -1,0 +1,25 @@
+database:
+  host: localhost
+  port: 5432
+  name: postgres
+  user: postgres
+  password: postgres
+
+schema:
+  name: job1
+  tables: all
+#  tables: [ t1, t2, t3 ]
+
+output:
+  output_dir: out
+  min_rows: 10
+  max_rows: 50
+  interval_sec: 5
+
+parallelism:
+  threads: 24
+
+options:
+  random_seed: 42       # deterministic non-id columns
+  log_file: pg_csvgen.log
+
