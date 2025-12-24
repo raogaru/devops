@@ -5,6 +5,7 @@ FROM amazonlinux:2023
 # Set environment variables
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
+ENV PYTHONPYCACHEPREFIX=/tmp/pycache
 ENV OWNER=postgres
 ENV HOME=/home/${OWNER}
 ENV MYDIR=/opt/rdb
@@ -14,6 +15,8 @@ EXPOSE 5432
 RUN dnf update -y 
 RUN dnf install -y vim wget tar gzip unzip less git cmake perl systemd lsof iproute net-tools procps-ng
 RUN dnf install -y -q -e 0 bison-devel readline-devel zlib-devel openssl-devel shadow-utils glibc-langpack-en
+RUN dnf install -y -q python3-pip
+RUN python3 -m pip install pyyaml psycopg2-binary psycopg[binary] psycopg_pool
 RUN dnf groups install 'Development Tools' -y
 RUN dnf clean all
 
