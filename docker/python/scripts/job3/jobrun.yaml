@@ -20,7 +20,7 @@
 
 # ================================================================================
 database:
-  dsn: "host=c-postgres port=5432 dbname=postgres user=postgres password=postgres"
+  dsn: "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres"
 
 execution:
   dry_run: false   # true = no SQL execution
@@ -49,19 +49,19 @@ groups:
         sql_file: "scripts/job3/c.sql"
 
 # ----------------------------------------
-  - name: insert_analyze_truncate
-    repeat: 3
-
-    tasks:
-      - id: insert_tables
-        sql_file: "scripts/job3/i.sql"
-
-      - id: analyze_tables
-        sql_file: "scripts/job3/a.sql"
-
-      - id: truncate_tables
-        sql_file: "scripts/job3/t.sql"
-
+#  - name: insert_analyze_truncate
+#    repeat: 1
+#
+#    tasks:
+#      - id: insert_tables
+#        sql_file: "scripts/job3/i.sql"
+#
+#      - id: analyze_tables
+#        sql_file: "scripts/job3/a.sql"
+#
+#      - id: truncate_tables
+#        sql_file: "scripts/job3/t.sql"
+#
 # ----------------------------------------
   - name: insert
 

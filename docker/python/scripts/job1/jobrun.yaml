@@ -20,7 +20,7 @@
 
 # ================================================================================
 database:
-  dsn: "host=c-postgres port=5432 dbname=postgres user=postgres password=postgres"
+  dsn: "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres"
 
 execution:
   dry_run: false   # true = no SQL execution
@@ -49,19 +49,19 @@ groups:
         sql_file: "scripts/job1/c.sql"
 
 # ----------------------------------------
-  - name: insert_analyze_truncate
-    repeat: 5
-
-    tasks:
-      - id: insert_tables
-        sql_file: "scripts/job1/i.sql"
-
-      - id: analyze_tables
-        sql_file: "scripts/job1/a.sql"
-
-      - id: truncate_tables
-        sql_file: "scripts/job1/t.sql"
-
+#  - name: insert_analyze_truncate
+#    repeat: 5
+#
+#    tasks:
+#      - id: insert_tables
+#        sql_file: "scripts/job1/i.sql"
+#
+#      - id: analyze_tables
+#        sql_file: "scripts/job1/a.sql"
+#
+#      - id: truncate_tables
+#        sql_file: "scripts/job1/t.sql"
+#
 # ----------------------------------------
   - name: insert
 
@@ -70,12 +70,12 @@ groups:
         sql_file: "scripts/job1/i.sql"
 
 # ----------------------------------------
-  - name: analyze
-
-    tasks:
-      - id: analyze_tables
-        sql_file: "scripts/job1/a.sql"
-
+#  - name: analyze
+#
+#    tasks:
+#      - id: analyze_tables
+#        sql_file: "scripts/job1/a.sql"
+#
 # ----------------------------------------
   - name: count
 
@@ -83,4 +83,11 @@ groups:
       - id: count_rows
         sql_file: "scripts/job1/s.sql"
 
+# ----------------------------------------
+#  - name: truncate
+#
+#    tasks:
+#      - id: count_rows
+#        sql_file: "scripts/job1/t.sql"
+#
 # ----------------------------------------

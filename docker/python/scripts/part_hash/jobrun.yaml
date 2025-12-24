@@ -20,7 +20,7 @@
 
 # ================================================================================
 database:
-  dsn: "host=c-postgres port=5432 dbname=postgres user=postgres password=postgres"
+  dsn: "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres"
 
 execution:
   dry_run: false   # true = no SQL execution
@@ -49,18 +49,18 @@ groups:
         sql_file: "scripts/part_hash/c.sql"
 
 # ----------------------------------------
-  - name: insert_analyze_truncate
-
-    tasks:
-      - id: insert_tables
-        sql_file: "scripts/part_hash/i.sql"
-
-      - id: analyze_tables
-        sql_file: "scripts/part_hash/a.sql"
-
-      - id: truncate_tables
-        sql_file: "scripts/part_hash/t.sql"
-
+#  - name: insert_analyze_truncate
+#
+#    tasks:
+#      - id: insert_tables
+#        sql_file: "scripts/part_hash/i.sql"
+#
+#      - id: analyze_tables
+#        sql_file: "scripts/part_hash/a.sql"
+#
+#      - id: truncate_tables
+#        sql_file: "scripts/part_hash/t.sql"
+#
 # ----------------------------------------
   - name: insert
 
