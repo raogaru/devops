@@ -1,3 +1,4 @@
+DROP DATABASE if exists keycloak ;
 CREATE DATABASE keycloak;
 CREATE USER keycloak WITH ENCRYPTED PASSWORD 'keycloak';
 ALTER USER keycloak Superuser;
