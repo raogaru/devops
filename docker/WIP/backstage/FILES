@@ -1,0 +1,12 @@
+.
+├── package.json
+├── app-config.yaml
+├── yarn.lock
+└── packages
+    ├── app
+    │   ├── package.json
+    │   └── src
+    └── backend
+        ├── package.json
+        └── src
+

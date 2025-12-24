@@ -1,0 +1,34 @@
+{
+  "name": "rao-backstage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rao Backstage Developer Portal",
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "dev": "concurrently \"yarn workspace app start\" \"yarn workspace backend start\"",
+    "start": "yarn workspace backend start",
+    "build": "backstage-cli repo build",
+    "build:app": "yarn workspace app build",
+    "build:backend": "yarn workspace backend build",
+    "clean": "backstage-cli repo clean",
+    "lint": "backstage-cli repo lint",
+    "test": "backstage-cli repo test",
+    "docker:build": "docker build -t rao-backstage .",
+    "docker:run": "docker run -p 7007:7007 rao-backstage"
+  },
+  "dependencies": {
+    "@backstage/cli": "^0.26.6"
+  },
+  "devDependencies": {
+    "@backstage/cli": "^0.26.6",
+    "concurrently": "^8.2.0"
+  }
+}
+

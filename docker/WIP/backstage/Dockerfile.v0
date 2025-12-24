@@ -1,0 +1,60 @@
+# ================================
+# 1) Builder Stage
+# ================================
+FROM node:18-bookworm AS builder
+
+WORKDIR /app
+
+# Install system deps needed for build
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
+
+# Copy package descriptors first (for cache)
+#RAO COPY package.json yarn.lock ./
+COPY package.json  ./
+COPY packages/app/package.json packages/app/
+COPY packages/backend/package.json packages/backend/
+
+# Install deps
+#RAO RUN yarn install --frozen-lockfile
+
+# Copy full source
+#RAO COPY . .
+COPY app-config.yaml .
+COPY catalog-info.yaml .
+
+# Build frontend
+RUN yarn build
+
+# Build backend
+RUN yarn workspace backend build
+
+# ================================
+# 2) Runtime Stage (Minimal)
+# ================================
+FROM node:18-bookworm-slim
+
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+# Install only runtime OS deps
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy only build artifacts + needed files
+COPY --from=builder /app/yarn.lock ./yarn.lock
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/packages/backend/dist ./packages/backend/dist
+COPY --from=builder /app/packages/backend/package.json ./packages/backend/package.json
+COPY --from=builder /app/packages/app/dist ./packages/app/dist
+COPY --from=builder /app/app-config.yaml ./app-config.yaml
+
+# Install only production deps
+RUN yarn workspaces focus --production
+
+EXPOSE 7007
+
+CMD ["node", "packages/backend/dist/index.js"]
+

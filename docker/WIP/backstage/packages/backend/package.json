@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "private": true,
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "backstage-cli backend:dev",
+    "build": "backstage-cli backend:build"
+  },
+  "dependencies": {
+    "@backstage/backend-common": "^0.24.1",
+    "@backstage/plugin-app-backend": "^0.3.48",
+    "@backstage/plugin-auth-backend": "^0.18.2",
+    "@backstage/plugin-catalog-backend": "^1.11.2",
+    "@backstage/plugin-techdocs-backend": "^1.7.2",
+    "@backstage/integration": "^1.7.2",
+    "better-sqlite3": "^9.4.0",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {
+    "@backstage/cli": "^0.26.6",
+    "typescript": "^5.3.3"
+  }
+}
+

@@ -1,0 +1,27 @@
+# ################################################################################
+# purpose: backstage service catalog
+# status: working
+#
+docker stop c-backstage
+docker rm c-backstage
+docker rmi i-backstage
+#
+# build
+docker build -t i-backstage .
+#
+# run
+docker run -d --name c-backstage -p 8092:7007  i-backstage
+#
+docker stop c-backstage
+docker start c-backstage
+#
+# connect
+docker exec -it c-backstage /bin/bash
+#
+# logs
+docker logs c-backstage
+#
+# connect from webconsole
+http://localhost:8092/  
+
+# ################################################################################

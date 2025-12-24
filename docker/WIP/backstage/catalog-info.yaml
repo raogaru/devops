@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: raogaru-backend
+  description: Raogaru Backend Service
+spec:
+  type: service
+  lifecycle: experimental
+  owner: dev-team
+

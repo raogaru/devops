@@ -1,0 +1,17 @@
+app:
+  title: Rao Backstage
+  baseUrl: http://localhost:7007
+
+backend:
+  baseUrl: http://localhost:7007
+  listen:
+    port: 7007
+    host: 0.0.0.0
+
+database:
+  client: better-sqlite3
+  connection: ':memory:'
+
+auth:
+  providers: {}
+
