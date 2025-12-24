@@ -4,6 +4,9 @@ FROM quay.io/keycloak/keycloak:24.0.1
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
 ENV KC_HTTP_ENABLED=true
+#ENV KC_LOG_LEVEL=DEBUG
+ENV KC_LOG=file
+ENV KC_LOG_FILE=/opt/keycloak/data/keycloak.log
 
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
@@ -13,7 +16,7 @@ ENV KC_DB_USERNAME=keycloak
 ENV KC_DB_PASSWORD=keycloak
 ENV KC_HOSTNAME_STRICT=false
 
-COPY realm.json /opt/keycloak/data/import/
+COPY raogaru.json /opt/keycloak/data/import/
 
 # Build the optimized runtime
 RUN /opt/keycloak/bin/kc.sh build

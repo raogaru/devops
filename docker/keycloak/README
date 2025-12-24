@@ -10,7 +10,9 @@ docker rmi i-keycloak
 docker build -t i-keycloak .
 #
 # run
-docker run -d --name c-keycloak --network n-raogaru -p 8153:8080  i-keycloak start 
+docker run -d --name c-keycloak --network n-raogaru -p 8153:8080 i-keycloak start 
+docker run -d --name c-keycloak --network n-raogaru -p 8153:8080 -e KC_LOG_LEVEL=DEBUG i-keycloak start
+docker run -d --name c-keycloak --network n-raogaru -p 8153:8080 -e KC_LOG_LEVEL=DEBUG -v ./data:/opt/keycloak/data i-keycloak start
 #
 docker stop c-keycloak
 docker start c-keycloak
@@ -37,6 +39,9 @@ cd /opt/keycloak/data/import/
 /opt/keycloak/bin/kcadm.sh create realms -f realm.json
 /opt/keycloak/bin/kcadm.sh get realms
 /opt/keycloak/bin/kcadm.sh get realms/raogaru
+
+12/08
+/opt/keycloak/bin/kcadm.sh create roles -r raogaru -f roles.json
 
 
 # ################################################################################
