@@ -1,0 +1,5 @@
+# rdb_sqltrc
+comment = 'RAO DB: rdb_sqltrc - SQL lifecycle tracer (parse/analyze/plan/execute)'
+default_version = '1.0'
+relocatable = false
+
