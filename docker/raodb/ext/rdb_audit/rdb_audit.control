@@ -1,0 +1,5 @@
+# rdb_audit extension
+comment = 'RAO DB: rdb_audit - An audit logging extension for PostgreSQL'
+default_version = '1.0'
+module_pathname = '$libdir/rdb_audit'
+relocatable = false
