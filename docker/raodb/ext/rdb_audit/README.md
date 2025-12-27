@@ -39,6 +39,14 @@ Specifies which classes of statements will be logged by session audit logging. P
 
 The default is `none`.
 
+### rdb_audit.log_directory
+
+Audit log files are written to Absolute directory OR relative with resepct to $PGDATA. '/opt/rdb/logs' or 'logs'. Default is $PGDATA/log
+
+### rdb_audit.log_format
+
+Audit log files are written to in several modes. Valid values are: default|expand|csv|json|xml|table.  Default value is 'default'
+
 ### rdb_audit.log_catalog
 
 Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Disabling this setting will reduce noise in the log from tools like psql and PgAdmin that query the catalog heavily.
