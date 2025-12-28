@@ -1,5 +1,4 @@
 #include "postgres.h"
-
 #include "access/xact.h"
 #include "catalog/pg_type.h"
 #include "executor/executor.h"
@@ -18,21 +17,23 @@
 #include "commands/explain_state.h"
 #include "nodes/pg_list.h"
 #include "tcop/dest.h"
+#include "utils/memutils.h"
+#include "utils/palloc.h"
 #define LINE80 "RDB-SQLTRC:################################################################################"
-
-
 
 PG_MODULE_MAGIC;
 
 /* ---------- GUCs ---------- */
 static bool rdb_enabled = false;
-static bool rdb_log_query_text = true;
-static bool rdb_log_query_tree = true;
-static bool rdb_log_plan_tree  = true;
-static bool rdb_log_executor   = true;
+static bool rdb_trc_query_text = true;
+static bool rdb_trc_query_tree = true;
+static bool rdb_trc_plan_tree  = true;
+static bool rdb_trc_explain_plan = true;
+static bool rdb_trc_executor   = true;
 static bool rdb_instrument     = true;
-static int  rdb_log_min_duration_ms = 0;
-static char *rdb_log_dir = NULL;
+static int  rdb_trc_min_duration_ms = 0;
+static char *rdb_trc_directory = NULL;
+static char *rdb_trc_file_name= NULL;
 
 /* ---------- Hook chaining ---------- */
 static post_parse_analyze_hook_type prev_post_parse_analyze_hook = NULL;
@@ -58,42 +59,13 @@ ms_elapsed(TimestampTz start, TimestampTz end)
     return (int64) secs * 1000 + (int64) (usecs / 1000);
 }
 
-#include "postgres.h"
-#include "utils/palloc.h"
-
-// Replace every ':' with '\n:'
-char *
-strColon2NewLine(const char *src)
-{
-    const char *p;
-    char       *dst;
-    char       *q;
-    int         colon_count = 0;
-    int         len;
-
-    if (src == NULL)
-        return NULL;
-
-    for (p = src; *p; p++) {
-        if (*p == ':') colon_count++;
-    }
-    len = strlen(src) + colon_count + 1;
-    dst = palloc(len);
-    for (p = src, q = dst; *p; p++) {
-        if (*p == ':') { *q++ = '-'; *q++ = '\n'; *q++ = ':'; } else { *q++ = *p; }
-    }
-    *q = '\0';
-    return dst;
-}
-
-
 static void
 trace_open_if_needed(void)
 {
     if (!rdb_enabled || trace_fp != NULL)
         return;
 
-    if (rdb_log_dir == NULL || rdb_log_dir[0] == '\0')
+    if (rdb_trc_directory == NULL || rdb_trc_directory[0] == '\0')
         return;
 
     /* Ensure directory exists outside (or you can CreateDir here with care) */
@@ -103,15 +75,16 @@ trace_open_if_needed(void)
     pg_strftime(tsbuf, sizeof(tsbuf), "%Y%m%d-%H%M%S", pg_localtime(&now, log_timezone));
 
     char path[MAXPGPATH];
-    snprintf(path, sizeof(path), "%s/rdb_sqltrc-%s-%d.trc", rdb_log_dir, tsbuf, MyProcPid);
+    if (rdb_trc_file_name)
+    snprintf(path, sizeof(path), "%s/%s", rdb_trc_directory, rdb_trc_file_name);
+    else
+    snprintf(path, sizeof(path), "%s/rdb_sqltrc-%s-%d.trc", rdb_trc_directory, tsbuf, MyProcPid);
 
     trace_fp = AllocateFile(path, "a");
     if (trace_fp)
     {
-        fprintf(trace_fp, "=== rdb_sqltrc start pid=%d user=%s db=%s ===\n",
-                MyProcPid,
-                GetUserNameFromId(GetUserId(), false),
-                get_database_name(MyDatabaseId));
+        fprintf(trace_fp, "=== rdb_sqltrc start ts=%s pid=%d user=%s db=%s ===\n",
+		tsbuf, MyProcPid, GetUserNameFromId(GetUserId(), false), get_database_name(MyDatabaseId));
         fflush(trace_fp);
     }
 }
@@ -146,31 +119,10 @@ static void
 dump_node(const char *label, const Node *node)
 {
     if (!node) return;
-    char *s = nodeToString(node);        /* palloc'd */
+    char *s = nodeToString(node);
     tracef("--- %s ---", label);
     tracef("%s", s);
     pfree(s);
-}
-
-static char *
-print_explain_plan(QueryDesc *queryDesc)
-{
-    ExplainState *es ;
-    StringInfoData buf;
-
-    es = NewExplainState();
-    es->analyze = false;
-    es->verbose = true;
-    es->costs = true;
-    es->buffers = false;
-    es->format = EXPLAIN_FORMAT_TEXT;
-
-    ExplainBeginOutput(es);
-    ExplainPrintPlan(es, queryDesc);
-    ExplainEndOutput(es);
-    ExplainCloseGroup("Query", NULL, es);
-
-    return pstrdup(buf.data);
 }
 
 /* ---------- hooks ---------- */
@@ -184,14 +136,19 @@ rdb_post_parse_analyze(ParseState *pstate, Query *query, JumbleState *jstate)
     {
         tracef("PHASE=PARSE_ANALYZE pid=%d", MyProcPid);
 
-        if (rdb_log_query_text && debug_query_string) {
-	    tracef(LINE80);
+	tracef(LINE80);
+        if (rdb_trc_query_text && debug_query_string) 
             tracef("--- QUERY_TEXT ---\n%s", debug_query_string);
-	}
-        if (rdb_log_query_tree) {
-	    tracef(LINE80);
-            dump_node("QUERY_TREE", (Node *) strColon2NewLine(query));
-	}
+	else
+	    tracef("-- QUERY_TEXT -- off ");
+	
+
+	tracef(LINE80);
+        if (rdb_trc_query_tree) 
+		dump_node("QUERY_TREE", (Node *) query);
+	else
+		tracef("-- QUERY_TREE -- off ");
+	
     }
 
     if (prev_post_parse_analyze_hook)
@@ -202,32 +159,53 @@ static PlannedStmt *
 rdb_planner(Query *parse, const char *query_string, int cursorOptions, ParamListInfo boundParams, QueryEnvironment *queryEnv)
 {
     TimestampTz plan_start = GetCurrentTimestamp();
-
-    PlannedStmt *result;
-    if (prev_planner_hook)
-        result = prev_planner_hook(parse, query_string, cursorOptions, boundParams, queryEnv);
-    else
-        result = standard_planner(parse, query_string, cursorOptions, boundParams, queryEnv);
-
+    PlannedStmt *planned_stmt;
+    planned_stmt = prev_planner_hook
+		? prev_planner_hook(parse, query_string, cursorOptions, boundParams, queryEnv)
+		: standard_planner(parse, query_string, cursorOptions, boundParams, queryEnv);
     TimestampTz plan_end = GetCurrentTimestamp();
 
     if (rdb_enabled)
     {
         tracef("PHASE=PLANNER duration_ms=%ld", (long) ms_elapsed(plan_start, plan_end));
 
-        if (rdb_enabled && rdb_log_plan_tree)
+        if (rdb_trc_plan_tree)
         {
 	    tracef(LINE80);
-            //dump_node("PLANNED_STATEMENT(PlannedStmt)", (Node *) result);
+            dump_node("PLANNED_STATEMENT", (Node *) (planned_stmt));
 
-            if (result && result->planTree) {
+            if (planned_stmt && planned_stmt->planTree) {
 	        tracef(LINE80);
-                //dump_node("PLAN_TREE(Plan)", (Node *) result->planTree);
+                dump_node("PLAN_TREE", (Node *) (planned_stmt->planTree));
 	    }
         }
+
+        tracef(LINE80);
+        if (rdb_trc_explain_plan) {
+	    tracef("rdb_sqltrc.trc_explain_plan = on");
+            ExplainState *es;
+	    MemoryContext oldcxt;
+	    oldcxt = MemoryContextSwitchTo(TopMemoryContext);
+            es = NewExplainState();
+            es->analyze = false;
+            es->verbose = true;
+            es->buffers = true;
+            es->timing  = false;
+            es->format  = EXPLAIN_FORMAT_TEXT;
+            ExplainBeginOutput(es);
+            ExplainPrintPlan(es, planned_stmt);
+            ExplainEndOutput(es);
+            if (es->str && es->str->data) 
+                tracef("-- EXPLAIN_PLAN --\n%s",es->str->data);
+	    else
+		tracef("plan is null\n");
+            MemoryContextSwitchTo(oldcxt);
+        }
+	else
+	    tracef("rdb_sqltrc.trc_explain_plan = off");
     }
 
-    return result;
+    return planned_stmt;
 }
 
 static void
@@ -237,18 +215,7 @@ rdb_ExecutorStart(QueryDesc *queryDesc, int eflags)
     if (rdb_enabled && rdb_instrument && queryDesc)
         queryDesc->instrument_options |= INSTRUMENT_TIMER | INSTRUMENT_ROWS;
 
-/*
-    if (rdb_enabled && rdb_log_plan_tree) {
-        //char plan_text[32768];
-        //plan_text = print_explain_plan(queryDesc);
-        //tracef("EXPLAIN_PLAN:\n%s",plan_text);
-        tracef(LINE80);
-        tracef("EXPLAIN_PLAN:\n%s",print_explain_plan(queryDesc));
-        //pfree(plan_text);
-    }
-*/
-    
-    if (rdb_enabled && rdb_log_executor)
+    if (rdb_enabled && rdb_trc_executor)
         tracef("PHASE=EXECUTOR_START eflags=%d", eflags);
 
     if (prev_ExecutorStart)
@@ -269,7 +236,7 @@ rdb_ExecutorRun(QueryDesc *queryDesc, ScanDirection direction, uint64 count)
 
     TimestampTz exec_end = GetCurrentTimestamp();
 
-    if (rdb_enabled && rdb_log_executor)
+    if (rdb_enabled && rdb_trc_executor)
         tracef("PHASE=EXECUTOR_RUN duration_ms=%ld", (long) ms_elapsed(exec_start, exec_end));
 }
 
@@ -281,7 +248,7 @@ rdb_ExecutorFinish(QueryDesc *queryDesc)
     else
         standard_ExecutorFinish(queryDesc);
 
-    if (rdb_enabled && rdb_log_executor)
+    if (rdb_enabled && rdb_trc_executor)
         tracef("PHASE=EXECUTOR_FINISH");
 }
 
@@ -298,7 +265,7 @@ rdb_ExecutorEnd(QueryDesc *queryDesc)
         TimestampTz end = GetCurrentTimestamp();
         int64 total_ms = (stmt_start_ts ? ms_elapsed(stmt_start_ts, end) : -1);
 
-        if (total_ms >= rdb_log_min_duration_ms)
+        if (total_ms >= rdb_trc_min_duration_ms)
             tracef("PHASE=EXECUTOR_END total_ms=%ld", (long) total_ms);
     }
 }
@@ -316,9 +283,9 @@ rdb_ProcessUtility(PlannedStmt *pstmt,
     if (rdb_enabled)
     {
         tracef("PHASE=UTILITY context=%d", (int) context);
-        if (rdb_log_query_text && queryString)
+        if (rdb_trc_query_text && queryString)
             tracef("UTILITY_TEXT=%s", queryString);
-        if (rdb_log_plan_tree && pstmt)
+        if (rdb_trc_plan_tree && pstmt)
             dump_node("UTILITY_PLANNED_STMT", (Node *) pstmt);
     }
 
@@ -348,38 +315,51 @@ _PG_init(void)
                              0,
                              NULL, NULL, NULL);
 
-    DefineCustomStringVariable("rdb_sqltrc.log_directory",
+    DefineCustomStringVariable("rdb_sqltrc.trc_directory",
                                "Directory for rdb_sqltrc trace files.",
                                NULL,
-                               &rdb_log_dir,
+                               &rdb_trc_directory,
                                "trc",
                                PGC_SIGHUP,
                                0,
                                NULL, NULL, NULL);
 
-    DefineCustomIntVariable("rdb_sqltrc.log_min_duration_ms",
+    DefineCustomStringVariable("rdb_sqltrc.trc_file_name",
+                               "trace file name format.",
+                               NULL,
+                               &rdb_trc_file_name,
+                               NULL,
+                               PGC_SIGHUP,
+                               0,
+                               NULL, NULL, NULL);
+
+    DefineCustomIntVariable("rdb_sqltrc.trc_min_duration_ms",
                             "Only log statements whose total duration is >= this value.",
                             NULL,
-                            &rdb_log_min_duration_ms,
+                            &rdb_trc_min_duration_ms,
                             0, 0, 3600000,
                             PGC_SUSET,
                             0,
                             NULL, NULL, NULL);
 
-    DefineCustomBoolVariable("rdb_sqltrc.log_query_text", NULL, NULL,
-                             &rdb_log_query_text, true, PGC_SUSET, 0,
+    DefineCustomBoolVariable("rdb_sqltrc.trc_query_text", NULL, NULL,
+                             &rdb_trc_query_text, true, PGC_SUSET, 0,
                              NULL, NULL, NULL);
 
-    DefineCustomBoolVariable("rdb_sqltrc.log_query_tree", NULL, NULL,
-                             &rdb_log_query_tree, true, PGC_SUSET, 0,
+    DefineCustomBoolVariable("rdb_sqltrc.trc_query_tree", NULL, NULL,
+                             &rdb_trc_query_tree, true, PGC_SUSET, 0,
                              NULL, NULL, NULL);
 
-    DefineCustomBoolVariable("rdb_sqltrc.log_plan_tree", NULL, NULL,
-                             &rdb_log_plan_tree, true, PGC_SUSET, 0,
+    DefineCustomBoolVariable("rdb_sqltrc.trc_plan_tree", NULL, NULL,
+                             &rdb_trc_plan_tree, true, PGC_SUSET, 0,
                              NULL, NULL, NULL);
 
-    DefineCustomBoolVariable("rdb_sqltrc.log_executor", NULL, NULL,
-                             &rdb_log_executor, true, PGC_SUSET, 0,
+    DefineCustomBoolVariable("rdb_sqltrc.trc_explain_plan", NULL, NULL,
+                             &rdb_trc_explain_plan, true, PGC_SUSET, 0,
+                             NULL, NULL, NULL);
+
+    DefineCustomBoolVariable("rdb_sqltrc.trc_executor", NULL, NULL,
+                             &rdb_trc_executor, true, PGC_SUSET, 0,
                              NULL, NULL, NULL);
 
     DefineCustomBoolVariable("rdb_sqltrc.instrument", NULL, NULL,
