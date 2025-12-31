@@ -16,7 +16,7 @@ docker rmi i-grafana
 docker build -t i-grafana .
 #
 # run
-docker run -d --name c-grafana -p 9091:3000 -v v-grafana i-grafana
+docker run -d --name c-grafana -p 8091:3000 -v v-grafana i-grafana
 #
 Optiona:
   -e GF_SECURITY_ADMIN_USER=admin
@@ -33,8 +33,6 @@ docker logs c-grafana
 #
 # connect from webconsole
 # if helloworld.war copied to webapps dir as ROOT.war
-http://localhost:8073/  
-# if helloworld.war copied to webapps dir
-http://localhost:8062/helloworld/
+http://localhost:8091/  
 
 # ################################################################################
