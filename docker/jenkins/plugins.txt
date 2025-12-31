@@ -4,3 +4,4 @@ workflow-aggregator
 blueocean
 docker-plugin
 pipeline-utility-steps
+#openid-connect
