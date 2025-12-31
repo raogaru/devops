@@ -1,0 +1,40 @@
+# ################################################################################
+# purpose: Hashicorp elastic server
+# status: working
+#
+# volume
+docker volume rm v-elastic
+docker volume create v-elastic
+docker volume list
+docker volume inspect v-elastic
+#
+docker stop c-elastic
+docker rm c-elastic
+docker rmi i-elastic
+#
+# build 
+docker build -t i-elastic .
+#
+mkdir -p data
+#
+# run - production environment
+docker run -d --name c-elastic -p 8200:8200 -v ./file:/elastic/file -v ./logs:/elastic/logs -v v-elastic:/elastic/data i-elastic server
+docker run -d --name c-elastic --cap-add=IPC_LOCK -p 8200:8200 -v ./file:/elastic/file -v ./logs:/elastic/logs -v ./data:/elastic/data i-elastic server
+#
+# connect, init (capture Unseal Key(s) and Token info), unseal (provide one of keys), status (capture Unseal Nonce info)
+docker exec -it c-elastic /bin/sh
+	chown -R elastic:elastic /elastic/data
+	chmod -R 750 /elastic/data
+	elastic operator init -key-shares=3 -key-threshold=2
+	elastic operator unseal
+	elastic status
+	exit
+#
+# access via webconsole
+http://localhost:8200/
+Keys: provide any unseal key(s) (noted above from init command)
+Method: Token
+Token: (noted above from init command)
+#
+# ######################################################################
+# 

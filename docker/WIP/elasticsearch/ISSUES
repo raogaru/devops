@@ -1,0 +1,34 @@
+docker build failed
+
+=> ERROR [3/3] RUN elasticsearch-plugin install --batch analysis-icu                                                               2.9s
+------                                                                                                                                   
+ > [3/3] RUN elasticsearch-plugin install --batch analysis-icu:                                                                          
+0.435 -> Installing analysis-icu                                                                                                         
+0.844 -> Downloading analysis-icu from elastic                                                                                           
+2.838 -> Failed installing analysis-icu
+2.839 -> Rolling back analysis-icu
+2.839 -> Rolled back analysis-icu
+2.840 Exception in thread "main" java.nio.file.FileSystemException: /usr/share/elasticsearch/plugins/.installing-16039305704421717566: No space left on device
+2.840 	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:100)
+2.840 	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+2.840 	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+2.840 	at java.base/sun.nio.fs.UnixFileSystemProvider.createDirectory(UnixFileSystemProvider.java:438)
+2.840 	at java.base/java.nio.file.Files.createDirectory(Files.java:699)
+2.840 	at java.base/java.nio.file.TempFileHelper.create(TempFileHelper.java:134)
+2.840 	at java.base/java.nio.file.TempFileHelper.createTempDirectory(TempFileHelper.java:171)
+2.840 	at java.base/java.nio.file.Files.createTempDirectory(Files.java:976)
+2.840 	at org.elasticsearch.plugins.cli.InstallPluginAction.stagingDirectory(InstallPluginAction.java:829)
+2.840 	at org.elasticsearch.plugins.cli.InstallPluginAction.unzip(InstallPluginAction.java:776)
+2.840 	at org.elasticsearch.plugins.cli.InstallPluginAction.execute(InstallPluginAction.java:252)
+2.840 	at org.elasticsearch.plugins.cli.InstallPluginCommand.execute(InstallPluginCommand.java:89)
+2.840 	at org.elasticsearch.common.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:54)
+2.840 	at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:85)
+2.840 	at org.elasticsearch.cli.MultiCommand.execute(MultiCommand.java:94)
+2.840 	at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:85)
+2.840 	at org.elasticsearch.cli.Command.main(Command.java:50)
+2.840 	at org.elasticsearch.launcher.CliToolLauncher.main(CliToolLauncher.java:64)
+------
+Dockerfile:13
+--------------------
+  11 |     
+
