@@ -1,0 +1,24 @@
+# ################################################################################
+# purpose: Nginx Gateway to redirect all MyApp microservices via single port
+# status: working
+# 
+docker stop c-myapp-gateway
+docker rm c-myapp-gateway
+docker rmi i-myapp-gateway
+#
+# build
+docker build -t i-myapp-gateway .
+#
+# run
+docker run -d --name c-myapp-gateway --network n-raogaru -p 8100:8080 i-myapp-gateway
+#
+docker stop c-myapp-gateway
+docker start c-myapp-gateway
+#
+# connect
+docker exec -it c-myapp-gateway /bin/bash
+#
+# access via console
+http://localhost:8101/employees
+#
+# ################################################################################

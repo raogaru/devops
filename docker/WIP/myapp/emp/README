@@ -1,0 +1,27 @@
+# ################################################################################
+# purpose: Sprintboot java web app - CRUD application connecting to Postgres DB - employees
+# status: working
+# 
+# build jar file
+mvn clean install -DskipTests
+#
+docker stop c-myapp-employee
+docker rm c-myapp-employee
+docker rmi i-myapp-employee
+#
+# build
+docker build -t i-myapp-employee .
+#
+# run
+docker run -d --name c-myapp-employee --network n-raogaru -p 8101:8080 i-myapp-employee
+#
+docker stop c-myapp-employee
+docker start c-myapp-employee
+#
+# connect
+docker exec -it c-myapp-employee /bin/bash
+#
+# access via console
+http://localhost:8101/employees
+#
+# ################################################################################
