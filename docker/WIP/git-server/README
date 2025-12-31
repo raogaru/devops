@@ -1,0 +1,55 @@
+# ################################################################################
+# purpose: git server
+# status: working
+#
+# volume
+docker volume rm v-git-server
+docker volume create v-git-server
+docker volume list
+docker volume inspect v-git-server
+#
+docker stop c-git-server
+docker rm c-git-server
+docker rmi i-git-server
+#
+# keys
+mkdir -p ./keys
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""   # if you need a key
+cp ~/.ssh/id_ed25519.pub ./keys/authorized_keys
+#
+# build
+docker build -t i-git-server .
+#
+# run
+docker run -d --name c-git-server -p 2222:22 -v v-git-server:/repos -v ./keys:/keys:ro i-git-server
+#
+docker stop c-git
+docker start c-git
+#
+# connect
+docker exec -it c-git-server /bin/sh
+#
+# --------------------------------------------------------------------------------
+# test
+
+# check keys
+docker exec -it git-server ls -ld /var/lib/git/.ssh /var/lib/git/.ssh/authorized_keys
+docker exec -it c-git-server cat /var/lib/git/.ssh/authorized_keys
+
+# Create a bare repo inside the container - repo name is demo
+docker exec -u git c-git-server sh -lc 'git init --bare /repos/demo.git'
+
+# clone demo.git repo
+git clone ssh://git@localhost:2222/repos/demo.git
+
+# check-in
+cd demo
+echo "hello" > README.md
+git add .
+git commit -m "first"
+git push origin main
+
+
+#
+#connecting from host
+# ################################################################################
