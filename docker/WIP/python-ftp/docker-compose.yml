@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  receiver:
+    build: ./receiver
+    container_name: file-receiver
+    volumes:
+      - ./receiver_data:/data/recv
+    ports:
+      - "5555:5555"
+
+  sender:
+    build: ./sender
+    container_name: file-sender
+    environment:
+      - RECEIVER_HOST=receiver
+      - RECEIVER_PORT=5555
+    volumes:
+      - ./sender_data:/data/send
+

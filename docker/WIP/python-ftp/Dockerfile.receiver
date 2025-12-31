@@ -1,0 +1,9 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY receiver.py /app/
+
+RUN pip install pyzmq
+
+CMD ["python", "receiver.py"]
+
