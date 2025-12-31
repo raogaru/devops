@@ -1,0 +1,11 @@
+# On RHEL/CentOS/Amazon Linux:
+sudo yum install java-17-openjdk gtk3 libXtst libX11 nss
+	
+#Download SCT
+wget https://s3.amazonaws.com/publicsctdownload/linux/latest/AWSSchemaConversionTool-latest.tar.gz
+
+tar -xzf AWSSchemaConversionTool-latest.tar.gz
+cd AWSSchemaConversionTool
+./AWS_Schema_Conversion_Tool
+
+

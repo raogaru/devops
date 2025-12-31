@@ -1,0 +1,34 @@
+# ################################################################################
+# purpose: AWS SCT CLI
+# status: working
+#
+# volume
+docker volume rm v-aws-sct-cli
+docker volume create v-aws-sct-cli
+docker volume list
+docker volume inspect v-aws-sct-cli
+#
+docker stop c-aws-sct-cli
+docker rm c-aws-sct-cli
+docker rmi i-aws-sct-cli
+#
+# build
+docker buildx build -t i-aws-sct-cli --platform linux/amd64 .
+#
+# run
+docker run -d --name c-aws-sct-cli --network n-raogaru -p 8432:5432 -v v-aws-sct-cli:/var/lib/aws-sct-cliql i-aws-sct-cli
+#
+docker stop c-aws-sct-cli
+docker start c-aws-sct-cli
+#
+# connect
+docker exec -it c-aws-sct-cli /bin/bash
+#
+#connecting from host
+brew install libpq
+brew link --force libpq
+which psql
+psql --version
+export PGPASSWORD=aws-sct-cli
+psql -h localhost -p 8432 -U aws-sct-cli -d aws-sct-cli 
+# ################################################################################
