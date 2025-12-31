@@ -1,0 +1,14 @@
+Kafka Topics  →  Flink Source  →  Transformations  →  Sinks (DB, Kafka, UI)
+
+docker run -d \
+  --name flink-jobmanager \
+  --network flink-net \
+  -p 8081:8081 \
+  flink:1.19-scala_2.12 jobmanager
+
+docker run -d \
+  --name flink-taskmanager \
+  --network flink-net \
+  flink:1.19-scala_2.12 taskmanager
+
+👉 http://localhost:8081
