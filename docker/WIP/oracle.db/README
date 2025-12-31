@@ -1,0 +1,40 @@
+# ################################################################################
+# purpose: oracle database
+# status: working
+#
+# volume
+docker volume rm v-oracle
+docker volume create v-oracle
+docker volume list
+docker volume inspect v-oracle
+#
+docker stop c-oracle
+docker rm c-oracle
+docker rmi i-oracle
+#
+# download oracle-xe rpm from https://www.oracle.com/database/technologies/xe-downloads.html
+curl -L -o oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm https://download.oracle.com/otn-pub/otn_software/db-express/oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm
+#
+# build
+docker build -t i-oracle .
+#
+# run
+docker run -d --name c-oracle --network n-raogaru -p 1521:1521 -p 5500:5500 -v v-oracle:/opt/oracle/oradata i-oracle
+#
+Optional:
+  -e ORACLE_PASSWORD=Password123 \
+#
+docker stop c-oracle
+docker start c-oracle
+#
+# connect
+docker exec -it c-oracle /bin/bash
+#
+# connecting from host
+sqlplus system/Password123@//localhost:1521/XEPDB1
+#
+# connect from another container
+sqlplus system/Password123@//c-oracle:1521/XEPDB1
+
+
+# ################################################################################
