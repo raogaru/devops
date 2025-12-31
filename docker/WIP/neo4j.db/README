@@ -1,0 +1,34 @@
+# ################################################################################
+# purpose: neo4j database
+# status: working
+#
+# volume
+docker volume rm v-neo4j
+docker volume create v-neo4j
+docker volume list
+docker volume inspect v-neo4j
+#
+docker stop c-neo4j
+docker rm c-neo4j
+docker rmi i-neo4j
+#
+# build
+docker build -t i-neo4j .
+#
+# run
+mkdir -p data logs import plugins
+docker run -d --name c-neo4j --network n-raogaru -p 8474:7474 -p 8687:7687 -v ./data:/data -v ./logs:/logs -v ./import:/import -v ./plugins:/plugins i-neo4j
+docker run -d --name c-neo4j --network n-raogaru -p 8474:7474 -p 8687:7687 -v v-neo4j:/var/lib/neo4jql i-neo4j
+#
+docker stop c-neo4j
+docker start c-neo4j
+#
+# connect
+docker exec -it c-neo4j /bin/bash
+#
+#connecting from browser
+Browser UI → http://localhost:8474
+Bolt → bolt://localhost:7687
+User: neo4j
+Password: admin123
+# ################################################################################
