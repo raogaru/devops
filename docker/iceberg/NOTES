@@ -1,0 +1,94 @@
+I have 3 sources of csv file producers. first source produces csv files at some interval into /data/csv/customers-*.csv. similarly second source produces csv files at some interval into /data/csv/products-*.csv. and third source produces csv files at some interval into /data/csv/orders-*.csv. I am looking for a iceberg + flink setup to consume these csv data sets in batch mode (iceberg) and process them in streaming mode by flink and load stats into postgres for dashboard
+
+-- --------------------------------------------------------------------------------
+-- iceberg Catalog
+
+CREATE CATALOG iceberg WITH (
+  'type'='iceberg',
+  'catalog-type'='hadoop',
+  'warehouse'='file:///data/iceberg'
+);
+
+-- --------------------------------------------------------------------------------
+-- iceberg tables
+
+CREATE TABLE iceberg.db.customers (
+  customer_id BIGINT,
+  name STRING,
+  country STRING,
+  created_at TIMESTAMP(3)
+) WITH (
+  'format-version'='2',
+  'write.format.default'='parquet',
+  'write.parquet.compression-codec'='zstd'
+);
+
+CREATE TABLE iceberg.db.products (
+  product_id BIGINT,
+  category STRING,
+  price DECIMAL(10,2),
+  created_at TIMESTAMP(3)
+) WITH (
+  'format-version'='2'
+);
+
+CREATE TABLE iceberg.db.orders (
+  order_id BIGINT,
+  customer_id BIGINT,
+  product_id BIGINT,
+  quantity INT,
+  order_time TIMESTAMP(3)
+) WITH (
+  'format-version'='2'
+);
+
+-- --------------------------------------------------------------------------------
+-- Flink sources
+
+CREATE TABLE csv_customers (
+  customer_id BIGINT,
+  name STRING,
+  country STRING,
+  created_at TIMESTAMP(3)
+) WITH (
+  'connector'='filesystem',
+  'path'='file:///data/csv',
+  'format'='csv',
+  'csv.ignore-parse-errors'='true',
+  'source.monitor-interval'='10s'
+);
+
+INSERT INTO iceberg.db.customers
+SELECT * FROM csv_customers
+WHERE name IS NOT NULL;
+
+-- Streaming stats from Iceberg
+CREATE TABLE order_stats (
+  stat_time TIMESTAMP(3),
+  total_orders BIGINT,
+  total_quantity BIGINT
+) WITH (
+  'connector'='jdbc',
+  'url'='jdbc:postgresql://postgres:5432/dashboard',
+  'table-name'='order_stats',
+  'username'='dash',
+  'password'='dash'
+);
+
+-- Streaming aggregation
+INSERT INTO order_stats
+SELECT
+  TUMBLE_START(order_time, INTERVAL '1' MINUTE),
+  COUNT(*) AS total_orders,
+  SUM(quantity) AS total_quantity
+FROM iceberg.db.orders
+GROUP BY TUMBLE(order_time, INTERVAL '1' MINUTE);
+
+-- Postgres schema (dashboard-ready)
+CREATE TABLE order_stats (
+  stat_time TIMESTAMP PRIMARY KEY,
+  total_orders BIGINT,
+  total_quantity BIGINT
+);
+
+
