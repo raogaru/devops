@@ -1,0 +1,21 @@
+#### rdb_catalog
+done	v$session		pg_stat_activity
+done	v$lock
+v$jobs
+v$process
+done v$transaction
+
+
+### SQL Engine Views
+Parser
+Analyzer
+Rewriter
+Planner
+Executor
+
+### Replication Monitoring Views
+
+
+
+### Process Tracing Views
+

@@ -1,0 +1,3 @@
+cd /Users/rao/Github/devops/docker/raodb
+docker start c-raodb
+docker cp contrib/rdb_catalog c-raodb:/postgres
