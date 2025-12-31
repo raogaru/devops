@@ -1,0 +1,34 @@
+# ################################################################################
+# purpose: AWS SCT GUI
+# status: working
+#
+# volume
+docker volume rm v-awssct-gui
+docker volume create v-awssct-gui
+docker volume list
+docker volume inspect v-awssct-gui
+#
+docker stop c-awssct-gui
+docker rm c-awssct-gui
+docker rmi i-awssct-gui
+#
+# build
+docker buildx build -t i-awssct-gui --platform linux/amd64 .
+#
+# run
+docker run -d --name c-awssct-gui --network n-raogaru -p 8901:5901 -p 8902:6080 i-awssct-gui
+#
+docker stop c-awssct-gui
+docker start c-awssct-gui
+#
+# connect
+docker exec -it c-awssct-gui /bin/bash
+#
+#connecting from host
+http://localhost:8902
+
+VNC Client:  
+localhost:8901
+password: password
+
+# ################################################################################
