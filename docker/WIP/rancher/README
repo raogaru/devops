@@ -1,0 +1,44 @@
+# ################################################################################
+# purpose: rancher - docker monitoring
+# status: working
+#
+# volume
+docker volume rm v-rancher
+docker volume create v-rancher
+docker volume list
+docker volume inspect v-rancher
+#
+docker stop c-rancher
+docker rm c-rancher
+docker rmi i-rancher
+#
+# build
+docker build -t i-rancher -f Dockerfile .
+#
+# run
+docker run -d --name c-rancher --network n-raogaru -v v-rancher:/var/lib/rancher -p 8173:80 -p 8174:443 --privileged i-rancher
+
+docker run -d --name c-rancher --network n-raogaru -v v-rancher:/var/lib/rancher -p 8173:80 --privileged --restart unless-stopped i-rancher
+#
+docker stop c-rancher
+docker start c-rancher
+#
+# connect
+docker exec -it c-rancher /bin/bash
+#
+# logs
+docker logs c-rancher
+#
+# connect from webconsole
+http://localhost:8092/  
+user: admin
+password: admin
+#
+# connect to postgres database and verify objects
+exec -it c-postgres /bin/bash
+su - postgres
+psql
+\c rancher
+\d
+#
+# ################################################################################
