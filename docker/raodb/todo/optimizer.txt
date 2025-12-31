@@ -1,0 +1,46 @@
+-- ================================================================================
+-- enable/disable optimizer’s legal knobs to change plans
+
+SET enable_seqscan       = off;
+SET enable_indexscan     = off;
+SET enable_bitmapscan   = off;
+SET enable_nestloop     = off;
+SET enable_mergejoin    = off;
+SET enable_hashjoin     = off;
+
+-- ================================================================================
+-- nudge optimizer's parameters
+
+-- I/O
+SET random_page_cost = 1.1;
+SET seq_page_cost    = 1.0;
+
+-- CPU
+SET cpu_tuple_cost = 0.03;
+SET cpu_index_tuple_cost = 0.01;
+
+
+-- 
+SET enable_seqscan = off;
+EXPLAIN SELECT ...
+If the plan improves: statistics or histograms are wrong.
+ANALYZE VERBOSE table_name;
+ALTER TABLE table_name ALTER COLUMN col SET STATISTICS 1000;
+
+
+-- ================================================================================
+-- Hypothetical indexes (What if this index existed?)
+CREATE EXTENSION hypopg;
+SELECT hypopg_create_index( 'CREATE INDEX ON orders (customer_id, created_at)');
+
+EXPLAIN SELECT ...
+
+
+-- ================================================================================
+-- ================================================================================
+-- example of session experiment
+BEGIN;
+SET LOCAL enable_hashjoin = off;
+EXPLAIN ANALYZE SELECT ...;
+ROLLBACK;
+

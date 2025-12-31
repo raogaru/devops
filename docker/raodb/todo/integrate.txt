@@ -1,0 +1,4 @@
+-- how to integrate custom code or extensions code into main backend core?
+
+mkdir -p $PGCODE/src/custom/
+mkdir -p $PGCODE/src/custom/

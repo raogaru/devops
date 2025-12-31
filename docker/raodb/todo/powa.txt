@@ -1,0 +1,17 @@
+Make following extensions work as intended.
+Verify all tables/views/functions from each of the extensions work.
+
+ pg_stat_kcache
+ powa-archivist
+ powa
+ btree_gist
+ pg_qualstats
+ pg_track_settings
+ pg_wait_sampling
+powa-podman
+powa-web
+https://github.com/powa-team/pg_sortstats
+https://github.com/powa-team/powa-collector
+
+
+https://github.com/powa-team/powa-podman

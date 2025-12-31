@@ -1,0 +1,13 @@
+-- create replication slot
+SELECT pg_create_logical_replication_slot( 'demo_slot', 'pgoutput');
+
+-- read changes
+SELECT * FROM pg_logical_slot_get_changes( 'demo_slot', NULL, NULL);
+
+-- stream 
+pg_recvlogical -d mydb -S demo_slot -o pretty-print=1 --start -f -
+
+
+-- WAL dump
+pg_waldump $PGDATA/pg_wal/
+

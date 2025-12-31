@@ -1,0 +1,38 @@
+-- ================================================================================
+-- Memory Tuning
+-- ================================================================================
+
+-- check parameters to see if they are sized properly
+SHOW shared_buffers;
+SHOW huge_pages;
+SHOW effective_cache_size;
+
+-- per-session / per-query memory
+SHOW work_mem;
+SHOW maintenance_work_mem;
+SHOW temp_buffers;
+
+-- buffer usage
+SELECT
+    buffers_checkpoint,
+    buffers_clean,
+    buffers_backend,
+    buffers_backend_fsync
+FROM pg_stat_bgwriter;
+
+-- Find queries using work_mem (or spilling)
+SELECT datname, temp_files, pg_size_pretty(temp_bytes) AS temp_size
+FROM pg_stat_database
+ORDER BY temp_bytes DESC;
+
+-- If temp_bytes is growing → memory was insufficient → disk spill.
+SELECT
+    pid,
+    usename,
+    datname,
+    temp_files,
+    pg_size_pretty(temp_bytes) AS temp_size
+FROM pg_stat_activity
+WHERE temp_bytes > 0
+ORDER BY temp_bytes DESC;
+
