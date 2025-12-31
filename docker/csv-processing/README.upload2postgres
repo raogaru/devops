@@ -1,0 +1,43 @@
+# ################################################################################
+# purpose: csv-upload-2-postgres 
+# status: working
+#
+docker stop c-csv-upload-2-postgres
+docker rm c-csv-upload-2-postgres
+docker rmi i-csv-upload-2-postgres
+#
+# build
+docker build -t i-csv-upload-2-postgres -f Dockerfile.upload2postgres .
+#
+# run
+mkdir -p data/incoming data/processing data/processed data/failed
+#
+# test run local
+python3 csv-upload-2-postgres.py
+#
+# run
+docker run -d --name c-csv-upload-2-postgres --network "host" -v $(PWD)/data:/data i-csv-upload-2-postgres
+#
+# Optional:
+	-e INTERVAL_SECONDS=5 \
+	-e PROCESSED_DIR=/data/processed \
+	-e UPLOADED_DIR=/data/uploaded \
+	-e FAILED_DIR=/data/failed \
+	-e UPLOADER_LOG=/data/upload-2-postgres.log \
+	-e POSTGRES_HOST=localhost \
+	-e POSTGRES_PORT=8432 \
+	-e POSTGRES_DB=postgres \
+	-e POSTGRES_USER=postgres \
+	-e POSTGRES_PASSWORD=postgres \
+	-e TARGET_TABLE=csv_data \
+#
+docker stop c-csv-upload-2-postgres
+docker start c-csv-upload-2-postgres
+#
+# connect
+docker exec -it c-csv-upload-2-postgres /bin/sh
+cd /data
+#
+# --------------------------------------------------------------------------------
+# test
+# ################################################################################
