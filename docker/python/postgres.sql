@@ -27,3 +27,5 @@ CREATE SCHEMA part_list;
 CREATE SCHEMA part_hash;
 CREATE SCHEMA part_range;
 CREATE SCHEMA part_random;
+CREATE SCHEMA schema1;
+CREATE SCHEMA schema2;

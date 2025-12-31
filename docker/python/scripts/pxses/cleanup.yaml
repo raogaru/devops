@@ -19,6 +19,6 @@ groups:
 
     tasks:
       - id: drop_tables
-        sql_file: "scripts/job3/d.sql"
+        sql_file: "scripts/pxses/d.sql"
 
 # ----------------------------------------

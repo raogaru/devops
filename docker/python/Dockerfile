@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 RUN apk add --no-cache libpq 
 
 RUN python -m pip install --upgrade pip \
- && python -m pip install psycopg2-binary pyyaml
+ && python -m pip install psycopg2-binary pyyaml psycopg[binary] psycopg_pool
 
 RUN mkdir -p /app/bin
 RUN mkdir -p /app/scripts
@@ -24,6 +24,9 @@ COPY jobrun.yaml /app/
 
 COPY csvgen.py /app/bin
 COPY csvgen.yaml /app/
+
+COPY csvgen2.py /app/bin
+COPY csvgen2.yaml /app/
 
 COPY pgdatacomp.py /app/bin
 COPY pgdatacomp.yaml /app/
