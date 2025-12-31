@@ -1,0 +1,8 @@
+# network
+docker network rm n-raogaru
+docker network create n-raogaru
+docker network ls
+docker network inspect n-raogaru
+
+docker builder prune -a -f
+docker system prune -a --volumes -f

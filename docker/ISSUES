@@ -1,0 +1,10 @@
+1. rabbitmq-server messages are not getting preserved once I delete container
+2. git-server: git clone not working - "invalid user git".  /etc/ssh/sshd_config need entries
+
+3. rabbitmq-producer: health check http://localhost:8674/actuator/health not working 
+4. rabbitmq-consumer: health check http://localhost:8675/actuator/health not working 
+
+5. activemq-producer: health check http://localhost:6163/actuator/health not working 
+6. activemq-consumer: health check http://localhost:6164/actuator/health not working 
+
+7. activiti - using 6.0.0 version. unable to build from java source. So, downloaded war files and built docker.

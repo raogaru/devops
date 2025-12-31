@@ -111,6 +111,12 @@
       <div class="site">localhost:8091</div>
       <div class="status">GOOD</div>
     </a>
+    <a class="tile" href="http://localhost:8092" target="_blank" data-tags="kanboard kanban dashboard">
+      <div class="title">Kanboard</div>
+      <div class="desc">Task Management Dashboard</div>
+      <div class="site">localhost:8092</div>
+      <div class="status">GOOD</div>
+    </a>
     <a class="tile" href="http://localhost:9090" target="_blank" data-tags="backstage services catalog">
       <div class="title">Backstage</div>
       <div class="desc">Services Catalog</div>
@@ -141,6 +147,12 @@
       <div class="desc">Demo Application-2</div>
       <div class="site">localhost:8102/departments</div>
       <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8103/ms-00" target="_blank" data-tags="webapp microservice application">
+      <div class="title">MS-00</div>
+      <div class="desc">Demo Application-2</div>
+      <div class="site">localhost:8103/departments</div>
+      <div class="status">WIP</div>
     </a>
   </div>
 
@@ -177,6 +189,12 @@
       <div class="desc">Relational database service</div>
       <div class="site">localhost:8521</div>
       <div class="status">WIP</div>
+    </a>
+    <a class="tile" href="http://localhost:8474" target="_blank" data-tags="neo4j database">
+      <div class="title">Neo4J DB</div>
+      <div class="desc">Graph database service</div>
+      <div class="site">browser:8474,bolt:7687</div>
+      <div class="status">GOOD</div>
     </a>
     <a class="tile" href="localhost:8043" target="_blank" data-tags="cassandra database">
       <div class="title">Cassandra DB/GUI</div>
@@ -312,10 +330,10 @@
   <!-- Processing Section -->
   <h2>Processing / CI</h2>
   <div class="grid section" data-section="processing">
-    <a class="tile" href="http://localhost:8080" target="_blank" data-tags="jenkins ci cd build">
+    <a class="tile" href="http://localhost:8280" target="_blank" data-tags="jenkins ci cd build">
       <div class="title">Jenkins</div>
       <div class="desc">Continuous integration and deployment.</div>
-      <div class="site">localhost:8080</div>
+      <div class="site">localhost:8280</div>
       <div class="status">GOOD</div>
     </a>
     <a class="tile" href="http://localhost:8154" target="_blank" data-tags="git version build">
@@ -324,16 +342,52 @@
       <div class="site">localhost:8154</div>
       <div class="status">GOOD</div>
     </a>
-    <a class="tile" href="http://localhost:8151" target="_blank" data-tags="airflow orchestration workflow">
+    <a class="tile" href="http://localhost:8151" target="_blank" data-tags="apache airflow orchestration workflow">
       <div class="title">Airflow</div>
       <div class="desc">Workflow orchestration and DAG management.</div>
       <div class="site">localhost:8151</div>
       <div class="status">GOOD</div>
     </a>
-    <a class="tile" href="http://localhost:8152" target="_blank" data-tags="flink orchestration workflow">
+    <a class="tile" href="" target="_blank" data-tags="apache spark datalake">
+      <div class="title">Spark</div>
+      <div class="desc">Apache Spark Unified engine for data analytics</div>
+      <div class="site"></div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="" target="_blank" data-tags="apache iceberg datalake">
+      <div class="title">Iceberg</div>
+      <div class="desc">Apache Iceberg open table format for analytics</div>
+      <div class="site"></div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8152" target="_blank" data-tags="apache flink stream">
       <div class="title">Flink</div>
       <div class="desc">Apache Flink streaming analytics</div>
       <div class="site">localhost:8152</div>
+      <div class="status">GOOD</div>
+    </a>
+  </div>
+
+  <!-- -------------------------------------------------------------------------------- -->
+  <!-- Webapps Section -->
+  <h2>Webapps </h2>
+  <div class="grid section" data-section="webapps">
+    <a class="tile" href="http://localhost:8071" target="_blank" data-tags="apache httpd web page">
+      <div class="title">HTTPD</div>
+      <div class="desc">HTTP Web Page</div>
+      <div class="site">localhost:8071</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8072" target="_blank" data-tags="apache nginx web server">
+      <div class="title">Nginx</div>
+      <div class="desc">Nginx Web server</div>
+      <div class="site">localhost:8072</div>
+      <div class="status">GOOD</div>
+    </a>
+    <a class="tile" href="http://localhost:8073" target="_blank" data-tags="apache tomcat java webapp">
+      <div class="title">Tomcat</div>
+      <div class="desc">Tomcat application server</div>
+      <div class="site">localhost:8073</div>
       <div class="status">GOOD</div>
     </a>
   </div>
@@ -357,31 +411,21 @@
   </div>
 
   <!-- -------------------------------------------------------------------------------- -->
-  <!-- Webapps Section -->
-  <h2>Webapps </h2>
-  <div class="grid section" data-section="webapps">
-    <a class="tile" href="http://localhost:8071" target="_blank" data-tags="httpd web page">
-      <div class="title">HTTPD</div>
-      <div class="desc">HTTP Web Page</div>
-      <div class="site">localhost:8071</div>
+  <!-- Network -->
+  <h2>Network</h2>
+  <div class="grid section" data-section="Network">
+    <a class="tile" href="http://localhost:8171/zabbix" target="_blank" data-tags="zabbix network">
+      <div class="title">Zabbix</div>
+      <div class="desc">Zabbix network monitoring</div>
+      <div class="site">port:8171</div>
       <div class="status">GOOD</div>
     </a>
-    <a class="tile" href="http://localhost:8072" target="_blank" data-tags="nginx web server">
-      <div class="title">Nginx</div>
-      <div class="desc">Nginx Web server</div>
-      <div class="site">localhost:8072</div>
-      <div class="status">GOOD</div>
-    </a>
-    <a class="tile" href="http://localhost:8073" target="_blank" data-tags="tomcat java webapp">
-      <div class="title">Tomcat</div>
-      <div class="desc">Tomcat application server</div>
-      <div class="site">localhost:8073</div>
-      <div class="status">GOOD</div>
-    </a>
+    <a class="tile" href="" target="_blank" data-tags="alpine linux">
   </div>
 
+
   <!-- -------------------------------------------------------------------------------- -->
-  <!-- Operating Systems SSection -->
+  <!-- Operating Systems Section -->
   <h2>OS </h2>
   <div class="grid section" data-section="OS">
     <a class="tile" href="" target="_blank" data-tags="amazon al2023 linux">
@@ -420,8 +464,20 @@
       <div class="site">ssh</div>
       <div class="status">GOOD</div>
     </a>
-
   </div>
+
+  <!-- -------------------------------------------------------------------------------- -->
+  <!-- Tools Section -->
+  <h2>Tools</h2>
+  <div class="grid section" data-section="Tools">
+    <a class="tile" href="" target="_blank" data-tags="python linux">
+      <div class="title">Tools</div>
+      <div class="desc">Custom Python Tools</div>
+      <div class="site">ssh</div>
+      <div class="status">GOOD</div>
+    </a>
+  </div>
+
 
   <!-- -------------------------------------------------------------------------------- -->
   <footer>
