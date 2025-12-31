@@ -1,0 +1,17 @@
+Connection Establishment: 
+An application connects to the PostgreSQL server to initiate communication.
+
+Parsing and Analysis: 
+The raw SQL text is validated for correct syntax (grammar check) and semantics (checking if tables and columns exist). If valid, it is converted into an internal structure called a parse tree or query tree, representing what the query asks for.
+
+Rewrite System:
+The query tree is passed through the rewrite system, which applies built-in rules, most notably expanding views into the queries of their underlying base tables.
+
+Optimization/Planning: 
+The optimizer (query planner) then takes the rewritten query tree and considers all possible strategies (e.g., sequential scan vs. index scan, different join methods) to execute the query. It uses a cost-based model to estimate the cheapest (most efficient) plan and selects that plan. You can view this plan using the EXPLAIN command.
+
+Execution: 
+The final, chosen execution plan is carried out by the executor. It retrieves the necessary data from disk and memory according, applies filters, performs operations like joins, sorting, or aggregations, and assembles the final result set.
+
+Result Return: 
+The final data is sent back to the client application, completing the process. 

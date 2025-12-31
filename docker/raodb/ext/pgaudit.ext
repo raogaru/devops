@@ -11,10 +11,11 @@ sudo su - postgres
 pg_config --version
 
 cd $PGCODE/contrib
-git clone https://github.com/pgaudit/pgaudit.git
+git clone https://github.com/pgaudit/pgaudit.git -b REL_18_STABLE
+git checkout REL_18_STABLE
 
 cd pgaudit
-mvn  clean  install
+make install
 
 
 

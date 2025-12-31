@@ -1,0 +1,41 @@
+# ################################################################################
+# harness - Build and Deployment Management Services
+# status: wip
+#
+# network
+docker network rm n-harness
+docker network create n-harness
+docker network ls
+docker network inspect n-harness
+#
+# volume
+docker volume rm v-harness
+docker volume create v-harness
+docker volume list
+docker volume inspect v-harness
+#
+docker stop c-harness
+docker rm c-harness
+docker rmi i-harness
+#
+# download (taking time) - hence moved out from Dockerfile
+docker build -t i-harness .
+#
+# run
+docker run -d --name c-harness --network "n-harness" -v v-harness:/data -p 8030:3000 i-harness
+#
+#docker stop c-harness
+#docker start c-harness
+# connect
+docker exec -it c-harness /bin/bash
+#
+# access via webconsole
+http://localhost:8030
+username: admin
+password: admin
+#
+# --------------------------------------------------------------------------------
+# test
+#
+#
+# ################################################################################
