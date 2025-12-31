@@ -1,0 +1,3 @@
+[DEFAULT]
+host  = https://dbc-25f62abd-3274.cloud.databricks.com
+token = dapi62cb76e7600fc6e2020aba2892772958

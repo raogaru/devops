@@ -1,0 +1,42 @@
+# ################################################################################
+# purpose: Databricks CLI 
+# status: WIP
+#
+docker stop c-dbxcli
+docker rm c-dbxcli
+docker rmi i-dbxcli
+#
+# build
+docker build -t i-dbxcli .
+#
+# run
+# to connect to databricks free edition
+docker run -d --name c-dbxcli --network "host" i-dbxcli tail -f /dev/null
+#
+docker run -d --name c-dbxcli --network n-raogaru i-dbxcli tail -f /dev/null
+Optional:
+  -e DATABRICKS_HOST=https://adb-123456.7.azuredatabricks.net \
+  -e DATABRICKS_TOKEN=xxxxxx \
+  databricks-cli clusters list
+
+#
+docker stop c-dbxcli
+docker start c-dbxcli
+#
+# connect
+docker exec -it c-dbxcli /bin/bash
+#
+# --------------------------------------------------------------------------------
+# test
+databricks configure
+server: https://dbc-25f62abd-3274.cloud.databricks.com
+token: dapi62cb76e7600fc6e2020aba2892772958
+#
+# ################################################################################
+
+
+databricks auth profiles
+
+databricks workspace list /
+
+databricks jobs list 
