@@ -4,6 +4,10 @@
 # rdb_datacomp.py
 # rdb_datacomp.py [pgdatacomp.yaml]
 # methods section: all methods will be tested with fail faster approach
+# method="column" - table column_name ordered by ordinal_position
+# method="rowcnt" - total number of rows in the table
+# method="chksum" - md5 checksum of columns data for each row
+# method="sample" - select 5% or rows based on built-in hash algorithm and compare data
 # ============================================================
 
 import sys
@@ -168,7 +172,7 @@ def run_compare(cfg):
         if "column" in methods:
             src_colnames, tgt_colnames = compare_columns( src, tgt, schema, table)
             if (src_colnames == tgt_colnames):
-                print(f"  ✓ column match: source={len(src_colnames)} target={len(tgt_colnames)}")
+                print(f"  ✓ column match: columns={src_colnames}")
             else:
                 print(f"  ✗ column mismatch: source={len(src_colnames)} target={len(tgt_colnames)}")
                 print(f"  source={src_colnames}")

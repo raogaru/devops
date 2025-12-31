@@ -7,9 +7,9 @@
 # - Supports "random" mode (random columns) or named tables with pre-chosen columns
 #
 # Usage:
-#   python3 csvgen.py person
-#   python3 csvgen.py random
-#   python3 csvgen.py person --files 3
+#   csvgen.py person
+#   csvgen.py random
+#   csvgen.py person --files 3
 # ################################################################################
 
 import argparse

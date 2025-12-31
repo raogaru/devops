@@ -25,7 +25,7 @@ columns:
     type: date
 
   - name: salary
-    type: numeric(10,2)
+    type: numeric(8,2)
 
   - name: address
     type: varchar(50)
