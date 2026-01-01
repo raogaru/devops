@@ -1,0 +1,40 @@
+# ################################################################################
+# Purpose: test whether same auth hook can be used in multiple extensions
+# ################################################################################
+# compile and install ext1
+make -f ext1.make
+make install -f ext1.make
+
+# compile and install ext2
+make -f ext2.make
+make install -f ext2.make
+
+# compile and install ext3
+make -f ext3.make
+make install -f ext3.make
+
+# configure 3 extensions
+# vi $PGDATA/postgresql.conf
+shared_preload_libraries = 'ext1,ext2,ext3'
+ext1.enabled=true
+ext2.enabled=true
+ext3.enabled=true
+
+# stop and start database
+PGstop
+PGstart
+
+# make a connection and see that log file records
+psql
+
+# monitor log 
+tail -f $PGDATA/postgres.log
+
+2026-01-01 21:37:48.205 UTC [2371] LOG:  ext3_start ClientAuthentication_hook
+2026-01-01 21:37:48.205 UTC [2371] LOG:  ext2_start ClientAuthentication_hook
+2026-01-01 21:37:48.205 UTC [2371] LOG:  ext1_start ClientAuthentication_hook
+2026-01-01 21:37:48.206 UTC [2371] LOG:  ext1_end ClientAuthentication_hook
+2026-01-01 21:37:48.206 UTC [2371] LOG:  ext2_end ClientAuthentication_hook
+2026-01-01 21:37:48.206 UTC [2371] LOG:  ext3_end ClientAuthentication_hook
+
+

@@ -1,0 +1,5 @@
+# rdb_audit extension
+comment = 'RAO DB extension-1'
+default_version = '1.0'
+module_pathname = '$libdir/ext1'
+relocatable = false
