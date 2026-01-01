@@ -514,13 +514,13 @@ void
 _PG_init(void)
 {
     /* master */
-    DefineCustomBoolVariable("rao_hooks.enabled", "Master enable",
+    DefineCustomBoolVariable("rdb_hooks.enabled", "Master enable",
                              NULL, &rao_hooks_enabled, true,
                              PGC_SUSET, 0, NULL, NULL, NULL);
 
     /* per-hook GUCs (pattern repeated) */
 #define RDB_GUC(name, var, def) \
-    DefineCustomBoolVariable("rao_hooks." name, NULL, NULL, \
+    DefineCustomBoolVariable("rdb_hooks." name, NULL, NULL, \
                              &var, def, PGC_SUSET, 0, NULL, NULL, NULL)
 
     RDB_GUC("emit_log", rao_emit_log, false);
