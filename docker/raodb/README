@@ -72,5 +72,10 @@ docker cp ext/rdb_catalog c-raodb:/opt/rdb/code/contrib/
 cp -r ext/rdb_sqlstat c/code/contrib/
 # ################################################################################
 
+vi $PGDATA/pg_hba.conf
+
+vi $PGDATA/postgresql.conf
 shared_preload_libraries = 'pg_stat_statements,pg_qualstats,pg_wait_sampling,pg_track_settings,powa'
+shared_preload_libraries = 'pgaudit'
+
 
