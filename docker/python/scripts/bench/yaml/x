@@ -1,0 +1,27 @@
+output:
+  create_table_file: "scripts/bench/sql/create_table_part_hash.sql"                                     
+  drop_table_file: "scripts/bench/sql/drop_table_part_hash.sql"                                       
+  insert_table_file: "scripts/bench/sql/insert_table_part_hash.sql"                                     
+  analyze_table_file: "scripts/bench/sql/analyze_table_part_hash.sql"                                    
+  truncate_table_file: "scripts/bench/sql/truncate_table_part_hash.sql"                              
+  select_table_file: "scripts/bench/sql/select_table_part_hash.sql"                                
+#
+  create_view_file: "scripts/bench/sql/create_view_part_hash.sql"                                
+  drop_view_file: "scripts/bench/sql/drop_view_part_hash.sql"                                
+#
+  create_proc_file: "scripts/bench/sql/create_proc_part_hash.sql"                                
+  call_proc_file: "scripts/bench/sql/call_proc_part_hash.sql"                                
+  drop_proc_file: "scripts/bench/sql/drop_proc_part_hash.sql"                                
+#
+  create_func_file: "scripts/bench/sql/create_func_part_hash.sql"                                
+  call_func_file: "scripts/bench/sql/call_func_part_hash.sql"                                
+  drop_func_file: "scripts/bench/sql/drop_func_part_hash.sql"                                
+#
+  create_type_file: "scripts/bench/sql/create_type_part_hash.sql"                                
+  drop_type_file: "scripts/bench/sql/drop_type_part_hash.sql"                                
+#
+  create_domain_file: "scripts/bench/sql/create_domain_part_hash.sql"                                
+  drop_domain_file: "scripts/bench/sql/drop_domain_part_hash.sql"                                
+#
+
+# ----------------------------------------

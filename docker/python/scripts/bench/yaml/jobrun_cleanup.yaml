@@ -1,0 +1,67 @@
+# ================================================================================
+# Specify tasks to be performed by python script.Group tasks. 
+#
+# Group attributes: 
+#    name: <group-name>
+#    parallelism: 1
+#    skip: false
+#    repeat: 1
+#
+# Task attributges:     
+#    id: <task-name>
+#    sql: "REFRESH MATERIALIZED VIEW CONCURRENTLY mv_sales;"
+#    sql_file
+#    depends_on: [task1, task2]
+#    retries: 3
+#    retry_delay_sec: 5
+#    statement_timeout_sec: 600
+#    timeout: 
+#    on_failure: continue
+
+# ================================================================================
+database:
+  dsn: "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres"
+
+execution:
+  dry_run: false   # true = no SQL execution
+  default_on_failure: abort  # skip | continue | abort
+
+defaults:
+  retries: 1
+  retry_delay_sec: 5
+  statement_timeout_sec: 300
+  repeat: 1
+  skip: false
+
+groups:
+# ----------------------------------------
+  - name: cleanup
+
+    tasks:
+      - id: drop_part_hash_tables
+        sql_file: "scripts/bench/d_part_hash.sql"
+
+      - id: drop_part_list_tables
+        sql_file: "scripts/bench/d_part_list.sql"
+
+      - id: drop_part_range_tables
+        sql_file: "scripts/bench/d_part_range.sql"
+
+      - id: drop_part_list_tables
+        sql_file: "scripts/bench/d_part_list.sql"
+
+      - id: drop_size_small_tables
+        sql_file: "scripts/bench/d_size_small.sql"
+
+      - id: drop_size_medium_tables
+        sql_file: "scripts/bench/d_size_medium.sql"
+
+      - id: drop_size_large_tables
+        sql_file: "scripts/bench/d_size_large.sql"
+
+      - id: drop_size_wide_tables
+        sql_file: "scripts/bench/d_size_wide.sql"
+
+# ----------------------------------------
+# END
+# ----------------------------------------

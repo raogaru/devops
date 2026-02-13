@@ -1,0 +1,109 @@
+# ================================================================================
+# Specify tasks to be performed by python script.Group tasks. 
+#
+# Group attributes: 
+#    name: <group-name>
+#    parallelism: 1
+#    skip: false
+#    repeat: 1
+#
+# Task attributges:     
+#    id: <task-name>
+#    sql: "REFRESH MATERIALIZED VIEW CONCURRENTLY mv_sales;"
+#    sql_file
+#    depends_on: [task1, task2]
+#    retries: 3
+#    retry_delay_sec: 5
+#    statement_timeout_sec: 600
+#    timeout: 
+#    on_failure: continue
+
+# ================================================================================
+database:
+  dsn: "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres"
+
+execution:
+  dry_run: false   # true = no SQL execution
+  default_on_failure: abort  # skip | continue | abort
+
+defaults:
+  retries: 1
+  retry_delay_sec: 5
+  statement_timeout_sec: 300
+  repeat: 1
+  skip: false
+
+groups:
+# ----------------------------------------
+  - name: cleanup
+
+    tasks:
+      - id: drop_part_hash_tables
+        sql_file: "scripts/bench/drop_table_part_hash.sql"
+
+# ----------------------------------------
+  - name: create
+
+    tasks:
+      - id: create_part_hash_tables
+        sql_file: "scripts/bench/c_part_hash.sql"
+
+# ----------------------------------------
+  - name: truncate
+
+    tasks:
+      - id: truncate_part_hash_tables
+        sql_file: "scripts/bench/t_part_hash.sql"
+
+# ----------------------------------------
+  - name: insert
+
+    tasks:
+      - id: insert_part_hash_tables
+        sql_file: "scripts/bench/i_part_hash.sql"
+
+# ----------------------------------------
+  - name: analyze
+
+    tasks:
+      - id: analyze_part_hash_tables
+        sql_file: "scripts/bench/a_part_hash.sql"
+
+# ----------------------------------------
+  - name: count
+
+    tasks:
+      - id: count_part_hash_tables
+        sql_file: "scripts/bench/s_part_hash.sql"
+
+# ----------------------------------------
+  - name: create_procedures
+
+    tasks:
+      - id: create_proc_part_hash_tables
+        sql_file: "scripts/bench/p_part_hash.sql"
+
+# ----------------------------------------
+  - name: create_functions
+
+    tasks:
+      - id: create_func_part_hash_tables
+        sql_file: "scripts/bench/f_part_hash.sql"
+
+# ----------------------------------------
+  - name: call_procedures
+
+    tasks:
+      - id: call_proc_part_hash_tables
+        sql_file: "scripts/bench/call_p_part_hash.sql"
+
+# ----------------------------------------
+  - name: call_functions
+
+    tasks:
+      - id: call_func_part_hash_tables
+        sql_file: "scripts/bench/call_f_part_hash.sql"
+
+# ----------------------------------------
+# END
+# ----------------------------------------

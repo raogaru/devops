@@ -1,0 +1,10 @@
+CREATE VIEW bench.vew_t_medium1 AS SELECT a.* FROM bench.t_medium1 LIMIT 5;
+CREATE VIEW bench.vew_t_medium2 AS SELECT a.* FROM bench.t_medium2 LIMIT 5;
+CREATE VIEW bench.vew_t_medium3 AS SELECT a.* FROM bench.t_medium3 LIMIT 5;
+CREATE VIEW bench.vew_t_medium4 AS SELECT a.* FROM bench.t_medium4 LIMIT 5;
+CREATE VIEW bench.vew_t_medium5 AS SELECT a.* FROM bench.t_medium5 LIMIT 5;
+CREATE VIEW bench.vew_t_medium6 AS SELECT a.* FROM bench.t_medium6 LIMIT 5;
+CREATE VIEW bench.vew_t_medium7 AS SELECT a.* FROM bench.t_medium7 LIMIT 5;
+CREATE VIEW bench.vew_t_medium8 AS SELECT a.* FROM bench.t_medium8 LIMIT 5;
+CREATE VIEW bench.vew_t_medium9 AS SELECT a.* FROM bench.t_medium9 LIMIT 5;
+CREATE VIEW bench.vew_t_medium10 AS SELECT a.* FROM bench.t_medium10 LIMIT 5;

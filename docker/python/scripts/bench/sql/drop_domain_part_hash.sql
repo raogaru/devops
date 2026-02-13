@@ -1,0 +1,10 @@
+DROP DOMAIN IF EXISTS bench.dom_t_hash1;
+DROP DOMAIN IF EXISTS bench.dom_t_hash2;
+DROP DOMAIN IF EXISTS bench.dom_t_hash3;
+DROP DOMAIN IF EXISTS bench.dom_t_hash4;
+DROP DOMAIN IF EXISTS bench.dom_t_hash5;
+DROP DOMAIN IF EXISTS bench.dom_t_hash6;
+DROP DOMAIN IF EXISTS bench.dom_t_hash7;
+DROP DOMAIN IF EXISTS bench.dom_t_hash8;
+DROP DOMAIN IF EXISTS bench.dom_t_hash9;
+DROP DOMAIN IF EXISTS bench.dom_t_hash10;

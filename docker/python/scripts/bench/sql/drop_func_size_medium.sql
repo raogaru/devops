@@ -1,0 +1,10 @@
+DROP FUNCTION IF EXISTS bench.f_t_medium1;
+DROP FUNCTION IF EXISTS bench.f_t_medium2;
+DROP FUNCTION IF EXISTS bench.f_t_medium3;
+DROP FUNCTION IF EXISTS bench.f_t_medium4;
+DROP FUNCTION IF EXISTS bench.f_t_medium5;
+DROP FUNCTION IF EXISTS bench.f_t_medium6;
+DROP FUNCTION IF EXISTS bench.f_t_medium7;
+DROP FUNCTION IF EXISTS bench.f_t_medium8;
+DROP FUNCTION IF EXISTS bench.f_t_medium9;
+DROP FUNCTION IF EXISTS bench.f_t_medium10;

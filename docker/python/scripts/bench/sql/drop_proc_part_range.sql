@@ -1,0 +1,10 @@
+DROP PROCEDURE IF EXISTS bench.p_t_range1;
+DROP PROCEDURE IF EXISTS bench.p_t_range2;
+DROP PROCEDURE IF EXISTS bench.p_t_range3;
+DROP PROCEDURE IF EXISTS bench.p_t_range4;
+DROP PROCEDURE IF EXISTS bench.p_t_range5;
+DROP PROCEDURE IF EXISTS bench.p_t_range6;
+DROP PROCEDURE IF EXISTS bench.p_t_range7;
+DROP PROCEDURE IF EXISTS bench.p_t_range8;
+DROP PROCEDURE IF EXISTS bench.p_t_range9;
+DROP PROCEDURE IF EXISTS bench.p_t_range10;

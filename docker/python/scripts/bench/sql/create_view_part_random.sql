@@ -1,0 +1,10 @@
+CREATE VIEW bench.vew_t_random1 AS SELECT a.* FROM bench.t_random1 LIMIT 5;
+CREATE VIEW bench.vew_t_random2 AS SELECT a.* FROM bench.t_random2 LIMIT 5;
+CREATE VIEW bench.vew_t_random3 AS SELECT a.* FROM bench.t_random3 LIMIT 5;
+CREATE VIEW bench.vew_t_random4 AS SELECT a.* FROM bench.t_random4 LIMIT 5;
+CREATE VIEW bench.vew_t_random5 AS SELECT a.* FROM bench.t_random5 LIMIT 5;
+CREATE VIEW bench.vew_t_random6 AS SELECT a.* FROM bench.t_random6 LIMIT 5;
+CREATE VIEW bench.vew_t_random7 AS SELECT a.* FROM bench.t_random7 LIMIT 5;
+CREATE VIEW bench.vew_t_random8 AS SELECT a.* FROM bench.t_random8 LIMIT 5;
+CREATE VIEW bench.vew_t_random9 AS SELECT a.* FROM bench.t_random9 LIMIT 5;
+CREATE VIEW bench.vew_t_random10 AS SELECT a.* FROM bench.t_random10 LIMIT 5;

@@ -1,0 +1,403 @@
+# ================================================================================
+# Specify tasks to be performed by python script.Group tasks. 
+#
+# Group attributes: 
+#    name: <group-name>
+#    parallelism: 1
+#    skip: false
+#    repeat: 1
+#
+# Task attributges:     
+#    id: <task-name>
+#    sql: "REFRESH MATERIALIZED VIEW CONCURRENTLY mv_sales;"
+#    sql_file
+#    depends_on: [task1, task2]
+#    retries: 3
+#    retry_delay_sec: 5
+#    statement_timeout_sec: 600
+#    timeout: 
+#    on_failure: continue
+
+# ================================================================================
+database:
+  dsn: "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres"
+
+execution:
+  dry_run: false   # true = no SQL execution
+  default_on_failure: abort  # skip | continue | abort
+
+defaults:
+  retries: 1
+  retry_delay_sec: 5
+  statement_timeout_sec: 300
+  repeat: 1
+  skip: false
+
+groups:
+# ----------------------------------------
+  - name: drop_domain
+
+    tasks:
+      - id: drop_part_hash_domains
+        sql_file: "scripts/bench/sql/drop_domain_part_hash.sql"
+
+      - id: drop_part_list_domains
+        sql_file: "scripts/bench/sql/drop_domain_part_list.sql"
+
+      - id: drop_part_range_domains
+        sql_file: "scripts/bench/sql/drop_domain_part_range.sql"
+
+      - id: drop_part_list_domains
+        sql_file: "scripts/bench/sql/drop_domain_part_list.sql"
+
+      - id: drop_size_small_domains
+        sql_file: "scripts/bench/sql/drop_domain_size_small.sql"
+
+      - id: drop_size_medium_domains
+        sql_file: "scripts/bench/sql/drop_domain_size_medium.sql"
+
+      - id: drop_size_large_domains
+        sql_file: "scripts/bench/sql/drop_domain_size_large.sql"
+
+      - id: drop_size_wide_domains
+        sql_file: "scripts/bench/sql/drop_domain_size_wide.sql"
+
+# ----------------------------------------
+  - name: drop_types
+
+    tasks:
+      - id: drop_part_hash_types
+        sql_file: "scripts/bench/sql/drop_type_part_hash.sql"
+
+      - id: drop_part_list_types
+        sql_file: "scripts/bench/sql/drop_type_part_list.sql"
+
+      - id: drop_part_range_types
+        sql_file: "scripts/bench/sql/drop_type_part_range.sql"
+
+      - id: drop_part_list_types
+        sql_file: "scripts/bench/sql/drop_type_part_list.sql"
+
+      - id: drop_size_small_types
+        sql_file: "scripts/bench/sql/drop_type_size_small.sql"
+
+      - id: drop_size_medium_types
+        sql_file: "scripts/bench/sql/drop_type_size_medium.sql"
+
+      - id: drop_size_large_types
+        sql_file: "scripts/bench/sql/drop_type_size_large.sql"
+
+      - id: drop_size_wide_types
+        sql_file: "scripts/bench/sql/drop_type_size_wide.sql"
+
+# ----------------------------------------
+  - name: drop_views
+
+    tasks:
+      - id: drop_part_hash_views
+        sql_file: "scripts/bench/sql/drop_view_part_hash.sql"
+
+      - id: drop_part_list_views
+        sql_file: "scripts/bench/sql/drop_view_part_list.sql"
+
+      - id: drop_part_range_views
+        sql_file: "scripts/bench/sql/drop_view_part_range.sql"
+
+      - id: drop_part_list_views
+        sql_file: "scripts/bench/sql/drop_view_part_list.sql"
+
+      - id: drop_size_small_views
+        sql_file: "scripts/bench/sql/drop_view_size_small.sql"
+
+      - id: drop_size_medium_views
+        sql_file: "scripts/bench/sql/drop_view_size_medium.sql"
+
+      - id: drop_size_large_views
+        sql_file: "scripts/bench/sql/drop_view_size_large.sql"
+
+      - id: drop_size_wide_views
+        sql_file: "scripts/bench/sql/drop_view_size_wide.sql"
+
+# ----------------------------------------
+  - name: drop_tables
+
+    tasks:
+      - id: drop_part_hash_tables
+        sql_file: "scripts/bench/sql/drop_table_part_hash.sql"
+
+      - id: drop_part_list_tables
+        sql_file: "scripts/bench/sql/drop_table_part_list.sql"
+
+      - id: drop_part_range_tables
+        sql_file: "scripts/bench/sql/drop_table_part_range.sql"
+
+      - id: drop_part_list_tables
+        sql_file: "scripts/bench/sql/drop_table_part_list.sql"
+
+      - id: drop_size_small_tables
+        sql_file: "scripts/bench/sql/drop_table_size_small.sql"
+
+      - id: drop_size_medium_tables
+        sql_file: "scripts/bench/sql/drop_table_size_medium.sql"
+
+      - id: drop_size_large_tables
+        sql_file: "scripts/bench/sql/drop_table_size_large.sql"
+
+      - id: drop_size_wide_tables
+        sql_file: "scripts/bench/sql/drop_table_size_wide.sql"
+
+# ----------------------------------------
+  - name: create_tables
+
+    tasks:
+      - id: create_part_hash_tables
+        sql_file: "scripts/bench/sql/create_table_part_hash.sql"
+
+      - id: create_part_list_tables
+        sql_file: "scripts/bench/sql/create_table_part_list.sql"
+
+      - id: create_part_range_tables
+        sql_file: "scripts/bench/sql/create_table_part_range.sql"
+
+      - id: create_part_list_tables
+        sql_file: "scripts/bench/sql/create_table_part_list.sql"
+
+      - id: create_size_small_tables
+        sql_file: "scripts/bench/sql/create_table_size_small.sql"
+
+      - id: create_size_medium_tables
+        sql_file: "scripts/bench/sql/create_table_size_medium.sql"
+
+      - id: create_size_large_tables
+        sql_file: "scripts/bench/sql/create_table_size_large.sql"
+
+      - id: create_size_wide_tables
+        sql_file: "scripts/bench/sql/create_table_size_wide.sql"
+
+# ----------------------------------------
+  - name: truncate_tables
+
+    tasks:
+      - id: truncate_part_hash_tables
+        sql_file: "scripts/bench/sql/truncate_table_part_hash.sql"
+
+      - id: truncate_part_list_tables
+        sql_file: "scripts/bench/sql/truncate_table_part_list.sql"
+
+      - id: truncate_part_range_tables
+        sql_file: "scripts/bench/sql/truncate_table_part_range.sql"
+
+      - id: truncate_part_list_tables
+        sql_file: "scripts/bench/sql/truncate_table_part_list.sql"
+
+      - id: truncate_size_small_tables
+        sql_file: "scripts/bench/sql/truncate_table_size_small.sql"
+
+      - id: truncate_size_medium_tables
+        sql_file: "scripts/bench/sql/truncate_table_size_medium.sql"
+
+      - id: truncate_size_large_tables
+        sql_file: "scripts/bench/sql/truncate_table_size_large.sql"
+
+      - id: truncate_size_wide_tables
+        sql_file: "scripts/bench/sql/truncate_table_size_wide.sql"
+
+# ----------------------------------------
+  - name: insert_tables
+
+    tasks:
+      - id: insert_part_hash_tables
+        sql_file: "scripts/bench/sql/insert_table_part_hash.sql"
+
+      - id: insert_part_list_tables
+        sql_file: "scripts/bench/sql/insert_table_part_list.sql"
+
+      - id: insert_part_range_tables
+        sql_file: "scripts/bench/sql/insert_table_part_range.sql"
+
+      - id: insert_part_list_tables
+        sql_file: "scripts/bench/sql/insert_table_part_list.sql"
+
+      - id: insert_size_small_tables
+        sql_file: "scripts/bench/sql/insert_table_size_small.sql"
+
+      - id: insert_size_medium_tables
+        sql_file: "scripts/bench/sql/insert_table_size_medium.sql"
+
+      - id: insert_size_large_tables
+        sql_file: "scripts/bench/sql/insert_table_size_large.sql"
+
+      - id: insert_size_wide_tables
+        sql_file: "scripts/bench/sql/insert_table_size_wide.sql"
+
+# ----------------------------------------
+  - name: analyze_tables
+
+    tasks:
+      - id: analyze_part_hash_tables
+        sql_file: "scripts/bench/sql/analyze_table_part_hash.sql"
+
+      - id: analyze_part_list_tables
+        sql_file: "scripts/bench/sql/analyze_table_part_list.sql"
+
+      - id: analyze_part_range_tables
+        sql_file: "scripts/bench/sql/analyze_table_part_range.sql"
+
+      - id: analyze_part_list_tables
+        sql_file: "scripts/bench/sql/analyze_table_part_list.sql"
+
+      - id: analyze_size_small_tables
+        sql_file: "scripts/bench/sql/analyze_table_size_small.sql"
+
+      - id: analyze_size_medium_tables
+        sql_file: "scripts/bench/sql/analyze_table_size_medium.sql"
+
+      - id: analyze_size_large_tables
+        sql_file: "scripts/bench/sql/analyze_table_size_large.sql"
+
+      - id: analyze_size_wide_tables
+        sql_file: "scripts/bench/sql/analyze_table_size_wide.sql"
+
+# ----------------------------------------
+  - name: select_tables
+
+    tasks:
+      - id: count_part_hash_tables
+        sql_file: "scripts/bench/sql/select_table_part_hash.sql"
+
+      - id: count_part_list_tables
+        sql_file: "scripts/bench/sql/select_table_part_list.sql"
+
+      - id: count_part_range_tables
+        sql_file: "scripts/bench/sql/select_table_part_range.sql"
+
+      - id: count_part_list_tables
+        sql_file: "scripts/bench/sql/select_table_part_list.sql"
+
+      - id: count_size_small_tables
+        sql_file: "scripts/bench/sql/select_table_size_small.sql"
+
+      - id: count_size_medium_tables
+        sql_file: "scripts/bench/sql/select_table_size_medium.sql"
+
+      - id: count_size_large_tables
+        sql_file: "scripts/bench/sql/select_table_size_large.sql"
+
+      - id: count_size_wide_tables
+        sql_file: "scripts/bench/sql/select_table_size_wide.sql"
+
+# ----------------------------------------
+  - name: create_procedures
+
+    tasks:
+      - id: create_proc_part_hash_tables
+        sql_file: "scripts/bench/sql/create_proc_part_hash.sql"
+
+      - id: create_proc_part_list_tables
+        sql_file: "scripts/bench/sql/create_proc_part_list.sql"
+
+      - id: create_proc_part_range_tables
+        sql_file: "scripts/bench/sql/create_proc_part_range.sql"
+
+      - id: create_proc_part_list_tables
+        sql_file: "scripts/bench/sql/create_proc_part_list.sql"
+
+      - id: create_proc_size_small_tables
+        sql_file: "scripts/bench/sql/create_proc_size_small.sql"
+
+      - id: create_proc_size_medium_tables
+        sql_file: "scripts/bench/sql/create_proc_size_medium.sql"
+
+      - id: create_proc_size_large_tables
+        sql_file: "scripts/bench/sql/create_proc_size_large.sql"
+
+      - id: create_proc_size_wide_tables
+        sql_file: "scripts/bench/sql/create_proc_size_wide.sql"
+
+# ----------------------------------------
+  - name: create_functions
+
+    tasks:
+      - id: create_func_part_hash_tables
+        sql_file: "scripts/bench/sql/create_func_part_hash.sql"
+
+      - id: create_func_part_list_tables
+        sql_file: "scripts/bench/sql/create_func_part_list.sql"
+
+      - id: create_func_part_range_tables
+        sql_file: "scripts/bench/sql/create_func_part_range.sql"
+
+      - id: create_func_part_list_tables
+        sql_file: "scripts/bench/sql/create_func_part_list.sql"
+
+      - id: create_func_size_small_tables
+        sql_file: "scripts/bench/sql/create_func_size_small.sql"
+
+      - id: create_func_size_medium_tables
+        sql_file: "scripts/bench/sql/create_func_size_medium.sql"
+
+      - id: create_func_size_large_tables
+        sql_file: "scripts/bench/sql/create_func_size_large.sql"
+
+      - id: create_func_size_wide_tables
+        sql_file: "scripts/bench/sql/create_func_size_wide.sql"
+
+# ----------------------------------------
+  - name: call_procedures
+
+    tasks:
+      - id: call_proc_part_hash_tables
+        sql_file: "scripts/bench/sql/call_proc_part_hash.sql"
+
+      - id: call_proc_part_list_tables
+        sql_file: "scripts/bench/sql/call_proc_part_list.sql"
+
+      - id: call_proc_part_range_tables
+        sql_file: "scripts/bench/sql/call_proc_part_range.sql"
+
+      - id: call_proc_part_list_tables
+        sql_file: "scripts/bench/sql/call_proc_part_list.sql"
+
+      - id: call_proc_size_small_tables
+        sql_file: "scripts/bench/sql/call_proc_size_small.sql"
+
+      - id: call_proc_size_medium_tables
+        sql_file: "scripts/bench/sql/call_proc_size_medium.sql"
+
+      - id: call_proc_size_large_tables
+        sql_file: "scripts/bench/sql/call_proc_size_large.sql"
+
+      - id: call_proc_size_wide_tables
+        sql_file: "scripts/bench/sql/call_proc_size_wide.sql"
+
+# ----------------------------------------
+  - name: call_functions
+
+    tasks:
+      - id: call_func_part_hash_tables
+        sql_file: "scripts/bench/sql/call_func_part_hash.sql"
+
+      - id: call_func_part_list_tables
+        sql_file: "scripts/bench/sql/call_func_part_list.sql"
+
+      - id: call_func_part_range_tables
+        sql_file: "scripts/bench/sql/call_func_part_range.sql"
+
+      - id: call_func_part_list_tables
+        sql_file: "scripts/bench/sql/call_func_part_list.sql"
+
+      - id: call_func_size_small_tables
+        sql_file: "scripts/bench/sql/call_func_size_small.sql"
+
+      - id: call_func_size_medium_tables
+        sql_file: "scripts/bench/sql/call_func_size_medium.sql"
+
+      - id: call_func_size_large_tables
+        sql_file: "scripts/bench/sql/call_func_size_large.sql"
+
+      - id: call_func_size_wide_tables
+        sql_file: "scripts/bench/sql/call_func_size_wide.sql"
+
+# ----------------------------------------
+# END
+# ----------------------------------------

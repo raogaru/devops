@@ -1,0 +1,10 @@
+DROP DOMAIN IF EXISTS bench.dom_t_wide1;
+DROP DOMAIN IF EXISTS bench.dom_t_wide2;
+DROP DOMAIN IF EXISTS bench.dom_t_wide3;
+DROP DOMAIN IF EXISTS bench.dom_t_wide4;
+DROP DOMAIN IF EXISTS bench.dom_t_wide5;
+DROP DOMAIN IF EXISTS bench.dom_t_wide6;
+DROP DOMAIN IF EXISTS bench.dom_t_wide7;
+DROP DOMAIN IF EXISTS bench.dom_t_wide8;
+DROP DOMAIN IF EXISTS bench.dom_t_wide9;
+DROP DOMAIN IF EXISTS bench.dom_t_wide10;

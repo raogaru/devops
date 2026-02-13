@@ -1,0 +1,10 @@
+DROP VIEW IF EXISTS bench.vew_t_range1 CASCADE;
+DROP VIEW IF EXISTS bench.vew_t_range2 CASCADE;
+DROP VIEW IF EXISTS bench.vew_t_range3 CASCADE;
+DROP VIEW IF EXISTS bench.vew_t_range4 CASCADE;
+DROP VIEW IF EXISTS bench.vew_t_range5 CASCADE;
+DROP VIEW IF EXISTS bench.vew_t_range6 CASCADE;
+DROP VIEW IF EXISTS bench.vew_t_range7 CASCADE;
+DROP VIEW IF EXISTS bench.vew_t_range8 CASCADE;
+DROP VIEW IF EXISTS bench.vew_t_range9 CASCADE;
+DROP VIEW IF EXISTS bench.vew_t_range10 CASCADE;

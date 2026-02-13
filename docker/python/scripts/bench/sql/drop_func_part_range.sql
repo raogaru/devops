@@ -1,0 +1,10 @@
+DROP FUNCTION IF EXISTS bench.f_t_range1;
+DROP FUNCTION IF EXISTS bench.f_t_range2;
+DROP FUNCTION IF EXISTS bench.f_t_range3;
+DROP FUNCTION IF EXISTS bench.f_t_range4;
+DROP FUNCTION IF EXISTS bench.f_t_range5;
+DROP FUNCTION IF EXISTS bench.f_t_range6;
+DROP FUNCTION IF EXISTS bench.f_t_range7;
+DROP FUNCTION IF EXISTS bench.f_t_range8;
+DROP FUNCTION IF EXISTS bench.f_t_range9;
+DROP FUNCTION IF EXISTS bench.f_t_range10;

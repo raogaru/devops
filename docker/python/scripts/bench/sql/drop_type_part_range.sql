@@ -1,0 +1,10 @@
+DROP TYPE IF EXISTS bench.typ_t_range1;
+DROP TYPE IF EXISTS bench.typ_t_range2;
+DROP TYPE IF EXISTS bench.typ_t_range3;
+DROP TYPE IF EXISTS bench.typ_t_range4;
+DROP TYPE IF EXISTS bench.typ_t_range5;
+DROP TYPE IF EXISTS bench.typ_t_range6;
+DROP TYPE IF EXISTS bench.typ_t_range7;
+DROP TYPE IF EXISTS bench.typ_t_range8;
+DROP TYPE IF EXISTS bench.typ_t_range9;
+DROP TYPE IF EXISTS bench.typ_t_range10;

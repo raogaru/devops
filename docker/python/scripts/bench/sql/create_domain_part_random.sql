@@ -1,0 +1,10 @@
+CREATE DOMAIN bench.dom_t_random1 AS bench.typ_t_random1 [];
+CREATE DOMAIN bench.dom_t_random2 AS bench.typ_t_random2 [];
+CREATE DOMAIN bench.dom_t_random3 AS bench.typ_t_random3 [];
+CREATE DOMAIN bench.dom_t_random4 AS bench.typ_t_random4 [];
+CREATE DOMAIN bench.dom_t_random5 AS bench.typ_t_random5 [];
+CREATE DOMAIN bench.dom_t_random6 AS bench.typ_t_random6 [];
+CREATE DOMAIN bench.dom_t_random7 AS bench.typ_t_random7 [];
+CREATE DOMAIN bench.dom_t_random8 AS bench.typ_t_random8 [];
+CREATE DOMAIN bench.dom_t_random9 AS bench.typ_t_random9 [];
+CREATE DOMAIN bench.dom_t_random10 AS bench.typ_t_random10 [];

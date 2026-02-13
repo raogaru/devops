@@ -1,0 +1,10 @@
+CREATE DOMAIN bench.dom_t_hash1 AS bench.typ_t_hash1 [];
+CREATE DOMAIN bench.dom_t_hash2 AS bench.typ_t_hash2 [];
+CREATE DOMAIN bench.dom_t_hash3 AS bench.typ_t_hash3 [];
+CREATE DOMAIN bench.dom_t_hash4 AS bench.typ_t_hash4 [];
+CREATE DOMAIN bench.dom_t_hash5 AS bench.typ_t_hash5 [];
+CREATE DOMAIN bench.dom_t_hash6 AS bench.typ_t_hash6 [];
+CREATE DOMAIN bench.dom_t_hash7 AS bench.typ_t_hash7 [];
+CREATE DOMAIN bench.dom_t_hash8 AS bench.typ_t_hash8 [];
+CREATE DOMAIN bench.dom_t_hash9 AS bench.typ_t_hash9 [];
+CREATE DOMAIN bench.dom_t_hash10 AS bench.typ_t_hash10 [];

@@ -1,0 +1,10 @@
+CREATE DOMAIN bench.dom_t_range1 AS bench.typ_t_range1 [];
+CREATE DOMAIN bench.dom_t_range2 AS bench.typ_t_range2 [];
+CREATE DOMAIN bench.dom_t_range3 AS bench.typ_t_range3 [];
+CREATE DOMAIN bench.dom_t_range4 AS bench.typ_t_range4 [];
+CREATE DOMAIN bench.dom_t_range5 AS bench.typ_t_range5 [];
+CREATE DOMAIN bench.dom_t_range6 AS bench.typ_t_range6 [];
+CREATE DOMAIN bench.dom_t_range7 AS bench.typ_t_range7 [];
+CREATE DOMAIN bench.dom_t_range8 AS bench.typ_t_range8 [];
+CREATE DOMAIN bench.dom_t_range9 AS bench.typ_t_range9 [];
+CREATE DOMAIN bench.dom_t_range10 AS bench.typ_t_range10 [];

@@ -1,0 +1,19 @@
+vLINE="################################################################################"
+
+cd git/devops/docker/python/
+
+# --------------------------------------------------------------------------------
+# tabgen.py - genrate ddl scripts and dml scripts based on tabgen yaml
+for SET_NAME  in part_list part_hash part_range part_random size_small size_medium size_large size_wide
+do
+echo ${vLINE}
+docker exec -it c-python tabgen.py scripts/bench/yaml/tabgen_${SET_NAME}.yaml
+done
+
+# --------------------------------------------------------------------------------
+# jobrun.py - create tables, procedures, functions
+echo ${vLINE}
+docker exec -it c-python jobrun.py scripts/${SET_NAME}/jobrun_cleanup.yaml
+docker exec -it c-python jobrun.py scripts/${SET_NAME}/jobrun_setup.yaml
+
+

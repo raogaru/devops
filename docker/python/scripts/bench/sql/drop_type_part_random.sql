@@ -1,0 +1,10 @@
+DROP TYPE IF EXISTS bench.typ_t_random1;
+DROP TYPE IF EXISTS bench.typ_t_random2;
+DROP TYPE IF EXISTS bench.typ_t_random3;
+DROP TYPE IF EXISTS bench.typ_t_random4;
+DROP TYPE IF EXISTS bench.typ_t_random5;
+DROP TYPE IF EXISTS bench.typ_t_random6;
+DROP TYPE IF EXISTS bench.typ_t_random7;
+DROP TYPE IF EXISTS bench.typ_t_random8;
+DROP TYPE IF EXISTS bench.typ_t_random9;
+DROP TYPE IF EXISTS bench.typ_t_random10;
