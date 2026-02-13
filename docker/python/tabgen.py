@@ -84,6 +84,8 @@ insert_table_file   = out["insert_table_file"]
 analyze_table_file  = out["analyze_table_file"]
 truncate_table_file = out["truncate_table_file"]
 select_table_file   = out["select_table_file"]
+create_proc_file   = out["create_proc_file"]
+create_func_file   = out["create_func_file"]
 
 # --------------------------------------------------------------
 # Ensure output directories exist
@@ -198,6 +200,8 @@ drop_output     = []
 analyze_output  = []
 truncate_output = []
 select_output   = []
+create_proc_output   = []
+create_func_output   = []
 
 for t in range(1, table_count + 1):
 
@@ -326,7 +330,7 @@ for t in range(1, table_count + 1):
         ddl_output.append("")
 
     # ---------------------------
-    # INSERT (UNCHANGED)
+    # INSERT
     # ---------------------------
 
     rows_per_table = random.randint(table_rows_min, table_rows_max)
@@ -336,6 +340,31 @@ for t in range(1, table_count + 1):
         f"INSERT INTO {fqtn} ({','.join(c for c,_ in columns)})\n"
         f"SELECT\n    " + ",\n    ".join(exprs) + "\n"
         f"FROM generate_series(1, {rows_per_table});\n"
+    )
+
+    # ---------------------------
+    # GENERATE PROCEDURE SCRIPT
+    # ---------------------------
+    create_func_output.append(
+        f"CREATE OR REPLACE FUNCTION {table_schema}.f_{tabname}()\n"
+        f"RETURNS SETOF {table_schema}.{tabname}\n"
+        f"LANGUAGE plpgsql AS $$\n"
+        f"BEGIN\n"
+        f"    RETURN QUERY SELECT * FROM {table_schema}.{tabname} LIMIT 5;\n"
+        f"END;\n"
+        f"$$;\n"
+    )
+
+    # ---------------------------
+    # GENERATE FUNCTION SCRIPT
+    # ---------------------------
+    create_proc_output.append(
+        f"CREATE OR REPLACE PROCEDURE {table_schema}.p_{tabname}(INOUT p_refcur REFCURSOR)\n"
+        f"LANGUAGE plpgsql AS $$\n"
+        f"BEGIN\n"
+        f"    OPEN p_refcur FOR SELECT * FROM {table_schema}.{tabname} LIMIT 5;\n"
+        f"END;\n"
+        f"$$; \n"
     )
 
 # --------------------------------------------------------------
@@ -348,6 +377,8 @@ Path(insert_table_file).write_text("\n".join(insert_output))
 Path(analyze_table_file).write_text("\n".join(analyze_output))
 Path(truncate_table_file).write_text("\n".join(truncate_output))
 Path(select_table_file).write_text("\n".join(select_output))
+Path(create_proc_file).write_text("\n".join(create_proc_output))
+Path(create_func_file).write_text("\n".join(create_func_output))
 
 print("Generated:",
       drop_table_file,
@@ -355,7 +386,9 @@ print("Generated:",
       insert_table_file,
       analyze_table_file,
       truncate_table_file,
-      select_table_file)
+      select_table_file,
+      create_proc_file,
+      create_func_file)
 
 # ################################################################################
 
