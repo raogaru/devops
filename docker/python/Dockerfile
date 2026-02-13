@@ -33,6 +33,11 @@ COPY pgdatacomp.yaml /app/
 
 COPY csvstats.py /app/bin
 
+COPY bench_proc_calls_gencfg.py /app/bin
+
+COPY bench_proc_calls.py /app/bin
+COPY bench_proc_calls.yaml /app/
+
 RUN chmod +x /app/bin/*.py
 
 ENV PATH="/app/bin:$PATH"

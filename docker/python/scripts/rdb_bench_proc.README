@@ -1,2 +1,0 @@
-rdb_bench_proc.py --config rdb_bench_proc.yaml --samples-dir rdb_bench_proc_data --iterations 10 --warmup 3 --commit-each false --shuffle false  --output rdb_bench_proc.out
-

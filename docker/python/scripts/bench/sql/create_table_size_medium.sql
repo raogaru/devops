@@ -1,182 +1,188 @@
 CREATE TABLE bench.t_medium1 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 date
-    ,c2 integer
-    ,c3 bytea
-    ,c4 varchar(7)
-    ,c5 bigint
-    ,c6 text
-    ,c7 text
-    ,c8 integer
-    ,c9 varchar(48)
-    ,c10 double precision
-    ,c11 boolean
-    ,c12 time
+    ,c1 varchar(35)
+    ,c2 numeric(7,2)
+    ,c3 date
+    ,c4 varchar(2)
+    ,c5 bytea
+    ,c6 real
+    ,c7 double precision
+    ,c8 double precision
+    ,c9 boolean
+    ,c10 varchar(40)
+    ,c11 integer
+    ,c12 double precision
+    ,c13 bytea
 );
 
 CREATE TABLE bench.t_medium2 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 uuid
-    ,c2 numeric(8,2)
-    ,c3 timestamp
-    ,c4 char(11)
-    ,c5 timestamp
-    ,c6 timestamp
-    ,c7 time
-    ,c8 date
-    ,c9 double precision
-    ,c10 bytea
-    ,c11 varchar(7)
-    ,c12 text
-    ,c13 real
-    ,c14 date
-    ,c15 double precision
-    ,c16 double precision
-    ,c17 timestamp
-    ,c18 real
-    ,c19 bigint
+    ,c1 jsonb
+    ,c2 numeric(9,3)
+    ,c3 varchar(2)
+    ,c4 smallint
+    ,c5 varchar(15)
+    ,c6 real
+    ,c7 char(18)
+    ,c8 jsonb
+    ,c9 smallint
+    ,c10 real
+    ,c11 integer
+    ,c12 bigint
+    ,c13 timestamp
+    ,c14 text
+    ,c15 real
+    ,c16 jsonb
+    ,c17 boolean
 );
 
 CREATE TABLE bench.t_medium3 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 jsonb
-    ,c2 bigint
-    ,c3 text
-    ,c4 varchar(16)
-    ,c5 varchar(47)
-    ,c6 char(17)
-    ,c7 uuid
-    ,c8 bigint
-    ,c9 smallint
-    ,c10 boolean
-    ,c11 bigint
+    ,c1 char(20)
+    ,c2 boolean
+    ,c3 timestamp
+    ,c4 boolean
+    ,c5 uuid
+    ,c6 boolean
+    ,c7 char(2)
+    ,c8 uuid
+    ,c9 char(3)
+    ,c10 varchar(1)
+    ,c11 date
+    ,c12 time
+    ,c13 char(17)
+    ,c14 double precision
+    ,c15 bytea
+    ,c16 char(19)
+    ,c17 text
 );
 
 CREATE TABLE bench.t_medium4 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 jsonb
-    ,c2 text
+    ,c1 date
+    ,c2 date
     ,c3 text
-    ,c4 varchar(5)
-    ,c5 jsonb
-    ,c6 numeric(5,2)
-    ,c7 bytea
-    ,c8 jsonb
-    ,c9 uuid
-    ,c10 integer
-    ,c11 char(20)
-    ,c12 char(20)
-    ,c13 uuid
-    ,c14 bytea
-    ,c15 double precision
-    ,c16 bytea
-    ,c17 uuid
-    ,c18 text
-    ,c19 text
+    ,c4 bigint
+    ,c5 text
+    ,c6 char(5)
+    ,c7 smallint
+    ,c8 integer
+    ,c9 boolean
+    ,c10 boolean
+    ,c11 real
+    ,c12 bigint
+    ,c13 boolean
+    ,c14 double precision
+    ,c15 boolean
+    ,c16 boolean
+    ,c17 numeric(11,3)
 );
 
 CREATE TABLE bench.t_medium5 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 date
-    ,c2 integer
-    ,c3 real
-    ,c4 boolean
-    ,c5 char(8)
-    ,c6 jsonb
-    ,c7 text
-    ,c8 numeric(7,0)
-    ,c9 boolean
-    ,c10 integer
-    ,c11 numeric(10,2)
-    ,c12 bigint
-    ,c13 integer
-    ,c14 timestamp
-    ,c15 double precision
-    ,c16 time
+    ,c1 varchar(23)
+    ,c2 text
+    ,c3 integer
+    ,c4 time
+    ,c5 double precision
+    ,c6 real
+    ,c7 uuid
+    ,c8 real
+    ,c9 varchar(8)
+    ,c10 time
+    ,c11 bigint
+    ,c12 text
 );
 
 CREATE TABLE bench.t_medium6 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 smallint
-    ,c2 real
-    ,c3 char(17)
-    ,c4 bytea
-    ,c5 numeric(4,2)
-    ,c6 integer
-    ,c7 numeric(7,1)
-    ,c8 timestamp
-    ,c9 integer
+    ,c1 char(4)
+    ,c2 integer
+    ,c3 integer
+    ,c4 jsonb
+    ,c5 time
+    ,c6 text
+    ,c7 text
+    ,c8 boolean
+    ,c9 bigint
     ,c10 date
-    ,c11 date
-    ,c12 smallint
-    ,c13 time
+    ,c11 smallint
+    ,c12 char(8)
+    ,c13 smallint
+    ,c14 boolean
+    ,c15 text
 );
 
 CREATE TABLE bench.t_medium7 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 real
-    ,c2 numeric(4,3)
-    ,c3 date
-    ,c4 text
-    ,c5 text
-    ,c6 text
-    ,c7 integer
-    ,c8 char(6)
-    ,c9 boolean
-    ,c10 text
-    ,c11 time
-    ,c12 bigint
+    ,c1 date
+    ,c2 bigint
+    ,c3 varchar(33)
+    ,c4 date
+    ,c5 bytea
+    ,c6 numeric(11,2)
+    ,c7 bigint
+    ,c8 char(18)
+    ,c9 time
+    ,c10 bigint
+    ,c11 text
+    ,c12 boolean
     ,c13 bigint
 );
 
 CREATE TABLE bench.t_medium8 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 varchar(27)
-    ,c2 jsonb
-    ,c3 char(14)
-    ,c4 text
-    ,c5 bytea
-    ,c6 text
-    ,c7 bytea
-    ,c8 integer
-    ,c9 double precision
-    ,c10 smallint
+    ,c1 varchar(5)
+    ,c2 uuid
+    ,c3 real
+    ,c4 bigint
+    ,c5 numeric(6,3)
+    ,c6 varchar(27)
+    ,c7 jsonb
+    ,c8 jsonb
+    ,c9 bytea
+    ,c10 bytea
+    ,c11 time
+    ,c12 char(2)
+    ,c13 varchar(46)
 );
 
 CREATE TABLE bench.t_medium9 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 time
-    ,c2 time
-    ,c3 bigint
-    ,c4 real
-    ,c5 time
-    ,c6 integer
-    ,c7 varchar(36)
-    ,c8 timestamp
-    ,c9 time
-    ,c10 double precision
-    ,c11 varchar(27)
+    ,c1 real
+    ,c2 timestamp
+    ,c3 uuid
+    ,c4 smallint
+    ,c5 bytea
+    ,c6 real
+    ,c7 numeric(4,1)
+    ,c8 date
+    ,c9 varchar(8)
+    ,c10 bigint
+    ,c11 boolean
+    ,c12 bigint
+    ,c13 text
+    ,c14 boolean
+    ,c15 double precision
+    ,c16 uuid
 );
 
 CREATE TABLE bench.t_medium10 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 bigint
-    ,c2 bytea
-    ,c3 varchar(4)
-    ,c4 real
-    ,c5 text
-    ,c6 numeric(6,1)
-    ,c7 time
-    ,c8 smallint
-    ,c9 jsonb
-    ,c10 uuid
-    ,c11 time
-    ,c12 varchar(47)
-    ,c13 integer
-    ,c14 jsonb
-    ,c15 boolean
-    ,c16 real
-    ,c17 timestamp
-    ,c18 bytea
-    ,c19 bytea
+    ,c1 timestamp
+    ,c2 time
+    ,c3 double precision
+    ,c4 numeric(9,3)
+    ,c5 double precision
+    ,c6 time
+    ,c7 text
+    ,c8 time
+    ,c9 text
+    ,c10 timestamp
+    ,c11 numeric(5,2)
+    ,c12 boolean
+    ,c13 char(15)
+    ,c14 smallint
+    ,c15 time
+    ,c16 char(17)
 );

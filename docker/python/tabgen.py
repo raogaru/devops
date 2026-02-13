@@ -84,8 +84,18 @@ insert_table_file   = out["insert_table_file"]
 analyze_table_file  = out["analyze_table_file"]
 truncate_table_file = out["truncate_table_file"]
 select_table_file   = out["select_table_file"]
+create_view_file   = out["create_view_file"]
+drop_view_file   = out["drop_view_file"]
 create_proc_file   = out["create_proc_file"]
+call_proc_file   = out["call_proc_file"]
+drop_proc_file   = out["drop_proc_file"]
 create_func_file   = out["create_func_file"]
+call_func_file   = out["call_func_file"]
+drop_func_file   = out["drop_func_file"]
+create_type_file   = out["create_type_file"]
+drop_type_file   = out["drop_type_file"]
+create_domain_file   = out["create_domain_file"]
+drop_domain_file   = out["drop_domain_file"]
 
 # --------------------------------------------------------------
 # Ensure output directories exist
@@ -194,24 +204,29 @@ def sql_expr_from_meta(meta):
 # Main generation loop
 # --------------------------------------------------------------
 
-ddl_output      = []
-insert_output   = []
-drop_output     = []
-analyze_output  = []
-truncate_output = []
-select_output   = []
+create_table_output   = []
+insert_table_output   = []
+drop_table_output     = []
+analyze_table_output  = []
+truncate_table_output = []
+select_table_output   = []
+create_view_output   = []
+drop_view_output   = []
 create_proc_output   = []
+call_proc_output   = []
+drop_proc_output   = []
 create_func_output   = []
+call_func_output   = []
+drop_func_output   = []
+create_type_output   = []
+drop_type_output   = []
+create_domain_output   = []
+drop_domain_output   = []
 
 for t in range(1, table_count + 1):
 
     tabname = f"{table_name_prefix}{t}"
     fqtn = f"{table_schema}.{tabname}"
-
-    drop_output.append(f"DROP TABLE IF EXISTS {fqtn} CASCADE;")
-    analyze_output.append(f"ANALYZE {fqtn};")
-    truncate_output.append(f"TRUNCATE {fqtn};")
-    select_output.append(f"SELECT count(1) FROM {fqtn};")
 
     # ---------------------------
     # Choose partition type first
@@ -266,31 +281,35 @@ for t in range(1, table_count + 1):
         columns.append((colname, meta))
 
     # ---------------------------
-    # CREATE TABLE
+    # CREATE TABLE & CREATE TYPE
     # ---------------------------
 
-    ddl = [f"CREATE TABLE {fqtn} ("]
+    create_table_ddl = [f"CREATE TABLE {fqtn} ("]
+    create_type_ddl = [f"CREATE TYPE {table_schema}.typ_{tabname} ("]
+    create_type_ddl.append("    id BIGSERIAL")
 
     if partition_enabled:
-        ddl.append("    id BIGSERIAL")
+        create_table_ddl.append("    id BIGSERIAL")
     else:
-        ddl.append("    id BIGSERIAL PRIMARY KEY")
+        create_table_ddl.append("    id BIGSERIAL PRIMARY KEY")
 
     for cname, meta in columns:
-        ddl.append(f"    ,{cname} {ddl_from_meta(meta)}")
+        create_table_ddl.append(f"    ,{cname} {ddl_from_meta(meta)}")
+        create_type_ddl.append(f"    ,{cname} {ddl_from_meta(meta)}")
 
     # Primary key definition
     if partition_enabled:
-        ddl.append(f"    ,PRIMARY KEY (id, {part_col})")
-
-#    ddl[-1] = ddl[-1].rstrip(",")
+        create_table_ddl.append(f"    ,PRIMARY KEY (id, {part_col})")
 
     if partition_enabled:
-        ddl.append(f") PARTITION BY {ptype.upper()} ({part_col});\n")
+        create_table_ddl.append(f") PARTITION BY {ptype.upper()} ({part_col});\n")
     else:
-        ddl.append(");\n")
+        create_table_ddl.append(");\n")
 
-    ddl_output.extend(ddl)
+    create_type_ddl.append(");\n")
+
+    create_table_output.extend(create_table_ddl)
+    create_type_output.extend(create_type_ddl)
 
     # ---------------------------
     # Child partitions
@@ -301,7 +320,7 @@ for t in range(1, table_count + 1):
 
         if ptype == "hash":
             for i in range(pcount):
-                ddl_output.append( f"CREATE TABLE {fqtn}_p{i} PARTITION OF {fqtn} FOR VALUES WITH (MODULUS {pcount}, REMAINDER {i});" )
+                create_table_output.append( f"CREATE TABLE {fqtn}_p{i} PARTITION OF {fqtn} FOR VALUES WITH (MODULUS {pcount}, REMAINDER {i});" )
 
         elif ptype == "list":
             values = list(range(0, 10))
@@ -309,44 +328,101 @@ for t in range(1, table_count + 1):
             chunks = [values[i::pcount] for i in range(pcount)]
 
             for i, vals in enumerate(chunks):
-                ddl_output.append( f"CREATE TABLE {fqtn}_p{i} PARTITION OF {fqtn} FOR VALUES IN ({', '.join(map(str, vals))});" )
+                create_table_output.append( f"CREATE TABLE {fqtn}_p{i} PARTITION OF {fqtn} FOR VALUES IN ({', '.join(map(str, vals))});" )
 
         elif ptype == "range":
             if part_meta[0] == "integer":
                 start = 0
                 step = 1000000
                 for i in range(pcount):
-                    ddl_output.append( f"CREATE TABLE {fqtn}_p{i} PARTITION OF {fqtn} FOR VALUES FROM ({start}) TO ({start + step});" )
+                    create_table_output.append( f"CREATE TABLE {fqtn}_p{i} PARTITION OF {fqtn} FOR VALUES FROM ({start}) TO ({start + step});" )
                     start += step
-                ddl_output.append( f"CREATE TABLE {fqtn}_px PARTITION OF {fqtn} FOR VALUES FROM ({start}) TO (2147483647);" )
+                create_table_output.append( f"CREATE TABLE {fqtn}_px PARTITION OF {fqtn} FOR VALUES FROM ({start}) TO (2147483647);" )
             if part_meta[0] == "date":
                 start = 1970
                 step = 10
                 for i in range(pcount):
-                    ddl_output.append( f"CREATE TABLE {fqtn}_p{i} PARTITION OF {fqtn} FOR VALUES FROM ('{start}-01-01') TO ('{start + step}-01-01');" )
+                    create_table_output.append( f"CREATE TABLE {fqtn}_p{i} PARTITION OF {fqtn} FOR VALUES FROM ('{start}-01-01') TO ('{start + step}-01-01');" )
                     start += step
-                ddl_output.append( f"CREATE TABLE {fqtn}_px PARTITION OF {fqtn} FOR VALUES FROM ('{start}-01-01') TO ('9999-01-01');" )
+                create_table_output.append( f"CREATE TABLE {fqtn}_px PARTITION OF {fqtn} FOR VALUES FROM ('{start}-01-01') TO ('9999-01-01');" )
 
-        ddl_output.append("")
+        create_table_output.append("")
 
     # ---------------------------
-    # INSERT
+    # INSERT TABLE
     # ---------------------------
 
     rows_per_table = random.randint(table_rows_min, table_rows_max)
     exprs = [sql_expr_from_meta(meta) for _, meta in columns]
 
-    insert_output.append(
+    insert_table_output.append(
         f"INSERT INTO {fqtn} ({','.join(c for c,_ in columns)})\n"
         f"SELECT\n    " + ",\n    ".join(exprs) + "\n"
         f"FROM generate_series(1, {rows_per_table});\n"
     )
 
     # ---------------------------
-    # GENERATE PROCEDURE SCRIPT
+    # DROP TABLE
+    # ---------------------------
+    drop_table_output.append(f"DROP TABLE IF EXISTS {fqtn} CASCADE;")
+
+    # ---------------------------
+    # DROP VIEW
+    # ---------------------------
+    create_view_output.append(f"CREATE VIEW {table_schema}.vew_{tabname} AS SELECT a.* FROM {fqtn} LIMIT 5;")
+
+    # ---------------------------
+    # DROP VIEW
+    # ---------------------------
+    drop_view_output.append(f"DROP VIEW IF EXISTS {table_schema}.vew_{tabname} CASCADE;")
+
+    # ---------------------------
+    # ANALYZE TABLE
+    # ---------------------------
+    analyze_table_output.append(f"ANALYZE {fqtn};")
+
+    # ---------------------------
+    # TRUNCATE TABLE
+    # ---------------------------
+    truncate_table_output.append(f"TRUNCATE {fqtn};")
+
+    # ---------------------------
+    # SELECT TABLE
+    # ---------------------------
+    select_table_output.append(f"SELECT count(1) FROM {fqtn};")
+
+    # ---------------------------
+    # CREATE PROCEDURE
+    # ---------------------------
+    create_proc_output.append(
+        f"CREATE OR REPLACE PROCEDURE {table_schema}.p_{tabname}(INOUT p_refcur REFCURSOR,IN p_id bigint)\n"
+        f"LANGUAGE plpgsql AS $$\n"
+        f"BEGIN\n"
+        f"    OPEN p_refcur FOR SELECT * FROM {table_schema}.{tabname} LIMIT 5;\n"
+        f"END;\n"
+        f"$$; \n"
+    )
+
+    # ---------------------------
+    # CALL PROCEDURE
+    # ---------------------------
+    call_proc_output.append(
+        f"BEGIN;\n"
+        f"CALL {table_schema}.p_{tabname} (p_refcur=>'c1', p_id=>(floor(random()*(100-1+1)+1)::int));\n"
+        f"FETCH ALL FROM c1;\n"
+        f"ROLLBACK;\n"
+    )
+
+    # ---------------------------
+    # DROP PROCEDURE
+    # ---------------------------
+    drop_proc_output.append( f"DROP PROCEDURE IF EXISTS {table_schema}.p_{tabname};" )
+
+    # ---------------------------
+    # CREATE FUNCTION
     # ---------------------------
     create_func_output.append(
-        f"CREATE OR REPLACE FUNCTION {table_schema}.f_{tabname}()\n"
+        f"CREATE OR REPLACE FUNCTION {table_schema}.f_{tabname}(p_id bigint)\n"
         f"RETURNS SETOF {table_schema}.{tabname}\n"
         f"LANGUAGE plpgsql AS $$\n"
         f"BEGIN\n"
@@ -356,39 +432,89 @@ for t in range(1, table_count + 1):
     )
 
     # ---------------------------
-    # GENERATE FUNCTION SCRIPT
+    # CALL FUNCTION
     # ---------------------------
-    create_proc_output.append(
-        f"CREATE OR REPLACE PROCEDURE {table_schema}.p_{tabname}(INOUT p_refcur REFCURSOR)\n"
-        f"LANGUAGE plpgsql AS $$\n"
-        f"BEGIN\n"
-        f"    OPEN p_refcur FOR SELECT * FROM {table_schema}.{tabname} LIMIT 5;\n"
-        f"END;\n"
-        f"$$; \n"
-    )
+    call_func_output.append( f"SELECT * FROM {table_schema}.f_{tabname} (p_id=>(floor(random()*(100-1+1)+1)::int));" )
+
+    # ---------------------------
+    # DROP FUNCTION
+    # ---------------------------
+    drop_func_output.append( f"DROP FUNCTION IF EXISTS {table_schema}.f_{tabname};" )
+
+    # ---------------------------
+    # DROP TYPE
+    # ---------------------------
+    drop_type_output.append(f"DROP TYPE IF EXISTS {table_schema}.typ_{tabname};")
+
+    # ---------------------------
+    # CREATE DOMAIN
+    # ---------------------------
+    create_domain_output.append(f"CREATE DOMAIN {table_schema}.dom_{tabname} AS {table_schema}.typ_{tabname} [];")
+
+    # ---------------------------
+    # DROP DOMAIN
+    # ---------------------------
+    drop_domain_output.append(f"DROP DOMAIN IF EXISTS {table_schema}.dom_{tabname};")
 
 # --------------------------------------------------------------
 # Write files
 # --------------------------------------------------------------
 
-Path(drop_table_file).write_text("\n".join(drop_output))
-Path(create_table_file).write_text("\n".join(ddl_output))
-Path(insert_table_file).write_text("\n".join(insert_output))
-Path(analyze_table_file).write_text("\n".join(analyze_output))
-Path(truncate_table_file).write_text("\n".join(truncate_output))
-Path(select_table_file).write_text("\n".join(select_output))
+print("Generating:",drop_table_file)
+Path(drop_table_file).write_text("\n".join(drop_table_output))
+
+print("Generating:",create_table_file)
+Path(create_table_file).write_text("\n".join(create_table_output))
+
+print("Generating:",insert_table_file)
+Path(insert_table_file).write_text("\n".join(insert_table_output))
+
+print("Generating:",analyze_table_file)
+Path(analyze_table_file).write_text("\n".join(analyze_table_output))
+
+print("Generating:",truncate_table_file)
+Path(truncate_table_file).write_text("\n".join(truncate_table_output))
+
+print("Generating:",select_table_file)
+Path(select_table_file).write_text("\n".join(select_table_output))
+
+print("Generating:",create_view_file)
+Path(create_view_file).write_text("\n".join(create_view_output))
+
+print("Generating:",drop_view_file)
+Path(drop_view_file).write_text("\n".join(drop_view_output))
+
+print("Generating:",create_proc_file)
 Path(create_proc_file).write_text("\n".join(create_proc_output))
+
+print("Generating:",call_proc_file)
+Path(call_proc_file).write_text("\n".join(call_proc_output))
+
+print("Generating:",drop_proc_file)
+Path(drop_proc_file).write_text("\n".join(drop_proc_output))
+
+print("Generating:",create_func_file)
 Path(create_func_file).write_text("\n".join(create_func_output))
 
-print("Generated:",
-      drop_table_file,
-      create_table_file,
-      insert_table_file,
-      analyze_table_file,
-      truncate_table_file,
-      select_table_file,
-      create_proc_file,
-      create_func_file)
+print("Generating:",call_func_file)
+Path(call_func_file).write_text("\n".join(call_func_output))
+
+print("Generating:",drop_func_file)
+Path(drop_func_file).write_text("\n".join(drop_func_output))
+
+print("Generating:",create_type_file)
+Path(create_type_file).write_text("\n".join(create_type_output))
+
+print("Generating:",drop_type_file)
+Path(drop_type_file).write_text("\n".join(drop_type_output))
+
+print("Generating:",create_domain_file)
+Path(create_domain_file).write_text("\n".join(create_domain_output))
+
+print("Generating:",drop_domain_file)
+Path(drop_domain_file).write_text("\n".join(drop_domain_output))
+
+print("Completed:")
 
 # ################################################################################
 

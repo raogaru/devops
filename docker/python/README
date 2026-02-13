@@ -31,7 +31,7 @@ vLINE="#########################################################################
 for DIRNAME in job1 job2 job3 job4 job5 part_list part_hash part_range part_random
 do
 echo ${vLINE}
-#vi jobs/job1/tabgen.yaml
+#vi scripts/job1/tabgen.yaml
 docker exec -it c-python tabgen.py scripts/${DIRNAME}/tabgen.yaml
 done
 

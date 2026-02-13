@@ -4,6 +4,8 @@ cd git/devops/docker/python/
 
 # --------------------------------------------------------------------------------
 # tabgen.py - genrate ddl scripts and dml scripts based on tabgen yaml
+# create/select/truncate/analyze table scripts, create/drop procedures/functions/views/types/domain scripts
+
 for SET_NAME  in part_list part_hash part_range part_random size_small size_medium size_large size_wide
 do
 echo ${vLINE}
@@ -11,9 +13,30 @@ docker exec -it c-python tabgen.py scripts/bench/yaml/tabgen_${SET_NAME}.yaml
 done
 
 # --------------------------------------------------------------------------------
-# jobrun.py - create tables, procedures, functions
-echo ${vLINE}
-docker exec -it c-python jobrun.py scripts/${SET_NAME}/jobrun_cleanup.yaml
-docker exec -it c-python jobrun.py scripts/${SET_NAME}/jobrun_setup.yaml
+# jobrun.py - create tables, views, procedures, functions
+# connects to database and execute scripts as listed in yaml file
 
+docker exec -it c-python jobrun.py scripts/bench/yaml/jobrun_cleanup.yaml
+docker exec -it c-python jobrun.py scripts/bench/yaml/jobrun_setup.yaml
 
+# --------------------------------------------------------------------------------
+# prepare procedure/function calls config file
+
+docker exec -it c-python bench_proc_calls_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench  --kinds both --output g.yaml
+
+#docker exec -it c-python bench_proc_calls_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench --include "p_%" --kinds procedures --output p.yaml
+
+#docker exec -it c-python bench_proc_calls_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench --include "f_%" --kinds functions --output f.yaml
+
+# --------------------------------------------------------------------------------
+# execute benchmark procedure/function calls 
+# 1. read config file for procedure/function arguments and data types
+# 2. read procedure/function argument test data from csv files
+# 3. Connect to database and call procedures/functions
+# 4. produce output file with test results
+
+docker exec -it c-python bench_proc_calls.py --config bench_proc_calls.yaml --samples-dir scripts/bench/proc_call_data --iterations 100 --warmup 0 --output bench_proc_calls.out
+
+# --------------------------------------------------------------------------------
+# END
+# --------------------------------------------------------------------------------

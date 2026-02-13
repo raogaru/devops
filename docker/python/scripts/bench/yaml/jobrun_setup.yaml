@@ -47,8 +47,8 @@ groups:
       - id: drop_part_range_domains
         sql_file: "scripts/bench/sql/drop_domain_part_range.sql"
 
-      - id: drop_part_list_domains
-        sql_file: "scripts/bench/sql/drop_domain_part_list.sql"
+      - id: drop_part_random_domains
+        sql_file: "scripts/bench/sql/drop_domain_part_random.sql"
 
       - id: drop_size_small_domains
         sql_file: "scripts/bench/sql/drop_domain_size_small.sql"
@@ -75,8 +75,8 @@ groups:
       - id: drop_part_range_types
         sql_file: "scripts/bench/sql/drop_type_part_range.sql"
 
-      - id: drop_part_list_types
-        sql_file: "scripts/bench/sql/drop_type_part_list.sql"
+      - id: drop_part_random_types
+        sql_file: "scripts/bench/sql/drop_type_part_random.sql"
 
       - id: drop_size_small_types
         sql_file: "scripts/bench/sql/drop_type_size_small.sql"
@@ -103,8 +103,8 @@ groups:
       - id: drop_part_range_views
         sql_file: "scripts/bench/sql/drop_view_part_range.sql"
 
-      - id: drop_part_list_views
-        sql_file: "scripts/bench/sql/drop_view_part_list.sql"
+      - id: drop_part_random_views
+        sql_file: "scripts/bench/sql/drop_view_part_random.sql"
 
       - id: drop_size_small_views
         sql_file: "scripts/bench/sql/drop_view_size_small.sql"
@@ -119,6 +119,62 @@ groups:
         sql_file: "scripts/bench/sql/drop_view_size_wide.sql"
 
 # ----------------------------------------
+  - name: drop_procedures
+
+    tasks:
+      - id: drop_part_hash_procedures
+        sql_file: "scripts/bench/sql/drop_proc_part_hash.sql"
+
+      - id: drop_part_list_procedures
+        sql_file: "scripts/bench/sql/drop_proc_part_list.sql"
+
+      - id: drop_part_range_procedures
+        sql_file: "scripts/bench/sql/drop_proc_part_range.sql"
+
+      - id: drop_part_random_procedures
+        sql_file: "scripts/bench/sql/drop_proc_part_random.sql"
+
+      - id: drop_size_small_procedures
+        sql_file: "scripts/bench/sql/drop_proc_size_small.sql"
+
+      - id: drop_size_medium_procedures
+        sql_file: "scripts/bench/sql/drop_proc_size_medium.sql"
+
+      - id: drop_size_large_procedures
+        sql_file: "scripts/bench/sql/drop_proc_size_large.sql"
+
+      - id: drop_size_wide_procedures
+        sql_file: "scripts/bench/sql/drop_proc_size_wide.sql"
+
+# ----------------------------------------
+  - name: drop_functions
+
+    tasks:
+      - id: drop_part_hash_functions
+        sql_file: "scripts/bench/sql/drop_func_part_hash.sql"
+
+      - id: drop_part_list_functions
+        sql_file: "scripts/bench/sql/drop_func_part_list.sql"
+
+      - id: drop_part_range_functions
+        sql_file: "scripts/bench/sql/drop_func_part_range.sql"
+
+      - id: drop_part_random_functions
+        sql_file: "scripts/bench/sql/drop_func_part_random.sql"
+
+      - id: drop_size_small_functions
+        sql_file: "scripts/bench/sql/drop_func_size_small.sql"
+
+      - id: drop_size_medium_functions
+        sql_file: "scripts/bench/sql/drop_func_size_medium.sql"
+
+      - id: drop_size_large_functions
+        sql_file: "scripts/bench/sql/drop_func_size_large.sql"
+
+      - id: drop_size_wide_functions
+        sql_file: "scripts/bench/sql/drop_func_size_wide.sql"
+
+# ----------------------------------------
   - name: drop_tables
 
     tasks:
@@ -131,8 +187,8 @@ groups:
       - id: drop_part_range_tables
         sql_file: "scripts/bench/sql/drop_table_part_range.sql"
 
-      - id: drop_part_list_tables
-        sql_file: "scripts/bench/sql/drop_table_part_list.sql"
+      - id: drop_part_random_tables
+        sql_file: "scripts/bench/sql/drop_table_part_random.sql"
 
       - id: drop_size_small_tables
         sql_file: "scripts/bench/sql/drop_table_size_small.sql"
@@ -159,8 +215,8 @@ groups:
       - id: create_part_range_tables
         sql_file: "scripts/bench/sql/create_table_part_range.sql"
 
-      - id: create_part_list_tables
-        sql_file: "scripts/bench/sql/create_table_part_list.sql"
+      - id: create_part_random_tables
+        sql_file: "scripts/bench/sql/create_table_part_random.sql"
 
       - id: create_size_small_tables
         sql_file: "scripts/bench/sql/create_table_size_small.sql"
@@ -187,8 +243,8 @@ groups:
       - id: truncate_part_range_tables
         sql_file: "scripts/bench/sql/truncate_table_part_range.sql"
 
-      - id: truncate_part_list_tables
-        sql_file: "scripts/bench/sql/truncate_table_part_list.sql"
+      - id: truncate_part_random_tables
+        sql_file: "scripts/bench/sql/truncate_table_part_random.sql"
 
       - id: truncate_size_small_tables
         sql_file: "scripts/bench/sql/truncate_table_size_small.sql"
@@ -215,8 +271,8 @@ groups:
       - id: insert_part_range_tables
         sql_file: "scripts/bench/sql/insert_table_part_range.sql"
 
-      - id: insert_part_list_tables
-        sql_file: "scripts/bench/sql/insert_table_part_list.sql"
+      - id: insert_part_random_tables
+        sql_file: "scripts/bench/sql/insert_table_part_random.sql"
 
       - id: insert_size_small_tables
         sql_file: "scripts/bench/sql/insert_table_size_small.sql"
@@ -243,8 +299,8 @@ groups:
       - id: analyze_part_range_tables
         sql_file: "scripts/bench/sql/analyze_table_part_range.sql"
 
-      - id: analyze_part_list_tables
-        sql_file: "scripts/bench/sql/analyze_table_part_list.sql"
+      - id: analyze_part_random_tables
+        sql_file: "scripts/bench/sql/analyze_table_part_random.sql"
 
       - id: analyze_size_small_tables
         sql_file: "scripts/bench/sql/analyze_table_size_small.sql"
@@ -271,8 +327,8 @@ groups:
       - id: count_part_range_tables
         sql_file: "scripts/bench/sql/select_table_part_range.sql"
 
-      - id: count_part_list_tables
-        sql_file: "scripts/bench/sql/select_table_part_list.sql"
+      - id: count_part_random_tables
+        sql_file: "scripts/bench/sql/select_table_part_random.sql"
 
       - id: count_size_small_tables
         sql_file: "scripts/bench/sql/select_table_size_small.sql"
@@ -299,8 +355,8 @@ groups:
       - id: create_proc_part_range_tables
         sql_file: "scripts/bench/sql/create_proc_part_range.sql"
 
-      - id: create_proc_part_list_tables
-        sql_file: "scripts/bench/sql/create_proc_part_list.sql"
+      - id: create_proc_part_random_tables
+        sql_file: "scripts/bench/sql/create_proc_part_random.sql"
 
       - id: create_proc_size_small_tables
         sql_file: "scripts/bench/sql/create_proc_size_small.sql"
@@ -327,8 +383,8 @@ groups:
       - id: create_func_part_range_tables
         sql_file: "scripts/bench/sql/create_func_part_range.sql"
 
-      - id: create_func_part_list_tables
-        sql_file: "scripts/bench/sql/create_func_part_list.sql"
+      - id: create_func_part_random_tables
+        sql_file: "scripts/bench/sql/create_func_part_random.sql"
 
       - id: create_func_size_small_tables
         sql_file: "scripts/bench/sql/create_func_size_small.sql"
@@ -355,8 +411,8 @@ groups:
       - id: call_proc_part_range_tables
         sql_file: "scripts/bench/sql/call_proc_part_range.sql"
 
-      - id: call_proc_part_list_tables
-        sql_file: "scripts/bench/sql/call_proc_part_list.sql"
+      - id: call_proc_part_random_tables
+        sql_file: "scripts/bench/sql/call_proc_part_random.sql"
 
       - id: call_proc_size_small_tables
         sql_file: "scripts/bench/sql/call_proc_size_small.sql"
@@ -383,8 +439,8 @@ groups:
       - id: call_func_part_range_tables
         sql_file: "scripts/bench/sql/call_func_part_range.sql"
 
-      - id: call_func_part_list_tables
-        sql_file: "scripts/bench/sql/call_func_part_list.sql"
+      - id: call_func_part_random_tables
+        sql_file: "scripts/bench/sql/call_func_part_random.sql"
 
       - id: call_func_size_small_tables
         sql_file: "scripts/bench/sql/call_func_size_small.sql"
