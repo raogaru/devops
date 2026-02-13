@@ -1,0 +1,10 @@
+TRUNCATE bench.t_list1;
+TRUNCATE bench.t_list2;
+TRUNCATE bench.t_list3;
+TRUNCATE bench.t_list4;
+TRUNCATE bench.t_list5;
+TRUNCATE bench.t_list6;
+TRUNCATE bench.t_list7;
+TRUNCATE bench.t_list8;
+TRUNCATE bench.t_list9;
+TRUNCATE bench.t_list10;

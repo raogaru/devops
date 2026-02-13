@@ -1,0 +1,10 @@
+ANALYZE bench.t_large1;
+ANALYZE bench.t_large2;
+ANALYZE bench.t_large3;
+ANALYZE bench.t_large4;
+ANALYZE bench.t_large5;
+ANALYZE bench.t_large6;
+ANALYZE bench.t_large7;
+ANALYZE bench.t_large8;
+ANALYZE bench.t_large9;
+ANALYZE bench.t_large10;

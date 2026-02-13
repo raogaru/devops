@@ -1,0 +1,10 @@
+ANALYZE bench.t_small1;
+ANALYZE bench.t_small2;
+ANALYZE bench.t_small3;
+ANALYZE bench.t_small4;
+ANALYZE bench.t_small5;
+ANALYZE bench.t_small6;
+ANALYZE bench.t_small7;
+ANALYZE bench.t_small8;
+ANALYZE bench.t_small9;
+ANALYZE bench.t_small10;

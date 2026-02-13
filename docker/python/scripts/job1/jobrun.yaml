@@ -91,3 +91,13 @@ groups:
 #        sql_file: "scripts/job1/t.sql"
 #
 # ----------------------------------------
+  - name: create_proc_func
+
+    tasks:
+      - id: create_proc
+        sql_file: "scripts/job1/p.sql"
+
+      - id: create_func
+        sql_file: "scripts/job1/f.sql"
+
+# ----------------------------------------

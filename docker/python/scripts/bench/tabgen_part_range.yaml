@@ -1,0 +1,31 @@
+# ----------------------------------------
+# configuration for tabgen.py
+input:
+  table_schema: "bench"                            
+  table_name_prefix: "t_range"                           
+  table_count: 10
+  column_name_prefix: "c"                         
+  column_count_min: 3                                                                
+  column_count_max: 6                    
+  table_rows_min: 1000                                            
+  table_rows_max: 5000                                            
+
+  partition:
+    enabled: true          # false = normal tables
+    type: range           # random | range | list | hash
+    partition_count_min: 5
+    partition_count_max: 10
+    allowed_column_types: ["integer", "date"]
+                                                                
+output:
+  create_table_file: "scripts/bench/c_part_range.sql"                                     
+  drop_table_file: "scripts/bench/d_part_range.sql"                                       
+  insert_table_file: "scripts/bench/i_part_range.sql"                                     
+  analyze_table_file: "scripts/bench/a_part_range.sql"                                    
+  truncate_table_file: "scripts/bench/t_part_range.sql"                              
+  select_table_file: "scripts/bench/s_part_range.sql"                                
+  create_proc_file: "scripts/bench/p_part_range.sql"  
+  create_func_file: "scripts/bench/f_part_range.sql"  
+
+
+# ----------------------------------------

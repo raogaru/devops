@@ -24,5 +24,7 @@ output:
   analyze_table_file: "scripts/part_hash/a.sql"                                    
   truncate_table_file: "scripts/part_hash/t.sql"                              
   select_table_file: "scripts/part_hash/s.sql"                                
+  create_proc_file: "scripts/part_hash/p.sql"                                
+  create_func_file: "scripts/part_hash/f.sql"                                
 
 # ----------------------------------------

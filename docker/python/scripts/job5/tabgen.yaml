@@ -17,5 +17,8 @@ output:
   analyze_table_file: "scripts/job5/a.sql"                                    
   truncate_table_file: "scripts/job5/t.sql"                              
   select_table_file: "scripts/job5/s.sql"                                
+  create_proc_file: "scripts/job5/p.sql"    
+  create_func_file: "scripts/job5/f.sql"    
+
 
 # ----------------------------------------

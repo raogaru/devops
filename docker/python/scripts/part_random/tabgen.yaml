@@ -24,5 +24,7 @@ output:
   analyze_table_file: "scripts/part_random/a.sql"                                    
   truncate_table_file: "scripts/part_random/t.sql"                              
   select_table_file: "scripts/part_random/s.sql"                                
+  create_proc_file: "scripts/part_random/p.sql"  
+  create_func_file: "scripts/part_random/f.sql"  
 
 # ----------------------------------------

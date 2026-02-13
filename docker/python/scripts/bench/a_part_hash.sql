@@ -1,0 +1,10 @@
+ANALYZE bench.t_hash1;
+ANALYZE bench.t_hash2;
+ANALYZE bench.t_hash3;
+ANALYZE bench.t_hash4;
+ANALYZE bench.t_hash5;
+ANALYZE bench.t_hash6;
+ANALYZE bench.t_hash7;
+ANALYZE bench.t_hash8;
+ANALYZE bench.t_hash9;
+ANALYZE bench.t_hash10;

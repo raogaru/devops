@@ -1,0 +1,79 @@
+CREATE OR REPLACE FUNCTION bench.f_t_wide1()
+RETURNS SETOF bench.t_wide1
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide1 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_wide2()
+RETURNS SETOF bench.t_wide2
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide2 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_wide3()
+RETURNS SETOF bench.t_wide3
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide3 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_wide4()
+RETURNS SETOF bench.t_wide4
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide4 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_wide5()
+RETURNS SETOF bench.t_wide5
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide5 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_wide6()
+RETURNS SETOF bench.t_wide6
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide6 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_wide7()
+RETURNS SETOF bench.t_wide7
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide7 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_wide8()
+RETURNS SETOF bench.t_wide8
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide8 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_wide9()
+RETURNS SETOF bench.t_wide9
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide9 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_wide10()
+RETURNS SETOF bench.t_wide10
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_wide10 LIMIT 5;
+END;
+$$;

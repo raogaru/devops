@@ -1,0 +1,6999 @@
+CREATE OR REPLACE PROCEDURE pxses.p_t1(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t1 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t2(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t2 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t3(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t3 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t4(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t4 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t5(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t5 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t6(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t6 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t7(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t7 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t8(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t8 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t9(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t9 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t10(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t10 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t11(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t11 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t12(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t12 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t13(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t13 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t14(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t14 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t15(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t15 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t16(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t16 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t17(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t17 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t18(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t18 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t19(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t19 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t20(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t20 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t21(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t21 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t22(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t22 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t23(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t23 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t24(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t24 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t25(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t25 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t26(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t26 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t27(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t27 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t28(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t28 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t29(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t29 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t30(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t30 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t31(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t31 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t32(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t32 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t33(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t33 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t34(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t34 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t35(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t35 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t36(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t36 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t37(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t37 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t38(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t38 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t39(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t39 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t40(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t40 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t41(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t41 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t42(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t42 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t43(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t43 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t44(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t44 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t45(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t45 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t46(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t46 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t47(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t47 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t48(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t48 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t49(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t49 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t50(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t50 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t51(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t51 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t52(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t52 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t53(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t53 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t54(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t54 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t55(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t55 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t56(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t56 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t57(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t57 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t58(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t58 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t59(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t59 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t60(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t60 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t61(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t61 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t62(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t62 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t63(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t63 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t64(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t64 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t65(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t65 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t66(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t66 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t67(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t67 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t68(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t68 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t69(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t69 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t70(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t70 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t71(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t71 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t72(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t72 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t73(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t73 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t74(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t74 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t75(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t75 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t76(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t76 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t77(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t77 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t78(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t78 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t79(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t79 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t80(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t80 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t81(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t81 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t82(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t82 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t83(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t83 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t84(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t84 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t85(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t85 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t86(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t86 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t87(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t87 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t88(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t88 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t89(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t89 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t90(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t90 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t91(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t91 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t92(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t92 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t93(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t93 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t94(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t94 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t95(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t95 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t96(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t96 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t97(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t97 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t98(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t98 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t99(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t99 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t100(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t100 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t101(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t101 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t102(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t102 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t103(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t103 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t104(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t104 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t105(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t105 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t106(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t106 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t107(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t107 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t108(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t108 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t109(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t109 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t110(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t110 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t111(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t111 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t112(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t112 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t113(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t113 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t114(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t114 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t115(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t115 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t116(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t116 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t117(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t117 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t118(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t118 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t119(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t119 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t120(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t120 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t121(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t121 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t122(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t122 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t123(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t123 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t124(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t124 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t125(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t125 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t126(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t126 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t127(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t127 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t128(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t128 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t129(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t129 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t130(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t130 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t131(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t131 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t132(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t132 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t133(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t133 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t134(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t134 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t135(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t135 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t136(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t136 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t137(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t137 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t138(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t138 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t139(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t139 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t140(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t140 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t141(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t141 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t142(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t142 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t143(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t143 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t144(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t144 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t145(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t145 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t146(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t146 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t147(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t147 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t148(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t148 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t149(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t149 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t150(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t150 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t151(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t151 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t152(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t152 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t153(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t153 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t154(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t154 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t155(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t155 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t156(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t156 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t157(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t157 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t158(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t158 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t159(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t159 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t160(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t160 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t161(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t161 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t162(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t162 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t163(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t163 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t164(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t164 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t165(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t165 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t166(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t166 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t167(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t167 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t168(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t168 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t169(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t169 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t170(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t170 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t171(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t171 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t172(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t172 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t173(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t173 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t174(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t174 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t175(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t175 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t176(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t176 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t177(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t177 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t178(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t178 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t179(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t179 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t180(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t180 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t181(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t181 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t182(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t182 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t183(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t183 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t184(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t184 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t185(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t185 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t186(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t186 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t187(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t187 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t188(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t188 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t189(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t189 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t190(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t190 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t191(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t191 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t192(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t192 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t193(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t193 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t194(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t194 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t195(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t195 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t196(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t196 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t197(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t197 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t198(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t198 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t199(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t199 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t200(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t200 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t201(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t201 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t202(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t202 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t203(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t203 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t204(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t204 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t205(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t205 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t206(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t206 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t207(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t207 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t208(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t208 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t209(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t209 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t210(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t210 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t211(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t211 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t212(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t212 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t213(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t213 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t214(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t214 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t215(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t215 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t216(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t216 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t217(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t217 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t218(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t218 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t219(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t219 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t220(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t220 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t221(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t221 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t222(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t222 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t223(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t223 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t224(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t224 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t225(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t225 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t226(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t226 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t227(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t227 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t228(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t228 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t229(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t229 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t230(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t230 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t231(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t231 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t232(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t232 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t233(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t233 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t234(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t234 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t235(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t235 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t236(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t236 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t237(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t237 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t238(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t238 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t239(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t239 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t240(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t240 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t241(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t241 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t242(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t242 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t243(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t243 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t244(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t244 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t245(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t245 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t246(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t246 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t247(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t247 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t248(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t248 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t249(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t249 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t250(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t250 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t251(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t251 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t252(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t252 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t253(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t253 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t254(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t254 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t255(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t255 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t256(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t256 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t257(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t257 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t258(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t258 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t259(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t259 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t260(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t260 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t261(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t261 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t262(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t262 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t263(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t263 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t264(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t264 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t265(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t265 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t266(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t266 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t267(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t267 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t268(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t268 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t269(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t269 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t270(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t270 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t271(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t271 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t272(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t272 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t273(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t273 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t274(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t274 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t275(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t275 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t276(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t276 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t277(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t277 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t278(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t278 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t279(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t279 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t280(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t280 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t281(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t281 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t282(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t282 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t283(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t283 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t284(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t284 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t285(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t285 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t286(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t286 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t287(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t287 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t288(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t288 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t289(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t289 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t290(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t290 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t291(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t291 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t292(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t292 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t293(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t293 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t294(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t294 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t295(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t295 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t296(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t296 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t297(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t297 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t298(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t298 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t299(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t299 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t300(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t300 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t301(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t301 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t302(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t302 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t303(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t303 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t304(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t304 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t305(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t305 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t306(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t306 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t307(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t307 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t308(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t308 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t309(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t309 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t310(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t310 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t311(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t311 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t312(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t312 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t313(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t313 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t314(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t314 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t315(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t315 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t316(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t316 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t317(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t317 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t318(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t318 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t319(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t319 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t320(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t320 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t321(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t321 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t322(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t322 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t323(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t323 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t324(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t324 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t325(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t325 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t326(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t326 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t327(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t327 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t328(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t328 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t329(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t329 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t330(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t330 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t331(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t331 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t332(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t332 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t333(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t333 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t334(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t334 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t335(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t335 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t336(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t336 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t337(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t337 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t338(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t338 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t339(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t339 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t340(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t340 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t341(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t341 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t342(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t342 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t343(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t343 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t344(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t344 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t345(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t345 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t346(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t346 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t347(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t347 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t348(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t348 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t349(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t349 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t350(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t350 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t351(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t351 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t352(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t352 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t353(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t353 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t354(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t354 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t355(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t355 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t356(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t356 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t357(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t357 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t358(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t358 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t359(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t359 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t360(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t360 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t361(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t361 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t362(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t362 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t363(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t363 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t364(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t364 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t365(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t365 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t366(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t366 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t367(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t367 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t368(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t368 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t369(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t369 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t370(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t370 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t371(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t371 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t372(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t372 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t373(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t373 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t374(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t374 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t375(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t375 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t376(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t376 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t377(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t377 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t378(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t378 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t379(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t379 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t380(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t380 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t381(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t381 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t382(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t382 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t383(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t383 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t384(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t384 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t385(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t385 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t386(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t386 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t387(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t387 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t388(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t388 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t389(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t389 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t390(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t390 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t391(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t391 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t392(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t392 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t393(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t393 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t394(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t394 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t395(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t395 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t396(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t396 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t397(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t397 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t398(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t398 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t399(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t399 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t400(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t400 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t401(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t401 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t402(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t402 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t403(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t403 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t404(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t404 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t405(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t405 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t406(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t406 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t407(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t407 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t408(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t408 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t409(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t409 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t410(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t410 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t411(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t411 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t412(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t412 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t413(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t413 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t414(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t414 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t415(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t415 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t416(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t416 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t417(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t417 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t418(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t418 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t419(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t419 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t420(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t420 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t421(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t421 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t422(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t422 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t423(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t423 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t424(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t424 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t425(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t425 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t426(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t426 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t427(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t427 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t428(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t428 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t429(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t429 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t430(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t430 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t431(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t431 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t432(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t432 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t433(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t433 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t434(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t434 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t435(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t435 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t436(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t436 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t437(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t437 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t438(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t438 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t439(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t439 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t440(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t440 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t441(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t441 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t442(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t442 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t443(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t443 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t444(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t444 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t445(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t445 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t446(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t446 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t447(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t447 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t448(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t448 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t449(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t449 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t450(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t450 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t451(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t451 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t452(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t452 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t453(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t453 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t454(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t454 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t455(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t455 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t456(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t456 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t457(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t457 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t458(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t458 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t459(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t459 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t460(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t460 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t461(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t461 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t462(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t462 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t463(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t463 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t464(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t464 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t465(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t465 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t466(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t466 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t467(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t467 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t468(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t468 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t469(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t469 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t470(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t470 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t471(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t471 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t472(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t472 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t473(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t473 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t474(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t474 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t475(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t475 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t476(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t476 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t477(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t477 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t478(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t478 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t479(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t479 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t480(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t480 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t481(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t481 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t482(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t482 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t483(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t483 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t484(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t484 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t485(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t485 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t486(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t486 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t487(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t487 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t488(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t488 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t489(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t489 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t490(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t490 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t491(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t491 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t492(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t492 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t493(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t493 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t494(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t494 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t495(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t495 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t496(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t496 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t497(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t497 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t498(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t498 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t499(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t499 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t500(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t500 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t501(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t501 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t502(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t502 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t503(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t503 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t504(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t504 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t505(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t505 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t506(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t506 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t507(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t507 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t508(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t508 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t509(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t509 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t510(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t510 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t511(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t511 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t512(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t512 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t513(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t513 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t514(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t514 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t515(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t515 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t516(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t516 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t517(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t517 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t518(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t518 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t519(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t519 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t520(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t520 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t521(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t521 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t522(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t522 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t523(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t523 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t524(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t524 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t525(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t525 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t526(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t526 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t527(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t527 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t528(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t528 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t529(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t529 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t530(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t530 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t531(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t531 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t532(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t532 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t533(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t533 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t534(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t534 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t535(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t535 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t536(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t536 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t537(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t537 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t538(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t538 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t539(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t539 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t540(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t540 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t541(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t541 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t542(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t542 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t543(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t543 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t544(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t544 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t545(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t545 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t546(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t546 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t547(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t547 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t548(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t548 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t549(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t549 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t550(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t550 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t551(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t551 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t552(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t552 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t553(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t553 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t554(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t554 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t555(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t555 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t556(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t556 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t557(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t557 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t558(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t558 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t559(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t559 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t560(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t560 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t561(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t561 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t562(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t562 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t563(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t563 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t564(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t564 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t565(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t565 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t566(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t566 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t567(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t567 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t568(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t568 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t569(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t569 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t570(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t570 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t571(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t571 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t572(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t572 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t573(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t573 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t574(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t574 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t575(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t575 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t576(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t576 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t577(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t577 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t578(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t578 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t579(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t579 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t580(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t580 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t581(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t581 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t582(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t582 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t583(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t583 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t584(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t584 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t585(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t585 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t586(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t586 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t587(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t587 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t588(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t588 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t589(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t589 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t590(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t590 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t591(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t591 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t592(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t592 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t593(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t593 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t594(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t594 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t595(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t595 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t596(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t596 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t597(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t597 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t598(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t598 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t599(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t599 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t600(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t600 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t601(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t601 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t602(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t602 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t603(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t603 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t604(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t604 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t605(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t605 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t606(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t606 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t607(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t607 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t608(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t608 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t609(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t609 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t610(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t610 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t611(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t611 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t612(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t612 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t613(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t613 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t614(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t614 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t615(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t615 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t616(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t616 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t617(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t617 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t618(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t618 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t619(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t619 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t620(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t620 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t621(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t621 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t622(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t622 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t623(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t623 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t624(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t624 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t625(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t625 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t626(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t626 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t627(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t627 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t628(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t628 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t629(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t629 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t630(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t630 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t631(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t631 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t632(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t632 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t633(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t633 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t634(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t634 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t635(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t635 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t636(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t636 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t637(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t637 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t638(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t638 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t639(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t639 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t640(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t640 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t641(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t641 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t642(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t642 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t643(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t643 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t644(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t644 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t645(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t645 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t646(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t646 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t647(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t647 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t648(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t648 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t649(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t649 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t650(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t650 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t651(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t651 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t652(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t652 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t653(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t653 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t654(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t654 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t655(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t655 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t656(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t656 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t657(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t657 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t658(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t658 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t659(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t659 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t660(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t660 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t661(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t661 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t662(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t662 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t663(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t663 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t664(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t664 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t665(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t665 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t666(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t666 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t667(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t667 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t668(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t668 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t669(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t669 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t670(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t670 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t671(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t671 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t672(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t672 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t673(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t673 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t674(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t674 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t675(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t675 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t676(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t676 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t677(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t677 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t678(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t678 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t679(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t679 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t680(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t680 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t681(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t681 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t682(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t682 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t683(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t683 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t684(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t684 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t685(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t685 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t686(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t686 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t687(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t687 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t688(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t688 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t689(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t689 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t690(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t690 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t691(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t691 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t692(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t692 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t693(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t693 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t694(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t694 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t695(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t695 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t696(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t696 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t697(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t697 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t698(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t698 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t699(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t699 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t700(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t700 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t701(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t701 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t702(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t702 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t703(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t703 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t704(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t704 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t705(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t705 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t706(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t706 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t707(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t707 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t708(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t708 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t709(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t709 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t710(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t710 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t711(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t711 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t712(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t712 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t713(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t713 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t714(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t714 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t715(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t715 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t716(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t716 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t717(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t717 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t718(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t718 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t719(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t719 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t720(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t720 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t721(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t721 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t722(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t722 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t723(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t723 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t724(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t724 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t725(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t725 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t726(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t726 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t727(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t727 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t728(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t728 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t729(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t729 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t730(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t730 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t731(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t731 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t732(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t732 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t733(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t733 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t734(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t734 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t735(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t735 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t736(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t736 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t737(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t737 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t738(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t738 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t739(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t739 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t740(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t740 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t741(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t741 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t742(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t742 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t743(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t743 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t744(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t744 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t745(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t745 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t746(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t746 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t747(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t747 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t748(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t748 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t749(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t749 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t750(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t750 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t751(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t751 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t752(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t752 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t753(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t753 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t754(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t754 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t755(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t755 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t756(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t756 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t757(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t757 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t758(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t758 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t759(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t759 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t760(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t760 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t761(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t761 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t762(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t762 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t763(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t763 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t764(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t764 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t765(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t765 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t766(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t766 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t767(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t767 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t768(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t768 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t769(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t769 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t770(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t770 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t771(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t771 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t772(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t772 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t773(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t773 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t774(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t774 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t775(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t775 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t776(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t776 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t777(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t777 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t778(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t778 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t779(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t779 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t780(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t780 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t781(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t781 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t782(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t782 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t783(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t783 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t784(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t784 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t785(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t785 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t786(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t786 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t787(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t787 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t788(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t788 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t789(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t789 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t790(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t790 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t791(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t791 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t792(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t792 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t793(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t793 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t794(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t794 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t795(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t795 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t796(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t796 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t797(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t797 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t798(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t798 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t799(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t799 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t800(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t800 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t801(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t801 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t802(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t802 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t803(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t803 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t804(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t804 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t805(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t805 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t806(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t806 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t807(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t807 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t808(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t808 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t809(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t809 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t810(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t810 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t811(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t811 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t812(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t812 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t813(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t813 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t814(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t814 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t815(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t815 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t816(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t816 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t817(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t817 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t818(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t818 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t819(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t819 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t820(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t820 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t821(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t821 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t822(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t822 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t823(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t823 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t824(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t824 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t825(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t825 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t826(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t826 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t827(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t827 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t828(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t828 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t829(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t829 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t830(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t830 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t831(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t831 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t832(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t832 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t833(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t833 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t834(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t834 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t835(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t835 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t836(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t836 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t837(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t837 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t838(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t838 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t839(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t839 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t840(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t840 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t841(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t841 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t842(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t842 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t843(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t843 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t844(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t844 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t845(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t845 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t846(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t846 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t847(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t847 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t848(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t848 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t849(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t849 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t850(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t850 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t851(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t851 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t852(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t852 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t853(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t853 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t854(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t854 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t855(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t855 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t856(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t856 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t857(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t857 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t858(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t858 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t859(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t859 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t860(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t860 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t861(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t861 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t862(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t862 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t863(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t863 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t864(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t864 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t865(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t865 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t866(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t866 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t867(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t867 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t868(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t868 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t869(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t869 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t870(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t870 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t871(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t871 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t872(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t872 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t873(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t873 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t874(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t874 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t875(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t875 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t876(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t876 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t877(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t877 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t878(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t878 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t879(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t879 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t880(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t880 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t881(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t881 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t882(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t882 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t883(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t883 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t884(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t884 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t885(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t885 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t886(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t886 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t887(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t887 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t888(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t888 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t889(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t889 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t890(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t890 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t891(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t891 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t892(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t892 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t893(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t893 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t894(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t894 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t895(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t895 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t896(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t896 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t897(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t897 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t898(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t898 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t899(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t899 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t900(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t900 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t901(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t901 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t902(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t902 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t903(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t903 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t904(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t904 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t905(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t905 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t906(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t906 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t907(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t907 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t908(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t908 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t909(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t909 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t910(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t910 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t911(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t911 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t912(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t912 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t913(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t913 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t914(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t914 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t915(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t915 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t916(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t916 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t917(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t917 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t918(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t918 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t919(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t919 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t920(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t920 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t921(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t921 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t922(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t922 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t923(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t923 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t924(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t924 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t925(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t925 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t926(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t926 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t927(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t927 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t928(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t928 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t929(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t929 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t930(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t930 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t931(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t931 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t932(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t932 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t933(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t933 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t934(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t934 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t935(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t935 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t936(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t936 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t937(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t937 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t938(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t938 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t939(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t939 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t940(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t940 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t941(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t941 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t942(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t942 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t943(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t943 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t944(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t944 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t945(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t945 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t946(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t946 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t947(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t947 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t948(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t948 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t949(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t949 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t950(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t950 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t951(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t951 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t952(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t952 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t953(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t953 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t954(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t954 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t955(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t955 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t956(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t956 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t957(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t957 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t958(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t958 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t959(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t959 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t960(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t960 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t961(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t961 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t962(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t962 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t963(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t963 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t964(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t964 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t965(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t965 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t966(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t966 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t967(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t967 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t968(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t968 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t969(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t969 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t970(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t970 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t971(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t971 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t972(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t972 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t973(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t973 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t974(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t974 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t975(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t975 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t976(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t976 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t977(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t977 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t978(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t978 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t979(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t979 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t980(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t980 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t981(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t981 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t982(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t982 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t983(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t983 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t984(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t984 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t985(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t985 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t986(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t986 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t987(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t987 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t988(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t988 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t989(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t989 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t990(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t990 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t991(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t991 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t992(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t992 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t993(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t993 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t994(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t994 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t995(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t995 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t996(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t996 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t997(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t997 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t998(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t998 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t999(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t999 LIMIT 5;
+END;
+$$; 
+
+CREATE OR REPLACE PROCEDURE pxses.p_t1000(INOUT p_refcur REFCURSOR)
+LANGUAGE plpgsql AS $$
+BEGIN
+    OPEN p_refcur FOR SELECT * FROM pxses.t1000 LIMIT 5;
+END;
+$$; 

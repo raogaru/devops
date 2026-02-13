@@ -1,0 +1,799 @@
+CREATE OR REPLACE FUNCTION part_list.f_t1()
+RETURNS SETOF part_list.t1
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t1 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t2()
+RETURNS SETOF part_list.t2
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t2 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t3()
+RETURNS SETOF part_list.t3
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t3 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t4()
+RETURNS SETOF part_list.t4
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t4 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t5()
+RETURNS SETOF part_list.t5
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t5 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t6()
+RETURNS SETOF part_list.t6
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t6 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t7()
+RETURNS SETOF part_list.t7
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t7 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t8()
+RETURNS SETOF part_list.t8
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t8 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t9()
+RETURNS SETOF part_list.t9
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t9 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t10()
+RETURNS SETOF part_list.t10
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t10 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t11()
+RETURNS SETOF part_list.t11
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t11 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t12()
+RETURNS SETOF part_list.t12
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t12 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t13()
+RETURNS SETOF part_list.t13
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t13 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t14()
+RETURNS SETOF part_list.t14
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t14 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t15()
+RETURNS SETOF part_list.t15
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t15 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t16()
+RETURNS SETOF part_list.t16
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t16 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t17()
+RETURNS SETOF part_list.t17
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t17 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t18()
+RETURNS SETOF part_list.t18
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t18 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t19()
+RETURNS SETOF part_list.t19
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t19 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t20()
+RETURNS SETOF part_list.t20
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t20 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t21()
+RETURNS SETOF part_list.t21
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t21 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t22()
+RETURNS SETOF part_list.t22
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t22 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t23()
+RETURNS SETOF part_list.t23
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t23 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t24()
+RETURNS SETOF part_list.t24
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t24 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t25()
+RETURNS SETOF part_list.t25
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t25 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t26()
+RETURNS SETOF part_list.t26
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t26 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t27()
+RETURNS SETOF part_list.t27
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t27 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t28()
+RETURNS SETOF part_list.t28
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t28 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t29()
+RETURNS SETOF part_list.t29
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t29 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t30()
+RETURNS SETOF part_list.t30
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t30 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t31()
+RETURNS SETOF part_list.t31
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t31 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t32()
+RETURNS SETOF part_list.t32
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t32 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t33()
+RETURNS SETOF part_list.t33
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t33 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t34()
+RETURNS SETOF part_list.t34
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t34 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t35()
+RETURNS SETOF part_list.t35
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t35 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t36()
+RETURNS SETOF part_list.t36
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t36 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t37()
+RETURNS SETOF part_list.t37
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t37 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t38()
+RETURNS SETOF part_list.t38
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t38 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t39()
+RETURNS SETOF part_list.t39
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t39 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t40()
+RETURNS SETOF part_list.t40
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t40 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t41()
+RETURNS SETOF part_list.t41
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t41 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t42()
+RETURNS SETOF part_list.t42
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t42 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t43()
+RETURNS SETOF part_list.t43
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t43 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t44()
+RETURNS SETOF part_list.t44
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t44 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t45()
+RETURNS SETOF part_list.t45
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t45 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t46()
+RETURNS SETOF part_list.t46
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t46 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t47()
+RETURNS SETOF part_list.t47
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t47 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t48()
+RETURNS SETOF part_list.t48
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t48 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t49()
+RETURNS SETOF part_list.t49
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t49 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t50()
+RETURNS SETOF part_list.t50
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t50 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t51()
+RETURNS SETOF part_list.t51
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t51 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t52()
+RETURNS SETOF part_list.t52
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t52 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t53()
+RETURNS SETOF part_list.t53
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t53 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t54()
+RETURNS SETOF part_list.t54
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t54 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t55()
+RETURNS SETOF part_list.t55
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t55 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t56()
+RETURNS SETOF part_list.t56
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t56 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t57()
+RETURNS SETOF part_list.t57
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t57 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t58()
+RETURNS SETOF part_list.t58
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t58 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t59()
+RETURNS SETOF part_list.t59
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t59 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t60()
+RETURNS SETOF part_list.t60
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t60 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t61()
+RETURNS SETOF part_list.t61
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t61 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t62()
+RETURNS SETOF part_list.t62
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t62 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t63()
+RETURNS SETOF part_list.t63
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t63 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t64()
+RETURNS SETOF part_list.t64
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t64 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t65()
+RETURNS SETOF part_list.t65
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t65 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t66()
+RETURNS SETOF part_list.t66
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t66 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t67()
+RETURNS SETOF part_list.t67
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t67 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t68()
+RETURNS SETOF part_list.t68
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t68 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t69()
+RETURNS SETOF part_list.t69
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t69 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t70()
+RETURNS SETOF part_list.t70
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t70 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t71()
+RETURNS SETOF part_list.t71
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t71 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t72()
+RETURNS SETOF part_list.t72
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t72 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t73()
+RETURNS SETOF part_list.t73
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t73 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t74()
+RETURNS SETOF part_list.t74
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t74 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t75()
+RETURNS SETOF part_list.t75
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t75 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t76()
+RETURNS SETOF part_list.t76
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t76 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t77()
+RETURNS SETOF part_list.t77
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t77 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t78()
+RETURNS SETOF part_list.t78
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t78 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t79()
+RETURNS SETOF part_list.t79
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t79 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t80()
+RETURNS SETOF part_list.t80
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t80 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t81()
+RETURNS SETOF part_list.t81
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t81 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t82()
+RETURNS SETOF part_list.t82
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t82 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t83()
+RETURNS SETOF part_list.t83
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t83 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t84()
+RETURNS SETOF part_list.t84
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t84 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t85()
+RETURNS SETOF part_list.t85
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t85 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t86()
+RETURNS SETOF part_list.t86
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t86 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t87()
+RETURNS SETOF part_list.t87
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t87 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t88()
+RETURNS SETOF part_list.t88
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t88 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t89()
+RETURNS SETOF part_list.t89
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t89 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t90()
+RETURNS SETOF part_list.t90
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t90 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t91()
+RETURNS SETOF part_list.t91
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t91 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t92()
+RETURNS SETOF part_list.t92
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t92 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t93()
+RETURNS SETOF part_list.t93
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t93 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t94()
+RETURNS SETOF part_list.t94
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t94 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t95()
+RETURNS SETOF part_list.t95
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t95 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t96()
+RETURNS SETOF part_list.t96
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t96 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t97()
+RETURNS SETOF part_list.t97
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t97 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t98()
+RETURNS SETOF part_list.t98
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t98 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t99()
+RETURNS SETOF part_list.t99
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t99 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION part_list.f_t100()
+RETURNS SETOF part_list.t100
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM part_list.t100 LIMIT 5;
+END;
+$$;

@@ -1,0 +1,10 @@
+TRUNCATE bench.t_range1;
+TRUNCATE bench.t_range2;
+TRUNCATE bench.t_range3;
+TRUNCATE bench.t_range4;
+TRUNCATE bench.t_range5;
+TRUNCATE bench.t_range6;
+TRUNCATE bench.t_range7;
+TRUNCATE bench.t_range8;
+TRUNCATE bench.t_range9;
+TRUNCATE bench.t_range10;

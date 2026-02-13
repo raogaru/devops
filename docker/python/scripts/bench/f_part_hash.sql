@@ -1,0 +1,79 @@
+CREATE OR REPLACE FUNCTION bench.f_t_hash1()
+RETURNS SETOF bench.t_hash1
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash1 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_hash2()
+RETURNS SETOF bench.t_hash2
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash2 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_hash3()
+RETURNS SETOF bench.t_hash3
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash3 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_hash4()
+RETURNS SETOF bench.t_hash4
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash4 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_hash5()
+RETURNS SETOF bench.t_hash5
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash5 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_hash6()
+RETURNS SETOF bench.t_hash6
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash6 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_hash7()
+RETURNS SETOF bench.t_hash7
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash7 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_hash8()
+RETURNS SETOF bench.t_hash8
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash8 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_hash9()
+RETURNS SETOF bench.t_hash9
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash9 LIMIT 5;
+END;
+$$;
+
+CREATE OR REPLACE FUNCTION bench.f_t_hash10()
+RETURNS SETOF bench.t_hash10
+LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM bench.t_hash10 LIMIT 5;
+END;
+$$;

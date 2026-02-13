@@ -1,0 +1,18 @@
+dsn: "host=localhost port=5432 dbname=mydb user=postgres password=postgres"
+
+procedures:
+  - name: "bench.proc_add_order"
+    kind: "procedure"     # procedure | function
+    param_style: "named"  # named | positional
+    params:
+      - { name: "p_customer_id", type: "int8" }
+      - { name: "p_amount",      type: "numeric" }
+      - { name: "p_notes",       type: "text" }
+
+  - name: "bench.fn_calc_discount"
+    kind: "function"
+    param_style: "named"
+    params:
+      - { name: "p_customer_id", type: "int8" }
+      - { name: "p_segment",     type: "text" }
+

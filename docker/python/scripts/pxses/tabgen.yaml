@@ -17,5 +17,7 @@ output:
   analyze_table_file: "scripts/pxses/a.sql"                                    
   truncate_table_file: "scripts/pxses/t.sql"                              
   select_table_file: "scripts/pxses/s.sql"                                
+  create_proc_file: "scripts/pxses/p.sql"                                
+  create_func_file: "scripts/pxses/f.sql"                                
 
 # ----------------------------------------
