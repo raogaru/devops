@@ -1,10 +1,3 @@
 DROP PROCEDURE IF EXISTS bench.p_t_random1;
 DROP PROCEDURE IF EXISTS bench.p_t_random2;
 DROP PROCEDURE IF EXISTS bench.p_t_random3;
-DROP PROCEDURE IF EXISTS bench.p_t_random4;
-DROP PROCEDURE IF EXISTS bench.p_t_random5;
-DROP PROCEDURE IF EXISTS bench.p_t_random6;
-DROP PROCEDURE IF EXISTS bench.p_t_random7;
-DROP PROCEDURE IF EXISTS bench.p_t_random8;
-DROP PROCEDURE IF EXISTS bench.p_t_random9;
-DROP PROCEDURE IF EXISTS bench.p_t_random10;

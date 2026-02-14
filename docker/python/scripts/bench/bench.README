@@ -1,3 +1,14 @@
+# Purpose:
+# 
+# create ddl for non-partition small, medium, large, wide tables using tabgen.py
+# create ddl for partition tables - hash, list, range, random  using tabgen.py
+# create ddl for views, types, domains, procedures, functions using tabgen.py
+# connect to db and execute above ddl using jobrun.py
+# connect to db and generate procedure call benchmarking config file using bench_proc_calls_gencfg.py
+# manually prepare test data for executing procedure calls
+# connect to db and execute procedure calls with test data using bench_proc_calls.py
+
+
 vLINE="################################################################################"
 
 cd git/devops/docker/python/
@@ -35,7 +46,10 @@ docker exec -it c-python bench_proc_calls_gencfg.py --dsn "host=c-raodb port=543
 # 3. Connect to database and call procedures/functions
 # 4. produce output file with test results
 
-docker exec -it c-python bench_proc_calls.py --config bench_proc_calls.yaml --samples-dir scripts/bench/proc_call_data --iterations 100 --warmup 0 --output bench_proc_calls.out
+
+docker exec -it c-python bench_proc_calls.py --config g.yaml --samples-dir scripts/bench/proc_call_data --iterations 3 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
+
+docker exec -it c-python p9.py --config g.yaml --samples-dir scripts/bench/proc_call_data --iterations 30 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
 
 # --------------------------------------------------------------------------------
 # END

@@ -1,10 +1,3 @@
 DROP VIEW IF EXISTS bench.vew_t_random1 CASCADE;
 DROP VIEW IF EXISTS bench.vew_t_random2 CASCADE;
 DROP VIEW IF EXISTS bench.vew_t_random3 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_random4 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_random5 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_random6 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_random7 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_random8 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_random9 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_random10 CASCADE;

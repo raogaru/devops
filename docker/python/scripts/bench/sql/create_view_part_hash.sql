@@ -1,10 +1,3 @@
 CREATE VIEW bench.vew_t_hash1 AS SELECT a.* FROM bench.t_hash1 LIMIT 5;
 CREATE VIEW bench.vew_t_hash2 AS SELECT a.* FROM bench.t_hash2 LIMIT 5;
 CREATE VIEW bench.vew_t_hash3 AS SELECT a.* FROM bench.t_hash3 LIMIT 5;
-CREATE VIEW bench.vew_t_hash4 AS SELECT a.* FROM bench.t_hash4 LIMIT 5;
-CREATE VIEW bench.vew_t_hash5 AS SELECT a.* FROM bench.t_hash5 LIMIT 5;
-CREATE VIEW bench.vew_t_hash6 AS SELECT a.* FROM bench.t_hash6 LIMIT 5;
-CREATE VIEW bench.vew_t_hash7 AS SELECT a.* FROM bench.t_hash7 LIMIT 5;
-CREATE VIEW bench.vew_t_hash8 AS SELECT a.* FROM bench.t_hash8 LIMIT 5;
-CREATE VIEW bench.vew_t_hash9 AS SELECT a.* FROM bench.t_hash9 LIMIT 5;
-CREATE VIEW bench.vew_t_hash10 AS SELECT a.* FROM bench.t_hash10 LIMIT 5;

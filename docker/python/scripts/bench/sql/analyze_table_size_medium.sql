@@ -1,10 +1,3 @@
 ANALYZE bench.t_medium1;
 ANALYZE bench.t_medium2;
 ANALYZE bench.t_medium3;
-ANALYZE bench.t_medium4;
-ANALYZE bench.t_medium5;
-ANALYZE bench.t_medium6;
-ANALYZE bench.t_medium7;
-ANALYZE bench.t_medium8;
-ANALYZE bench.t_medium9;
-ANALYZE bench.t_medium10;

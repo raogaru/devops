@@ -1,10 +1,3 @@
 TRUNCATE bench.t_random1;
 TRUNCATE bench.t_random2;
 TRUNCATE bench.t_random3;
-TRUNCATE bench.t_random4;
-TRUNCATE bench.t_random5;
-TRUNCATE bench.t_random6;
-TRUNCATE bench.t_random7;
-TRUNCATE bench.t_random8;
-TRUNCATE bench.t_random9;
-TRUNCATE bench.t_random10;

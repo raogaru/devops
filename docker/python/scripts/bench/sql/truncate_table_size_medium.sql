@@ -1,10 +1,3 @@
 TRUNCATE bench.t_medium1;
 TRUNCATE bench.t_medium2;
 TRUNCATE bench.t_medium3;
-TRUNCATE bench.t_medium4;
-TRUNCATE bench.t_medium5;
-TRUNCATE bench.t_medium6;
-TRUNCATE bench.t_medium7;
-TRUNCATE bench.t_medium8;
-TRUNCATE bench.t_medium9;
-TRUNCATE bench.t_medium10;

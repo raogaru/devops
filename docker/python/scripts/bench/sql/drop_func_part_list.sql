@@ -1,10 +1,3 @@
 DROP FUNCTION IF EXISTS bench.f_t_list1;
 DROP FUNCTION IF EXISTS bench.f_t_list2;
 DROP FUNCTION IF EXISTS bench.f_t_list3;
-DROP FUNCTION IF EXISTS bench.f_t_list4;
-DROP FUNCTION IF EXISTS bench.f_t_list5;
-DROP FUNCTION IF EXISTS bench.f_t_list6;
-DROP FUNCTION IF EXISTS bench.f_t_list7;
-DROP FUNCTION IF EXISTS bench.f_t_list8;
-DROP FUNCTION IF EXISTS bench.f_t_list9;
-DROP FUNCTION IF EXISTS bench.f_t_list10;

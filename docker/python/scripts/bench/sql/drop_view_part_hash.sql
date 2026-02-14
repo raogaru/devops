@@ -1,10 +1,3 @@
 DROP VIEW IF EXISTS bench.vew_t_hash1 CASCADE;
 DROP VIEW IF EXISTS bench.vew_t_hash2 CASCADE;
 DROP VIEW IF EXISTS bench.vew_t_hash3 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_hash4 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_hash5 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_hash6 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_hash7 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_hash8 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_hash9 CASCADE;
-DROP VIEW IF EXISTS bench.vew_t_hash10 CASCADE;

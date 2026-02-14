@@ -1,10 +1,3 @@
 DROP FUNCTION IF EXISTS bench.f_t_hash1;
 DROP FUNCTION IF EXISTS bench.f_t_hash2;
 DROP FUNCTION IF EXISTS bench.f_t_hash3;
-DROP FUNCTION IF EXISTS bench.f_t_hash4;
-DROP FUNCTION IF EXISTS bench.f_t_hash5;
-DROP FUNCTION IF EXISTS bench.f_t_hash6;
-DROP FUNCTION IF EXISTS bench.f_t_hash7;
-DROP FUNCTION IF EXISTS bench.f_t_hash8;
-DROP FUNCTION IF EXISTS bench.f_t_hash9;
-DROP FUNCTION IF EXISTS bench.f_t_hash10;

@@ -1,10 +1,3 @@
 DROP TYPE IF EXISTS bench.typ_t_large1;
 DROP TYPE IF EXISTS bench.typ_t_large2;
 DROP TYPE IF EXISTS bench.typ_t_large3;
-DROP TYPE IF EXISTS bench.typ_t_large4;
-DROP TYPE IF EXISTS bench.typ_t_large5;
-DROP TYPE IF EXISTS bench.typ_t_large6;
-DROP TYPE IF EXISTS bench.typ_t_large7;
-DROP TYPE IF EXISTS bench.typ_t_large8;
-DROP TYPE IF EXISTS bench.typ_t_large9;
-DROP TYPE IF EXISTS bench.typ_t_large10;

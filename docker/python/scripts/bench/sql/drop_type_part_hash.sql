@@ -1,10 +1,3 @@
 DROP TYPE IF EXISTS bench.typ_t_hash1;
 DROP TYPE IF EXISTS bench.typ_t_hash2;
 DROP TYPE IF EXISTS bench.typ_t_hash3;
-DROP TYPE IF EXISTS bench.typ_t_hash4;
-DROP TYPE IF EXISTS bench.typ_t_hash5;
-DROP TYPE IF EXISTS bench.typ_t_hash6;
-DROP TYPE IF EXISTS bench.typ_t_hash7;
-DROP TYPE IF EXISTS bench.typ_t_hash8;
-DROP TYPE IF EXISTS bench.typ_t_hash9;
-DROP TYPE IF EXISTS bench.typ_t_hash10;

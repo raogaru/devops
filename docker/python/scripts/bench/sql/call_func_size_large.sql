@@ -1,10 +1,3 @@
 SELECT * FROM bench.f_t_large1 (p_id=>(floor(random()*(100-1+1)+1)::int));
 SELECT * FROM bench.f_t_large2 (p_id=>(floor(random()*(100-1+1)+1)::int));
 SELECT * FROM bench.f_t_large3 (p_id=>(floor(random()*(100-1+1)+1)::int));
-SELECT * FROM bench.f_t_large4 (p_id=>(floor(random()*(100-1+1)+1)::int));
-SELECT * FROM bench.f_t_large5 (p_id=>(floor(random()*(100-1+1)+1)::int));
-SELECT * FROM bench.f_t_large6 (p_id=>(floor(random()*(100-1+1)+1)::int));
-SELECT * FROM bench.f_t_large7 (p_id=>(floor(random()*(100-1+1)+1)::int));
-SELECT * FROM bench.f_t_large8 (p_id=>(floor(random()*(100-1+1)+1)::int));
-SELECT * FROM bench.f_t_large9 (p_id=>(floor(random()*(100-1+1)+1)::int));
-SELECT * FROM bench.f_t_large10 (p_id=>(floor(random()*(100-1+1)+1)::int));

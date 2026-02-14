@@ -1,10 +1,3 @@
 ANALYZE bench.t_range1;
 ANALYZE bench.t_range2;
 ANALYZE bench.t_range3;
-ANALYZE bench.t_range4;
-ANALYZE bench.t_range5;
-ANALYZE bench.t_range6;
-ANALYZE bench.t_range7;
-ANALYZE bench.t_range8;
-ANALYZE bench.t_range9;
-ANALYZE bench.t_range10;

@@ -1,10 +1,3 @@
 DROP FUNCTION IF EXISTS bench.f_t_large1;
 DROP FUNCTION IF EXISTS bench.f_t_large2;
 DROP FUNCTION IF EXISTS bench.f_t_large3;
-DROP FUNCTION IF EXISTS bench.f_t_large4;
-DROP FUNCTION IF EXISTS bench.f_t_large5;
-DROP FUNCTION IF EXISTS bench.f_t_large6;
-DROP FUNCTION IF EXISTS bench.f_t_large7;
-DROP FUNCTION IF EXISTS bench.f_t_large8;
-DROP FUNCTION IF EXISTS bench.f_t_large9;
-DROP FUNCTION IF EXISTS bench.f_t_large10;
