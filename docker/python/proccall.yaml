@@ -1,0 +1,626 @@
+dsn: host=c-raodb port=5432 dbname=postgres user=postgres password=postgres
+routines:
+- routine_name: bench.f_t_hash1
+  routine_type: function
+  routine_desc: bench.f_t_hash1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_hash2
+  routine_type: function
+  routine_desc: bench.f_t_hash2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_hash3
+  routine_type: function
+  routine_desc: bench.f_t_hash3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_large1
+  routine_type: function
+  routine_desc: bench.f_t_large1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_large2
+  routine_type: function
+  routine_desc: bench.f_t_large2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_large3
+  routine_type: function
+  routine_desc: bench.f_t_large3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_list1
+  routine_type: function
+  routine_desc: bench.f_t_list1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_list2
+  routine_type: function
+  routine_desc: bench.f_t_list2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_list3
+  routine_type: function
+  routine_desc: bench.f_t_list3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_medium1
+  routine_type: function
+  routine_desc: bench.f_t_medium1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_medium2
+  routine_type: function
+  routine_desc: bench.f_t_medium2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_medium3
+  routine_type: function
+  routine_desc: bench.f_t_medium3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_random1
+  routine_type: function
+  routine_desc: bench.f_t_random1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_random2
+  routine_type: function
+  routine_desc: bench.f_t_random2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_random3
+  routine_type: function
+  routine_desc: bench.f_t_random3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_range1
+  routine_type: function
+  routine_desc: bench.f_t_range1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_range2
+  routine_type: function
+  routine_desc: bench.f_t_range2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_range3
+  routine_type: function
+  routine_desc: bench.f_t_range3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_small1
+  routine_type: function
+  routine_desc: bench.f_t_small1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_small2
+  routine_type: function
+  routine_desc: bench.f_t_small2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_small3
+  routine_type: function
+  routine_desc: bench.f_t_small3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_wide1
+  routine_type: function
+  routine_desc: bench.f_t_wide1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_wide2
+  routine_type: function
+  routine_desc: bench.f_t_wide2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.f_t_wide3
+  routine_type: function
+  routine_desc: bench.f_t_wide3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_hash1
+  routine_type: procedure
+  routine_desc: bench.p_t_hash1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_hash2
+  routine_type: procedure
+  routine_desc: bench.p_t_hash2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_hash3
+  routine_type: procedure
+  routine_desc: bench.p_t_hash3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_large1
+  routine_type: procedure
+  routine_desc: bench.p_t_large1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_large2
+  routine_type: procedure
+  routine_desc: bench.p_t_large2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_large3
+  routine_type: procedure
+  routine_desc: bench.p_t_large3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_list1
+  routine_type: procedure
+  routine_desc: bench.p_t_list1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_list2
+  routine_type: procedure
+  routine_desc: bench.p_t_list2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_list3
+  routine_type: procedure
+  routine_desc: bench.p_t_list3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_medium1
+  routine_type: procedure
+  routine_desc: bench.p_t_medium1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_medium2
+  routine_type: procedure
+  routine_desc: bench.p_t_medium2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_medium3
+  routine_type: procedure
+  routine_desc: bench.p_t_medium3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_random1
+  routine_type: procedure
+  routine_desc: bench.p_t_random1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_random2
+  routine_type: procedure
+  routine_desc: bench.p_t_random2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_random3
+  routine_type: procedure
+  routine_desc: bench.p_t_random3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_range1
+  routine_type: procedure
+  routine_desc: bench.p_t_range1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_range2
+  routine_type: procedure
+  routine_desc: bench.p_t_range2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_range3
+  routine_type: procedure
+  routine_desc: bench.p_t_range3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_small1
+  routine_type: procedure
+  routine_desc: bench.p_t_small1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_small2
+  routine_type: procedure
+  routine_desc: bench.p_t_small2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_small3
+  routine_type: procedure
+  routine_desc: bench.p_t_small3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_wide1
+  routine_type: procedure
+  routine_desc: bench.p_t_wide1
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_wide2
+  routine_type: procedure
+  routine_desc: bench.p_t_wide2
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint
+- routine_name: bench.p_t_wide3
+  routine_type: procedure
+  routine_desc: bench.p_t_wide3
+  expected_ms: 500
+  timeout_ms: 2000
+  transaction: rollback
+  warmup: 1
+  iterations: 10
+  param_style: named
+  params:
+  - name: p_refcur
+    type: refcursor
+  - name: p_id
+    type: bigint

@@ -1,0 +1,18 @@
+dsn: "host=localhost port=5432 dbname=mydb user=postgres password=secret"
+
+routines:
+  - routine_name: p_customer_find
+    routine_type: procedure
+    routine_desc: "Customer search by email + state"
+    param_style: named		# named | positional
+    capture_mode: vector	# vector | scalar | none
+    transaction: rollback   	# commit | rollback
+    expected_ms: 250		# integer - expected response time in milli seconds
+    timeout_ms: 2000		# integer - timeout response time in milli seconds
+    iterations: 100		# integer - number of times routine is called
+    warmup: 1			# integer - number of times routine is called as a warmup activity
+    params:
+      - { name: p_email, type: text }
+      - { name: p_state, type: text }
+      - { name: p_refcur, type: refcursor }
+

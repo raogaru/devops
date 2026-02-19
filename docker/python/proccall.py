@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-bench_proc_calls.py — PostgreSQL procedure/function benchmark runner
+proccall.py — PostgreSQL procedure/function benchmark runner
 """
 
 from __future__ import annotations
@@ -284,17 +284,17 @@ def build_execution_preview(cfg: EffectiveProcConfig, call_sql: str, cursor_name
     if cfg.kind == "procedure" and cfg.capture_mode == "vector":
         return "\n".join(
             [
-                f"      {begin_stmt}",
-                f"      {call_sql}   -- p_refcur='{cursor_name}'",
-                f"      FETCH ALL FROM {cursor_name};",
-                f"      {end_stmt}",
+                f"  {begin_stmt}",
+                f"  {call_sql}",
+                f"  FETCH ALL FROM {cursor_name};",
+                f"  {end_stmt}",
             ]
         )
     return "\n".join(
         [
-            f"      {begin_stmt}",
-            f"      {call_sql}",
-            f"      {end_stmt}",
+            f"  {begin_stmt}",
+            f"  {call_sql}",
+            f"  {end_stmt}",
         ]
     )
 
@@ -380,8 +380,6 @@ def load_sample_rows(samples_dir: str, object_name: str, params: List[ProcParam]
     if not os.path.exists(csv_path):
         raise FileNotFoundError(f"Sample file not found for {object_name}: {csv_path}")
 
-    if debug:
-        print(f"    DEBUG: loading samples from {csv_path}")
 
     sample_rows: List[Dict[str, str]] = []
     with open(csv_path, "r", encoding="utf-8", newline="") as f:
@@ -390,8 +388,10 @@ def load_sample_rows(samples_dir: str, object_name: str, params: List[ProcParam]
             sample_rows.append(row)
 
     if debug and sample_rows:
-        print(f"    DEBUG: loaded {len(sample_rows)} sample rows")
-        print(f"    DEBUG: sample columns={list(sample_rows[0].keys())}")
+        print(f"SAMPLE DATA:")
+        print(f"  sample csv: {csv_path}")
+        print(f"  sample rows: {len(sample_rows)}")
+        print(f"  sample columns: {list(sample_rows[0].keys())}")
 
     if not sample_rows:
         raise ValueError(f"Sample file for {object_name} is empty: {csv_path}")
@@ -452,21 +452,21 @@ def resolve_effective_config(
 
 def print_config_block(cfg: EffectiveProcConfig) -> None:
     """Print effective config for a routine in a readable block."""
-    print("    CONFIG:")
-    print(f"      seq={cfg.seq}")
-    print(f"      routine_name={cfg.name}")
-    print(f"      routine_type={cfg.kind}")
-    print(f"      routine_desc={cfg.routine_desc}")
-    print(f"      param_style={cfg.param_style}")
-    print(f"      capture_mode={cfg.capture_mode}")
-    print(f"      iterations={cfg.iterations}")
-    print(f"      warmup={cfg.warmup}")
-    print(f"      shuffle={cfg.shuffle}")
-    print(f"      seed={cfg.seed}")
-    print(f"      transaction={cfg.transaction}")
-    print(f"      timeout_ms={cfg.timeout_ms}")
-    print(f"      expected_ms={cfg.expected_ms}")
-    print(f"      params={[p.name + ':' + p.type for p in cfg.params]}")
+    print("CONFIG:")
+    print(f"  seq={cfg.seq}")
+    print(f"  routine_name={cfg.name}")
+    print(f"  routine_type={cfg.kind}")
+    print(f"  routine_desc={cfg.routine_desc}")
+    print(f"  param_style={cfg.param_style}")
+    print(f"  capture_mode={cfg.capture_mode}")
+    print(f"  iterations={cfg.iterations}")
+    print(f"  warmup={cfg.warmup}")
+    print(f"  shuffle={cfg.shuffle}")
+    print(f"  seed={cfg.seed}")
+    print(f"  transaction={cfg.transaction}")
+    print(f"  timeout_ms={cfg.timeout_ms}")
+    print(f"  expected_ms={cfg.expected_ms}")
+    print(f"  params={[p.name + ':' + p.type for p in cfg.params]}")
 
 
 def run_benchmark_for_one_object(
@@ -484,8 +484,7 @@ def run_benchmark_for_one_object(
     """
     call_sql = build_call_sql(cfg.name, cfg.kind, cfg.param_style, cfg.params)
     if debug:
-        print(f"    SQL={call_sql}")
-        print(f"    samples_rows={len(sample_rows)} shuffle={cfg.shuffle}")
+        print(f"  SQL={call_sql}")
 
     rng = random.Random(cfg.seed)
     sample_indexes = list(range(len(sample_rows)))
@@ -505,9 +504,9 @@ def run_benchmark_for_one_object(
 
             if verbose_params:
                 if call_no > cfg.warmup:
-                    print(f"    call#={call_no}  sample#={sample_idx} args={args}")
+                    print(f"  call#={call_no}  sample#={sample_idx} args={args}")
                 else:
-                    print(f"    warm#={call_no}  sample#={sample_idx} args={args}")
+                    print(f"  warm#={call_no}  sample#={sample_idx} args={args}")
 
             ok = True
             error_text = ""
@@ -605,6 +604,10 @@ def run_benchmark_for_one_object(
 
             end = time.perf_counter()
             elapsed_ms = (end - start) * 1000.0
+
+            if debug:
+                print(f"        ok={ok} timed_out={timed_out} elapsed_ms={elapsed_ms} rowcount={captured_rowcount}")
+
 
             if call_no > cfg.warmup:
                 results.append(
@@ -744,9 +747,12 @@ def main() -> int:
     dsn, proc_defs = load_yaml_config(args.config)
 
     if args.debug:
-        print(f"DEBUG: config_file={args.config}")
-        print(f"DEBUG: dsn={mask_dsn(dsn)}")
-        print(f"DEBUG: routines={len(proc_defs)}")
+        print(f"INPUT:")
+        print(f"  config_file: {args.config}")
+        print(f"  dsn: {mask_dsn(dsn)}")
+        print(f"  details output: {args.details_output}")
+        print(f"  summary output: {args.summary_output}")
+        print(f"  routines={len(proc_defs)}")
 
     all_results: List[RunResult] = []
     per_proc_results: Dict[Tuple[str, str], List[RunResult]] = {}
@@ -782,15 +788,15 @@ def main() -> int:
         )
 
         # Print logical execution preview (BEGIN/CALL/FETCH/ROLLBACK)
-        print("    SQL:")
+        print("SQL:")
         print(build_execution_preview(effective_cfg, call_sql_preview, cursor_name="rc"))
 
         if args.verbose_config:
             print_config_block(effective_cfg)
-            print(f"      param_count={len(effective_cfg.params)}")
-            print(f"      data_samples={len(sample_rows)}")
 
-        print(f"    EXECUTION:")
+        print(f"EXECUTION:")
+        print(f"  Start time:", datetime.now())
+
         run_results = run_benchmark_for_one_object(
             dsn=dsn,
             cfg=effective_cfg,
@@ -812,12 +818,13 @@ def main() -> int:
         if stats and stats["p95_ms"] > effective_cfg.expected_ms:
             response_time_status = "FAILED"
 
+        print(f"  End time:", datetime.now())
         if stats:
             print(
-                f"    METRICS:"
-                f"\n      success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)}"
-                f"\n      avg={stats['avg_ms']:.6f}ms min={stats['min_ms']:.6f}ms max={stats['max_ms']:.6f}ms"
-                f"\n      p80={stats['p80_ms']:.6f} p90={stats['p90_ms']:.6f} p95={stats['p95_ms']:.6f} p99={stats['p99_ms']:.6f}"
+                f"METRICS:"
+                f"\n  success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)}"
+                f"\n  avg={stats['avg_ms']:.6f}ms min={stats['min_ms']:.6f}ms max={stats['max_ms']:.6f}ms"
+                f"\n  p80={stats['p80_ms']:.6f} p90={stats['p90_ms']:.6f} p95={stats['p95_ms']:.6f} p99={stats['p99_ms']:.6f}"
             )
         else:
             print(
@@ -826,7 +833,7 @@ def main() -> int:
             )
 
         print(
-            f"    STATUS: execution={execution_status} response={response_time_status} "
+            f"  execution={execution_status} response={response_time_status} "
             f"(expected_p95<={effective_cfg.expected_ms:.3f}ms"
         )
         if failures:

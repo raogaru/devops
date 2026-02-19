@@ -33,11 +33,11 @@ docker exec -it c-python jobrun.py scripts/bench/yaml/jobrun_setup.yaml
 # --------------------------------------------------------------------------------
 # prepare procedure/function calls config file
 
-docker exec -it c-python bench_proc_calls_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench  --kinds both --output g.yaml
+docker exec -it c-python scripts/proccall_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench  --kinds both --output scripts/proccall.yaml
 
-#docker exec -it c-python bench_proc_calls_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench --include "p_%" --kinds procedures --output p.yaml
+#docker exec -it c-python proccall_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench --include "p_%" --kinds procedures --output scripts/p.yaml
 
-#docker exec -it c-python bench_proc_calls_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench --include "f_%" --kinds functions --output f.yaml
+#docker exec -it c-python proccall_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench --include "f_%" --kinds functions --output scripts/f.yaml
 
 # --------------------------------------------------------------------------------
 # execute benchmark procedure/function calls 
@@ -46,13 +46,24 @@ docker exec -it c-python bench_proc_calls_gencfg.py --dsn "host=c-raodb port=543
 # 3. Connect to database and call procedures/functions
 # 4. produce output file with test results
 
+docker exec -it c-python proccall.py --config c.yaml --samples-dir scripts/bench/proc_call_data --iterations 3 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
 
-docker exec -it c-python bench_proc_calls.py --config g.yaml --samples-dir scripts/bench/proc_call_data --iterations 3 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
+docker exec -it c-python scripts/proccall.py			\
+--config scripts/proccall.yaml				\
+--samples-dir scripts/bench/proc_call_data	\
+--warmup 0					\
+--iterations 5				\
+--transaction rollback				\
+--expected-ms 500				\
+--timeout-ms 10					\
+--capture-mode vector				\
+--details-output scripts/details.csv		\
+--summary-output scripts/summary.csv		\
+--verbose-params				\
+--verbose-config				\
+--shuffle					
+#--debug
 
-docker exec -it c-python p10.py --config g.yaml --samples-dir scripts/bench/proc_call_data --iterations 10 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
-
-# tested with procedure level config changes
-docker exec -it c-python p13.py --config g.yaml --samples-dir scripts/bench/proc_call_data --iterations 50 --warmup 0 --output p.out --expected-ms 500 --verbose-p --capture-mode vector --verbose-c --timeout 0 --shuffle --commit-each
 
 # --------------------------------------------------------------------------------
 # END
