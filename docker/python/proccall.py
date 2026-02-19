@@ -824,7 +824,7 @@ def main() -> int:
                 f"METRICS:"
                 f"\n  success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)}"
                 f"\n  avg={stats['avg_ms']:.6f}ms min={stats['min_ms']:.6f}ms max={stats['max_ms']:.6f}ms"
-                f"\n  p80={stats['p80_ms']:.6f} p90={stats['p90_ms']:.6f} p95={stats['p95_ms']:.6f} p99={stats['p99_ms']:.6f}"
+                f"\n  p80={stats['p80_ms']:.6f}ms p90={stats['p90_ms']:.6f}ms p95={stats['p95_ms']:.6f}ms p99={stats['p99_ms']:.6f}ms"
             )
         else:
             print(
@@ -832,10 +832,7 @@ def main() -> int:
                 f"\n      success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)}"
             )
 
-        print(
-            f"  execution={execution_status} response={response_time_status} "
-            f"(expected_p95<={effective_cfg.expected_ms:.3f}ms"
-        )
+        print(f"  execution={execution_status} response={response_time_status} expected_p95<={effective_cfg.expected_ms:.3f}ms")
         if failures:
             first = failures[0]
             print(f"    First error: iter={first.iter_no} sample_row={first.sample_row} {first.error}")
