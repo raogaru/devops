@@ -1,48 +1,56 @@
 CREATE TYPE bench.typ_t_medium1 (
     id BIGSERIAL
-    ,c1 real
-    ,c2 bigint
-    ,c3 jsonb
-    ,c4 date
-    ,c5 varchar(26)
-    ,c6 date
-    ,c7 date
-    ,c8 real
-    ,c9 time
-    ,c10 real
-    ,c11 real
-    ,c12 numeric(11,3)
-    ,c13 text
-    ,c14 numeric(6,3)
-    ,c15 boolean
-    ,c16 char(8)
+    ,c1 boolean
+    ,c2 varchar(31)
+    ,c3 bytea
+    ,c4 timestamp
+    ,c5 uuid
+    ,c6 time
+    ,c7 text
+    ,c8 timestamp
+    ,c9 numeric(4,1)
+    ,c10 smallint
+    ,c11 date
+    ,c12 bytea
+    ,c13 time
+    ,c14 double precision
+    ,c15 char(20)
+    ,c16 boolean
 );
 
 CREATE TYPE bench.typ_t_medium2 (
     id BIGSERIAL
-    ,c1 text
-    ,c2 time
-    ,c3 varchar(41)
-    ,c4 bytea
-    ,c5 numeric(9,3)
-    ,c6 bytea
+    ,c1 bytea
+    ,c2 boolean
+    ,c3 jsonb
+    ,c4 double precision
+    ,c5 double precision
+    ,c6 timestamp
     ,c7 uuid
-    ,c8 smallint
-    ,c9 text
-    ,c10 boolean
+    ,c8 integer
+    ,c9 bytea
+    ,c10 date
+    ,c11 bigint
+    ,c12 boolean
+    ,c13 jsonb
+    ,c14 boolean
+    ,c15 timestamp
+    ,c16 smallint
+    ,c17 numeric(12,3)
 );
 
 CREATE TYPE bench.typ_t_medium3 (
     id BIGSERIAL
-    ,c1 char(17)
-    ,c2 varchar(13)
-    ,c3 time
-    ,c4 timestamp
-    ,c5 varchar(20)
-    ,c6 timestamp
-    ,c7 real
-    ,c8 date
-    ,c9 varchar(21)
-    ,c10 jsonb
-    ,c11 double precision
+    ,c1 timestamp
+    ,c2 bytea
+    ,c3 char(17)
+    ,c4 char(5)
+    ,c5 integer
+    ,c6 char(18)
+    ,c7 integer
+    ,c8 timestamp
+    ,c9 bytea
+    ,c10 bigint
+    ,c11 varchar(16)
+    ,c12 uuid
 );

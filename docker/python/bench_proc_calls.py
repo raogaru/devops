@@ -2,60 +2,27 @@
 """
 bench_proc_calls.py — PostgreSQL procedure/function benchmark runner (psycopg3)
 
-What this script does
----------------------
-1) Reads a YAML config file containing:
-   - DSN (connection string)
-   - A list of procedures/functions with their parameter names/types
-   - Optional per-proc overrides for runtime settings
-
-2) Reads sample CSV files from --samples-dir.
-   Each procedure/function must have a CSV named:
-       <proc_or_func_name>.csv
-   The CSV must include columns for every parameter defined in YAML.
-
-3) Executes each procedure/function repeatedly and measures elapsed time.
-
-4) Captures optional results depending on capture_mode:
-   Procedures:
-     - none   : don't capture results
-     - vector : expects a refcursor parameter named "c"; FETCH ALL; record rowcount
-     - scalar : records returned OUT parameter row (single OUT -> scalar, multi OUT -> JSON)
-   Functions:
-     - none   : don't capture results
-     - vector : FETCH ALL rows; record rowcount
-     - scalar : FETCH one row; record scalar return value (or JSON if multi-column)
-
-5) Prints summary metrics per procedure/function and writes a per-call CSV output.
-
-Per-proc overrides vs CLI defaults
----------------------------------
-These keys can be specified per procedure/function in YAML. If omitted, CLI defaults are used:
-  - iterations
-  - warmup
-  - shuffle
-  - param_style
-  - capture_mode
-  - expected_response_time (ms)
-  - commit_each
-  - timeout_seconds
-
-Verbose config printing
-----------------------
-If --verbose-config is specified, the *effective* configuration is printed right before
-running each procedure/function (before loading sample data and before the loop starts).
+Highlights
+----------
+- Reads DSN + procedure/function definitions from YAML.
+- Reads sample CSV per object: <object_name>.csv from --samples-dir.
+- Executes warmup + iterations and records per-call timing.
+- Supports capture_mode:
+    * procedure + vector: expects refcursor param named 'p_refcur' and FETCH ALL FROM <cursor>
+    * procedure + scalar: reads OUT params row from CALL
+    * function  + vector: fetches all rows
+    * function  + scalar: fetches one row
+- IMPORTANT for REFCURSOR:
+    Each iteration is executed in a single transaction scope:
+        BEGIN; CALL ...; FETCH ALL FROM rc; ROLLBACK/COMMIT;
+  Implemented using psycopg3 transaction context manager.
+  If commit_each is False (default), we force rollback by raising psycopg.Rollback().
 
 Timeout behavior
 ----------------
-If timeout_seconds > 0:
+If timeout_ms > 0:
   - SET LOCAL statement_timeout is applied for each call (and for refcursor FETCH ALL).
-  - On QueryCanceled (timeout), the session/connection is closed and recreated,
-    then the benchmark continues with the next iteration.
-
-Example
--------
-bench_proc_calls.py --config bench_proc_calls.yaml --samples-dir samples \
-  --iterations 100 --warmup 10 --timeout-seconds 2.5 --output bench_results.csv --verbose-config
+  - On QueryCanceled, the connection is closed and recreated, then the benchmark continues.
 """
 
 from __future__ import annotations
@@ -74,7 +41,9 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import psycopg
 import yaml
+from psycopg import Rollback
 from psycopg import errors as pg_errors
+from psycopg import sql as pg_sql
 from psycopg.rows import dict_row
 
 
@@ -103,12 +72,12 @@ class ProcDef:
     # Optional per-proc overrides (None -> use CLI defaults)
     param_style: Optional[str] = None                # "named" | "positional"
     capture_mode: Optional[str] = None               # "none" | "vector" | "scalar"
-    expected_ms: Optional[float] = None
     iterations: Optional[int] = None
     warmup: Optional[int] = None
     shuffle: Optional[bool] = None
     commit_each: Optional[bool] = None
-    timeout_seconds: Optional[float] = None
+    expected_ms: Optional[float] = None
+    timeout_ms: Optional[float] = None
 
 
 @dataclass
@@ -131,7 +100,7 @@ class EffectiveProcConfig:
     seed: int
 
     commit_each: bool
-    timeout_seconds: float
+    timeout_ms: float
 
 
 @dataclass
@@ -159,10 +128,6 @@ NULL_TOKENS = {"", "null", "NULL", "none", "None", "\\N"}
 def parse_csv_literal(csv_value: str, pg_type: str) -> Any:
     """
     Convert a string read from CSV into a Python object suitable for psycopg parameter binding.
-
-    Notes:
-      - Uses a small type mapping for common Postgres types.
-      - For unknown types, returns string as-is (psycopg will send it as text).
     """
     if csv_value is None:
         return None
@@ -196,6 +161,7 @@ def parse_csv_literal(csv_value: str, pg_type: str) -> Any:
     if t in {"json", "jsonb"}:
         return json.loads(stripped)
 
+    # For unknown types, send as text
     return stripped
 
 
@@ -242,6 +208,28 @@ def build_call_sql(object_name: str, kind: str, param_style: str, params: List[P
     raise ValueError(f"{object_name}: unknown kind={kind}")
 
 
+def build_execution_preview(cfg: EffectiveProcConfig, call_sql: str, cursor_name: str = "rc") -> str:
+    """
+    Human-readable preview of the *logical* unit of work for one iteration.
+    BEGIN/COMMIT/ROLLBACK are managed by psycopg transaction context manager.
+    """
+    end_stmt = "COMMIT;" if cfg.commit_each else "ROLLBACK;"
+
+    if cfg.kind == "procedure" and cfg.capture_mode == "vector":
+        return "\n".join([
+            "BEGIN;",
+            f"{call_sql};",
+            f"FETCH ALL FROM {cursor_name};",
+            end_stmt,
+        ])
+
+    return "\n".join([
+        "BEGIN;",
+        f"{call_sql};",
+        end_stmt,
+    ])
+
+
 # =============================================================================
 # YAML config + sample CSV loading
 # =============================================================================
@@ -264,7 +252,6 @@ def load_yaml_config(yaml_path: str) -> Tuple[str, List[ProcDef]]:
 
         params = [ProcParam(p["name"], p["type"]) for p in item.get("params", [])]
 
-        # Optional overrides
         param_style = item.get("param_style")
         if param_style is not None:
             param_style = str(param_style).lower()
@@ -285,7 +272,7 @@ def load_yaml_config(yaml_path: str) -> Tuple[str, List[ProcDef]]:
                 warmup=(int(item["warmup"]) if "warmup" in item else None),
                 shuffle=(bool(item["shuffle"]) if "shuffle" in item else None),
                 commit_each=(bool(item["commit_each"]) if "commit_each" in item else None),
-                timeout_seconds=(float(item["timeout_seconds"]) if "timeout_seconds" in item else None),
+                timeout_ms=(float(item["timeout_ms"]) if "timeout_ms" in item else None),
             )
         )
 
@@ -327,7 +314,7 @@ def load_sample_rows(samples_dir: str, object_name: str, params: List[ProcParam]
 # =============================================================================
 
 def percentile_summary_ms(durations_ms: List[float]) -> Dict[str, float]:
-    """Compute count/avg/min/max and p50/p90/p95/p99 using linear interpolation."""
+    """Compute count/avg/min/max and p80/p90/p95/p99 using linear interpolation."""
     if not durations_ms:
         return {}
 
@@ -347,7 +334,7 @@ def percentile_summary_ms(durations_ms: List[float]) -> Dict[str, float]:
         "count": float(len(sorted_ms)),
         "avg_ms": statistics.mean(sorted_ms),
         "min_ms": min(sorted_ms),
-        "p50_ms": pct(0.50),
+        "p80_ms": pct(0.80),
         "p90_ms": pct(0.90),
         "p95_ms": pct(0.95),
         "p99_ms": pct(0.99),
@@ -433,7 +420,7 @@ def resolve_effective_config(
     default_capture_mode: str,
     default_expected_ms: float,
     default_commit_each: bool,
-    default_timeout_seconds: float,
+    default_timeout_ms: float,
     seed: int,
 ) -> EffectiveProcConfig:
     """Apply YAML overrides (if present) on top of CLI defaults."""
@@ -457,17 +444,23 @@ def resolve_effective_config(
         shuffle=bool(proc.shuffle if proc.shuffle is not None else default_shuffle),
         seed=int(seed),
         commit_each=bool(proc.commit_each if proc.commit_each is not None else default_commit_each),
-        timeout_seconds=float(proc.timeout_seconds if proc.timeout_seconds is not None else default_timeout_seconds),
+        timeout_ms=float(proc.timeout_ms if proc.timeout_ms is not None else default_timeout_ms),
     )
 
 
 def print_config_block(cfg: EffectiveProcConfig) -> None:
     """Print effective config for a procedure/function in a readable block."""
-    print("    CONFIG:")
-    print(f"      kind={cfg.kind} name={cfg.name}")
-    print(f"      param_style={cfg.param_style} capture_mode={cfg.capture_mode}")
-    print(f"      iterations={cfg.iterations} warmup={cfg.warmup} shuffle={cfg.shuffle} seed={cfg.seed}")
-    print(f"      commit_each={cfg.commit_each} timeout_seconds={cfg.timeout_seconds}")
+    print(f"    CONFIG:")
+    print(f"      name={cfg.name}")
+    print(f"      kind={cfg.kind}")
+    print(f"      param_style={cfg.param_style}")
+    print(f"      capture_mode={cfg.capture_mode}")
+    print(f"      iterations={cfg.iterations} ")
+    print(f"      warmup={cfg.warmup}")
+    print(f"      shuffle={cfg.shuffle}")
+    print(f"      seed={cfg.seed}")
+    print(f"      commit_each={cfg.commit_each}")
+    print(f"      timeout_ms={cfg.timeout_ms}")
     print(f"      expected_ms={cfg.expected_ms}")
     print(f"      params={[p.name + ':' + p.type for p in cfg.params]}")
 
@@ -484,7 +477,7 @@ def run_benchmark_for_one_object(
 
     Capturing behavior is controlled by cfg.capture_mode.
     """
-    sql = build_call_sql(cfg.name, cfg.kind, cfg.param_style, cfg.params)
+    call_sql = build_call_sql(cfg.name, cfg.kind, cfg.param_style, cfg.params)
 
     rng = random.Random(cfg.seed)
     sample_indexes = list(range(len(sample_rows)))
@@ -499,11 +492,15 @@ def run_benchmark_for_one_object(
 
         for call_no in range(1, total_calls + 1):
             sample_idx = sample_indexes[(call_no - 1) % len(sample_indexes)]
+
+            if cfg.shuffle and sample_idx:
+                rng.shuffle(sample_indexes)
+
             sample_row = sample_rows[sample_idx]
             args = build_args_from_sample_row(cfg.params, sample_row)
 
             if verbose_params:
-                print(f"    [{call_no}] args={args}")
+                print(f"    call#={call_no} sample#={sample_idx} args={args}")
 
             ok = True
             error_text = ""
@@ -511,53 +508,70 @@ def run_benchmark_for_one_object(
             captured_rowcount = 0
             captured_value = ""
 
-            cursor_name = f"benchcur_{call_no}"
+            # Use a stable cursor name for refcursor mode.
+            # If you want uniqueness per call: cursor_name = f"benchcur_{call_no}"
+            cursor_name = "rc"
 
             start = time.perf_counter()
             try:
-                with conn.cursor() as cur:
-                    if cfg.timeout_seconds > 0:
-                        cur.execute("SET LOCAL statement_timeout = %s", (int(cfg.timeout_seconds * 1000.0),))
+                # One iteration = one transaction scope
+                try:
+                    with conn.transaction():
+                        with conn.cursor() as cur:
+                            if cfg.timeout_ms > 0:
+                                cur.execute("SET LOCAL statement_timeout = %s", (int(cfg.timeout_ms),))
 
-                    # --- Capture modes ---
-                    if cfg.kind == "procedure" and cfg.capture_mode == "vector":
-                        # refcursor param name fixed to "p_refcur"
-                        cursor_param_index = next((i for i, p in enumerate(cfg.params) if p.name == "p_refcur"), None)
-                        if cursor_param_index is None:
-                            raise ValueError(f"{cfg.name}: capture_mode=vector requires refcursor param named 'p_refcur'")
-                        args[cursor_param_index] = cursor_name
+                            # --- Capture modes ---
+                            if cfg.kind == "procedure" and cfg.capture_mode == "vector":
+                                cursor_param_index = next(
+                                    (i for i, p in enumerate(cfg.params) if p.name == "p_refcur"), None
+                                )
+                                if cursor_param_index is None:
+                                    raise ValueError(
+                                        f"{cfg.name}: capture_mode=vector requires refcursor param named 'p_refcur'"
+                                    )
 
-                        cur.execute(sql, args)
-                        cur.execute(f"FETCH ALL FROM {cursor_name}")
-                        captured_rowcount = fetch_all_rowcount(cur)
-                        try:
-                            cur.execute(f"CLOSE {cursor_name}")
-                        except Exception:
-                            pass
+                                # Pass cursor name so the procedure opens that cursor in THIS transaction
+                                args[cursor_param_index] = cursor_name
 
-                    elif cfg.kind == "procedure" and cfg.capture_mode == "scalar":
-                        cur.execute(sql, args)
-                        captured_value = fetch_proc_out_as_value(cur)
+                                cur.execute(call_sql, args)
 
-                    elif cfg.kind == "function" and cfg.capture_mode == "vector":
-                        cur.execute(sql, args)
-                        captured_rowcount = fetch_all_rowcount(cur)
+                                fetch_stmt = pg_sql.SQL("FETCH ALL FROM {}").format(pg_sql.Identifier(cursor_name))
+                                cur.execute(fetch_stmt)
+                                captured_rowcount = fetch_all_rowcount(cur)
 
-                    elif cfg.kind == "function" and cfg.capture_mode == "scalar":
-                        cur.execute(sql, args)
-                        captured_value = fetch_function_scalar_value(cur)
+                                # Optional CLOSE (end of transaction will close anyway)
+                                try:
+                                    close_stmt = pg_sql.SQL("CLOSE {}").format(pg_sql.Identifier(cursor_name))
+                                    cur.execute(close_stmt)
+                                except Exception:
+                                    pass
 
-                    else:
-                        cur.execute(sql, args)
-                        consume_one_row_if_present(cur)
+                            elif cfg.kind == "procedure" and cfg.capture_mode == "scalar":
+                                cur.execute(call_sql, args)
+                                captured_value = fetch_proc_out_as_value(cur)
 
-                    if cfg.commit_each:
-                        conn.commit()
-                    else:
-                        conn.rollback()
+                            elif cfg.kind == "function" and cfg.capture_mode == "vector":
+                                cur.execute(call_sql, args)
+                                captured_rowcount = fetch_all_rowcount(cur)
+
+                            elif cfg.kind == "function" and cfg.capture_mode == "scalar":
+                                cur.execute(call_sql, args)
+                                captured_value = fetch_function_scalar_value(cur)
+
+                            else:
+                                cur.execute(call_sql, args)
+                                consume_one_row_if_present(cur)
+
+                            # Force rollback unless commit_each is enabled
+                            if not cfg.commit_each:
+                                raise Rollback()
+
+                except Rollback:
+                    # Expected for commit_each=False: iteration ends with rollback
+                    pass
 
             except pg_errors.QueryCanceled as e:
-                # statement_timeout fired; kill and recreate the session
                 ok = False
                 timed_out = True
                 error_text = f"TIMEOUT(QueryCanceled): {e}"
@@ -619,18 +633,22 @@ def build_arg_parser() -> argparse.ArgumentParser:
     ap.add_argument("--samples-dir", required=True, help="Directory containing <proc.name>.csv sample files")
     ap.add_argument("--output", default="bench_results.csv", help="Output CSV with per-call timings")
 
-    # Defaults (can be overridden per proc in YAML)
-    ap.add_argument("--iterations", type=int, default=100,  help="Default recorded iterations per procedure/function")
+    ap.add_argument("--iterations", type=int, default=100, help="Default recorded iterations per procedure/function")
     ap.add_argument("--warmup", type=int, default=10, help="Default warmup iterations per procedure/function")
-    ap.add_argument("--shuffle", action="store_true", help="Default shuffle (true if set)") 
-    ap.add_argument("--param-style", choices=["named", "positional"], default="named", help="Default param_style if not set per proc in YAML")
-    ap.add_argument("--capture-mode", choices=["none", "vector", "scalar"], default="none", help="Default capture_mode if not set per proc in YAML")
-    ap.add_argument("--expected-ms", type=float, default=500.0, help="Default expected_ms if not set per proc in YAML") 
-    ap.add_argument("--commit-each", action="store_true", help="Default commit_each (if not set, default is rollback each call)")
-    ap.add_argument("--timeout-seconds", type=float, default=0.0, help="Default per-call timeout_seconds (0 means no timeout)") 
+    ap.add_argument("--shuffle", action="store_true", help="Default shuffle (true if set)")
+    ap.add_argument("--param-style", choices=["named", "positional"], default="named",
+                    help="Default param_style if not set per proc in YAML")
+    ap.add_argument("--capture-mode", choices=["none", "vector", "scalar"], default="none",
+                    help="Default capture_mode if not set per proc in YAML")
+    ap.add_argument("--expected-ms", type=float, default=500.0, help="Default expected_ms if not set per proc in YAML")
+    ap.add_argument("--commit-each", action="store_true",
+                    help="Default commit_each (if not set, default is rollback each call)")
+    ap.add_argument("--timeout-ms", type=float, default=0.0,
+                    help="Default per-call timeout_ms (0 means no timeout)")
     ap.add_argument("--seed", type=int, default=1234, help="Random seed (used when shuffle is enabled)")
     ap.add_argument("--verbose-params", action="store_true", help="Print parameter values for each call")
-    ap.add_argument("--verbose-config", action="store_true", help="Print effective config immediately before running each proc/function")
+    ap.add_argument("--verbose-config", action="store_true",
+                    help="Print effective config immediately before running each proc/function")
 
     return ap
 
@@ -653,28 +671,33 @@ def main() -> int:
             default_capture_mode=args.capture_mode,
             default_expected_ms=args.expected_ms,
             default_commit_each=args.commit_each,
-            default_timeout_seconds=args.timeout_seconds,
+            default_timeout_ms=args.timeout_ms,
             seed=args.seed,
         )
         effective_cfg_by_name_kind[(effective_cfg.name, effective_cfg.kind)] = effective_cfg
 
-        print(f"\n==> Running {effective_cfg.kind.upper()} {effective_cfg.name}")
-        if args.verbose_config:
-            print_config_block(effective_cfg)
+        print(f"\n--------------------------------------------------------------------------------")
+        print(f"==> Running {effective_cfg.kind.upper()} {effective_cfg.name}")
 
-        # Load sample data AFTER config is printed (so config is visible before processing samples)
         sample_rows = load_sample_rows(args.samples_dir, effective_cfg.name, effective_cfg.params)
 
-        sql_preview = build_call_sql(
+        call_sql_preview = build_call_sql(
             effective_cfg.name,
             effective_cfg.kind,
             effective_cfg.param_style,
             effective_cfg.params,
         )
-        print(f"    SQL: {sql_preview}")
-        if args.verbose_config:
-            print(f"    param_count={len(effective_cfg.params)} data_samples={len(sample_rows)}")
 
+        # Print logical execution preview (BEGIN/CALL/FETCH/ROLLBACK)
+        print("    SQL:")
+        print(build_execution_preview(effective_cfg, call_sql_preview, cursor_name="rc"))
+
+        if args.verbose_config:
+            print_config_block(effective_cfg)
+            print(f"      param_count={len(effective_cfg.params)}")
+            print(f"      data_samples={len(sample_rows)}")
+
+        print(f"    EXECUTION:")
         run_results = run_benchmark_for_one_object(
             dsn=dsn,
             cfg=effective_cfg,
@@ -696,14 +719,19 @@ def main() -> int:
 
         if stats:
             print(
-                f"    METRICS:\n    success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)} | "
-                f"avg={stats['avg_ms']:.3f}ms min={stats['min_ms']:.3f}ms max={stats['max_ms']:.3f}ms | "
-                f"p50={stats['p50_ms']:.3f}ms p90={stats['p90_ms']:.3f}ms p95={stats['p95_ms']:.3f}ms p99={stats['p99_ms']:.3f}ms"
+                f"    METRICS:"
+                f"\n      success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)}"
+                f"\n      avg={stats['avg_ms']:.3f}ms min={stats['min_ms']:.3f}ms max={stats['max_ms']:.3f}ms"
+                f"\n      p80={stats['p80_ms']:.3f}ms p90={stats['p90_ms']:.3f}ms "
+                f"p95={stats['p95_ms']:.3f}ms p99={stats['p99_ms']:.3f}ms"
             )
         else:
             print(f"    OK=0 ERR={len(failures)} TIMEOUTS={len(timeouts)} | (no successful timings to summarize)")
 
-        print(f"    STATUS: excecution={execution_status} response={response_time_status}  expected_p95<={effective_cfg.expected_ms:.3f}ms")
+        print(
+            f"    STATUS: excecution={execution_status} response={response_time_status}  "
+            f"expected_p95<={effective_cfg.expected_ms:.3f}ms"
+        )
         if failures:
             first = failures[0]
             print(f"    First error: iter={first.iter_no} sample_row={first.sample_row} {first.error}")
@@ -713,7 +741,7 @@ def main() -> int:
         writer = csv.writer(f)
         writer.writerow([
             "proc_name", "kind", "param_style", "capture_mode",
-            "expected_ms", "iterations", "warmup", "commit_each", "timeout_seconds", "shuffle",
+            "expected_ms", "iterations", "warmup", "commit_each", "timeout_ms", "shuffle",
             "iter_no", "sample_row", "ok", "timed_out", "duration_ms",
             "rowcount", "value", "error",
         ])
@@ -729,7 +757,7 @@ def main() -> int:
                 cfg.iterations if cfg else "",
                 cfg.warmup if cfg else "",
                 cfg.commit_each if cfg else "",
-                cfg.timeout_seconds if cfg else "",
+                cfg.timeout_ms if cfg else "",
                 cfg.shuffle if cfg else "",
                 r.iter_no,
                 r.sample_row,

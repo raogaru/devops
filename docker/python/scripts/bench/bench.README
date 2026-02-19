@@ -49,7 +49,10 @@ docker exec -it c-python bench_proc_calls_gencfg.py --dsn "host=c-raodb port=543
 
 docker exec -it c-python bench_proc_calls.py --config g.yaml --samples-dir scripts/bench/proc_call_data --iterations 3 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
 
-docker exec -it c-python p9.py --config g.yaml --samples-dir scripts/bench/proc_call_data --iterations 30 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
+docker exec -it c-python p10.py --config g.yaml --samples-dir scripts/bench/proc_call_data --iterations 10 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
+
+# tested with procedure level config changes
+docker exec -it c-python p13.py --config g.yaml --samples-dir scripts/bench/proc_call_data --iterations 50 --warmup 0 --output p.out --expected-ms 500 --verbose-p --capture-mode vector --verbose-c --timeout 0 --shuffle --commit-each
 
 # --------------------------------------------------------------------------------
 # END
