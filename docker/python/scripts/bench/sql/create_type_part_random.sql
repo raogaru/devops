@@ -1,23 +1,24 @@
 CREATE TYPE bench.typ_t_random1 (
     id BIGSERIAL
-    ,c1 numeric(1,0)
-    ,c2 numeric(5,0)
-    ,c3 jsonb
-    ,c4 bytea
-    ,c5 double precision
-    ,c6 timestamp
+    ,c1 integer
+    ,c2 smallint
+    ,c3 date
+    ,c4 real
+    ,c5 text
 );
 
 CREATE TYPE bench.typ_t_random2 (
     id BIGSERIAL
-    ,c1 numeric(1,0)
-    ,c2 boolean
+    ,c1 integer
+    ,c2 date
     ,c3 double precision
+    ,c4 time
 );
 
 CREATE TYPE bench.typ_t_random3 (
     id BIGSERIAL
-    ,c1 numeric(1,0)
-    ,c2 boolean
-    ,c3 timestamp
+    ,c1 integer
+    ,c2 varchar(7)
+    ,c3 integer
+    ,c4 integer
 );

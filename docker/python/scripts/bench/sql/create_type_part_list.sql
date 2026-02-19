@@ -1,30 +1,30 @@
 CREATE TYPE bench.typ_t_list1 (
     id BIGSERIAL
     ,c1 numeric(1,0)
-    ,c2 date
-    ,c3 uuid
-    ,c4 bytea
+    ,c2 varchar(37)
+    ,c3 timestamp
+    ,c4 time
+    ,c5 smallint
+    ,c6 bigint
 );
 
 CREATE TYPE bench.typ_t_list2 (
     id BIGSERIAL
     ,c1 numeric(1,0)
-    ,c2 real
-    ,c3 bytea
-    ,c4 bytea
-    ,c5 time
-    ,c6 numeric(5,2)
-    ,c7 numeric(10,2)
+    ,c2 double precision
+    ,c3 varchar(24)
+    ,c4 text
+    ,c5 text
+    ,c6 char(7)
+    ,c7 numeric(10,0)
 );
 
 CREATE TYPE bench.typ_t_list3 (
     id BIGSERIAL
     ,c1 numeric(1,0)
-    ,c2 bigint
-    ,c3 real
+    ,c2 date
+    ,c3 double precision
     ,c4 smallint
-    ,c5 uuid
-    ,c6 double precision
-    ,c7 varchar(8)
-    ,c8 integer
+    ,c5 bigint
+    ,c6 timestamp
 );

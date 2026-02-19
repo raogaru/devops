@@ -1,56 +1,57 @@
 CREATE TABLE bench.t_medium1 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 boolean
-    ,c2 varchar(31)
-    ,c3 bytea
-    ,c4 timestamp
-    ,c5 uuid
-    ,c6 time
-    ,c7 text
-    ,c8 timestamp
-    ,c9 numeric(4,1)
-    ,c10 smallint
-    ,c11 date
-    ,c12 bytea
-    ,c13 time
-    ,c14 double precision
-    ,c15 char(20)
-    ,c16 boolean
+    ,c1 double precision
+    ,c2 time
+    ,c3 date
+    ,c4 boolean
+    ,c5 bigint
+    ,c6 char(11)
+    ,c7 uuid
+    ,c8 char(12)
+    ,c9 time
+    ,c10 double precision
+    ,c11 double precision
+    ,c12 boolean
+    ,c13 smallint
 );
 
 CREATE TABLE bench.t_medium2 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 bytea
-    ,c2 boolean
-    ,c3 jsonb
-    ,c4 double precision
-    ,c5 double precision
-    ,c6 timestamp
-    ,c7 uuid
-    ,c8 integer
-    ,c9 bytea
-    ,c10 date
-    ,c11 bigint
-    ,c12 boolean
-    ,c13 jsonb
-    ,c14 boolean
-    ,c15 timestamp
-    ,c16 smallint
-    ,c17 numeric(12,3)
+    ,c1 time
+    ,c2 double precision
+    ,c3 bigint
+    ,c4 uuid
+    ,c5 uuid
+    ,c6 time
+    ,c7 numeric(9,0)
+    ,c8 numeric(10,1)
+    ,c9 numeric(10,3)
+    ,c10 text
+    ,c11 varchar(9)
+    ,c12 double precision
+    ,c13 text
+    ,c14 char(16)
+    ,c15 numeric(12,3)
+    ,c16 time
+    ,c17 time
+    ,c18 boolean
+    ,c19 boolean
+    ,c20 numeric(11,1)
 );
 
 CREATE TABLE bench.t_medium3 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 timestamp
-    ,c2 bytea
-    ,c3 char(17)
-    ,c4 char(5)
-    ,c5 integer
-    ,c6 char(18)
-    ,c7 integer
-    ,c8 timestamp
-    ,c9 bytea
-    ,c10 bigint
-    ,c11 varchar(16)
-    ,c12 uuid
+    ,c1 uuid
+    ,c2 smallint
+    ,c3 smallint
+    ,c4 real
+    ,c5 bigint
+    ,c6 time
+    ,c7 boolean
+    ,c8 text
+    ,c9 bigint
+    ,c10 integer
+    ,c11 jsonb
+    ,c12 boolean
+    ,c13 bytea
 );
