@@ -48,11 +48,12 @@ docker exec -it c-python scripts/proccall_gencfg.py --dsn "host=c-raodb port=543
 
 docker exec -it c-python proccall.py --config c.yaml --samples-dir scripts/bench/proc_call_data --iterations 3 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
 
-docker exec -it c-python scripts/proccall.py	\
---config scripts/proccall.yaml			\
+
+docker exec -it c-python scripts/proccall.py		\
+--config scripts/proccall.yaml				\
 --samples-dir scripts/bench/proc_call_data	\
 --warmup 0					\
---iterations 10				        \
+--iterations 10				\
 --transaction rollback				\
 --expected-ms 500				\
 --timeout-ms 10					\
@@ -63,6 +64,7 @@ docker exec -it c-python scripts/proccall.py	\
 --verbose-config				\
 --shuffle					
 #--debug
+
 # --------------------------------------------------------------------------------
 exec -it c-raodb /bin/bash
 su - postgres

@@ -25,6 +25,11 @@ from psycopg import errors as pg_errors
 from psycopg import sql as pg_sql
 from psycopg.rows import dict_row
 
+RED = "\033[31m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+BLUE = "\033[34m"
+RESET = "\033[0m"
 
 # =============================================================================
 # Data model
@@ -95,7 +100,7 @@ class RunResult:
     iter_no: int
     sample_row: int
     ok: bool
-    duration_ms: float
+    elapsed_ms: float
     error: str
     rowcount: int = 0     # used for vector capture
     value: str = ""       # used for scalar capture
@@ -619,7 +624,7 @@ def run_benchmark_for_one_object(
                         iter_no=call_no - cfg.warmup,
                         sample_row=sample_idx,
                         ok=ok,
-                        duration_ms=elapsed_ms,
+                        elapsed_ms=elapsed_ms,
                         error=error_text,
                         rowcount=captured_rowcount,
                         value=captured_value,
@@ -641,17 +646,17 @@ def summarize_proc(run_results: List[RunResult], cfg: EffectiveProcConfig) -> Di
     Build a one-row-per-procedure summary suitable for summary.csv.
     Percentiles are computed from successful executions only.
     """
-    ok_times = [r.duration_ms for r in run_results if r.ok]
-    failures = [r for r in run_results if not r.ok]
-    timeouts = [r for r in run_results if r.timed_out]
+    exec_good_a = [r.elapsed_ms for r in run_results if r.ok]
+    exec_fail_a = [r for r in run_results if not r.ok]
+    exec_timeout_a = [r for r in run_results if r.timed_out]
 
-    total_ms = sum(r.duration_ms for r in run_results)
+    total_ms = sum(r.elapsed_ms for r in run_results)
     # TPS: successful executions per second over total recorded time.
-    tps = (len(ok_times) / (total_ms / 1000.0)) if total_ms > 0 else 0.0
+    tps = (len(exec_good_a) / (total_ms / 1000.0)) if total_ms > 0 else 0.0
 
-    stats = percentile_summary_ms(ok_times)  # {} if none
+    stats = percentile_summary_ms(exec_good_a)  # {} if none
 
-    execution_pass = (len(failures) == 0)
+    execution_pass = (len(exec_fail_a) == 0)
     response_pass = True
     if stats and stats.get("p95_ms", 0.0) > cfg.expected_ms:
         response_pass = False
@@ -668,17 +673,17 @@ def summarize_proc(run_results: List[RunResult], cfg: EffectiveProcConfig) -> Di
         "routine_desc": cfg.routine_desc,
         "param_style": cfg.param_style,
         "capture_mode": cfg.capture_mode,
-        "expected_ms": f"{cfg.expected_ms:.3f}",
-        "iterations": cfg.iterations,
-        "warmup": cfg.warmup,
         "transaction": cfg.transaction,
-        "timeout_ms": cfg.timeout_ms,
         "shuffle": cfg.shuffle,
+        "timeout_ms": cfg.timeout_ms,
+        "expected_ms": f"{cfg.expected_ms:.3f}",
+        "warmup": cfg.warmup,
+        "iterations": cfg.iterations,
 
-        "total_iterations": len(run_results),   # recorded iterations only (excludes warmup)
-        "success": len(ok_times),
-        "failed": len(failures),
-        "timeouts": len(timeouts),
+        "exec_total": len(run_results),
+        "exec_success": len(exec_good_a),
+        "exec_failed": len(exec_fail_a),
+        "exec_timeouts": len(exec_timeout_a),
         "tps": f"{tps:.3f}",
 
         "total_ms": f"{total_ms:.3f}",
@@ -693,7 +698,7 @@ def summarize_proc(run_results: List[RunResult], cfg: EffectiveProcConfig) -> Di
         "execution_pass": execution_pass,
         "response_pass": response_pass,
         "overall_pass": overall_pass,
-        "first_error": failures[0].error if failures else "",
+        "first_error": exec_fail_a[0].error if exec_fail_a else "",
     }
 
 
@@ -813,13 +818,13 @@ def main() -> int:
         per_proc_results[(effective_cfg.name, effective_cfg.kind)] = run_results
         all_results.extend(run_results)
 
-        ok_times = [r.duration_ms for r in run_results if r.ok]
-        failures = [r for r in run_results if not r.ok]
-        timeouts = [r for r in run_results if r.timed_out]
+        exec_good_a = [r.elapsed_ms for r in run_results if r.ok]
+        exec_fail_a = [r for r in run_results if not r.ok]
+        exec_timeout_a = [r for r in run_results if r.timed_out]
 
-        stats = percentile_summary_ms(ok_times)
+        stats = percentile_summary_ms(exec_good_a)
 
-        execution_status = "OK" if len(failures) == 0 else "FAILED"
+        execution_status = "OK" if len(exec_fail_a) == 0 else "FAILED"
         response_time_status = "OK"
         if stats and stats["p95_ms"] > effective_cfg.expected_ms:
             response_time_status = "FAILED"
@@ -828,9 +833,9 @@ def main() -> int:
         if stats:
             print(
                 f"METRICS:"
-                f"\n  success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)}"
-                f" tps={(len(ok_times)/(sum(r.duration_ms for r in run_results)/1000.0)) if sum(r.duration_ms for r in run_results)>0 else 0.0:.3f}"
-                f"\n  tot={sum(r.duration_ms for r in run_results):.3f}ms avg={stats['avg_ms']:.3f}ms"
+                f"\n  exec_success={len(exec_good_a)} exec_failed={len(exec_fail_a)} exec_timeouts={len(exec_timeout_a)}"
+                f" tps={(len(exec_good_a)/(sum(r.elapsed_ms for r in run_results)/1000.0)) if sum(r.elapsed_ms for r in run_results)>0 else 0.0:.3f}"
+                f"\n  tot={sum(r.elapsed_ms for r in run_results):.3f}ms avg={stats['avg_ms']:.3f}ms"
                 f" min={stats['min_ms']:.3f}ms max={stats['max_ms']:.3f}ms"
                 f"\n  p80={stats['p80_ms']:.3f}ms p90={stats['p90_ms']:.3f}ms"
                 f" p95={stats['p95_ms']:.3f}ms p99={stats['p99_ms']:.3f}ms"
@@ -838,15 +843,15 @@ def main() -> int:
         else:
             print(
                 f"    METRICS:"
-                f"\n      success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)}"
+                f"\n      exec_success={len(exec_good_a)} exec_failed={len(exec_fail_a)} exec_timeouts={len(exec_timeout_a)}"
             )
 
         print(
             f"  execution={execution_status} response={response_time_status} "
             f"(expected_p95<={effective_cfg.expected_ms:.3f}ms"
         )
-        if failures:
-            first = failures[0]
+        if exec_fail_a:
+            first = exec_fail_a[0]
             print(f"    First error: iter={first.iter_no} sample_row={first.sample_row} {first.error}")
 
     print(f"\n--------------------------------------------------------------------------------")
@@ -855,9 +860,9 @@ def main() -> int:
         writer = csv.writer(f)
         writer.writerow([
             "seq", "routine_name", "routine_type", "routine_desc",
-            "param_style", "capture_mode",
-            "expected_ms", "iterations", "warmup", "transaction", "timeout_ms", "shuffle",
-            "iter_no", "sample_row", "ok", "timed_out", "duration_ms",
+            "param_style", "capture_mode","transaction","shuffle",
+            "timeout_ms", "expected_ms", "warmup",  "iterations", 
+            "iter_no", "sample_row#", "exec_success", "exec_timed_out", "elapsed_ms",
             "rowcount", "value", "error",
         ])
 
@@ -870,17 +875,17 @@ def main() -> int:
                 r.routine_desc,
                 cfg.param_style if cfg else "",
                 cfg.capture_mode if cfg else "",
-                f"{cfg.expected_ms:.3f}" if cfg else "",
-                cfg.iterations if cfg else "",
-                cfg.warmup if cfg else "",
                 cfg.transaction if cfg else "",
-                cfg.timeout_ms if cfg else "",
                 cfg.shuffle if cfg else "",
+                cfg.timeout_ms if cfg else "",
+                f"{cfg.expected_ms:.3f}" if cfg else "",
+                cfg.warmup if cfg else "",
+                cfg.iterations if cfg else "",
                 r.iter_no,
                 r.sample_row,
                 r.ok,
                 r.timed_out,
-                f"{r.duration_ms:.6f}",
+                f"{r.elapsed_ms:.3f}",
                 r.rowcount,
                 r.value,
                 r.error,
@@ -894,11 +899,9 @@ def main() -> int:
             f,
             fieldnames=[
                 "seq", "routine_name", "routine_type", "routine_desc",
-                "param_style", "capture_mode",
-                "expected_ms", "iterations", "warmup", "transaction", "timeout_ms", "shuffle",
-                "total_iterations", "success", "failed", "timeouts",
-                "tps", "total_ms", 
-                "avg_ms", "min_ms", "max_ms", "p80_ms", "p90_ms", "p95_ms", "p99_ms",
+                "param_style", "capture_mode", "transaction","shuffle","timeout_ms", "expected_ms",
+                "warmup", "iterations", "exec_total", "exec_success", "exec_failed", "exec_timeouts",
+                "tps", "total_ms", "avg_ms", "min_ms", "max_ms", "p80_ms", "p90_ms", "p95_ms", "p99_ms",
                 "execution_pass", "response_pass", "overall_pass",
                 "first_error",
             ],
