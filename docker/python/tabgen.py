@@ -398,17 +398,18 @@ for t in range(1, table_count + 1):
         f"CREATE OR REPLACE PROCEDURE {table_schema}.p_{tabname}(INOUT p_refcur REFCURSOR,IN p_id bigint)\n"
         f"LANGUAGE plpgsql AS $$\n"
         f"BEGIN\n"
-        f"    OPEN p_refcur FOR SELECT * FROM {table_schema}.{tabname} LIMIT 5;\n"
+        f"    OPEN p_refcur FOR SELECT * FROM {table_schema}.{tabname} LIMIT (floor(random()*99 + 1)::int);\n"
         f"END;\n"
         f"$$; \n"
     )
+        #f"    SELECT pg_sleep(0.5 + (random() * 2.5));\n"
 
     # ---------------------------
     # CALL PROCEDURE
     # ---------------------------
     call_proc_output.append(
         f"BEGIN;\n"
-        f"CALL {table_schema}.p_{tabname} (p_refcur=>'c1', p_id=>(floor(random()*(100-1+1)+1)::int));\n"
+        f"CALL {table_schema}.p_{tabname} (p_refcur=>'c1', p_id=>(floor(random()*99 + 1)::int));\n"
         f"FETCH ALL FROM c1;\n"
         f"ROLLBACK;\n"
     )
@@ -426,10 +427,11 @@ for t in range(1, table_count + 1):
         f"RETURNS SETOF {table_schema}.{tabname}\n"
         f"LANGUAGE plpgsql AS $$\n"
         f"BEGIN\n"
-        f"    RETURN QUERY SELECT * FROM {table_schema}.{tabname} LIMIT 5;\n"
+        f"    RETURN QUERY SELECT * FROM {table_schema}.{tabname} LIMIT (floor(random()*99 + 1)::int);\n"
         f"END;\n"
         f"$$;\n"
     )
+        #f"    SELECT pg_sleep(0.5 + (random() * 2.5));\n"
 
     # ---------------------------
     # CALL FUNCTION
@@ -516,7 +518,5 @@ Path(drop_domain_file).write_text("\n".join(drop_domain_output))
 
 print("Completed:")
 
-# ################################################################################
-# END
 # ################################################################################
 
