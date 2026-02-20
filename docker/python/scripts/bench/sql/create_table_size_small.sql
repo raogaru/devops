@@ -1,31 +1,36 @@
 CREATE TABLE bench.t_small1 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 varchar(20)
-    ,c2 smallint
-    ,c3 real
-    ,c4 timestamp
-    ,c5 real
-    ,c6 jsonb
-    ,c7 bigint
+    ,c1 boolean
+    ,c2 date
+    ,c3 timestamp
+    ,c4 boolean
+    ,c5 jsonb
+    ,c6 uuid
+    ,c7 char(5)
+    ,c8 double precision
+    ,c9 bytea
 );
 
 CREATE TABLE bench.t_small2 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 bigint
-    ,c2 time
-    ,c3 bytea
-    ,c4 varchar(41)
-    ,c5 timestamp
-    ,c6 numeric(6,3)
-    ,c7 varchar(23)
+    ,c1 double precision
+    ,c2 boolean
+    ,c3 char(7)
+    ,c4 boolean
+    ,c5 numeric(8,0)
+    ,c6 real
+    ,c7 bigint
+    ,c8 jsonb
 );
 
 CREATE TABLE bench.t_small3 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 text
-    ,c2 timestamp
-    ,c3 real
-    ,c4 double precision
-    ,c5 boolean
-    ,c6 text
+    ,c1 uuid
+    ,c2 real
+    ,c3 numeric(4,3)
+    ,c4 bytea
+    ,c5 numeric(9,0)
+    ,c6 uuid
+    ,c7 integer
+    ,c8 timestamp
 );

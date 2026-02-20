@@ -64,6 +64,13 @@ docker exec -it c-python scripts/proccall.py			\
 --shuffle					
 #--debug
 
+# --------------------------------------------------------------------------------
+exec -it c-raodb /bin/bash
+su - postgres
+PGstart
+psql
+
+select min_exec_time, max_exec_time, mean_exec_time, calls, substr(query,1,50) sql_text from pg_stat_statements;
 
 # --------------------------------------------------------------------------------
 # END

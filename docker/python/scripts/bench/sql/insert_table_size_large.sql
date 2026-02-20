@@ -1,25 +1,23 @@
 INSERT INTO bench.t_large1 (c1,c2,c3,c4,c5)
 SELECT
-    gen_random_uuid(),
-    gen_random_uuid(),
-    jsonb_build_object(  'k', substr(md5(random()::text),1,4),   'v', floor(random()*100)),
-    floor(random()*2147483647)::int,
-    (random() > 0.5)
-FROM generate_series(1, 13739);
-
-INSERT INTO bench.t_large2 (c1,c2,c3,c4,c5)
-SELECT
-    gen_random_uuid(),
+    substr(md5(random()::text),1,30),
+    substr(md5(random()::text),1,(1+floor(random()*44)::int)),
+    floor(random()*32767)::smallint,
     (random() > 0.5),
+    substr(md5(random()::text),1,(1+floor(random()*21)::int))
+FROM generate_series(1, 14268);
+
+INSERT INTO bench.t_large2 (c1,c2,c3)
+SELECT
+    floor(random()*9223372036854775807)::bigint,
     (random()*10000)::double precision,
-    gen_random_uuid(),
-    substr(md5(random()::text),1,18)
-FROM generate_series(1, 11508);
+    TIMESTAMP '2000-01-01' + ((random()*365*50) * INTERVAL '1 day')
+FROM generate_series(1, 10354);
 
 INSERT INTO bench.t_large3 (c1,c2,c3,c4)
 SELECT
-    substr(md5(random()::text),1,30),
-    substr(md5(random()::text),1,30),
-    (random()*10000)::real,
-    floor(random()*9223372036854775807)::bigint
-FROM generate_series(1, 17193);
+    floor(random()*2147483647)::int,
+    substr(md5(random()::text),1,(1+floor(random()*4)::int)),
+    floor(random()*2147483647)::int,
+    DATE '1970-01-01' + (random()*20000)::int
+FROM generate_series(1, 11947);

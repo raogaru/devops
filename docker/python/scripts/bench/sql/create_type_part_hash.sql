@@ -1,29 +1,30 @@
 CREATE TYPE bench.typ_t_hash1 (
     id BIGSERIAL
     ,c1 integer
-    ,c2 char(2)
-    ,c3 integer
-    ,c4 numeric(12,0)
-    ,c5 smallint
-    ,c6 bytea
-    ,c7 timestamp
+    ,c2 real
+    ,c3 bigint
+    ,c4 integer
+    ,c5 varchar(37)
+    ,c6 numeric(8,0)
 );
 
 CREATE TYPE bench.typ_t_hash2 (
     id BIGSERIAL
     ,c1 integer
-    ,c2 varchar(42)
-    ,c3 date
-    ,c4 char(13)
-    ,c5 real
-    ,c6 varchar(18)
+    ,c2 smallint
+    ,c3 varchar(30)
+    ,c4 text
+    ,c5 text
+    ,c6 real
+    ,c7 uuid
+    ,c8 double precision
 );
 
 CREATE TYPE bench.typ_t_hash3 (
     id BIGSERIAL
     ,c1 integer
-    ,c2 integer
-    ,c3 text
-    ,c4 real
-    ,c5 timestamp
+    ,c2 double precision
+    ,c3 time
+    ,c4 smallint
+    ,c5 bigint
 );

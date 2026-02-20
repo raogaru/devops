@@ -1,10 +1,8 @@
 CREATE TABLE bench.t_range1 (
     id BIGSERIAL
     ,c1 date
-    ,c2 time
-    ,c3 integer
-    ,c4 jsonb
-    ,c5 numeric(6,1)
+    ,c2 smallint
+    ,c3 varchar(9)
     ,PRIMARY KEY (id, c1)
 ) PARTITION BY RANGE (c1);
 
@@ -20,8 +18,10 @@ CREATE TABLE bench.t_range1_px PARTITION OF bench.t_range1 FOR VALUES FROM ('204
 CREATE TABLE bench.t_range2 (
     id BIGSERIAL
     ,c1 integer
-    ,c2 bytea
-    ,c3 double precision
+    ,c2 jsonb
+    ,c3 text
+    ,c4 jsonb
+    ,c5 bytea
     ,PRIMARY KEY (id, c1)
 ) PARTITION BY RANGE (c1);
 
@@ -31,19 +31,16 @@ CREATE TABLE bench.t_range2_p2 PARTITION OF bench.t_range2 FOR VALUES FROM (2000
 CREATE TABLE bench.t_range2_p3 PARTITION OF bench.t_range2 FOR VALUES FROM (3000000) TO (4000000);
 CREATE TABLE bench.t_range2_p4 PARTITION OF bench.t_range2 FOR VALUES FROM (4000000) TO (5000000);
 CREATE TABLE bench.t_range2_p5 PARTITION OF bench.t_range2 FOR VALUES FROM (5000000) TO (6000000);
-CREATE TABLE bench.t_range2_p6 PARTITION OF bench.t_range2 FOR VALUES FROM (6000000) TO (7000000);
-CREATE TABLE bench.t_range2_p7 PARTITION OF bench.t_range2 FOR VALUES FROM (7000000) TO (8000000);
-CREATE TABLE bench.t_range2_p8 PARTITION OF bench.t_range2 FOR VALUES FROM (8000000) TO (9000000);
-CREATE TABLE bench.t_range2_px PARTITION OF bench.t_range2 FOR VALUES FROM (9000000) TO (2147483647);
+CREATE TABLE bench.t_range2_px PARTITION OF bench.t_range2 FOR VALUES FROM (6000000) TO (2147483647);
 
 CREATE TABLE bench.t_range3 (
     id BIGSERIAL
     ,c1 integer
-    ,c2 bigint
-    ,c3 uuid
-    ,c4 varchar(37)
-    ,c5 smallint
-    ,c6 real
+    ,c2 text
+    ,c3 double precision
+    ,c4 uuid
+    ,c5 text
+    ,c6 numeric(9,1)
     ,PRIMARY KEY (id, c1)
 ) PARTITION BY RANGE (c1);
 
@@ -53,4 +50,6 @@ CREATE TABLE bench.t_range3_p2 PARTITION OF bench.t_range3 FOR VALUES FROM (2000
 CREATE TABLE bench.t_range3_p3 PARTITION OF bench.t_range3 FOR VALUES FROM (3000000) TO (4000000);
 CREATE TABLE bench.t_range3_p4 PARTITION OF bench.t_range3 FOR VALUES FROM (4000000) TO (5000000);
 CREATE TABLE bench.t_range3_p5 PARTITION OF bench.t_range3 FOR VALUES FROM (5000000) TO (6000000);
-CREATE TABLE bench.t_range3_px PARTITION OF bench.t_range3 FOR VALUES FROM (6000000) TO (2147483647);
+CREATE TABLE bench.t_range3_p6 PARTITION OF bench.t_range3 FOR VALUES FROM (6000000) TO (7000000);
+CREATE TABLE bench.t_range3_p7 PARTITION OF bench.t_range3 FOR VALUES FROM (7000000) TO (8000000);
+CREATE TABLE bench.t_range3_px PARTITION OF bench.t_range3 FOR VALUES FROM (8000000) TO (2147483647);
