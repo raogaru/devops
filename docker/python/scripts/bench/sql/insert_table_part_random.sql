@@ -1,25 +1,26 @@
-INSERT INTO bench.t_random1 (c1,c2,c3,c4,c5)
+INSERT INTO bench.t_random1 (c1,c2,c3,c4,c5,c6)
 SELECT
     (random()*(10^(1-0)-1))::numeric(1,0),
-    substr(md5(random()::text),1,1),
-    (random() > 0.5),
-    substr(md5(random()::text),1,(1+floor(random()*21)::int)),
-    (random()*(10^(11-2)-1))::numeric(11,2)
-FROM generate_series(1, 1308);
+    (random()*(10^(10-0)-1))::numeric(10,0),
+    substr(md5(random()::text),1,30),
+    substr(md5(random()::text),1,14),
+    (random()*(10^(8-1)-1))::numeric(8,1),
+    substr(md5(random()::text),1,(1+floor(random()*22)::int))
+FROM generate_series(1, 2569);
 
-INSERT INTO bench.t_random2 (c1,c2,c3,c4,c5,c6)
+INSERT INTO bench.t_random2 (c1,c2,c3,c4)
 SELECT
     floor(random()*2147483647)::int,
-    (random() > 0.5),
-    TIME '00:00' + ((random()*86400)::int * INTERVAL '1 second'),
-    (random() > 0.5),
+    substr(md5(random()::text),1,30),
     gen_random_uuid(),
-    floor(random()*9223372036854775807)::bigint
-FROM generate_series(1, 1808);
+    decode(substring(md5(random()::text) for 8), 'hex')
+FROM generate_series(1, 1148);
 
-INSERT INTO bench.t_random3 (c1,c2,c3)
+INSERT INTO bench.t_random3 (c1,c2,c3,c4,c5)
 SELECT
-    DATE '1970-01-01' + (random()*20000)::int,
-    substr(md5(random()::text),1,(1+floor(random()*15)::int)),
-    jsonb_build_object(  'k', substr(md5(random()::text),1,4),   'v', floor(random()*100))
-FROM generate_series(1, 3459);
+    floor(random()*2147483647)::int,
+    (random()*10000)::real,
+    substr(md5(random()::text),1,30),
+    decode(substring(md5(random()::text) for 8), 'hex'),
+    substr(md5(random()::text),1,19)
+FROM generate_series(1, 4466);

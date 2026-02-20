@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-proccall.py — PostgreSQL procedure/function benchmark runner
+bench_proc_calls.py — PostgreSQL procedure/function benchmark runner
 """
 
 from __future__ import annotations
@@ -645,6 +645,10 @@ def summarize_proc(run_results: List[RunResult], cfg: EffectiveProcConfig) -> Di
     failures = [r for r in run_results if not r.ok]
     timeouts = [r for r in run_results if r.timed_out]
 
+    total_ms = sum(r.duration_ms for r in run_results)
+    # TPS: successful executions per second over total recorded time.
+    tps = (len(ok_times) / (total_ms / 1000.0)) if total_ms > 0 else 0.0
+
     stats = percentile_summary_ms(ok_times)  # {} if none
 
     execution_pass = (len(failures) == 0)
@@ -675,7 +679,9 @@ def summarize_proc(run_results: List[RunResult], cfg: EffectiveProcConfig) -> Di
         "success": len(ok_times),
         "failed": len(failures),
         "timeouts": len(timeouts),
+        "tps": f"{tps:.3f}",
 
+        "total_ms": f"{total_ms:.3f}",
         "avg_ms": fmt_stat("avg_ms"),
         "min_ms": fmt_stat("min_ms"),
         "max_ms": fmt_stat("max_ms"),
@@ -823,8 +829,11 @@ def main() -> int:
             print(
                 f"METRICS:"
                 f"\n  success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)}"
-                f"\n  avg={stats['avg_ms']:.6f}ms min={stats['min_ms']:.6f}ms max={stats['max_ms']:.6f}ms"
-                f"\n  p80={stats['p80_ms']:.6f}ms p90={stats['p90_ms']:.6f}ms p95={stats['p95_ms']:.6f}ms p99={stats['p99_ms']:.6f}ms"
+                f" tps={(len(ok_times)/(sum(r.duration_ms for r in run_results)/1000.0)) if sum(r.duration_ms for r in run_results)>0 else 0.0:.3f}"
+                f"\n  tot={sum(r.duration_ms for r in run_results):.3f}ms avg={stats['avg_ms']:.3f}ms"
+                f" min={stats['min_ms']:.3f}ms max={stats['max_ms']:.3f}ms"
+                f"\n  p80={stats['p80_ms']:.3f}ms p90={stats['p90_ms']:.3f}ms"
+                f" p95={stats['p95_ms']:.3f}ms p99={stats['p99_ms']:.3f}ms"
             )
         else:
             print(
@@ -832,7 +841,10 @@ def main() -> int:
                 f"\n      success={len(ok_times)} failed={len(failures)} timeouts={len(timeouts)}"
             )
 
-        print(f"  execution={execution_status} response={response_time_status} expected_p95<={effective_cfg.expected_ms:.3f}ms")
+        print(
+            f"  execution={execution_status} response={response_time_status} "
+            f"(expected_p95<={effective_cfg.expected_ms:.3f}ms"
+        )
         if failures:
             first = failures[0]
             print(f"    First error: iter={first.iter_no} sample_row={first.sample_row} {first.error}")
@@ -885,6 +897,7 @@ def main() -> int:
                 "param_style", "capture_mode",
                 "expected_ms", "iterations", "warmup", "transaction", "timeout_ms", "shuffle",
                 "total_iterations", "success", "failed", "timeouts",
+                "tps", "total_ms", 
                 "avg_ms", "min_ms", "max_ms", "p80_ms", "p90_ms", "p95_ms", "p99_ms",
                 "execution_pass", "response_pass", "overall_pass",
                 "first_error",

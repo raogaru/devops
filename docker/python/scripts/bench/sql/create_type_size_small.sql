@@ -1,36 +1,31 @@
 CREATE TYPE bench.typ_t_small1 (
     id BIGSERIAL
-    ,c1 boolean
-    ,c2 date
-    ,c3 timestamp
-    ,c4 boolean
-    ,c5 jsonb
-    ,c6 uuid
-    ,c7 char(5)
-    ,c8 double precision
-    ,c9 bytea
+    ,c1 text
+    ,c2 time
+    ,c3 real
+    ,c4 timestamp
+    ,c5 bigint
 );
 
 CREATE TYPE bench.typ_t_small2 (
     id BIGSERIAL
-    ,c1 double precision
-    ,c2 boolean
-    ,c3 char(7)
-    ,c4 boolean
-    ,c5 numeric(8,0)
-    ,c6 real
-    ,c7 bigint
-    ,c8 jsonb
+    ,c1 integer
+    ,c2 integer
+    ,c3 time
+    ,c4 integer
+    ,c5 bytea
+    ,c6 char(2)
+    ,c7 uuid
+    ,c8 date
+    ,c9 char(19)
+    ,c10 bigint
 );
 
 CREATE TYPE bench.typ_t_small3 (
     id BIGSERIAL
-    ,c1 uuid
-    ,c2 real
-    ,c3 numeric(4,3)
-    ,c4 bytea
-    ,c5 numeric(9,0)
-    ,c6 uuid
-    ,c7 integer
-    ,c8 timestamp
+    ,c1 time
+    ,c2 varchar(44)
+    ,c3 double precision
+    ,c4 char(10)
+    ,c5 timestamp
 );

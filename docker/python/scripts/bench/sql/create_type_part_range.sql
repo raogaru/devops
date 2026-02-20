@@ -1,25 +1,26 @@
 CREATE TYPE bench.typ_t_range1 (
     id BIGSERIAL
-    ,c1 date
-    ,c2 smallint
-    ,c3 varchar(9)
+    ,c1 integer
+    ,c2 double precision
+    ,c3 jsonb
+    ,c4 integer
+    ,c5 uuid
 );
 
 CREATE TYPE bench.typ_t_range2 (
     id BIGSERIAL
     ,c1 integer
-    ,c2 jsonb
-    ,c3 text
-    ,c4 jsonb
-    ,c5 bytea
+    ,c2 bytea
+    ,c3 real
+    ,c4 smallint
+    ,c5 text
 );
 
 CREATE TYPE bench.typ_t_range3 (
     id BIGSERIAL
-    ,c1 integer
-    ,c2 text
-    ,c3 double precision
-    ,c4 uuid
-    ,c5 text
-    ,c6 numeric(9,1)
+    ,c1 date
+    ,c2 bigint
+    ,c3 real
+    ,c4 smallint
+    ,c5 timestamp
 );

@@ -1,27 +1,35 @@
 CREATE TYPE bench.typ_t_list1 (
     id BIGSERIAL
     ,c1 numeric(1,0)
-    ,c2 jsonb
-    ,c3 text
-    ,c4 bigint
+    ,c2 text
+    ,c3 time
+    ,c4 bytea
+    ,c5 timestamp
+    ,c6 real
+    ,c7 char(7)
+    ,c8 char(12)
 );
 
 CREATE TYPE bench.typ_t_list2 (
     id BIGSERIAL
     ,c1 numeric(1,0)
-    ,c2 bytea
-    ,c3 real
-    ,c4 double precision
+    ,c2 uuid
+    ,c3 time
+    ,c4 date
     ,c5 text
+    ,c6 date
+    ,c7 varchar(34)
+    ,c8 varchar(18)
 );
 
 CREATE TYPE bench.typ_t_list3 (
     id BIGSERIAL
     ,c1 numeric(1,0)
-    ,c2 date
-    ,c3 uuid
-    ,c4 varchar(30)
-    ,c5 varchar(47)
-    ,c6 integer
-    ,c7 bytea
+    ,c2 time
+    ,c3 char(13)
+    ,c4 double precision
+    ,c5 time
+    ,c6 double precision
+    ,c7 integer
+    ,c8 numeric(8,1)
 );
