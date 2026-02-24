@@ -28,6 +28,7 @@ GREEN = "\033[32m"
 YELLOW = "\033[33m"
 BLUE = "\033[34m"
 RESET = "\033[0m"
+NULL_TOKENS = {"", "null", "NULL", "none", "None", "\\N"}
 
 # =============================================================================
 # Data model
@@ -102,8 +103,6 @@ class RunResult:
 # =============================================================================
 # Parsing / casting helpers
 # =============================================================================
-
-NULL_TOKENS = {"", "null", "NULL", "none", "None", "\\N"}
 
 
 # --------------------------------------------------------------------------------
@@ -527,12 +526,22 @@ def run_benchmark_for_one_routine(
 
                             # find refcursor parameter
                             if cfg.routine_kind == "procedure" and cfg.capture_mode == "vector":
-                                cursor_param_index = next( (i for i, p in enumerate(cfg.parameters) if p.name == "p_refcur"), None)
-                                if cursor_param_index is None:
-                                    raise ValueError(f"{cfg.routine_name}: refcursor param named 'p_refcur' needed for capture_mode=vecto")
 
-                                # Pass cursor name so the procedure opens that cursor in THIS transaction
-                                param_values[cursor_param_index] = cursor_name
+                                # identify param_index with parameter name = p_refcur
+                                #cursor_param_index = next( (i for i, p in enumerate(cfg.parameters) if p.name == "p_refcur"), None)
+                                #if cursor_param_index is None:
+                                #    raise ValueError(f"{cfg.routine_name}: refcursor param named 'p_refcur' needed for capture_mode=vecto")
+                                #param_values[cursor_param_index] = cursor_name
+
+                                # identify param_index with parameter type = refcursor
+                                cursor_param_index = next( (i for i, p in enumerate(cfg.parameters) if p.type and "refcursor" in p.type.lower()), None)
+                                if cursor_param_index is None:
+                                    raise ValueError(f"{cfg.routine_name}: capture_mode=vector requires refcursor parameter")
+                                cursor_name = str(param_values[cursor_param_index])
+
+                                # Validate safe SQL identifier (prevent injection)
+                                if not re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", cursor_name):
+                                    raise ValueError( f"{cfg.routine_name}: invalid cursor name '{cursor_name}' " f"(must match [A-Za-z_][A-Za-z0-9_]*)")
 
                                 if debug:
                                     print(f"           execute: {call_sql}({param_values})")
