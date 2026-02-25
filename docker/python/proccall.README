@@ -8,6 +8,11 @@
 # manually prepare test data for executing procedure calls
 # connect to db and execute procedure calls with test data using bench_proc_calls.py
 
+TODO:
+1. Add per-iteration memory usage tracking
+2. Add live progress display (like we discussed earlier — docker-style collapse)
+3. Add concurrency mode (N threads per routine)
+
 
 vLINE="################################################################################"
 
@@ -35,6 +40,8 @@ docker exec -it c-python jobrun.py scripts/bench/yaml/jobrun_setup.yaml
 
 docker exec -it c-python scripts/proccall_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench  --kinds both --output scripts/proccall.yaml
 
+docker exec -it c-python scripts/proccall_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench  --include '%hash%' --kinds both --output scripts/proccall.yaml
+
 #docker exec -it c-python proccall_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench --include "p_%" --kinds procedures --output scripts/p.yaml
 
 #docker exec -it c-python proccall_gencfg.py --dsn "host=c-raodb port=5432 dbname=postgres user=postgres password=postgres" --schema bench --include "f_%" --kinds functions --output scripts/f.yaml
@@ -46,24 +53,23 @@ docker exec -it c-python scripts/proccall_gencfg.py --dsn "host=c-raodb port=543
 # 3. Connect to database and call procedures/functions
 # 4. produce output file with test results
 
-docker exec -it c-python proccall.py --config c.yaml --samples-dir scripts/bench/proc_call_data --iterations 3 --warmup 0 --output p.out  --verbose-c --expected-ms 500 --verbose-p --capture-mode vector
-
-
-docker exec -it c-python scripts/proccall.py		\
---config scripts/proccall.yaml				\
---samples-dir scripts/bench/proc_call_data	\
---warmup 0					\
---iterations 10				\
---transaction rollback				\
---expected-ms 500				\
---timeout-ms 10					\
---capture-mode vector				\
---details-output scripts/details.csv		\
---summary-output scripts/summary.csv		\
---verbose-params				\
---verbose-config				\
---shuffle					
-#--debug
+docker exec -it c-python scripts/proccall.py            \
+--config scripts/proccall.yaml                          \
+--samples-dir scripts/bench/proc_call_data      \
+--warmup 0                                      \
+--iterations 10                         \
+--transaction rollback                          \
+--expected-ms 500                               \
+--timeout-ms 10                                 \
+--capture-mode vector                           \
+--details-output scripts/details.csv            \
+--summary-output scripts/summary.csv            \
+--data-output scripts/ooutput			\
+--verbose-params                                \
+--verbose-config                                \
+--verbose-sample                                \
+--shuffle \
+--debug
 
 # --------------------------------------------------------------------------------
 exec -it c-raodb /bin/bash

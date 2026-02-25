@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 RUN apk add --no-cache libpq 
 
 RUN python -m pip install --upgrade pip \
- && python -m pip install psycopg2-binary pyyaml psycopg[binary] psycopg_pool
+ && python -m pip install psycopg2-binary pyyaml psycopg[binary] psycopg_pool rich
 
 RUN mkdir -p /app/bin
 RUN mkdir -p /app/scripts
