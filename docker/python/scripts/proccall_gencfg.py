@@ -202,8 +202,8 @@ def to_yaml_config(dsn: str, routines: List[RoutineInfo], param_style: str) -> D
                 "expected_ms": random.randint(5,20)*100, # ms
                 "timeout_ms": 2000,                      # ms
                 "transaction": random.choice(['commit','rollback']),   # rollback (default) or commit
-                "warmup": 1,                             # 1
-                "iterations": random.randint(2,20)*5,    # between 5 and 100 in multiples of 5
+                "warmups": 1,                            # 1
+                "executions": random.randint(2,20)*5,    # between 5 and 100 in multiples of 5
                 "param_style": param_style,
                 "parameters": [{"name": p.name, "type": p.pg_type} for p in r.params],
             }

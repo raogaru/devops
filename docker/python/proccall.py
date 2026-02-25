@@ -54,8 +54,8 @@ class RoutineDefinition:
     # Optional per-routine overrides (None -> use CLI defaults)
     param_style: Optional[str] = None                # "named" | "positional"
     capture_mode: Optional[str] = None               # "none" | "vector" | "scalar"
-    iterations: Optional[int] = None		     # integer - number of calls to be made
-    warmup: Optional[int] = None		     # default 0
+    executions: Optional[int] = None		     # integer - number of calls to be made
+    warmups: Optional[int] = None		     # default 0
     shuffle: Optional[bool] = None                   # shuffle sample data. default false
     transaction: Optional[str] = None                # "rollback" | "commit"
     expected_ms: Optional[float] = None	             # integer (milli seconds)
@@ -74,8 +74,8 @@ class EffectiveRoutineConfig:
     param_style: str
     capture_mode: str
     expected_ms: float
-    iterations: int
-    warmup: int
+    executions: int
+    warmups: int
     shuffle: bool
     seed: int
     transaction: str
@@ -83,14 +83,14 @@ class EffectiveRoutineConfig:
 
 
 # --------------------------------------------------------------------------------
-# One recorded (non-warmup) execution of a routine.
+# One recorded (non-warmups) execution of a routine.
 @dataclass
 class RunResult:
     routine_seq: int
     routine_name: str
     routine_kind: str
     routine_desc: str
-    iter_no: int
+    exec_num: int
     sample_row: int
     exec_good: bool
     elapsed_ms: float
@@ -174,7 +174,8 @@ def build_call_sql(
     routine_name: str, 
     routine_kind: str, 
     param_style: str, 
-    parameters: List[RoutineParameters]) -> str:
+    parameters: List[RoutineParameters]
+    ) -> str:
 
     kind_l = (routine_kind or "").lower()
     if kind_l not in {"procedure", "function"}:
@@ -208,10 +209,21 @@ def consume_one_row_if_present(cur: psycopg.Cursor) -> None:
 
 # --------------------------------------------------------------------------------
 # Fetch all rows and return the number of rows fetched.
-def fetch_all_rowcount(cur: psycopg.Cursor) -> int:
+def fetch_all_rows(
+    cur: psycopg.Cursor,
+    o_file: str
+) -> int:
     rows = cur.fetchall()
-    return len(rows) if rows else 0
+    colnames = [d[0] for d in cur.description] if cur.description else []
+    if o_file:
+        print(f"           fetched data file: {o_file}")
+        with open(o_file, "w", newline="", encoding="utf-8") as f:
+            dw = csv.DictWriter(f, fieldnames=colnames, extrasaction="ignore")
+            dw.writeheader()
+            for r in rows:
+                dw.writerow(dict(r))
 
+    return len(rows) if rows else 0
 
 # --------------------------------------------------------------------------------
 # Read first cell of first row as a scalar return (stringified)
@@ -352,8 +364,8 @@ def load_yaml_config(
                 param_style=param_style,
                 capture_mode=capture_mode,
                 expected_ms=(float(current_routine["expected_ms"]) if "expected_ms" in current_routine else None),
-                iterations=(int(current_routine["iterations"]) if "iterations" in current_routine else None),
-                warmup=(int(current_routine["warmup"]) if "warmup" in current_routine else None),
+                executions=(int(current_routine["executions"]) if "executions" in current_routine else None),
+                warmups=(int(current_routine["warmups"]) if "warmups" in current_routine else None),
                 shuffle=(bool(current_routine["shuffle"]) if "shuffle" in current_routine else None),
                 transaction=transaction,
                 timeout_ms=(float(current_routine["timeout_ms"]) if "timeout_ms" in current_routine else None),
@@ -425,8 +437,8 @@ def resolve_effective_config(
     rd: RoutineDefinition,
     *,
     routine_seq: int,
-    cli_args_iterations: int,
-    cli_args_warmup: int,
+    cli_args_executions: int,
+    cli_args_warmups: int,
     cli_args_shuffle: bool,
     cli_args_param_style: str,
     cli_args_capture_mode: str,
@@ -456,8 +468,8 @@ def resolve_effective_config(
         param_style=param_style,
         capture_mode=capture_mode,
         expected_ms=float(rd.expected_ms if rd.expected_ms is not None else cli_args_expected_ms),
-        iterations=int(rd.iterations if rd.iterations is not None else cli_args_iterations),
-        warmup=int(rd.warmup if rd.warmup is not None else cli_args_warmup),
+        executions=int(rd.executions if rd.executions is not None else cli_args_executions),
+        warmups=int(rd.warmups if rd.warmups is not None else cli_args_warmups),
         shuffle=bool(rd.shuffle if rd.shuffle is not None else cli_args_shuffle),
         seed=int(cli_args_seed),
         transaction=transaction,
@@ -465,7 +477,7 @@ def resolve_effective_config(
     )
 
 # --------------------------------------------------------------------------------
-# Execute one procedure/function for warmup+iterations calls.
+# Execute one procedure/function for warmups+executions calls.
 def run_benchmark_for_one_routine(
     *,
     dsn: str,
@@ -473,6 +485,7 @@ def run_benchmark_for_one_routine(
     sample_rows: List[Dict[str, str]],
     verbose_params: bool,
     debug: bool,
+    fetched_data_output_dir: Optional[str] = None,
 ) -> List[RunResult]:
     call_sql = build_call_sql(cfg.routine_name, cfg.routine_kind, cfg.param_style, cfg.parameters)
     if debug:
@@ -487,18 +500,19 @@ def run_benchmark_for_one_routine(
     conn = open_connection(dsn)
 
     try:
-        total_calls = cfg.warmup + cfg.iterations
-
+        total_calls = cfg.warmups + cfg.executions
+        exec_num = 0
         for call_no in range(1, total_calls + 1):
+            exec_num=call_no - cfg.warmups
             sample_idx = sample_indexes[(call_no - 1) % len(sample_indexes)]
             sample_row = sample_rows[sample_idx]
             param_values = build_param_values_from_sample_row(cfg.parameters, sample_row)
 
             if verbose_params:
-                if call_no > cfg.warmup:
-                    print(f"  call#={call_no}  sample#={sample_idx} param_values={param_values}")
+                if exec_num > 0:
+                    print(f"  exec# {exec_num}  sample#={sample_idx} param_values={param_values}")
                 else:
-                    print(f"  warm#={call_no}  sample#={sample_idx} param_values={param_values}")
+                    print(f"  warm# {call_no}  sample#={sample_idx} param_values={param_values}")
 
             # initialize for each call
             exec_good = True
@@ -550,10 +564,17 @@ def run_benchmark_for_one_routine(
                                 fetch_stmt = pg_sql.SQL("FETCH ALL FROM {}").format(pg_sql.Identifier(cursor_name))
                                 if debug:
                                     print(f"           execute: FETCH ALL FROM {cursor_name}")
+
                                 cur.execute(fetch_stmt)
-                                fetched_rowcount = fetch_all_rowcount(cur)
+
+                                # NEW: write CSV if data-output cli argument enabled
+                                fetched_data_output_file_path = None
+                                if fetched_data_output_dir and exec_num > 0:
+                                    fetched_data_output_file_path = os.path.join(fetched_data_output_dir, f"{cfg.routine_name}.{exec_num}.csv")
+
+                                fetched_rowcount = fetch_all_rows(cur,fetched_data_output_file_path)
                                 if debug:
-                                    print(f"           fetched_rowcount={fetched_rowcount}")
+                                    print(f"           fetched row count: {fetched_rowcount}")
 
                                 #Optional CLOSE (end of transaction will close anyway)
                                 try:
@@ -576,9 +597,15 @@ def run_benchmark_for_one_routine(
                                 if debug:
                                     print(f"           execute: ${call_sql}({param_values})")
                                 cur.execute(call_sql, param_values)
-                                fetched_rowcount = fetch_all_rowcount(cur)
+
+                                # NEW: write CSV if data-output cli argument enabled
+                                fetched_data_output_file_path = None
+                                if fetched_data_output_dir and exec_num > 0:
+                                    fetched_data_output_file_path = os.path.join(fetched_data_output_dir, f"{cfg.routine_name}.{exec_num}.csv")
+
+                                fetched_rowcount = fetch_all_rows(cur,fetched_data_output_file_path)
                                 if debug:
-                                    print(f"           fetched_rowcount={fetched_rowcount}")
+                                    print(f"           fetched row count: {fetched_rowcount}")
 
                             elif cfg.routine_kind == "function" and cfg.capture_mode == "scalar":
                                 if debug:
@@ -632,17 +659,17 @@ def run_benchmark_for_one_routine(
             elapsed_ms = (exec_end_time - exec_start_time) * 1000.0
 
             if debug:
-                print(f"           DEBUG: exec_good={exec_good} timed_out={timed_out} elapsed_ms={elapsed_ms} rowcount={fetched_rowcount}")
+                print(f"           exec_good={exec_good} timed_out={timed_out} elapsed_ms={elapsed_ms} rowcount={fetched_rowcount}")
 
 
-            if call_no > cfg.warmup:
+            if call_no > cfg.warmups:
                 run_results_array.append(
                     RunResult(
                         routine_seq=cfg.routine_seq,
                         routine_name=cfg.routine_name,
                         routine_kind=cfg.routine_kind,
                         routine_desc=cfg.routine_desc,
-                        iter_no=call_no - cfg.warmup,
+                        exec_num=call_no - cfg.warmups,
                         sample_row=sample_idx,
                         exec_good=exec_good,
                         elapsed_ms=elapsed_ms,
@@ -698,8 +725,8 @@ def summarize_routine_results(
         "shuffle": cfg.shuffle,
         "timeout_ms": cfg.timeout_ms,
         "expected_ms": f"{cfg.expected_ms:.3f}",
-        "warmup": cfg.warmup,
-        "iterations": cfg.iterations,
+        "warmups": cfg.warmups,
+        "executions": cfg.executions,
 
         "exec_total": len(run_results),
         "exec_success": len(exec_good_a),
@@ -740,11 +767,14 @@ def build_cli_arg_parser() -> argparse.ArgumentParser:
     ap.add_argument("--summary-output", default="benchmark_summary.csv",
                     help="Output CSV with one-row-per-proc summary metrics")
 
-    ap.add_argument("--iterations", type=int, default=10, 
-                    help="Default iterations per routine if not configured per routine in YAML")
+    ap.add_argument("--data-output", default=None,
+                     help="Directory where fetched cursor data will be written as CSV files in the format <routine-name>.<iteration-number>.csv")
 
-    ap.add_argument("--warmup", type=int, default=1, 
-                    help="Default warmup calls per routine if not configured per routine in YAML")
+    ap.add_argument("--executions", type=int, default=10, 
+                    help="Default executions per routine if not configured per routine in YAML")
+
+    ap.add_argument("--warmups", type=int, default=1, 
+                    help="Default warmups calls per routine if not configured per routine in YAML")
 
     ap.add_argument("--shuffle", action="store_true", 
                     help="Default 'shuffle sample data if not configured per routine in YAML")
@@ -824,6 +854,10 @@ def main() -> int:
         print(f"  details output: {cli_args.details_output}")
         print(f"  summary output: {cli_args.summary_output}")
 
+    if cli_args.data_output:
+        os.makedirs(cli_args.data_output, exist_ok=True)
+        print(f"  Fetched Data: {cli_args.data_output}")
+
     if cli_args.param_style:
         print(f"  parameter style: {cli_args.param_style}")
 
@@ -833,11 +867,11 @@ def main() -> int:
     if cli_args.transaction:
         print(f"  transaction: {cli_args.transaction}")
 
-    if cli_args.iterations:
-        print(f"  iterations: {cli_args.iterations}")
+    if cli_args.executions:
+        print(f"  executions: {cli_args.executions}")
 
-    if cli_args.warmup:
-        print(f"  warmup: {cli_args.warmup}")
+    if cli_args.warmups:
+        print(f"  warmups: {cli_args.warmups}")
 
     if cli_args.shuffle:
         print(f"  shuffle samples: {cli_args.shuffle}")
@@ -852,6 +886,7 @@ def main() -> int:
         print(f"  expected_ms: {cli_args.expected_ms}")
 
     dsn, routine_definitions = load_yaml_config(cli_args.config, cli_args.verbose_config)
+    routines_count = len(routine_definitions)
 
     all_results: List[RunResult] = []
     per_routine_results: Dict[Tuple[str, str], List[RunResult]] = {}
@@ -864,8 +899,8 @@ def main() -> int:
         effective_cfg = resolve_effective_config(
             routine_def,
             routine_seq=routine_seq,
-            cli_args_iterations=cli_args.iterations,
-            cli_args_warmup=cli_args.warmup,
+            cli_args_executions=cli_args.executions,
+            cli_args_warmups=cli_args.warmups,
             cli_args_shuffle=cli_args.shuffle,
             cli_args_param_style=cli_args.param_style,
             cli_args_capture_mode=cli_args.capture_mode,
@@ -877,7 +912,7 @@ def main() -> int:
         effective_cfg_by_name_kind[(effective_cfg.routine_name, effective_cfg.routine_kind)] = effective_cfg
 
         print(f"\n================================================================================")
-        print(f"==> [{effective_cfg.routine_seq}] Running {effective_cfg.routine_kind.upper()} {effective_cfg.routine_name}")
+        print(f"==> [{effective_cfg.routine_seq} of {routines_count}] Running {effective_cfg.routine_kind.upper()} {effective_cfg.routine_name}")
 
         routine_hash = random_string = ''.join(random.choices(string.ascii_letters + string.digits, k=30)) 
 
@@ -890,8 +925,8 @@ def main() -> int:
             print(f"  routine_hash={routine_hash}")
             print(f"  param_style={effective_cfg.param_style}")
             print(f"  capture_mode={effective_cfg.capture_mode}")
-            print(f"  iterations={effective_cfg.iterations}")
-            print(f"  warmup={effective_cfg.warmup}")
+            print(f"  executions={effective_cfg.executions}")
+            print(f"  warmups={effective_cfg.warmups}")
             print(f"  shuffle={effective_cfg.shuffle}")
             print(f"  seed={effective_cfg.seed}")
             print(f"  transaction={effective_cfg.transaction}")
@@ -910,9 +945,10 @@ def main() -> int:
             sample_rows=sample_rows,
             verbose_params=cli_args.verbose_params or cli_args.debug,
             debug=cli_args.debug,
+            fetched_data_output_dir=cli_args.data_output,
         )
 
-        print(f"  end time:", datetime.now())
+        print(f"  end time:  ", datetime.now())
 
         per_routine_results[(effective_cfg.routine_name, effective_cfg.routine_kind)] = run_results
         all_results.extend(run_results)
@@ -944,7 +980,7 @@ def main() -> int:
             )
         else:
             print(
-                f"    METRICS:"
+                f"METRICS:"
                 f"\n      exec_success={len(exec_good_a)} exec_failed={len(exec_fail_a)} exec_timeouts={len(exec_timeout_a)}"
             )
 
@@ -955,7 +991,7 @@ def main() -> int:
         )
         if exec_fail_a:
             first = exec_fail_a[0]
-            print(f"    First error: iter={first.iter_no} sample_row={first.sample_row} {first.error_text}")
+            print(f"    First error: iter={first.exec_num} sample_row={first.sample_row} {first.error_text}")
 
     print(f"\n================================================================================")
     print(f"OUTPUT:")
@@ -965,8 +1001,8 @@ def main() -> int:
         writer.writerow([
             "routine_seq", "routine_name", "routine_kind", "routine_desc",
             "param_style", "capture_mode","transaction","shuffle",
-            "timeout_ms", "expected_ms", "warmup",  "iterations", 
-            "iter_no", "sample_row#", "exec_success", "exec_timed_out", "elapsed_ms",
+            "timeout_ms", "expected_ms", "warmups",  "executions", 
+            "exec_num", "sample_row#", "exec_success", "exec_timed_out", "elapsed_ms",
             "rowcount", "value", "error_text",
         ])
 
@@ -983,9 +1019,9 @@ def main() -> int:
                 cfg.shuffle if cfg else "",
                 cfg.timeout_ms if cfg else "",
                 f"{cfg.expected_ms:.3f}" if cfg else "",
-                cfg.warmup if cfg else "",
-                cfg.iterations if cfg else "",
-                r.iter_no,
+                cfg.warmups if cfg else "",
+                cfg.executions if cfg else "",
+                r.exec_num,
                 r.sample_row,
                 r.exec_good,
                 r.timed_out,
@@ -1004,7 +1040,7 @@ def main() -> int:
             fieldnames=[
                 "routine_seq", "routine_name", "routine_kind", "routine_desc",
                 "param_style", "capture_mode", "transaction","shuffle","timeout_ms", "expected_ms",
-                "warmup", "iterations", "exec_total", "exec_success", "exec_failed", "exec_timeouts",
+                "warmups", "executions", "exec_total", "exec_success", "exec_failed", "exec_timeouts",
                 "tps", "total_ms", "avg_ms", "min_ms", "max_ms", "p80_ms", "p90_ms", "p95_ms", "p99_ms",
                 "execution_pass", "response_pass", "overall_pass",
                 "first_error",
@@ -1027,3 +1063,4 @@ if __name__ == "__main__":
 # --------------------------------------------------------------------------------
 # EOF
 # --------------------------------------------------------------------------------
+#!/usr/bin/env python3
