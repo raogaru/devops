@@ -53,23 +53,24 @@ docker exec -it c-python scripts/proccall_gencfg.py --dsn "host=c-raodb port=543
 # 3. Connect to database and call procedures/functions
 # 4. produce output file with test results
 
+
 docker exec -it c-python scripts/proccall.py            \
 --config scripts/proccall.yaml                          \
---samples-dir scripts/bench/proc_call_data      \
---warmup 0                                      \
---iterations 10                         \
+--sample-data-dir scripts/bench/proccall_data      \
+--fetched-data-dir scripts/o		\
+--details-output scripts/details.csv            \
+--summary-output scripts/summary.csv            \
+--warmups 0                                      \
+--executions 10                         \
 --transaction rollback                          \
 --expected-ms 500                               \
 --timeout-ms 10                                 \
---capture-mode vector                           \
---details-output scripts/details.csv            \
---summary-output scripts/summary.csv            \
---data-output scripts/ooutput			\
+--fetch-mode vector                           \
 --verbose-params                                \
---verbose-config                                \
 --verbose-sample                                \
---shuffle \
---debug
+--verbose-config                                \
+--debug 					\
+--shuffle 
 
 # --------------------------------------------------------------------------------
 exec -it c-raodb /bin/bash
