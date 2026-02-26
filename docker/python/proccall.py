@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/local/bin/python3
+#/usr/bin/env python3 -m pdb
 # proccall.py — PostgreSQL procedure/function benchmark runner
 
 from __future__ import annotations
@@ -47,7 +48,7 @@ class RoutineParameters:
 @dataclass
 class RoutineDefinition:
     routine_name: str
-    routine_kind: str  # "procedure" | "function"
+    routine_kind: str  # "procedure" | "function" | "sqlfile"
     routine_desc: str
     parameters: List[RoutineParameters]
 
@@ -160,6 +161,19 @@ def build_param_values_from_sample_row(parameters: List[RoutineParameters], samp
     return param_values_from_csv
 
 
+
+
+# --------------------------------------------------------------------------------
+# Build a dict of parameters (name -> value) from a CSV sample row.
+# Used for SQL file routines with named placeholders (e.g. :id, ${id}, {{id}}).
+def build_param_dict_from_sample_row(parameters: List[RoutineParameters], sample_row: Dict[str, str]) -> Dict[str, Any]:
+    param_dict: Dict[str, Any] = {}
+    for p in parameters:
+        if p.name not in sample_row:
+            raise ValueError(f"Sample row missing required column: {p.name}")
+        param_dict[p.name] = parse_csv_literal(sample_row[p.name], p.type)
+    return param_dict
+
 # --------------------------------------------------------------------------------
 # Open a new psycopg connection with dict_row cursor factory by default.
 def open_connection(dsn: str) -> psycopg.Connection:
@@ -197,6 +211,55 @@ def build_call_sql(
         return f"CALL {routine_name}({params_for_sql})"
     else:
         return f"SELECT * FROM {routine_name}({params_for_sql})"
+
+
+# --------------------------------------------------------------------------------
+# SQL file support
+# - routine_kind: sqlfile
+# - routine_name: <file.sql> (relative to --sql-dir)
+# Variable placeholders supported inside .sql files are    ${var}    :var     {{var}}
+#
+# These are converted to psycopg named placeholders: %(var)s
+_SQL_VAR_COLON_RE = re.compile(r"(?<!:):([A-Za-z_][A-Za-z0-9_]*)")  # avoid :: casts
+_SQL_VAR_DOLLAR_RE = re.compile(r"\$\{([A-Za-z_][A-Za-z0-9_]*)\}")
+_SQL_VAR_BRACES_RE = re.compile(r"\{\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*\}\}")
+
+def safe_join(base_dir: str, rel_path: str) -> str:
+    base_abs = os.path.abspath(base_dir)
+    cand_abs = os.path.abspath(os.path.join(base_abs, rel_path))
+    if not (cand_abs == base_abs or cand_abs.startswith(base_abs + os.sep)):
+        raise ValueError(f"Unsafe path outside --sql-dir: {rel_path}")
+    return cand_abs
+
+def load_sqlfile_text(sql_dir: str, sqlfile_name: str) -> str:
+    if not sql_dir:
+        raise ValueError("--sql-dir is required when using routine_kind=sqlfile")
+    sql_path = safe_join(sql_dir, sqlfile_name+".sql")
+    if not os.path.exists(sql_path):
+        raise FileNotFoundError(f"SQL file not found: {sql_path}")
+    with open(sql_path, "r", encoding="utf-8") as f:
+        return f.read()
+
+def convert_sql_placeholders_to_psycopg_named(sql_text: str) -> Tuple[str, List[str]]:
+    # Replace ${var} and {{var}} first (simple)
+    vars_found: List[str] = []
+    def _add(name: str) -> str:
+        vars_found.append(name)
+        return f"%({name})s"
+
+    sql_text = _SQL_VAR_DOLLAR_RE.sub(lambda m: _add(m.group(1)), sql_text)
+    sql_text = _SQL_VAR_BRACES_RE.sub(lambda m: _add(m.group(1)), sql_text)
+    sql_text = _SQL_VAR_COLON_RE.sub(lambda m: _add(m.group(1)), sql_text)
+
+    # de-dup in discovery order
+    seen=set()
+    uniq=[]
+    for v in vars_found:
+        if v not in seen:
+            seen.add(v)
+            uniq.append(v)
+    return sql_text, uniq
+
 
 
 # --------------------------------------------------------------------------------
@@ -335,8 +398,8 @@ def load_yaml_config(
 
         routine_kind = (current_routine.get("routine_kind") or "procedure")
         routine_kind = str(routine_kind).lower()
-        if routine_kind not in {"procedure", "function"}:
-            raise ValueError(f"{routine_name}: invalid routine_kind={routine_kind} (must be procedure|function)")
+        if routine_kind not in {"procedure", "function", "sqlfile"}:
+            raise ValueError(f"{routine_name}: invalid routine_kind={routine_kind} (must be procedure|function|sqlfile)")
         routine_desc = str(current_routine.get("routine_desc") or "").strip()
 
         parameters = [RoutineParameters(p["name"], p["type"]) for p in current_routine.get("parameters", [])]
@@ -400,6 +463,11 @@ def load_sample_rows(
         print(f"  sample file: {csv_path}")
 
     if not os.path.exists(csv_path):
+        # Allow routines with no parameters (e.g. static sqlfile) to run without a sample CSV.
+        if not parameters:
+            if p_verbose_sample:
+                print(f"  sample file: {csv_path} (not found; using single empty sample row)")
+            return [{}]
         raise FileNotFoundError(f"Sample file {csv_path} not found for {object_name} ")
 
     sample_rows: List[Dict[str, str]] = []
@@ -485,11 +553,28 @@ def run_benchmark_for_one_routine(
     sample_rows: List[Dict[str, str]],
     verbose_params: bool,
     debug: bool,
+    sql_dir: Optional[str] = None,
     fdo_dir: Optional[str] = None,
 ) -> List[RunResult]:
-    call_sql = build_call_sql(cfg.routine_name, cfg.routine_kind, cfg.param_style, cfg.parameters)
-    if debug:
-        print(f"  SQL={call_sql}")
+    call_sql: Optional[str] = None
+    sql_text_transformed: Optional[str] = None
+    sql_vars: List[str] = []
+
+    if cfg.routine_kind in {"procedure", "function"}:
+        call_sql = build_call_sql(cfg.routine_name, cfg.routine_kind, cfg.param_style, cfg.parameters)
+        if debug:
+            print(f"  SQL={call_sql}")
+    elif cfg.routine_kind == "sqlfile":
+        raw_sql = load_sqlfile_text(sql_dir, cfg.routine_name)
+        sql_text_transformed, sql_vars = convert_sql_placeholders_to_psycopg_named(raw_sql)
+        if debug:
+            sql_file = os.path.join(sql_dir or "", cfg.routine_name+".sql")
+            print(f"  sql_file: {sql_file}")
+            print(f"  sql_vars: {sql_vars}")
+            print(f"  sql_text original: {raw_sql}")
+            print(f"  sql_text transformed: {sql_text_transformed}")
+    else:
+        raise ValueError(f"{cfg.routine_name}: invalid routine_kind={cfg.routine_kind}")
 
     rng = random.Random(cfg.seed)
     sample_indexes = list(range(len(sample_rows)))
@@ -507,6 +592,7 @@ def run_benchmark_for_one_routine(
             sample_idx = sample_indexes[(call_no - 1) % len(sample_indexes)]
             sample_row = sample_rows[sample_idx]
             param_values = build_param_values_from_sample_row(cfg.parameters, sample_row)
+            param_dict = build_param_dict_from_sample_row(cfg.parameters, sample_row)
 
             if verbose_params:
                 if exec_num > 0:
@@ -522,7 +608,7 @@ def run_benchmark_for_one_routine(
             fetched_value = ""
 
             # Stable cursor name for refcursor mode.
-            cursor_name = "rc"
+            cursor_name = ""
 
             exec_start_time = time.perf_counter()
             if debug:
@@ -537,9 +623,44 @@ def run_benchmark_for_one_routine(
                                 if debug:
                                     print(f"           execute: SET LOCAL statement_timeout = {int(cfg.timeout_ms)}")
                                 cur.execute(f"SET LOCAL statement_timeout = {int(cfg.timeout_ms)}")
+                            # ------------------------------------------------------------
+                            # sqlfile execution (supports variable binding from sample CSV)
+                            if cfg.routine_kind == "sqlfile":
+                                if sql_text_transformed is None:
+                                    raise ValueError(f"{cfg.routine_name}: SQL template not loaded")
+                                # Filter param dict down to variables actually used in the SQL (if any were detected)
+                                exec_params = param_dict
+                                if sql_vars:
+                                    missing = [v for v in sql_vars if v not in exec_params]
+                                    if missing:
+                                        raise ValueError(f"{cfg.routine_name}: SQL variables missing in sample/YAML parameters: {missing}")
+                                    exec_params = {k: exec_params[k] for k in sql_vars}
 
-                            # find refcursor parameter
-                            if cfg.routine_kind == "procedure" and cfg.fetch_mode == "vector":
+                                if debug:
+                                    print(f"           execute: SQL from {sql_file} with params={exec_params}")
+                                cur.execute(sql_text_transformed, exec_params)
+
+                                if cfg.fetch_mode == "vector":
+                                    # NEW: write CSV if fetched-data-dir cli argument enabled
+                                    fetched_data_output_file_path = None
+                                    if fdo_dir and exec_num > 0:
+                                        fetched_data_output_file_path = os.path.join(fdo_dir, f"{cfg.routine_name}.{exec_num}.csv")
+
+                                    fetched_rowcount = fetch_all_rows(cur, fetched_data_output_file_path)
+                                    if debug:
+                                        print(f"           fetched row count: {fetched_rowcount}")
+
+                                elif cfg.fetch_mode == "scalar":
+                                    fetched_value = fetch_function_scalar_value(cur)
+                                    if debug:
+                                        print(f"           fetched_value={fetched_value}")
+
+                                else:
+                                    consume_one_row_if_present(cur)
+
+                            # ------------------------------------------------------------
+                            # procedure execution
+                            elif cfg.routine_kind == "procedure" and cfg.fetch_mode == "vector":
 
                                 # identify param_index with parameter name = p_refcur
                                 #cursor_param_index = next( (i for i, p in enumerate(cfg.parameters) if p.name == "p_refcur"), None)
@@ -585,17 +706,19 @@ def run_benchmark_for_one_routine(
                                 except Exception:
                                     pass
 
+                            # ------------------------------------------------------------
                             elif cfg.routine_kind == "procedure" and cfg.fetch_mode == "scalar":
                                 if debug:
-                                    print(f"           execute: ${call_sql}({param_values})")
+                                    print(f"           execute: {call_sql}({param_values})")
                                 cur.execute(call_sql, param_values)
                                 fetched_value = fetch_proc_out_as_value(cur)
                                 if debug:
                                     print(f"           fetched_value={fetched_value}")
 
+                            # ------------------------------------------------------------
                             elif cfg.routine_kind == "function" and cfg.fetch_mode == "vector":
                                 if debug:
-                                    print(f"           execute: ${call_sql}({param_values})")
+                                    print(f"           execute: {call_sql}({param_values})")
                                 cur.execute(call_sql, param_values)
 
                                 # NEW: write CSV if fetched-data-dir cli argument enabled
@@ -607,28 +730,37 @@ def run_benchmark_for_one_routine(
                                 if debug:
                                     print(f"           fetched row count: {fetched_rowcount}")
 
+                            # ------------------------------------------------------------
                             elif cfg.routine_kind == "function" and cfg.fetch_mode == "scalar":
                                 if debug:
-                                    print(f"           execute: ${call_sql}({param_values})")
+                                    print(f"           execute: {call_sql}({param_values})")
                                 cur.execute(call_sql, param_values)
                                 fetched_value = fetch_function_scalar_value(cur)
                                 if debug:
                                     print(f"           fetched_value={fetched_value}")
 
+                            # ------------------------------------------------------------
                             else:
+                                print(f" debug: landing in ELSE")
+                                print(f" ELSE call_sql={call_sql}")
                                 cur.execute(call_sql, param_values)
                                 consume_one_row_if_present(cur)
 
+                            # ------------------------------------------------------------
                             # Force rollback unless transaction=commit
                             if cfg.transaction != "commit":
                                 raise Rollback()
                                 if debug:
                                     print(f"           execute: ROLLBACK;")
 
+                # ------------------------------------------------------------
                 except Rollback:
                     # Expected for transaction=rollback: iteration ends with rollback
+                    print(f"Rollback executed")
                     pass
 
+            # ------------------------------------------------------------
+            # Timedout exception
             except pg_errors.QueryCanceled as e:
                 exec_good = False
                 timed_out = True
@@ -640,9 +772,15 @@ def run_benchmark_for_one_routine(
                     pass
                 conn = open_connection(dsn)
 
+            # ------------------------------------------------------------
+            # All Other exceptions
             except Exception as e:
                 exec_good = False
                 error_text = f"{type(e).__name__}: {e}"
+                import traceback
+                tb_text = traceback.format_exc()
+                #if debug:
+                print(f"ERROR:\n{tb_text}")
 
                 # If the connection is broken, reopen to continue
                 try:
@@ -656,13 +794,16 @@ def run_benchmark_for_one_routine(
                     conn = open_connection(dsn)
 
             exec_end_time = time.perf_counter()
+            if debug:
+                print(f"           exec_end_time={exec_end_time}")
+
             elapsed_ms = (exec_end_time - exec_start_time) * 1000.0
 
             if debug:
-                print(f"           exec_good={exec_good} timed_out={timed_out} elapsed_ms={elapsed_ms} rowcount={fetched_rowcount}")
+                print(f"           exec_good={exec_good} timed_out={timed_out} elapsed_ms={elapsed_ms:.3f} rowcount={fetched_rowcount}")
 
 
-            if call_no > cfg.warmups:
+            if exec_num > 0:
                 run_results_array.append(
                     RunResult(
                         routine_seq=cfg.routine_seq,
@@ -761,6 +902,9 @@ def build_cli_arg_parser() -> argparse.ArgumentParser:
     ap.add_argument("--sample-data-dir", required=True, 
                     help="Directory containing input sample data for each routine <routine_name>.csv")
 
+    ap.add_argument("--sql-dir", default=None,
+                    help="Directory containing .sql files when routine_kind=sqlfile (routine_name is the sql file name)")
+
     ap.add_argument("--details-output", default="proccall_details.csv", 
                     help="Output CSV with per-call timings")
 
@@ -858,6 +1002,9 @@ def main() -> int:
         os.makedirs(cli_args.fetched_data_dir, exist_ok=True)
         print(f"  Fetched Data: {cli_args.fetched_data_dir}")
 
+    if cli_args.sql_dir:
+        print(f"  sqlfile directory: {cli_args.sql_dir}")
+
     if cli_args.param_style:
         print(f"  parameter style: {cli_args.param_style}")
 
@@ -945,18 +1092,24 @@ def main() -> int:
             sample_rows=sample_rows,
             verbose_params=cli_args.verbose_params or cli_args.debug,
             debug=cli_args.debug,
+            sql_dir=cli_args.sql_dir,
             fdo_dir=cli_args.fetched_data_dir,
         )
 
         print(f"  end time:  ", datetime.now())
 
+        #print(f"  debug: routine_results count :  ", len(run_results))
         per_routine_results[(effective_cfg.routine_name, effective_cfg.routine_kind)] = run_results
+
+        #print(f"  debug: add routine_results to all_results count :  ", len(run_results))
         all_results.extend(run_results)
 
+        #print(f"  debug: calculate good, fail and timeouts")
         exec_good_a = [r.elapsed_ms for r in run_results if r.exec_good]
         exec_fail_a = [r for r in run_results if not r.exec_good]
         exec_timeout_a = [r for r in run_results if r.timed_out]
 
+        #print(f"  debug: calculate percentiles")
         stats = percentile_summary_ms(exec_good_a)
 
         execution_status = "OK" if len(exec_fail_a) == 0 else "FAILED"
