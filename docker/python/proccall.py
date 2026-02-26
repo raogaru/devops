@@ -741,8 +741,13 @@ def run_benchmark_for_one_routine(
 
                             # ------------------------------------------------------------
                             else:
-                                print(f" debug: landing in ELSE")
-                                print(f" ELSE call_sql={call_sql}")
+                                if not call_sql:
+                                    raise ValueError(
+                                        f"Internal error: call_sql is empty for "
+                                        f"routine_kind={cfg.routine_kind} "
+                                        f"fetch_mode={cfg.fetch_mode} routine={cfg.routine_name}"
+                                    )
+                                print(f" debug: call_sql={call_sql}")
                                 cur.execute(call_sql, param_values)
                                 consume_one_row_if_present(cur)
 
