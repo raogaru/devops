@@ -57,7 +57,7 @@ docker exec -it c-python scripts/proccall_gencfg.py --dsn "host=c-raodb port=543
 docker exec -it c-python scripts/proccall.py            \
 --config scripts/proccall.yaml                          \
 --sample-data-dir scripts/bench/proccall_data      \
---fetched-data-dir scripts/o		\
+--sql-dir scripts/sql		\
 --details-output scripts/details.csv            \
 --summary-output scripts/summary.csv            \
 --warmups 0                                      \
@@ -68,6 +68,7 @@ docker exec -it c-python scripts/proccall.py            \
 --fetch-mode vector                           \
 --verbose-params                                \
 --verbose-sample                                \
+--fetched-data-dir scripts/o		\
 --verbose-config                                \
 --debug 					\
 --shuffle 
