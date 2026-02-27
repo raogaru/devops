@@ -1,3 +1,10 @@
-ANALYZE bench.t_wide1;
-ANALYZE bench.t_wide2;
-ANALYZE bench.t_wide3;
+ANALYZE bench.tsw1;
+ANALYZE bench.tsw2;
+ANALYZE bench.tsw3;
+ANALYZE bench.tsw4;
+ANALYZE bench.tsw5;
+ANALYZE bench.tsw6;
+ANALYZE bench.tsw7;
+ANALYZE bench.tsw8;
+ANALYZE bench.tsw9;
+ANALYZE bench.tsw10;

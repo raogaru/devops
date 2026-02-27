@@ -1,3 +1,10 @@
-DROP DOMAIN IF EXISTS bench.dom_t_random1;
-DROP DOMAIN IF EXISTS bench.dom_t_random2;
-DROP DOMAIN IF EXISTS bench.dom_t_random3;
+DROP DOMAIN IF EXISTS bench.dom_tpx1;
+DROP DOMAIN IF EXISTS bench.dom_tpx2;
+DROP DOMAIN IF EXISTS bench.dom_tpx3;
+DROP DOMAIN IF EXISTS bench.dom_tpx4;
+DROP DOMAIN IF EXISTS bench.dom_tpx5;
+DROP DOMAIN IF EXISTS bench.dom_tpx6;
+DROP DOMAIN IF EXISTS bench.dom_tpx7;
+DROP DOMAIN IF EXISTS bench.dom_tpx8;
+DROP DOMAIN IF EXISTS bench.dom_tpx9;
+DROP DOMAIN IF EXISTS bench.dom_tpx10;

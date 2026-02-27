@@ -1,3 +1,10 @@
-ANALYZE bench.t_random1;
-ANALYZE bench.t_random2;
-ANALYZE bench.t_random3;
+ANALYZE bench.tpx1;
+ANALYZE bench.tpx2;
+ANALYZE bench.tpx3;
+ANALYZE bench.tpx4;
+ANALYZE bench.tpx5;
+ANALYZE bench.tpx6;
+ANALYZE bench.tpx7;
+ANALYZE bench.tpx8;
+ANALYZE bench.tpx9;
+ANALYZE bench.tpx10;

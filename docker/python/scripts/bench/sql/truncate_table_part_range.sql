@@ -1,3 +1,10 @@
-TRUNCATE bench.t_range1;
-TRUNCATE bench.t_range2;
-TRUNCATE bench.t_range3;
+TRUNCATE bench.tpr1;
+TRUNCATE bench.tpr2;
+TRUNCATE bench.tpr3;
+TRUNCATE bench.tpr4;
+TRUNCATE bench.tpr5;
+TRUNCATE bench.tpr6;
+TRUNCATE bench.tpr7;
+TRUNCATE bench.tpr8;
+TRUNCATE bench.tpr9;
+TRUNCATE bench.tpr10;

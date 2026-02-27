@@ -1,3 +1,10 @@
-DROP DOMAIN IF EXISTS bench.dom_t_large1;
-DROP DOMAIN IF EXISTS bench.dom_t_large2;
-DROP DOMAIN IF EXISTS bench.dom_t_large3;
+DROP DOMAIN IF EXISTS bench.dom_tsl1;
+DROP DOMAIN IF EXISTS bench.dom_tsl2;
+DROP DOMAIN IF EXISTS bench.dom_tsl3;
+DROP DOMAIN IF EXISTS bench.dom_tsl4;
+DROP DOMAIN IF EXISTS bench.dom_tsl5;
+DROP DOMAIN IF EXISTS bench.dom_tsl6;
+DROP DOMAIN IF EXISTS bench.dom_tsl7;
+DROP DOMAIN IF EXISTS bench.dom_tsl8;
+DROP DOMAIN IF EXISTS bench.dom_tsl9;
+DROP DOMAIN IF EXISTS bench.dom_tsl10;

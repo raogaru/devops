@@ -1,3 +1,10 @@
-TRUNCATE bench.t_hash1;
-TRUNCATE bench.t_hash2;
-TRUNCATE bench.t_hash3;
+TRUNCATE bench.tph1;
+TRUNCATE bench.tph2;
+TRUNCATE bench.tph3;
+TRUNCATE bench.tph4;
+TRUNCATE bench.tph5;
+TRUNCATE bench.tph6;
+TRUNCATE bench.tph7;
+TRUNCATE bench.tph8;
+TRUNCATE bench.tph9;
+TRUNCATE bench.tph10;

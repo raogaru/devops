@@ -1,422 +1,1446 @@
-CREATE TABLE bench.t_wide1 (
+CREATE TABLE bench.tsw1 (
+    id BIGSERIAL PRIMARY KEY
+    ,c1 double precision
+    ,c2 bigint
+    ,c3 bigint
+    ,c4 varchar(37)
+    ,c5 timestamp
+    ,c6 boolean
+    ,c7 double precision
+    ,c8 text
+    ,c9 boolean
+    ,c10 boolean
+    ,c11 jsonb
+    ,c12 boolean
+    ,c13 date
+    ,c14 integer
+    ,c15 bigint
+    ,c16 integer
+    ,c17 smallint
+    ,c18 double precision
+    ,c19 integer
+    ,c20 integer
+    ,c21 date
+    ,c22 timestamp
+    ,c23 double precision
+    ,c24 text
+    ,c25 smallint
+    ,c26 integer
+    ,c27 bytea
+    ,c28 real
+    ,c29 bytea
+    ,c30 numeric(9,2)
+    ,c31 time
+    ,c32 time
+    ,c33 smallint
+    ,c34 boolean
+    ,c35 double precision
+    ,c36 boolean
+    ,c37 real
+    ,c38 varchar(43)
+    ,c39 real
+    ,c40 bytea
+    ,c41 double precision
+    ,c42 real
+    ,c43 boolean
+    ,c44 char(12)
+    ,c45 uuid
+    ,c46 double precision
+    ,c47 varchar(43)
+    ,c48 timestamp
+    ,c49 integer
+    ,c50 jsonb
+    ,c51 char(15)
+    ,c52 integer
+    ,c53 real
+    ,c54 double precision
+    ,c55 integer
+    ,c56 smallint
+    ,c57 date
+    ,c58 char(15)
+    ,c59 real
+    ,c60 boolean
+    ,c61 uuid
+    ,c62 integer
+    ,c63 integer
+    ,c64 smallint
+    ,c65 integer
+    ,c66 real
+    ,c67 integer
+    ,c68 double precision
+    ,c69 real
+    ,c70 bytea
+    ,c71 date
+    ,c72 varchar(29)
+    ,c73 date
+    ,c74 integer
+    ,c75 text
+    ,c76 real
+    ,c77 varchar(13)
+    ,c78 timestamp
+    ,c79 date
+    ,c80 timestamp
+    ,c81 real
+    ,c82 timestamp
+    ,c83 bytea
+    ,c84 smallint
+    ,c85 time
+    ,c86 integer
+    ,c87 date
+    ,c88 smallint
+    ,c89 integer
+    ,c90 text
+    ,c91 numeric(10,1)
+    ,c92 time
+    ,c93 date
+    ,c94 boolean
+    ,c95 smallint
+    ,c96 time
+    ,c97 timestamp
+    ,c98 bytea
+    ,c99 time
+    ,c100 real
+    ,c101 double precision
+    ,c102 smallint
+    ,c103 bytea
+    ,c104 time
+    ,c105 uuid
+    ,c106 time
+    ,c107 time
+    ,c108 varchar(25)
+    ,c109 smallint
+    ,c110 timestamp
+    ,c111 double precision
+    ,c112 boolean
+    ,c113 bytea
+    ,c114 double precision
+    ,c115 timestamp
+    ,c116 integer
+    ,c117 numeric(10,1)
+    ,c118 uuid
+    ,c119 double precision
+    ,c120 date
+    ,c121 time
+    ,c122 double precision
+    ,c123 time
+    ,c124 integer
+    ,c125 timestamp
+    ,c126 time
+    ,c127 bigint
+    ,c128 char(19)
+    ,c129 timestamp
+    ,c130 real
+    ,c131 integer
+    ,c132 double precision
+    ,c133 real
+    ,c134 bigint
+    ,c135 numeric(11,2)
+    ,c136 real
+    ,c137 boolean
+    ,c138 time
+    ,c139 date
+    ,c140 double precision
+    ,c141 bytea
+    ,c142 timestamp
+    ,c143 real
+    ,c144 jsonb
+    ,c145 double precision
+    ,c146 integer
+    ,c147 uuid
+    ,c148 uuid
+    ,c149 timestamp
+    ,c150 integer
+    ,c151 bytea
+    ,c152 numeric(11,2)
+    ,c153 timestamp
+    ,c154 uuid
+    ,c155 double precision
+    ,c156 boolean
+    ,c157 real
+    ,c158 uuid
+    ,c159 bytea
+    ,c160 char(12)
+    ,c161 double precision
+    ,c162 boolean
+    ,c163 uuid
+    ,c164 char(9)
+    ,c165 date
+    ,c166 numeric(6,1)
+    ,c167 char(16)
+    ,c168 varchar(8)
+    ,c169 smallint
+    ,c170 date
+    ,c171 uuid
+    ,c172 timestamp
+    ,c173 date
+    ,c174 varchar(25)
+    ,c175 jsonb
+    ,c176 numeric(12,3)
+    ,c177 smallint
+    ,c178 char(15)
+    ,c179 bigint
+    ,c180 real
+    ,c181 smallint
+    ,c182 timestamp
+    ,c183 uuid
+    ,c184 numeric(8,3)
+    ,c185 boolean
+    ,c186 bytea
+    ,c187 date
+    ,c188 date
+    ,c189 smallint
+    ,c190 numeric(5,3)
+    ,c191 integer
+    ,c192 numeric(8,2)
+    ,c193 jsonb
+    ,c194 integer
+    ,c195 integer
+    ,c196 date
+    ,c197 uuid
+    ,c198 boolean
+    ,c199 numeric(5,0)
+    ,c200 bigint
+);
+
+CREATE TABLE bench.tsw2 (
+    id BIGSERIAL PRIMARY KEY
+    ,c1 jsonb
+    ,c2 date
+    ,c3 smallint
+    ,c4 jsonb
+    ,c5 uuid
+    ,c6 double precision
+    ,c7 bigint
+    ,c8 numeric(6,0)
+    ,c9 bytea
+    ,c10 timestamp
+    ,c11 smallint
+    ,c12 smallint
+    ,c13 varchar(29)
+    ,c14 real
+    ,c15 bytea
+    ,c16 date
+    ,c17 date
+    ,c18 bytea
+    ,c19 timestamp
+    ,c20 boolean
+    ,c21 varchar(8)
+    ,c22 smallint
+    ,c23 boolean
+    ,c24 timestamp
+    ,c25 uuid
+    ,c26 smallint
+    ,c27 numeric(12,0)
+    ,c28 bytea
+    ,c29 uuid
+    ,c30 smallint
+    ,c31 uuid
+    ,c32 boolean
+    ,c33 real
+    ,c34 real
+    ,c35 smallint
+    ,c36 bytea
+    ,c37 integer
+    ,c38 uuid
+    ,c39 boolean
+    ,c40 date
+    ,c41 jsonb
+    ,c42 numeric(9,0)
+    ,c43 bigint
+    ,c44 date
+    ,c45 char(9)
+    ,c46 double precision
+    ,c47 char(3)
+    ,c48 date
+    ,c49 text
+    ,c50 jsonb
+    ,c51 integer
+    ,c52 bigint
+    ,c53 real
+    ,c54 text
+    ,c55 date
+    ,c56 boolean
+    ,c57 varchar(49)
+    ,c58 bigint
+    ,c59 bigint
+    ,c60 smallint
+    ,c61 bigint
+    ,c62 bytea
+    ,c63 char(17)
+    ,c64 real
+    ,c65 integer
+    ,c66 jsonb
+    ,c67 smallint
+    ,c68 timestamp
+    ,c69 date
+    ,c70 time
+    ,c71 boolean
+    ,c72 double precision
+    ,c73 date
+    ,c74 boolean
+    ,c75 real
+    ,c76 double precision
+    ,c77 text
+    ,c78 jsonb
+    ,c79 date
+    ,c80 bigint
+    ,c81 char(16)
+    ,c82 text
+    ,c83 integer
+    ,c84 jsonb
+    ,c85 uuid
+    ,c86 timestamp
+    ,c87 real
+    ,c88 numeric(7,3)
+    ,c89 bigint
+    ,c90 text
+    ,c91 jsonb
+    ,c92 real
+    ,c93 timestamp
+    ,c94 boolean
+    ,c95 varchar(15)
+    ,c96 smallint
+    ,c97 real
+    ,c98 timestamp
+    ,c99 bytea
+    ,c100 varchar(39)
+);
+
+CREATE TABLE bench.tsw3 (
+    id BIGSERIAL PRIMARY KEY
+    ,c1 timestamp
+    ,c2 char(20)
+    ,c3 varchar(41)
+    ,c4 smallint
+    ,c5 date
+    ,c6 real
+    ,c7 real
+    ,c8 text
+    ,c9 varchar(45)
+    ,c10 real
+    ,c11 double precision
+    ,c12 uuid
+    ,c13 bigint
+    ,c14 char(5)
+    ,c15 varchar(26)
+    ,c16 smallint
+    ,c17 timestamp
+    ,c18 char(7)
+    ,c19 smallint
+    ,c20 date
+    ,c21 jsonb
+    ,c22 time
+    ,c23 time
+    ,c24 integer
+    ,c25 boolean
+    ,c26 bigint
+    ,c27 date
+    ,c28 numeric(6,1)
+    ,c29 jsonb
+    ,c30 bytea
+    ,c31 smallint
+    ,c32 integer
+    ,c33 double precision
+    ,c34 real
+    ,c35 bytea
+    ,c36 bytea
+    ,c37 varchar(16)
+    ,c38 time
+    ,c39 bytea
+    ,c40 boolean
+    ,c41 bytea
+    ,c42 varchar(48)
+    ,c43 real
+    ,c44 timestamp
+    ,c45 numeric(11,3)
+    ,c46 text
+    ,c47 integer
+    ,c48 time
+    ,c49 bigint
+    ,c50 varchar(1)
+    ,c51 timestamp
+    ,c52 jsonb
+    ,c53 time
+    ,c54 double precision
+    ,c55 integer
+    ,c56 numeric(5,1)
+    ,c57 integer
+    ,c58 timestamp
+    ,c59 double precision
+    ,c60 real
+    ,c61 text
+    ,c62 bytea
+    ,c63 smallint
+    ,c64 text
+    ,c65 smallint
+    ,c66 varchar(33)
+    ,c67 time
+    ,c68 bytea
+    ,c69 date
+    ,c70 uuid
+    ,c71 text
+    ,c72 boolean
+    ,c73 smallint
+    ,c74 smallint
+    ,c75 text
+    ,c76 text
+    ,c77 time
+    ,c78 real
+    ,c79 boolean
+    ,c80 real
+    ,c81 bigint
+    ,c82 jsonb
+    ,c83 numeric(5,3)
+    ,c84 integer
+    ,c85 char(13)
+    ,c86 time
+    ,c87 uuid
+    ,c88 numeric(9,1)
+    ,c89 date
+    ,c90 uuid
+    ,c91 varchar(10)
+    ,c92 jsonb
+    ,c93 double precision
+    ,c94 date
+    ,c95 jsonb
+    ,c96 jsonb
+    ,c97 timestamp
+    ,c98 integer
+    ,c99 varchar(23)
+    ,c100 bytea
+    ,c101 uuid
+    ,c102 integer
+    ,c103 uuid
+    ,c104 date
+    ,c105 double precision
+    ,c106 bigint
+    ,c107 numeric(11,3)
+    ,c108 bytea
+    ,c109 double precision
+    ,c110 varchar(20)
+    ,c111 char(10)
+    ,c112 real
+    ,c113 integer
+    ,c114 boolean
+    ,c115 boolean
+    ,c116 integer
+    ,c117 time
+    ,c118 integer
+    ,c119 date
+    ,c120 char(19)
+    ,c121 timestamp
+    ,c122 smallint
+    ,c123 numeric(7,2)
+    ,c124 uuid
+    ,c125 date
+    ,c126 integer
+    ,c127 real
+    ,c128 smallint
+    ,c129 double precision
+    ,c130 uuid
+    ,c131 bigint
+    ,c132 time
+    ,c133 date
+    ,c134 numeric(4,2)
+    ,c135 bytea
+    ,c136 varchar(15)
+    ,c137 real
+    ,c138 uuid
+    ,c139 smallint
+    ,c140 bigint
+    ,c141 text
+    ,c142 bigint
+    ,c143 text
+    ,c144 char(16)
+    ,c145 jsonb
+    ,c146 bigint
+    ,c147 integer
+    ,c148 bytea
+    ,c149 integer
+    ,c150 boolean
+    ,c151 bytea
+);
+
+CREATE TABLE bench.tsw4 (
+    id BIGSERIAL PRIMARY KEY
+    ,c1 uuid
+    ,c2 bytea
+    ,c3 varchar(13)
+    ,c4 uuid
+    ,c5 varchar(49)
+    ,c6 uuid
+    ,c7 bigint
+    ,c8 text
+    ,c9 text
+    ,c10 boolean
+    ,c11 char(5)
+    ,c12 time
+    ,c13 numeric(7,0)
+    ,c14 double precision
+    ,c15 integer
+    ,c16 date
+    ,c17 char(2)
+    ,c18 jsonb
+    ,c19 smallint
+    ,c20 date
+    ,c21 bytea
+    ,c22 boolean
+    ,c23 smallint
+    ,c24 bytea
+    ,c25 bigint
+    ,c26 uuid
+    ,c27 double precision
+    ,c28 varchar(26)
+    ,c29 numeric(8,1)
+    ,c30 smallint
+    ,c31 char(17)
+    ,c32 uuid
+    ,c33 numeric(9,1)
+    ,c34 timestamp
+    ,c35 timestamp
+    ,c36 double precision
+    ,c37 date
+    ,c38 bytea
+    ,c39 numeric(5,1)
+    ,c40 text
+    ,c41 char(1)
+    ,c42 bigint
+    ,c43 integer
+    ,c44 time
+    ,c45 uuid
+    ,c46 boolean
+    ,c47 bigint
+    ,c48 bigint
+    ,c49 varchar(24)
+    ,c50 double precision
+    ,c51 time
+    ,c52 varchar(15)
+    ,c53 uuid
+    ,c54 integer
+    ,c55 smallint
+    ,c56 smallint
+    ,c57 numeric(10,3)
+    ,c58 time
+    ,c59 time
+    ,c60 bigint
+    ,c61 double precision
+    ,c62 boolean
+    ,c63 uuid
+    ,c64 smallint
+    ,c65 char(17)
+    ,c66 timestamp
+    ,c67 text
+    ,c68 bytea
+    ,c69 date
+    ,c70 char(17)
+    ,c71 uuid
+    ,c72 numeric(11,0)
+    ,c73 bytea
+    ,c74 boolean
+    ,c75 bytea
+    ,c76 char(3)
+    ,c77 char(5)
+    ,c78 timestamp
+    ,c79 varchar(9)
+    ,c80 bytea
+    ,c81 boolean
+    ,c82 boolean
+    ,c83 smallint
+    ,c84 jsonb
+    ,c85 char(19)
+    ,c86 uuid
+    ,c87 char(15)
+    ,c88 time
+    ,c89 double precision
+    ,c90 time
+    ,c91 timestamp
+    ,c92 uuid
+    ,c93 numeric(11,1)
+    ,c94 text
+    ,c95 double precision
+    ,c96 numeric(8,3)
+    ,c97 text
+    ,c98 smallint
+    ,c99 boolean
+    ,c100 integer
+    ,c101 text
+    ,c102 numeric(7,3)
+    ,c103 time
+    ,c104 bytea
+    ,c105 varchar(4)
+    ,c106 smallint
+    ,c107 smallint
+    ,c108 real
+    ,c109 text
+    ,c110 boolean
+);
+
+CREATE TABLE bench.tsw5 (
+    id BIGSERIAL PRIMARY KEY
+    ,c1 real
+    ,c2 boolean
+    ,c3 integer
+    ,c4 uuid
+    ,c5 bigint
+    ,c6 real
+    ,c7 varchar(9)
+    ,c8 smallint
+    ,c9 bytea
+    ,c10 time
+    ,c11 uuid
+    ,c12 smallint
+    ,c13 numeric(8,0)
+    ,c14 double precision
+    ,c15 uuid
+    ,c16 smallint
+    ,c17 time
+    ,c18 smallint
+    ,c19 real
+    ,c20 double precision
+    ,c21 boolean
+    ,c22 text
+    ,c23 boolean
+    ,c24 uuid
+    ,c25 date
+    ,c26 text
+    ,c27 double precision
+    ,c28 boolean
+    ,c29 integer
+    ,c30 jsonb
+    ,c31 bigint
+    ,c32 real
+    ,c33 bigint
+    ,c34 varchar(46)
+    ,c35 double precision
+    ,c36 timestamp
+    ,c37 bytea
+    ,c38 date
+    ,c39 text
+    ,c40 time
+    ,c41 integer
+    ,c42 numeric(10,2)
+    ,c43 text
+    ,c44 jsonb
+    ,c45 timestamp
+    ,c46 uuid
+    ,c47 varchar(13)
+    ,c48 real
+    ,c49 timestamp
+    ,c50 timestamp
+    ,c51 smallint
+    ,c52 text
+    ,c53 boolean
+    ,c54 integer
+    ,c55 boolean
+    ,c56 text
+    ,c57 jsonb
+    ,c58 double precision
+    ,c59 varchar(7)
+    ,c60 double precision
+    ,c61 char(2)
+    ,c62 date
+    ,c63 numeric(12,0)
+    ,c64 smallint
+    ,c65 boolean
+    ,c66 boolean
+    ,c67 date
+    ,c68 uuid
+    ,c69 time
+    ,c70 text
+    ,c71 date
+    ,c72 bigint
+    ,c73 varchar(10)
+    ,c74 bytea
+    ,c75 varchar(7)
+    ,c76 real
+    ,c77 jsonb
+    ,c78 date
+    ,c79 boolean
+    ,c80 integer
+    ,c81 text
+    ,c82 char(5)
+    ,c83 double precision
+    ,c84 double precision
+    ,c85 bytea
+    ,c86 bytea
+    ,c87 double precision
+    ,c88 double precision
+    ,c89 real
+    ,c90 char(1)
+    ,c91 text
+    ,c92 jsonb
+    ,c93 integer
+    ,c94 boolean
+    ,c95 boolean
+    ,c96 timestamp
+    ,c97 double precision
+    ,c98 uuid
+    ,c99 time
+    ,c100 date
+    ,c101 bytea
+    ,c102 boolean
+    ,c103 numeric(4,1)
+    ,c104 bytea
+    ,c105 time
+    ,c106 double precision
+    ,c107 real
+    ,c108 double precision
+    ,c109 numeric(7,2)
+    ,c110 timestamp
+    ,c111 uuid
+    ,c112 bytea
+    ,c113 integer
+    ,c114 varchar(33)
+    ,c115 integer
+    ,c116 bytea
+    ,c117 integer
+    ,c118 integer
+    ,c119 bigint
+    ,c120 bigint
+    ,c121 bigint
+    ,c122 uuid
+    ,c123 boolean
+    ,c124 numeric(9,0)
+    ,c125 bigint
+    ,c126 double precision
+    ,c127 double precision
+    ,c128 bigint
+    ,c129 double precision
+    ,c130 boolean
+    ,c131 varchar(37)
+    ,c132 text
+    ,c133 double precision
+    ,c134 timestamp
+    ,c135 uuid
+    ,c136 date
+    ,c137 date
+    ,c138 time
+    ,c139 bigint
+    ,c140 time
+    ,c141 real
+    ,c142 integer
+    ,c143 bytea
+    ,c144 smallint
+    ,c145 integer
+    ,c146 numeric(4,1)
+    ,c147 text
+    ,c148 bytea
+    ,c149 bigint
+    ,c150 double precision
+    ,c151 smallint
+    ,c152 smallint
+    ,c153 bigint
+    ,c154 jsonb
+    ,c155 double precision
+    ,c156 time
+    ,c157 real
+    ,c158 date
+    ,c159 bytea
+    ,c160 text
+    ,c161 uuid
+    ,c162 time
+    ,c163 timestamp
+    ,c164 double precision
+    ,c165 integer
+    ,c166 smallint
+    ,c167 uuid
+    ,c168 char(2)
+    ,c169 double precision
+    ,c170 uuid
+    ,c171 bigint
+    ,c172 timestamp
+    ,c173 bigint
+    ,c174 timestamp
+    ,c175 varchar(14)
+    ,c176 bigint
+    ,c177 varchar(25)
+    ,c178 uuid
+    ,c179 text
+    ,c180 timestamp
+    ,c181 real
+    ,c182 integer
+    ,c183 text
+    ,c184 smallint
+    ,c185 smallint
+    ,c186 real
+    ,c187 time
+    ,c188 smallint
+);
+
+CREATE TABLE bench.tsw6 (
+    id BIGSERIAL PRIMARY KEY
+    ,c1 uuid
+    ,c2 date
+    ,c3 date
+    ,c4 timestamp
+    ,c5 numeric(6,3)
+    ,c6 uuid
+    ,c7 time
+    ,c8 boolean
+    ,c9 time
+    ,c10 char(13)
+    ,c11 date
+    ,c12 date
+    ,c13 time
+    ,c14 real
+    ,c15 numeric(11,1)
+    ,c16 double precision
+    ,c17 real
+    ,c18 date
+    ,c19 integer
+    ,c20 jsonb
+    ,c21 real
+    ,c22 timestamp
+    ,c23 real
+    ,c24 numeric(6,0)
+    ,c25 smallint
+    ,c26 uuid
+    ,c27 numeric(10,2)
+    ,c28 date
+    ,c29 time
+    ,c30 real
+    ,c31 double precision
+    ,c32 integer
+    ,c33 jsonb
+    ,c34 integer
+    ,c35 real
+    ,c36 bytea
+    ,c37 real
+    ,c38 bytea
+    ,c39 double precision
+    ,c40 double precision
+    ,c41 numeric(11,1)
+    ,c42 integer
+    ,c43 timestamp
+    ,c44 integer
+    ,c45 uuid
+    ,c46 bytea
+    ,c47 bigint
+    ,c48 smallint
+    ,c49 timestamp
+    ,c50 varchar(9)
+    ,c51 timestamp
+    ,c52 jsonb
+    ,c53 numeric(4,3)
+    ,c54 varchar(9)
+    ,c55 varchar(38)
+    ,c56 jsonb
+    ,c57 varchar(14)
+    ,c58 uuid
+    ,c59 integer
+    ,c60 uuid
+    ,c61 numeric(5,0)
+    ,c62 bigint
+    ,c63 varchar(31)
+    ,c64 bytea
+    ,c65 numeric(8,1)
+    ,c66 text
+    ,c67 timestamp
+    ,c68 double precision
+    ,c69 smallint
+    ,c70 text
+    ,c71 char(13)
+    ,c72 bytea
+    ,c73 jsonb
+    ,c74 integer
+    ,c75 uuid
+    ,c76 double precision
+    ,c77 uuid
+    ,c78 smallint
+    ,c79 jsonb
+    ,c80 varchar(15)
+    ,c81 bytea
+    ,c82 smallint
+    ,c83 text
+    ,c84 integer
+    ,c85 varchar(14)
+    ,c86 char(14)
+    ,c87 double precision
+    ,c88 date
+    ,c89 real
+    ,c90 date
+    ,c91 real
+    ,c92 numeric(9,3)
+    ,c93 boolean
+    ,c94 varchar(19)
+    ,c95 time
+    ,c96 real
+    ,c97 bigint
+    ,c98 smallint
+    ,c99 date
+    ,c100 real
+    ,c101 time
+    ,c102 real
+    ,c103 boolean
+    ,c104 jsonb
+    ,c105 date
+    ,c106 time
+    ,c107 double precision
+    ,c108 jsonb
+    ,c109 char(17)
+    ,c110 smallint
+    ,c111 real
+    ,c112 timestamp
+    ,c113 bigint
+    ,c114 integer
+    ,c115 text
+    ,c116 bytea
+    ,c117 time
+    ,c118 uuid
+    ,c119 real
+    ,c120 boolean
+    ,c121 bigint
+    ,c122 bigint
+);
+
+CREATE TABLE bench.tsw7 (
     id BIGSERIAL PRIMARY KEY
     ,c1 integer
-    ,c2 boolean
-    ,c3 uuid
-    ,c4 bigint
-    ,c5 time
-    ,c6 smallint
-    ,c7 time
-    ,c8 real
-    ,c9 real
-    ,c10 bytea
-    ,c11 boolean
-    ,c12 timestamp
-    ,c13 numeric(7,3)
-    ,c14 jsonb
-    ,c15 char(20)
-    ,c16 varchar(50)
-    ,c17 double precision
+    ,c2 timestamp
+    ,c3 jsonb
+    ,c4 date
+    ,c5 integer
+    ,c6 text
+    ,c7 jsonb
+    ,c8 boolean
+    ,c9 boolean
+    ,c10 varchar(36)
+    ,c11 varchar(3)
+    ,c12 double precision
+    ,c13 double precision
+    ,c14 real
+    ,c15 double precision
+    ,c16 numeric(11,1)
+    ,c17 bigint
     ,c18 text
     ,c19 time
     ,c20 bytea
     ,c21 integer
-    ,c22 numeric(4,1)
-    ,c23 timestamp
-    ,c24 boolean
-    ,c25 integer
-    ,c26 boolean
-    ,c27 real
-    ,c28 bigint
-    ,c29 double precision
-    ,c30 boolean
-    ,c31 jsonb
-    ,c32 smallint
+    ,c22 integer
+    ,c23 real
+    ,c24 time
+    ,c25 numeric(8,1)
+    ,c26 double precision
+    ,c27 boolean
+    ,c28 char(6)
+    ,c29 char(12)
+    ,c30 bytea
+    ,c31 bigint
+    ,c32 double precision
     ,c33 bytea
-    ,c34 bigint
-    ,c35 numeric(9,1)
-    ,c36 uuid
+    ,c34 uuid
+    ,c35 smallint
+    ,c36 real
     ,c37 double precision
-    ,c38 uuid
-    ,c39 numeric(11,3)
-    ,c40 integer
-    ,c41 numeric(10,3)
-    ,c42 timestamp
-    ,c43 double precision
-    ,c44 smallint
-    ,c45 jsonb
-    ,c46 text
-    ,c47 bigint
-    ,c48 text
-    ,c49 boolean
-    ,c50 smallint
-    ,c51 varchar(46)
-    ,c52 smallint
-    ,c53 jsonb
-    ,c54 jsonb
-    ,c55 jsonb
-    ,c56 double precision
-    ,c57 timestamp
-    ,c58 uuid
-    ,c59 double precision
-    ,c60 bigint
-    ,c61 bytea
-    ,c62 timestamp
-    ,c63 uuid
-    ,c64 integer
-    ,c65 smallint
-    ,c66 double precision
-    ,c67 time
-    ,c68 timestamp
-    ,c69 smallint
-    ,c70 varchar(6)
-    ,c71 date
-    ,c72 real
-    ,c73 double precision
-    ,c74 bytea
-    ,c75 bigint
-    ,c76 char(11)
-    ,c77 date
-    ,c78 numeric(4,3)
-    ,c79 numeric(9,0)
-    ,c80 boolean
-    ,c81 uuid
-    ,c82 char(5)
-    ,c83 integer
-    ,c84 boolean
-    ,c85 double precision
-    ,c86 bytea
-    ,c87 time
-    ,c88 numeric(6,3)
-    ,c89 bytea
-    ,c90 date
-    ,c91 bigint
-    ,c92 real
-    ,c93 bytea
-    ,c94 double precision
-    ,c95 integer
-    ,c96 bigint
-    ,c97 text
-    ,c98 time
-    ,c99 date
-    ,c100 uuid
-    ,c101 smallint
-    ,c102 char(10)
-    ,c103 numeric(4,1)
-    ,c104 text
-    ,c105 time
-    ,c106 timestamp
-    ,c107 integer
-    ,c108 text
-    ,c109 integer
-    ,c110 varchar(1)
-    ,c111 real
-    ,c112 time
-    ,c113 boolean
-    ,c114 jsonb
-    ,c115 jsonb
-    ,c116 jsonb
-);
-
-CREATE TABLE bench.t_wide2 (
-    id BIGSERIAL PRIMARY KEY
-    ,c1 real
-    ,c2 uuid
-    ,c3 time
-    ,c4 date
-    ,c5 real
-    ,c6 char(7)
-    ,c7 numeric(5,2)
-    ,c8 char(17)
-    ,c9 double precision
-    ,c10 text
-    ,c11 jsonb
-    ,c12 uuid
-    ,c13 char(20)
-    ,c14 bigint
-    ,c15 date
-    ,c16 smallint
-    ,c17 double precision
-    ,c18 timestamp
-    ,c19 bigint
-    ,c20 char(12)
-    ,c21 integer
-    ,c22 bigint
-    ,c23 text
-    ,c24 text
-    ,c25 integer
-    ,c26 smallint
-    ,c27 varchar(1)
-    ,c28 smallint
-    ,c29 numeric(6,1)
-    ,c30 date
-    ,c31 date
-    ,c32 bigint
-    ,c33 date
-    ,c34 text
-    ,c35 jsonb
-    ,c36 jsonb
-    ,c37 uuid
-    ,c38 varchar(19)
-    ,c39 jsonb
-    ,c40 smallint
+    ,c38 bigint
+    ,c39 integer
+    ,c40 timestamp
     ,c41 integer
-    ,c42 char(14)
-    ,c43 jsonb
-    ,c44 bigint
-    ,c45 smallint
-    ,c46 numeric(5,2)
-    ,c47 smallint
-    ,c48 boolean
-    ,c49 boolean
-    ,c50 double precision
-    ,c51 uuid
-    ,c52 uuid
-    ,c53 real
-    ,c54 char(16)
-    ,c55 date
-    ,c56 uuid
-    ,c57 time
-    ,c58 date
-    ,c59 time
+    ,c42 bytea
+    ,c43 boolean
+    ,c44 date
+    ,c45 time
+    ,c46 date
+    ,c47 char(16)
+    ,c48 text
+    ,c49 real
+    ,c50 bytea
+    ,c51 char(11)
+    ,c52 text
+    ,c53 bytea
+    ,c54 bigint
+    ,c55 double precision
+    ,c56 double precision
+    ,c57 double precision
+    ,c58 uuid
+    ,c59 bytea
     ,c60 uuid
-    ,c61 varchar(48)
-    ,c62 numeric(12,1)
-    ,c63 bytea
-    ,c64 date
-    ,c65 boolean
+    ,c61 jsonb
+    ,c62 integer
+    ,c63 date
+    ,c64 uuid
+    ,c65 time
     ,c66 boolean
-    ,c67 text
-    ,c68 timestamp
-    ,c69 real
-    ,c70 date
-    ,c71 jsonb
-    ,c72 double precision
+    ,c67 bigint
+    ,c68 smallint
+    ,c69 text
+    ,c70 bytea
+    ,c71 char(1)
+    ,c72 numeric(9,3)
     ,c73 text
-    ,c74 bytea
-    ,c75 text
-    ,c76 numeric(12,2)
-    ,c77 varchar(2)
-    ,c78 timestamp
-    ,c79 jsonb
-    ,c80 date
-    ,c81 integer
-    ,c82 bytea
-    ,c83 date
-    ,c84 real
-    ,c85 varchar(8)
-    ,c86 jsonb
-    ,c87 jsonb
+    ,c74 integer
+    ,c75 varchar(47)
+    ,c76 time
+    ,c77 numeric(8,2)
+    ,c78 char(12)
+    ,c79 integer
+    ,c80 char(1)
+    ,c81 bigint
+    ,c82 jsonb
+    ,c83 bytea
+    ,c84 timestamp
+    ,c85 text
+    ,c86 smallint
+    ,c87 varchar(49)
     ,c88 date
     ,c89 bytea
-    ,c90 time
-    ,c91 bigint
-    ,c92 jsonb
-    ,c93 integer
-    ,c94 bigint
-    ,c95 smallint
-    ,c96 integer
-    ,c97 varchar(5)
-    ,c98 text
+    ,c90 jsonb
+    ,c91 boolean
+    ,c92 boolean
+    ,c93 bigint
+    ,c94 varchar(38)
+    ,c95 char(12)
+    ,c96 char(8)
+    ,c97 timestamp
+    ,c98 boolean
     ,c99 timestamp
-    ,c100 date
-    ,c101 text
-    ,c102 real
-    ,c103 text
-    ,c104 real
-    ,c105 real
-    ,c106 jsonb
-    ,c107 double precision
-    ,c108 double precision
-    ,c109 boolean
-    ,c110 jsonb
-    ,c111 real
-    ,c112 char(3)
-    ,c113 uuid
-    ,c114 boolean
-    ,c115 boolean
-    ,c116 bytea
-    ,c117 numeric(9,3)
-    ,c118 integer
-    ,c119 bigint
-    ,c120 bigint
-    ,c121 numeric(7,0)
-    ,c122 uuid
-    ,c123 bigint
-    ,c124 bytea
-    ,c125 boolean
-    ,c126 integer
-    ,c127 numeric(9,0)
-    ,c128 text
-    ,c129 bigint
-    ,c130 numeric(6,0)
-    ,c131 timestamp
-    ,c132 varchar(3)
-    ,c133 timestamp
-    ,c134 bigint
-    ,c135 real
-    ,c136 bigint
-    ,c137 jsonb
-    ,c138 char(17)
-    ,c139 real
-    ,c140 numeric(5,0)
-    ,c141 integer
-    ,c142 time
-    ,c143 bytea
-    ,c144 integer
-    ,c145 double precision
-    ,c146 timestamp
-    ,c147 timestamp
-    ,c148 char(6)
-    ,c149 timestamp
-    ,c150 date
-    ,c151 smallint
-    ,c152 varchar(9)
-    ,c153 uuid
-    ,c154 jsonb
-    ,c155 text
+    ,c100 timestamp
+    ,c101 jsonb
+    ,c102 smallint
+    ,c103 numeric(5,2)
+    ,c104 text
+    ,c105 text
+    ,c106 bigint
+    ,c107 text
+    ,c108 char(13)
+    ,c109 text
+    ,c110 numeric(6,0)
+    ,c111 bytea
 );
 
-CREATE TABLE bench.t_wide3 (
+CREATE TABLE bench.tsw8 (
     id BIGSERIAL PRIMARY KEY
-    ,c1 timestamp
-    ,c2 smallint
-    ,c3 varchar(16)
-    ,c4 time
-    ,c5 timestamp
-    ,c6 integer
-    ,c7 smallint
-    ,c8 char(11)
-    ,c9 varchar(35)
-    ,c10 timestamp
-    ,c11 numeric(5,0)
-    ,c12 date
-    ,c13 real
-    ,c14 integer
-    ,c15 bytea
-    ,c16 jsonb
-    ,c17 varchar(16)
-    ,c18 smallint
-    ,c19 real
-    ,c20 boolean
-    ,c21 varchar(27)
-    ,c22 bigint
-    ,c23 time
-    ,c24 bigint
-    ,c25 uuid
-    ,c26 double precision
-    ,c27 varchar(44)
-    ,c28 boolean
-    ,c29 uuid
-    ,c30 char(6)
-    ,c31 char(3)
-    ,c32 uuid
-    ,c33 time
-    ,c34 smallint
-    ,c35 integer
-    ,c36 integer
+    ,c1 real
+    ,c2 bytea
+    ,c3 bytea
+    ,c4 bigint
+    ,c5 time
+    ,c6 text
+    ,c7 varchar(42)
+    ,c8 varchar(34)
+    ,c9 bigint
+    ,c10 bytea
+    ,c11 boolean
+    ,c12 smallint
+    ,c13 text
+    ,c14 text
+    ,c15 uuid
+    ,c16 uuid
+    ,c17 jsonb
+    ,c18 char(13)
+    ,c19 timestamp
+    ,c20 time
+    ,c21 date
+    ,c22 date
+    ,c23 double precision
+    ,c24 uuid
+    ,c25 bigint
+    ,c26 bigint
+    ,c27 time
+    ,c28 date
+    ,c29 time
+    ,c30 real
+    ,c31 text
+    ,c32 bytea
+    ,c33 bytea
+    ,c34 varchar(26)
+    ,c35 text
+    ,c36 varchar(22)
     ,c37 text
-    ,c38 smallint
-    ,c39 numeric(6,3)
-    ,c40 smallint
-    ,c41 jsonb
-    ,c42 real
-    ,c43 varchar(15)
-    ,c44 char(8)
-    ,c45 numeric(12,0)
-    ,c46 smallint
-    ,c47 integer
-    ,c48 time
-    ,c49 varchar(6)
-    ,c50 timestamp
-    ,c51 double precision
-    ,c52 varchar(38)
-    ,c53 numeric(12,0)
-    ,c54 real
-    ,c55 char(13)
-    ,c56 bytea
-    ,c57 text
-    ,c58 jsonb
-    ,c59 real
-    ,c60 integer
-    ,c61 time
-    ,c62 bigint
-    ,c63 integer
-    ,c64 double precision
-    ,c65 bytea
-    ,c66 real
-    ,c67 numeric(4,3)
-    ,c68 smallint
-    ,c69 numeric(8,3)
-    ,c70 integer
-    ,c71 uuid
-    ,c72 bytea
-    ,c73 integer
-    ,c74 text
-    ,c75 varchar(25)
-    ,c76 time
-    ,c77 varchar(37)
+    ,c38 bytea
+    ,c39 numeric(8,2)
+    ,c40 char(2)
+    ,c41 smallint
+    ,c42 numeric(10,1)
+    ,c43 real
+    ,c44 timestamp
+    ,c45 bigint
+    ,c46 bigint
+    ,c47 bigint
+    ,c48 numeric(10,0)
+    ,c49 smallint
+    ,c50 varchar(24)
+    ,c51 integer
+    ,c52 timestamp
+    ,c53 double precision
+    ,c54 boolean
+    ,c55 varchar(38)
+    ,c56 numeric(7,0)
+    ,c57 time
+    ,c58 bigint
+    ,c59 numeric(5,1)
+    ,c60 varchar(7)
+    ,c61 double precision
+    ,c62 timestamp
+    ,c63 varchar(4)
+    ,c64 time
+    ,c65 date
+    ,c66 boolean
+    ,c67 real
+    ,c68 numeric(4,0)
+    ,c69 varchar(7)
+    ,c70 jsonb
+    ,c71 double precision
+    ,c72 smallint
+    ,c73 bigint
+    ,c74 date
+    ,c75 varchar(1)
+    ,c76 date
+    ,c77 numeric(5,2)
     ,c78 jsonb
     ,c79 double precision
     ,c80 boolean
-    ,c81 date
-    ,c82 real
-    ,c83 integer
-    ,c84 timestamp
-    ,c85 date
-    ,c86 varchar(46)
-    ,c87 varchar(21)
-    ,c88 uuid
-    ,c89 bytea
-    ,c90 uuid
-    ,c91 bytea
-    ,c92 real
-    ,c93 bigint
+    ,c81 real
+    ,c82 jsonb
+    ,c83 timestamp
+    ,c84 bigint
+    ,c85 boolean
+    ,c86 char(19)
+    ,c87 timestamp
+    ,c88 real
+    ,c89 time
+    ,c90 char(13)
+    ,c91 time
+    ,c92 boolean
+    ,c93 time
     ,c94 text
+    ,c95 integer
+    ,c96 double precision
+    ,c97 char(17)
+    ,c98 text
+    ,c99 text
+    ,c100 char(12)
+    ,c101 timestamp
+    ,c102 smallint
+    ,c103 integer
+    ,c104 timestamp
+    ,c105 uuid
+    ,c106 smallint
+    ,c107 jsonb
+    ,c108 smallint
+    ,c109 uuid
+    ,c110 jsonb
+    ,c111 double precision
+    ,c112 bytea
+    ,c113 double precision
+    ,c114 timestamp
+    ,c115 integer
+    ,c116 timestamp
+    ,c117 jsonb
+    ,c118 double precision
+    ,c119 date
+    ,c120 double precision
+    ,c121 date
+    ,c122 char(20)
+    ,c123 char(15)
+    ,c124 integer
+    ,c125 boolean
+    ,c126 smallint
+    ,c127 jsonb
+    ,c128 double precision
+    ,c129 double precision
+    ,c130 double precision
+    ,c131 date
+    ,c132 numeric(6,3)
+    ,c133 time
+    ,c134 integer
+    ,c135 text
+    ,c136 real
+    ,c137 char(17)
+    ,c138 integer
+    ,c139 integer
+    ,c140 timestamp
+    ,c141 time
+    ,c142 char(10)
+    ,c143 jsonb
+    ,c144 bigint
+    ,c145 numeric(5,1)
+    ,c146 bigint
+    ,c147 boolean
+    ,c148 double precision
+    ,c149 varchar(19)
+    ,c150 timestamp
+    ,c151 text
+    ,c152 smallint
+    ,c153 boolean
+    ,c154 smallint
+    ,c155 text
+    ,c156 bigint
+    ,c157 date
+    ,c158 timestamp
+    ,c159 bytea
+    ,c160 numeric(5,3)
+    ,c161 char(15)
+    ,c162 integer
+    ,c163 uuid
+    ,c164 bigint
+    ,c165 varchar(30)
+    ,c166 date
+    ,c167 char(8)
+    ,c168 char(19)
+    ,c169 uuid
+    ,c170 boolean
+    ,c171 text
+    ,c172 varchar(4)
+    ,c173 integer
+    ,c174 smallint
+    ,c175 bigint
+    ,c176 integer
+    ,c177 varchar(48)
+    ,c178 smallint
+    ,c179 time
+    ,c180 text
+    ,c181 integer
+    ,c182 varchar(20)
+    ,c183 double precision
+    ,c184 text
+);
+
+CREATE TABLE bench.tsw9 (
+    id BIGSERIAL PRIMARY KEY
+    ,c1 smallint
+    ,c2 double precision
+    ,c3 text
+    ,c4 integer
+    ,c5 boolean
+    ,c6 numeric(11,3)
+    ,c7 uuid
+    ,c8 uuid
+    ,c9 text
+    ,c10 bigint
+    ,c11 bigint
+    ,c12 uuid
+    ,c13 double precision
+    ,c14 numeric(8,3)
+    ,c15 bytea
+    ,c16 integer
+    ,c17 time
+    ,c18 bytea
+    ,c19 double precision
+    ,c20 time
+    ,c21 real
+    ,c22 char(3)
+    ,c23 real
+    ,c24 uuid
+    ,c25 char(3)
+    ,c26 bigint
+    ,c27 time
+    ,c28 char(9)
+    ,c29 time
+    ,c30 smallint
+    ,c31 date
+    ,c32 char(20)
+    ,c33 date
+    ,c34 date
+    ,c35 bytea
+    ,c36 boolean
+    ,c37 double precision
+    ,c38 boolean
+    ,c39 uuid
+    ,c40 bigint
+    ,c41 time
+    ,c42 integer
+    ,c43 boolean
+    ,c44 double precision
+    ,c45 bytea
+    ,c46 time
+    ,c47 date
+    ,c48 bytea
+    ,c49 text
+    ,c50 real
+    ,c51 integer
+    ,c52 timestamp
+    ,c53 uuid
+    ,c54 uuid
+    ,c55 smallint
+    ,c56 numeric(4,3)
+    ,c57 varchar(22)
+    ,c58 bytea
+    ,c59 double precision
+    ,c60 time
+    ,c61 boolean
+    ,c62 date
+    ,c63 varchar(17)
+    ,c64 real
+    ,c65 date
+    ,c66 date
+    ,c67 numeric(5,2)
+    ,c68 integer
+    ,c69 char(7)
+    ,c70 integer
+    ,c71 real
+    ,c72 uuid
+    ,c73 bigint
+    ,c74 time
+    ,c75 timestamp
+    ,c76 timestamp
+    ,c77 jsonb
+    ,c78 bigint
+    ,c79 double precision
+    ,c80 timestamp
+    ,c81 bigint
+    ,c82 timestamp
+    ,c83 bigint
+    ,c84 varchar(3)
+    ,c85 bytea
+    ,c86 time
+    ,c87 smallint
+    ,c88 boolean
+    ,c89 uuid
+    ,c90 numeric(8,2)
+    ,c91 numeric(9,0)
+    ,c92 jsonb
+    ,c93 bytea
+    ,c94 char(9)
+    ,c95 boolean
+    ,c96 bytea
+    ,c97 text
+    ,c98 bytea
+    ,c99 timestamp
+    ,c100 char(9)
+    ,c101 char(1)
+    ,c102 time
+    ,c103 real
+    ,c104 jsonb
+    ,c105 char(16)
+    ,c106 jsonb
+    ,c107 timestamp
+    ,c108 bytea
+    ,c109 char(8)
+    ,c110 real
+    ,c111 bigint
+    ,c112 real
+    ,c113 text
+    ,c114 integer
+    ,c115 varchar(15)
+    ,c116 varchar(10)
+    ,c117 numeric(7,1)
+    ,c118 numeric(9,1)
+    ,c119 timestamp
+    ,c120 boolean
+    ,c121 text
+    ,c122 time
+    ,c123 date
+    ,c124 numeric(11,3)
+    ,c125 numeric(11,2)
+);
+
+CREATE TABLE bench.tsw10 (
+    id BIGSERIAL PRIMARY KEY
+    ,c1 char(8)
+    ,c2 numeric(11,3)
+    ,c3 numeric(12,0)
+    ,c4 time
+    ,c5 bytea
+    ,c6 bigint
+    ,c7 numeric(4,2)
+    ,c8 uuid
+    ,c9 integer
+    ,c10 bytea
+    ,c11 uuid
+    ,c12 date
+    ,c13 uuid
+    ,c14 numeric(10,1)
+    ,c15 text
+    ,c16 time
+    ,c17 jsonb
+    ,c18 bigint
+    ,c19 time
+    ,c20 char(5)
+    ,c21 varchar(28)
+    ,c22 text
+    ,c23 bigint
+    ,c24 timestamp
+    ,c25 uuid
+    ,c26 date
+    ,c27 text
+    ,c28 integer
+    ,c29 boolean
+    ,c30 char(20)
+    ,c31 numeric(6,1)
+    ,c32 bytea
+    ,c33 timestamp
+    ,c34 jsonb
+    ,c35 numeric(7,2)
+    ,c36 integer
+    ,c37 timestamp
+    ,c38 bigint
+    ,c39 double precision
+    ,c40 text
+    ,c41 bigint
+    ,c42 boolean
+    ,c43 text
+    ,c44 real
+    ,c45 real
+    ,c46 char(14)
+    ,c47 jsonb
+    ,c48 text
+    ,c49 jsonb
+    ,c50 bigint
+    ,c51 date
+    ,c52 text
+    ,c53 varchar(45)
+    ,c54 bytea
+    ,c55 bytea
+    ,c56 date
+    ,c57 numeric(9,3)
+    ,c58 timestamp
+    ,c59 jsonb
+    ,c60 char(11)
+    ,c61 double precision
+    ,c62 uuid
+    ,c63 boolean
+    ,c64 bytea
+    ,c65 char(19)
+    ,c66 text
+    ,c67 boolean
+    ,c68 smallint
+    ,c69 uuid
+    ,c70 varchar(26)
+    ,c71 text
+    ,c72 bytea
+    ,c73 uuid
+    ,c74 jsonb
+    ,c75 boolean
+    ,c76 boolean
+    ,c77 date
+    ,c78 real
+    ,c79 numeric(7,0)
+    ,c80 bytea
+    ,c81 boolean
+    ,c82 integer
+    ,c83 uuid
+    ,c84 varchar(16)
+    ,c85 uuid
+    ,c86 real
+    ,c87 double precision
+    ,c88 text
+    ,c89 text
+    ,c90 char(17)
+    ,c91 char(6)
+    ,c92 text
+    ,c93 integer
+    ,c94 varchar(7)
     ,c95 bytea
     ,c96 bytea
-    ,c97 real
-    ,c98 char(11)
-    ,c99 text
-    ,c100 double precision
-    ,c101 boolean
-    ,c102 jsonb
-    ,c103 boolean
-    ,c104 boolean
-    ,c105 varchar(22)
-    ,c106 char(5)
-    ,c107 uuid
-    ,c108 smallint
-    ,c109 boolean
-    ,c110 jsonb
-    ,c111 jsonb
-    ,c112 integer
-    ,c113 smallint
-    ,c114 bytea
-    ,c115 text
+    ,c97 timestamp
+    ,c98 jsonb
+    ,c99 smallint
+    ,c100 timestamp
+    ,c101 uuid
+    ,c102 bigint
+    ,c103 numeric(4,0)
+    ,c104 uuid
+    ,c105 jsonb
+    ,c106 boolean
+    ,c107 timestamp
+    ,c108 char(9)
+    ,c109 bigint
+    ,c110 uuid
+    ,c111 numeric(10,1)
+    ,c112 numeric(7,2)
+    ,c113 numeric(10,2)
+    ,c114 double precision
+    ,c115 boolean
     ,c116 bytea
-    ,c117 smallint
-    ,c118 char(17)
-    ,c119 smallint
-    ,c120 double precision
-    ,c121 timestamp
-    ,c122 smallint
-    ,c123 bytea
-    ,c124 timestamp
-    ,c125 char(18)
-    ,c126 double precision
-    ,c127 bytea
-    ,c128 timestamp
-    ,c129 double precision
-    ,c130 bigint
-    ,c131 date
-    ,c132 date
-    ,c133 numeric(7,3)
-    ,c134 real
-    ,c135 bigint
-    ,c136 bigint
-    ,c137 date
-    ,c138 jsonb
-    ,c139 bytea
-    ,c140 timestamp
 );

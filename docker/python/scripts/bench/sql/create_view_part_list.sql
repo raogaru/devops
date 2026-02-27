@@ -1,3 +1,10 @@
-CREATE VIEW bench.vew_t_list1 AS SELECT a.* FROM bench.t_list1 LIMIT 5;
-CREATE VIEW bench.vew_t_list2 AS SELECT a.* FROM bench.t_list2 LIMIT 5;
-CREATE VIEW bench.vew_t_list3 AS SELECT a.* FROM bench.t_list3 LIMIT 5;
+CREATE VIEW bench.vew_tpl1 AS SELECT a.* FROM bench.tpl1 a LIMIT 5;
+CREATE VIEW bench.vew_tpl2 AS SELECT a.* FROM bench.tpl2 a LIMIT 5;
+CREATE VIEW bench.vew_tpl3 AS SELECT a.* FROM bench.tpl3 a LIMIT 5;
+CREATE VIEW bench.vew_tpl4 AS SELECT a.* FROM bench.tpl4 a LIMIT 5;
+CREATE VIEW bench.vew_tpl5 AS SELECT a.* FROM bench.tpl5 a LIMIT 5;
+CREATE VIEW bench.vew_tpl6 AS SELECT a.* FROM bench.tpl6 a LIMIT 5;
+CREATE VIEW bench.vew_tpl7 AS SELECT a.* FROM bench.tpl7 a LIMIT 5;
+CREATE VIEW bench.vew_tpl8 AS SELECT a.* FROM bench.tpl8 a LIMIT 5;
+CREATE VIEW bench.vew_tpl9 AS SELECT a.* FROM bench.tpl9 a LIMIT 5;
+CREATE VIEW bench.vew_tpl10 AS SELECT a.* FROM bench.tpl10 a LIMIT 5;

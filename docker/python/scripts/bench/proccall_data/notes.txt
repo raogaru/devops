@@ -1,0 +1,5 @@
+-- list procedurs
+select schema_name||'.'||object_name from v$objects where object_type in ('procedure') and schema_name='bench' order by object_name;
+
+
+SELECT floor(random()*300+1)::int AS random_number FROM generate_series(1, 100);

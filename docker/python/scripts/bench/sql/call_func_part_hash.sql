@@ -1,3 +1,10 @@
-SELECT * FROM bench.f_t_hash1 (p_id=>(floor(random()*(100-1+1)+1)::int));
-SELECT * FROM bench.f_t_hash2 (p_id=>(floor(random()*(100-1+1)+1)::int));
-SELECT * FROM bench.f_t_hash3 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph1 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph2 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph3 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph4 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph5 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph6 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph7 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph8 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph9 (p_id=>(floor(random()*(100-1+1)+1)::int));
+SELECT * FROM bench.f_tph10 (p_id=>(floor(random()*(100-1+1)+1)::int));

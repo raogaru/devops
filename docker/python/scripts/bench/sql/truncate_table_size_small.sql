@@ -1,3 +1,10 @@
-TRUNCATE bench.t_small1;
-TRUNCATE bench.t_small2;
-TRUNCATE bench.t_small3;
+TRUNCATE bench.tss1;
+TRUNCATE bench.tss2;
+TRUNCATE bench.tss3;
+TRUNCATE bench.tss4;
+TRUNCATE bench.tss5;
+TRUNCATE bench.tss6;
+TRUNCATE bench.tss7;
+TRUNCATE bench.tss8;
+TRUNCATE bench.tss9;
+TRUNCATE bench.tss10;

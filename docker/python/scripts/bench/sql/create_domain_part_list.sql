@@ -1,3 +1,10 @@
-CREATE DOMAIN bench.dom_t_list1 AS bench.typ_t_list1 [];
-CREATE DOMAIN bench.dom_t_list2 AS bench.typ_t_list2 [];
-CREATE DOMAIN bench.dom_t_list3 AS bench.typ_t_list3 [];
+CREATE DOMAIN bench.dom_tpl1 AS bench.typ_tpl1 [];
+CREATE DOMAIN bench.dom_tpl2 AS bench.typ_tpl2 [];
+CREATE DOMAIN bench.dom_tpl3 AS bench.typ_tpl3 [];
+CREATE DOMAIN bench.dom_tpl4 AS bench.typ_tpl4 [];
+CREATE DOMAIN bench.dom_tpl5 AS bench.typ_tpl5 [];
+CREATE DOMAIN bench.dom_tpl6 AS bench.typ_tpl6 [];
+CREATE DOMAIN bench.dom_tpl7 AS bench.typ_tpl7 [];
+CREATE DOMAIN bench.dom_tpl8 AS bench.typ_tpl8 [];
+CREATE DOMAIN bench.dom_tpl9 AS bench.typ_tpl9 [];
+CREATE DOMAIN bench.dom_tpl10 AS bench.typ_tpl10 [];
