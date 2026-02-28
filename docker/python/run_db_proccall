@@ -1,0 +1,19 @@
+docker exec -it c-python scripts/proccall.py            \
+--config scripts/proccall_db.yaml                          \
+--sample-data-dir scripts/bench/proccall_data      \
+--sql-dir scripts/sql		\
+--details-output scripts/details.csv            \
+--summary-output scripts/summary.csv            \
+--warmups 0                                      \
+--executions 10                         \
+--transaction rollback                          \
+--expected-ms 500                               \
+--timeout-ms 10                                 \
+--fetch-mode vector                           \
+--verbose-params                                \
+--fetched-data-dir scripts/o		\
+--shuffle 				\
+#--verbose-config                                \
+#--verbose-sample                                \
+#--debug 				
+

@@ -96,6 +96,10 @@ create_type_file   = out["create_type_file"]
 drop_type_file   = out["drop_type_file"]
 create_domain_file   = out["create_domain_file"]
 drop_domain_file   = out["drop_domain_file"]
+bind_select_file   = out["bind_select_file"]
+bind_insert_file   = out["bind_insert_file"]
+bind_update_file   = out["bind_update_file"]
+bind_delete_file   = out["bind_delete_file"]
 
 # --------------------------------------------------------------
 # Ensure output directories exist
@@ -222,6 +226,10 @@ create_type_output   = []
 drop_type_output   = []
 create_domain_output   = []
 drop_domain_output   = []
+bind_select_output   = []
+bind_insert_output   = []
+bind_update_output   = []
+bind_delete_output   = []
 
 for t in range(1, table_count + 1):
 
@@ -349,15 +357,43 @@ for t in range(1, table_count + 1):
 
         create_table_output.append("")
 
+    exprs = [sql_expr_from_meta(meta) for _, meta in columns]
+
+    # ---------------------------
+    # BIND SELECT
+    # ---------------------------
+    bind_select_output.append(f"SELECT a.* FROM {fqtn} a WHERE id between 1 and :p_id ;\n")
+
+    # ---------------------------
+    # BIND INSERT
+    # ---------------------------
+    bind_insert_output.append(
+        f"INSERT INTO {fqtn} ({','.join(c for c,_ in columns)})\n"
+        f"SELECT\n    " + ",\n    ".join(exprs) + "\n"
+        f"FROM generate_series(1, :p_id);\n"
+    )
+
+    # ---------------------------
+    # BIND UPDATE
+    # ---------------------------
+
+    set_clause = ",\n    ".join( f"{c} = {e}" for (c, _), e in zip(columns, exprs))
+    bind_update_output.append(
+        f"UPDATE {fqtn} SET\n    {set_clause}\n"
+        f"WHERE mod(id,3)=0 and id between 1 and :p_id;\n")
+
+    # ---------------------------
+    # BIND DELETE
+    # ---------------------------
+    bind_delete_output.append(f"DELETE FROM {fqtn} a WHERE mod(id,7)=0 and id between 1 and :p_id;\n")
+
     # ---------------------------
     # INSERT TABLE
     # ---------------------------
-
     rows_per_table = random.randint(table_rows_min, table_rows_max)
-    exprs = [sql_expr_from_meta(meta) for _, meta in columns]
 
     insert_table_output.append(
-        f"INSERT INTO {fqtn} ({','.join(c for c,_ in columns)})\n"
+        f"INSERT INTO {fqtn} ({','.join(c for (c,_) in columns)})\n"
         f"SELECT\n    " + ",\n    ".join(exprs) + "\n"
         f"FROM generate_series(1, {rows_per_table});\n"
     )
@@ -365,32 +401,32 @@ for t in range(1, table_count + 1):
     # ---------------------------
     # DROP TABLE
     # ---------------------------
-    drop_table_output.append(f"DROP TABLE IF EXISTS {fqtn} CASCADE;")
+    drop_table_output.append(f"DROP TABLE IF EXISTS {fqtn} CASCADE;\n")
+
+    # ---------------------------
+    # CREATE VIEW
+    # ---------------------------
+    create_view_output.append(f"CREATE VIEW {table_schema}.vew_{tabname} AS SELECT a.* FROM {fqtn} a LIMIT 5;\n")
 
     # ---------------------------
     # DROP VIEW
     # ---------------------------
-    create_view_output.append(f"CREATE VIEW {table_schema}.vew_{tabname} AS SELECT a.* FROM {fqtn} a LIMIT 5;")
-
-    # ---------------------------
-    # DROP VIEW
-    # ---------------------------
-    drop_view_output.append(f"DROP VIEW IF EXISTS {table_schema}.vew_{tabname} CASCADE;")
+    drop_view_output.append(f"DROP VIEW IF EXISTS {table_schema}.vew_{tabname} CASCADE;\n")
 
     # ---------------------------
     # ANALYZE TABLE
     # ---------------------------
-    analyze_table_output.append(f"ANALYZE {fqtn};")
+    analyze_table_output.append(f"ANALYZE {fqtn};\n")
 
     # ---------------------------
     # TRUNCATE TABLE
     # ---------------------------
-    truncate_table_output.append(f"TRUNCATE {fqtn};")
+    truncate_table_output.append(f"TRUNCATE {fqtn};\n")
 
     # ---------------------------
     # SELECT TABLE
     # ---------------------------
-    select_table_output.append(f"SELECT count(1) FROM {fqtn};")
+    select_table_output.append(f"SELECT count(1) FROM {fqtn};\n")
 
     # ---------------------------
     # CREATE PROCEDURE
@@ -418,7 +454,7 @@ for t in range(1, table_count + 1):
     # ---------------------------
     # DROP PROCEDURE
     # ---------------------------
-    drop_proc_output.append( f"DROP PROCEDURE IF EXISTS {table_schema}.p_{tabname};" )
+    drop_proc_output.append( f"DROP PROCEDURE IF EXISTS {table_schema}.p_{tabname};\n" )
 
     # ---------------------------
     # CREATE FUNCTION
@@ -432,32 +468,31 @@ for t in range(1, table_count + 1):
         f"END;\n"
         f"$$;\n"
     )
-        #f"    SELECT pg_sleep(0.5 + (random() * 2.5));\n"
 
     # ---------------------------
     # CALL FUNCTION
     # ---------------------------
-    call_func_output.append( f"SELECT * FROM {table_schema}.f_{tabname} (p_id=>(floor(random()*(100-1+1)+1)::int));" )
+    call_func_output.append( f"SELECT * FROM {table_schema}.f_{tabname} (p_id=>(floor(random()*(100-1+1)+1)::int));\n" )
 
     # ---------------------------
     # DROP FUNCTION
     # ---------------------------
-    drop_func_output.append( f"DROP FUNCTION IF EXISTS {table_schema}.f_{tabname};" )
+    drop_func_output.append( f"DROP FUNCTION IF EXISTS {table_schema}.f_{tabname};\n" )
 
     # ---------------------------
     # DROP TYPE
     # ---------------------------
-    drop_type_output.append(f"DROP TYPE IF EXISTS {table_schema}.typ_{tabname};")
+    drop_type_output.append(f"DROP TYPE IF EXISTS {table_schema}.typ_{tabname};\n")
 
     # ---------------------------
     # CREATE DOMAIN
     # ---------------------------
-    create_domain_output.append(f"CREATE DOMAIN {table_schema}.dom_{tabname} AS {table_schema}.typ_{tabname} [];")
+    create_domain_output.append(f"CREATE DOMAIN {table_schema}.dom_{tabname} AS {table_schema}.typ_{tabname} [];\n")
 
     # ---------------------------
     # DROP DOMAIN
     # ---------------------------
-    drop_domain_output.append(f"DROP DOMAIN IF EXISTS {table_schema}.dom_{tabname};")
+    drop_domain_output.append(f"DROP DOMAIN IF EXISTS {table_schema}.dom_{tabname};\n")
 
 # --------------------------------------------------------------
 # Write files
@@ -516,6 +551,18 @@ Path(create_domain_file).write_text("\n".join(create_domain_output))
 
 print("Generating:",drop_domain_file)
 Path(drop_domain_file).write_text("\n".join(drop_domain_output))
+
+print("Generating:",bind_select_file)
+Path(bind_select_file).write_text("\n".join(bind_select_output))
+
+print("Generating:",bind_insert_file)
+Path(bind_insert_file).write_text("\n".join(bind_insert_output))
+
+print("Generating:",bind_update_file)
+Path(bind_update_file).write_text("\n".join(bind_update_output))
+
+print("Generating:",bind_delete_file)
+Path(bind_delete_file).write_text("\n".join(bind_delete_output))
 
 print("Completed:")
 

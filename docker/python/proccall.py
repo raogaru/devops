@@ -456,7 +456,10 @@ def load_sample_rows(
     if p_verbose_sample:
         print(f"SAMPLE:")
 
+    
     csv_filename = f"{object_name}.csv"
+    #RAO
+    csv_filename = f"p_id.csv"
     csv_path = os.path.join(sample_data_dir, csv_filename)
 
     if p_verbose_sample:
