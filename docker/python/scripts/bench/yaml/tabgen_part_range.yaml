@@ -41,6 +41,11 @@ output:
 #
   create_domain_file: "scripts/bench/sql/create_domain_part_range.sql"                                
   drop_domain_file: "scripts/bench/sql/drop_domain_part_range.sql"                                
+  bind_select_file: "scripts/bench/sql/bind_select_part_range.sql"                                
+  bind_insert_file: "scripts/bench/sql/bind_insert_part_range.sql"                                
+  bind_update_file: "scripts/bench/sql/bind_update_part_range.sql"                                
+  bind_delete_file: "scripts/bench/sql/bind_delete_part_range.sql"                                
+#
 #
 
 # ----------------------------------------

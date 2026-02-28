@@ -42,5 +42,10 @@ output:
   create_domain_file: "scripts/bench/sql/create_domain_part_list.sql"                                
   drop_domain_file: "scripts/bench/sql/drop_domain_part_list.sql"                                
 #
+  bind_select_file: "scripts/bench/sql/bind_select_part_list.sql"                                
+  bind_insert_file: "scripts/bench/sql/bind_insert_part_list.sql"                                
+  bind_update_file: "scripts/bench/sql/bind_update_part_list.sql"                                
+  bind_delete_file: "scripts/bench/sql/bind_delete_part_list.sql"                                
+#
 
 # ----------------------------------------
