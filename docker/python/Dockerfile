@@ -33,10 +33,12 @@ COPY pgdatacomp.yaml /app/
 
 COPY csvstats.py /app/bin
 
-COPY bench_proc_calls_gencfg.py /app/bin
+COPY proccall_gencfg.py /app/bin
 
-COPY bench_proc_calls.py /app/bin
-COPY bench_proc_calls.yaml /app/
+COPY proccall.py /app/bin
+COPY proccall.yaml /app
+
+COPY splitsql.py /app/bin
 
 RUN chmod +x /app/bin/*.py
 

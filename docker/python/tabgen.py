@@ -285,13 +285,14 @@ for t in range(1, table_count + 1):
     # ---------------------------
 
     create_table_ddl = [f"CREATE TABLE {fqtn} ("]
-    create_type_ddl = [f"CREATE TYPE {table_schema}.typ_{tabname} ("]
-    create_type_ddl.append("    id BIGSERIAL")
+    create_type_ddl = [f"CREATE TYPE {table_schema}.typ_{tabname} AS ("]
 
     if partition_enabled:
         create_table_ddl.append("    id BIGSERIAL")
     else:
         create_table_ddl.append("    id BIGSERIAL PRIMARY KEY")
+
+    create_type_ddl.append("    id bigint")
 
     for cname, meta in columns:
         create_table_ddl.append(f"    ,{cname} {ddl_from_meta(meta)}")
@@ -369,7 +370,7 @@ for t in range(1, table_count + 1):
     # ---------------------------
     # DROP VIEW
     # ---------------------------
-    create_view_output.append(f"CREATE VIEW {table_schema}.vew_{tabname} AS SELECT a.* FROM {fqtn} LIMIT 5;")
+    create_view_output.append(f"CREATE VIEW {table_schema}.vew_{tabname} AS SELECT a.* FROM {fqtn} a LIMIT 5;")
 
     # ---------------------------
     # DROP VIEW

@@ -1,1 +1,0 @@
-SELECT count(1) FROM job4.t1;

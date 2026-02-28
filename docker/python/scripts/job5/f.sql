@@ -1,6 +1,0 @@
-CREATE OR REPLACE PROCEDURE job5.p_t1(INOUT p_refcur REFCURSOR)
-LANGUAGE plpgsql AS $$
-BEGIN
-    OPEN p_refcur FOR SELECT * FROM job5.t1 LIMIT 5;
-END;
-$$; 
