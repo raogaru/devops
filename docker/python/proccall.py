@@ -450,25 +450,25 @@ def load_sample_rows(
     sample_data_dir: str, 
     object_name: str, 
     parameters: List[RoutineParameters], 
-    p_verbose_sample: bool
+    p_verbose_params: bool
 ) -> List[Dict[str, str]]:
 
-    if p_verbose_sample:
+    if p_verbose_params:
         print(f"SAMPLE:")
 
     
     csv_filename = f"{object_name}.csv"
     #RAO
-    csv_filename = f"p_id.csv"
+    csv_filename = f"one.csv"
     csv_path = os.path.join(sample_data_dir, csv_filename)
 
-    if p_verbose_sample:
+    if p_verbose_params:
         print(f"  sample file: {csv_path}")
 
     if not os.path.exists(csv_path):
         # Allow routines with no parameters (e.g. static sqlfile) to run without a sample CSV.
         if not parameters:
-            if p_verbose_sample:
+            if p_verbose_params:
                 print(f"  sample file: {csv_path} (not found; using single empty sample row)")
             return [{}]
         raise FileNotFoundError(f"Sample file {csv_path} not found for {object_name} ")
@@ -479,25 +479,25 @@ def load_sample_rows(
         for row in reader:
             sample_rows.append(row)
 
-    if p_verbose_sample:
+    if p_verbose_params:
         print(f"  sample rows: {len(sample_rows)}")
 
     if not sample_rows:
         raise ValueError(f"Sample file for {object_name} is empty: {csv_path}")
 
     csv_cols = set(sample_rows[0].keys())
-    if p_verbose_sample:
+    if p_verbose_params:
         print(f"  csvfile columns: {csv_cols} ")
 
     required_cols = {p.name for p in parameters}
-    if p_verbose_sample:
+    if p_verbose_params:
         print(f"  routine columns: {required_cols} ")
 
     missing_cols = required_cols - csv_cols
     if missing_cols:
         raise ValueError(f"{object_name}: sample file missing columns: {sorted(missing_cols)}")
 
-    if p_verbose_sample:
+    if p_verbose_params:
         print(f"  missing columns: {missing_cols}")
 
     return sample_rows
@@ -750,7 +750,8 @@ def run_benchmark_for_one_routine(
                                         f"routine_kind={cfg.routine_kind} "
                                         f"fetch_mode={cfg.fetch_mode} routine={cfg.routine_name}"
                                     )
-                                print(f" debug: call_sql={call_sql}")
+                                if debug:
+                                    print(f" debug: call_sql={call_sql}")
                                 cur.execute(call_sql, param_values)
                                 consume_one_row_if_present(cur)
 
@@ -955,9 +956,6 @@ def build_cli_arg_parser() -> argparse.ArgumentParser:
     ap.add_argument("--verbose-params", action="store_true", 
                     help="Print parameter values for each call")
 
-    ap.add_argument("--verbose-sample", action="store_true", 
-                    help="Print sample parameter values mapping for each routine call")
-
     ap.add_argument("--debug", action="store_true",
                     help="Enable debug logging (implies --verbose-config and additional execution details)")
 
@@ -994,10 +992,7 @@ def main() -> int:
         print(f"  Config Verbose enabled")
 
     if cli_args.verbose_params:
-        print(f"  Parameters Verbose enabled")
-
-    if cli_args.verbose_sample:
-        print(f"  Sample Data Verbose enabled")
+        print(f"  Parameter values Verbose enabled")
 
     if cli_args.verbose_config and os.path.isfile(cli_args.config):
         print(f"  yaml config: {cli_args.config}")
@@ -1089,7 +1084,7 @@ def main() -> int:
             print(f"  expected_ms={effective_cfg.expected_ms}")
             print(f"  parameters={[p.name + ':' + p.type for p in effective_cfg.parameters]}")
 
-        sample_rows = load_sample_rows(cli_args.sample_data_dir, effective_cfg.routine_name, effective_cfg.parameters, cli_args.verbose_sample)
+        sample_rows = load_sample_rows(cli_args.sample_data_dir, effective_cfg.routine_name, effective_cfg.parameters, cli_args.verbose_params)
 
         print(f"EXECUTION:")
         print(f"  start time:", datetime.now())
