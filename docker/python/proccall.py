@@ -456,11 +456,16 @@ def load_sample_rows(
     if p_verbose_params:
         print(f"SAMPLE:")
 
-    
     csv_filename = f"{object_name}.csv"
-    #RAO
-    csv_filename = f"one.csv"
     csv_path = os.path.join(sample_data_dir, csv_filename)
+    if not os.path.isfile(csv_path):
+        common_csv_filename = f"sample.csv"
+        common_csv_path = os.path.join(sample_data_dir, common_csv_filename)
+        if not os.path.isfile(common_csv_path):
+            raise ValueError(f"Sample file {csv_path} OR {common_csv_path} does not exists.")
+        else:
+            csv_filename = common_csv_filename
+            csv_path = common_csv_path
 
     if p_verbose_params:
         print(f"  sample file: {csv_path}")
@@ -647,7 +652,7 @@ def run_benchmark_for_one_routine(
                                     # NEW: write CSV if fetched-data-dir cli argument enabled
                                     fetched_data_output_file_path = None
                                     if fdo_dir and exec_num > 0:
-                                        fetched_data_output_file_path = os.path.join(fdo_dir, f"{cfg.routine_name}.{exec_num}.csv")
+                                        fetched_data_output_file_path = os.path.join(fdo_dir, f"{cfg.routine_name}.{exec_num:03d}.csv")
 
                                     fetched_rowcount = fetch_all_rows(cur, fetched_data_output_file_path)
                                     if debug:
@@ -694,7 +699,7 @@ def run_benchmark_for_one_routine(
                                 # NEW: write CSV if fetched-data-dir cli argument enabled
                                 fetched_data_output_file_path = None
                                 if fdo_dir and exec_num > 0:
-                                    fetched_data_output_file_path = os.path.join(fdo_dir, f"{cfg.routine_name}.{exec_num}.csv")
+                                    fetched_data_output_file_path = os.path.join(fdo_dir, f"{cfg.routine_name}.{exec_num:03d}.csv")
 
                                 fetched_rowcount = fetch_all_rows(cur,fetched_data_output_file_path)
                                 if debug:
@@ -727,7 +732,7 @@ def run_benchmark_for_one_routine(
                                 # NEW: write CSV if fetched-data-dir cli argument enabled
                                 fetched_data_output_file_path = None
                                 if fdo_dir and exec_num > 0:
-                                    fetched_data_output_file_path = os.path.join(fdo_dir, f"{cfg.routine_name}.{exec_num}.csv")
+                                    fetched_data_output_file_path = os.path.join(fdo_dir, f"{cfg.routine_name}.{exec_num:03d}.csv")
 
                                 fetched_rowcount = fetch_all_rows(cur,fetched_data_output_file_path)
                                 if debug:

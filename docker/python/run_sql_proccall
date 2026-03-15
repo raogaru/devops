@@ -11,7 +11,6 @@ docker exec -it c-python scripts/proccall.py    \
 --timeout-ms 10                                 \
 --fetch-mode vector                           \
 --verbose-params                                \
---verbose-sample                                \
 --verbose-config                                \
 --fetched-data-dir scripts/o            \
 --debug                                         \

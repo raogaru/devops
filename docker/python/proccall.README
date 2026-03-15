@@ -86,24 +86,23 @@ docker exec -it c-python scripts/proccall_sqlcfg.py \
 # 3. Connect to database and call procedures/functions
 # 4. produce output file with test results
 
-docker exec -it c-python scripts/proccall.py            \
---config scripts/proccall_db.yaml                          \
---sample-data-dir scripts/bench/proccall_data      \
---sql-dir scripts/sql		\
+docker exec -it c-python scripts/proccall.py    \
+--config scripts/proccall_db.yaml               \
+--sample-data-dir scripts/bench/proccall_data   \
+--sql-dir scripts/sql		                \
 --details-output scripts/details.csv            \
 --summary-output scripts/summary.csv            \
---warmups 1                                      \
---executions 10                         \
+--warmups 1                                     \
+--executions 10                                 \
 --transaction rollback                          \
 --expected-ms 500                               \
 --timeout-ms 10                                 \
---fetch-mode vector                           \
+--fetch-mode vector                             \
 --verbose-params                                \
---verbose-sample                                \
---fetched-data-dir scripts/o		\
 --verbose-config                                \
+--fetched-data-dir scripts/o		        \
 --debug 					\
---shuffle 
+--shuffle  
 
 # --------------------------------------------------------------------------------
 # execute benchmark for kind=sqlfile 
@@ -111,19 +110,18 @@ docker exec -it c-python scripts/proccall.py            \
 docker exec -it c-python scripts/proccall.py    \
 --config scripts/proccall_sql.yaml              \
 --sample-data-dir scripts/bench/proccall_data   \
---sql-dir scripts/sql           \
+--sql-dir scripts/sql                           \
 --details-output scripts/details.csv            \
 --summary-output scripts/summary.csv            \
---warmups 1                                      \
---executions 10                         \
+--warmups 1                                     \
+--executions 10                                 \
 --transaction rollback                          \
 --expected-ms 500                               \
 --timeout-ms 10                                 \
---fetch-mode vector                           \
---verbose-params                                \
---verbose-sample                                \
---fetched-data-dir scripts/o            \
+--fetch-mode vector                             \
+--fetched-data-dir scripts/o                    \
 --verbose-config                                \
+--verbose-params                                \
 --debug                                         \
 --shuffle
 
